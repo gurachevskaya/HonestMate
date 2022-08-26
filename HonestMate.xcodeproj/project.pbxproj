@@ -1,0 +1,743 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10D45721496F509CA15C305A /* Pods_HonestMateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14048C7F83BC590EDFC6DC61 /* Pods_HonestMateTests.framework */; };
+		18F728D728B91057002D071F /* HonestMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D628B91057002D071F /* HonestMateApp.swift */; };
+		18F728D928B91057002D071F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D828B91057002D071F /* ContentView.swift */; };
+		18F728DB28B91059002D071F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F728DA28B91059002D071F /* Assets.xcassets */; };
+		18F728DE28B91059002D071F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F728DD28B91059002D071F /* Preview Assets.xcassets */; };
+		18F728E828B91059002D071F /* HonestMateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728E728B91059002D071F /* HonestMateTests.swift */; };
+		18F728F228B91059002D071F /* HonestMateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728F128B91059002D071F /* HonestMateUITests.swift */; };
+		18F728F428B91059002D071F /* HonestMateUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728F328B91059002D071F /* HonestMateUITestsLaunchTests.swift */; };
+		233B6CB5D2377C543375E3EC /* Pods_HonestMate_HonestMateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B83DD27872A4B4968D0AEA /* Pods_HonestMate_HonestMateUITests.framework */; };
+		9DEBB23499EC31FB2CDD0666 /* Pods_HonestMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFED40C5DE85C4499F827741 /* Pods_HonestMate.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		18F728E428B91059002D071F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18F728CB28B91056002D071F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 18F728D228B91057002D071F;
+			remoteInfo = HonestMate;
+		};
+		18F728EE28B91059002D071F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18F728CB28B91056002D071F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 18F728D228B91057002D071F;
+			remoteInfo = HonestMate;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0F446593694CA01444E1A173 /* Pods-HonestMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HonestMate.debug.xcconfig"; path = "Target Support Files/Pods-HonestMate/Pods-HonestMate.debug.xcconfig"; sourceTree = "<group>"; };
+		14048C7F83BC590EDFC6DC61 /* Pods_HonestMateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HonestMateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		18F728D328B91057002D071F /* HonestMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HonestMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18F728D628B91057002D071F /* HonestMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateApp.swift; sourceTree = "<group>"; };
+		18F728D828B91057002D071F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		18F728DA28B91059002D071F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		18F728DD28B91059002D071F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		18F728E328B91059002D071F /* HonestMateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HonestMateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		18F728E728B91059002D071F /* HonestMateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateTests.swift; sourceTree = "<group>"; };
+		18F728ED28B91059002D071F /* HonestMateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HonestMateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		18F728F128B91059002D071F /* HonestMateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateUITests.swift; sourceTree = "<group>"; };
+		18F728F328B91059002D071F /* HonestMateUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		57DEE5941C469C4ECE803DA1 /* Pods-HonestMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HonestMate.release.xcconfig"; path = "Target Support Files/Pods-HonestMate/Pods-HonestMate.release.xcconfig"; sourceTree = "<group>"; };
+		6DEF034396991C14F7A72AB4 /* Pods-HonestMate-HonestMateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HonestMate-HonestMateUITests.debug.xcconfig"; path = "Target Support Files/Pods-HonestMate-HonestMateUITests/Pods-HonestMate-HonestMateUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		71B83DD27872A4B4968D0AEA /* Pods_HonestMate_HonestMateUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HonestMate_HonestMateUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F1B7FAD4CDB2A1A0E410078 /* Pods-HonestMateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HonestMateTests.debug.xcconfig"; path = "Target Support Files/Pods-HonestMateTests/Pods-HonestMateTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A2FCFA54BB2EFE4120524488 /* Pods-HonestMateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HonestMateTests.release.xcconfig"; path = "Target Support Files/Pods-HonestMateTests/Pods-HonestMateTests.release.xcconfig"; sourceTree = "<group>"; };
+		CFED40C5DE85C4499F827741 /* Pods_HonestMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HonestMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA86CED303E58CDCBA2ABE28 /* Pods-HonestMate-HonestMateUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HonestMate-HonestMateUITests.release.xcconfig"; path = "Target Support Files/Pods-HonestMate-HonestMateUITests/Pods-HonestMate-HonestMateUITests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		18F728D028B91057002D071F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DEBB23499EC31FB2CDD0666 /* Pods_HonestMate.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18F728E028B91059002D071F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10D45721496F509CA15C305A /* Pods_HonestMateTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18F728EA28B91059002D071F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				233B6CB5D2377C543375E3EC /* Pods_HonestMate_HonestMateUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		18F728CA28B91056002D071F = {
+			isa = PBXGroup;
+			children = (
+				18F728D528B91057002D071F /* HonestMate */,
+				18F728E628B91059002D071F /* HonestMateTests */,
+				18F728F028B91059002D071F /* HonestMateUITests */,
+				18F728D428B91057002D071F /* Products */,
+				F7428F4522DE4F81DC06353E /* Pods */,
+				1BD98258FA8CF8D877922810 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		18F728D428B91057002D071F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				18F728D328B91057002D071F /* HonestMate.app */,
+				18F728E328B91059002D071F /* HonestMateTests.xctest */,
+				18F728ED28B91059002D071F /* HonestMateUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		18F728D528B91057002D071F /* HonestMate */ = {
+			isa = PBXGroup;
+			children = (
+				18F728D628B91057002D071F /* HonestMateApp.swift */,
+				18F728D828B91057002D071F /* ContentView.swift */,
+				18F728DA28B91059002D071F /* Assets.xcassets */,
+				18F728DC28B91059002D071F /* Preview Content */,
+			);
+			path = HonestMate;
+			sourceTree = "<group>";
+		};
+		18F728DC28B91059002D071F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				18F728DD28B91059002D071F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		18F728E628B91059002D071F /* HonestMateTests */ = {
+			isa = PBXGroup;
+			children = (
+				18F728E728B91059002D071F /* HonestMateTests.swift */,
+			);
+			path = HonestMateTests;
+			sourceTree = "<group>";
+		};
+		18F728F028B91059002D071F /* HonestMateUITests */ = {
+			isa = PBXGroup;
+			children = (
+				18F728F128B91059002D071F /* HonestMateUITests.swift */,
+				18F728F328B91059002D071F /* HonestMateUITestsLaunchTests.swift */,
+			);
+			path = HonestMateUITests;
+			sourceTree = "<group>";
+		};
+		1BD98258FA8CF8D877922810 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CFED40C5DE85C4499F827741 /* Pods_HonestMate.framework */,
+				71B83DD27872A4B4968D0AEA /* Pods_HonestMate_HonestMateUITests.framework */,
+				14048C7F83BC590EDFC6DC61 /* Pods_HonestMateTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F7428F4522DE4F81DC06353E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0F446593694CA01444E1A173 /* Pods-HonestMate.debug.xcconfig */,
+				57DEE5941C469C4ECE803DA1 /* Pods-HonestMate.release.xcconfig */,
+				6DEF034396991C14F7A72AB4 /* Pods-HonestMate-HonestMateUITests.debug.xcconfig */,
+				EA86CED303E58CDCBA2ABE28 /* Pods-HonestMate-HonestMateUITests.release.xcconfig */,
+				9F1B7FAD4CDB2A1A0E410078 /* Pods-HonestMateTests.debug.xcconfig */,
+				A2FCFA54BB2EFE4120524488 /* Pods-HonestMateTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		18F728D228B91057002D071F /* HonestMate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18F728F728B91059002D071F /* Build configuration list for PBXNativeTarget "HonestMate" */;
+			buildPhases = (
+				471B637B5CE775D3FBBAC24E /* [CP] Check Pods Manifest.lock */,
+				18F728CF28B91057002D071F /* Sources */,
+				18F728D028B91057002D071F /* Frameworks */,
+				18F728D128B91057002D071F /* Resources */,
+				F281FA5BCCAC76910303AC90 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HonestMate;
+			productName = HonestMate;
+			productReference = 18F728D328B91057002D071F /* HonestMate.app */;
+			productType = "com.apple.product-type.application";
+		};
+		18F728E228B91059002D071F /* HonestMateTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18F728FA28B91059002D071F /* Build configuration list for PBXNativeTarget "HonestMateTests" */;
+			buildPhases = (
+				5DC65579DABACC0B35E212BC /* [CP] Check Pods Manifest.lock */,
+				18F728DF28B91059002D071F /* Sources */,
+				18F728E028B91059002D071F /* Frameworks */,
+				18F728E128B91059002D071F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				18F728E528B91059002D071F /* PBXTargetDependency */,
+			);
+			name = HonestMateTests;
+			productName = HonestMateTests;
+			productReference = 18F728E328B91059002D071F /* HonestMateTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		18F728EC28B91059002D071F /* HonestMateUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18F728FD28B91059002D071F /* Build configuration list for PBXNativeTarget "HonestMateUITests" */;
+			buildPhases = (
+				9CF36C448CC3E2A1A2FE10B2 /* [CP] Check Pods Manifest.lock */,
+				18F728E928B91059002D071F /* Sources */,
+				18F728EA28B91059002D071F /* Frameworks */,
+				18F728EB28B91059002D071F /* Resources */,
+				5CD8B0ED1646C9EC57D7D2B5 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				18F728EF28B91059002D071F /* PBXTargetDependency */,
+			);
+			name = HonestMateUITests;
+			productName = HonestMateUITests;
+			productReference = 18F728ED28B91059002D071F /* HonestMateUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		18F728CB28B91056002D071F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					18F728D228B91057002D071F = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					18F728E228B91059002D071F = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 18F728D228B91057002D071F;
+					};
+					18F728EC28B91059002D071F = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 18F728D228B91057002D071F;
+					};
+				};
+			};
+			buildConfigurationList = 18F728CE28B91057002D071F /* Build configuration list for PBXProject "HonestMate" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 18F728CA28B91056002D071F;
+			productRefGroup = 18F728D428B91057002D071F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				18F728D228B91057002D071F /* HonestMate */,
+				18F728E228B91059002D071F /* HonestMateTests */,
+				18F728EC28B91059002D071F /* HonestMateUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		18F728D128B91057002D071F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18F728DE28B91059002D071F /* Preview Assets.xcassets in Resources */,
+				18F728DB28B91059002D071F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18F728E128B91059002D071F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18F728EB28B91059002D071F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		471B637B5CE775D3FBBAC24E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HonestMate-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5CD8B0ED1646C9EC57D7D2B5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HonestMate-HonestMateUITests/Pods-HonestMate-HonestMateUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HonestMate-HonestMateUITests/Pods-HonestMate-HonestMateUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HonestMate-HonestMateUITests/Pods-HonestMate-HonestMateUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5DC65579DABACC0B35E212BC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HonestMateTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9CF36C448CC3E2A1A2FE10B2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HonestMate-HonestMateUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F281FA5BCCAC76910303AC90 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HonestMate/Pods-HonestMate-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HonestMate/Pods-HonestMate-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HonestMate/Pods-HonestMate-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		18F728CF28B91057002D071F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18F728D928B91057002D071F /* ContentView.swift in Sources */,
+				18F728D728B91057002D071F /* HonestMateApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18F728DF28B91059002D071F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18F728E828B91059002D071F /* HonestMateTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18F728E928B91059002D071F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18F728F428B91059002D071F /* HonestMateUITestsLaunchTests.swift in Sources */,
+				18F728F228B91059002D071F /* HonestMateUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		18F728E528B91059002D071F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 18F728D228B91057002D071F /* HonestMate */;
+			targetProxy = 18F728E428B91059002D071F /* PBXContainerItemProxy */;
+		};
+		18F728EF28B91059002D071F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 18F728D228B91057002D071F /* HonestMate */;
+			targetProxy = 18F728EE28B91059002D071F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		18F728F528B91059002D071F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		18F728F628B91059002D071F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		18F728F828B91059002D071F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F446593694CA01444E1A173 /* Pods-HonestMate.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HonestMate/Preview Content\"";
+				DEVELOPMENT_TEAM = 7WHGP9VV36;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = huracheuskaya.HonestMate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		18F728F928B91059002D071F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57DEE5941C469C4ECE803DA1 /* Pods-HonestMate.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HonestMate/Preview Content\"";
+				DEVELOPMENT_TEAM = 7WHGP9VV36;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = huracheuskaya.HonestMate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		18F728FB28B91059002D071F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F1B7FAD4CDB2A1A0E410078 /* Pods-HonestMateTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7WHGP9VV36;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = huracheuskaya.HonestMateTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HonestMate.app/HonestMate";
+			};
+			name = Debug;
+		};
+		18F728FC28B91059002D071F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2FCFA54BB2EFE4120524488 /* Pods-HonestMateTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7WHGP9VV36;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = huracheuskaya.HonestMateTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HonestMate.app/HonestMate";
+			};
+			name = Release;
+		};
+		18F728FE28B91059002D071F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DEF034396991C14F7A72AB4 /* Pods-HonestMate-HonestMateUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7WHGP9VV36;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = huracheuskaya.HonestMateUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HonestMate;
+			};
+			name = Debug;
+		};
+		18F728FF28B91059002D071F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA86CED303E58CDCBA2ABE28 /* Pods-HonestMate-HonestMateUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7WHGP9VV36;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = huracheuskaya.HonestMateUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HonestMate;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		18F728CE28B91057002D071F /* Build configuration list for PBXProject "HonestMate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18F728F528B91059002D071F /* Debug */,
+				18F728F628B91059002D071F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18F728F728B91059002D071F /* Build configuration list for PBXNativeTarget "HonestMate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18F728F828B91059002D071F /* Debug */,
+				18F728F928B91059002D071F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18F728FA28B91059002D071F /* Build configuration list for PBXNativeTarget "HonestMateTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18F728FB28B91059002D071F /* Debug */,
+				18F728FC28B91059002D071F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18F728FD28B91059002D071F /* Build configuration list for PBXNativeTarget "HonestMateUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18F728FE28B91059002D071F /* Debug */,
+				18F728FF28B91059002D071F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 18F728CB28B91056002D071F /* Project object */;
+}
