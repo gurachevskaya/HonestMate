@@ -4,3 +4,9 @@ Pods
 GoogleService-Info.plist
 R.generated.swift
 Podfile.lock
+
+Build
+
+# fastlane
+Fastlane/report.xml
+Fastlane/test_output
