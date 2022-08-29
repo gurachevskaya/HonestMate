@@ -15,6 +15,10 @@
 		18F728E828B91059002D071F /* HonestMateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728E728B91059002D071F /* HonestMateTests.swift */; };
 		18F728F228B91059002D071F /* HonestMateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728F128B91059002D071F /* HonestMateUITests.swift */; };
 		18F728F428B91059002D071F /* HonestMateUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728F328B91059002D071F /* HonestMateUITestsLaunchTests.swift */; };
+		18F7290328BCB2B6002D071F /* pullRequest.yml in Resources */ = {isa = PBXBuildFile; fileRef = 18F7290228BCB2B6002D071F /* pullRequest.yml */; };
+		18F7290528BCB383002D071F /* Gemfile in Sources */ = {isa = PBXBuildFile; fileRef = 18F7290428BCB383002D071F /* Gemfile */; };
+		18F7290828BCB432002D071F /* Fastfile in Sources */ = {isa = PBXBuildFile; fileRef = 18F7290728BCB432002D071F /* Fastfile */; };
+		18F7290A28BCB4E6002D071F /* Scanfile in Sources */ = {isa = PBXBuildFile; fileRef = 18F7290928BCB4E6002D071F /* Scanfile */; };
 		233B6CB5D2377C543375E3EC /* Pods_HonestMate_HonestMateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B83DD27872A4B4968D0AEA /* Pods_HonestMate_HonestMateUITests.framework */; };
 		9DEBB23499EC31FB2CDD0666 /* Pods_HonestMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFED40C5DE85C4499F827741 /* Pods_HonestMate.framework */; };
 /* End PBXBuildFile section */
@@ -49,6 +53,10 @@
 		18F728ED28B91059002D071F /* HonestMateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HonestMateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F728F128B91059002D071F /* HonestMateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateUITests.swift; sourceTree = "<group>"; };
 		18F728F328B91059002D071F /* HonestMateUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		18F7290228BCB2B6002D071F /* pullRequest.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = pullRequest.yml; path = ../../.github/workflows/pullRequest.yml; sourceTree = "<group>"; };
+		18F7290428BCB383002D071F /* Gemfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; };
+		18F7290728BCB432002D071F /* Fastfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Fastfile; sourceTree = "<group>"; };
+		18F7290928BCB4E6002D071F /* Scanfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Scanfile; sourceTree = "<group>"; };
 		57DEE5941C469C4ECE803DA1 /* Pods-HonestMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HonestMate.release.xcconfig"; path = "Target Support Files/Pods-HonestMate/Pods-HonestMate.release.xcconfig"; sourceTree = "<group>"; };
 		6DEF034396991C14F7A72AB4 /* Pods-HonestMate-HonestMateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HonestMate-HonestMateUITests.debug.xcconfig"; path = "Target Support Files/Pods-HonestMate-HonestMateUITests/Pods-HonestMate-HonestMateUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		71B83DD27872A4B4968D0AEA /* Pods_HonestMate_HonestMateUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HonestMate_HonestMateUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +97,9 @@
 		18F728CA28B91056002D071F = {
 			isa = PBXGroup;
 			children = (
+				18F7290628BCB421002D071F /* Fastlane */,
+				18F7290428BCB383002D071F /* Gemfile */,
+				18F7290028BCB281002D071F /* github */,
 				18F728D528B91057002D071F /* HonestMate */,
 				18F728E628B91059002D071F /* HonestMateTests */,
 				18F728F028B91059002D071F /* HonestMateUITests */,
@@ -144,6 +155,31 @@
 			path = HonestMateUITests;
 			sourceTree = "<group>";
 		};
+		18F7290028BCB281002D071F /* github */ = {
+			isa = PBXGroup;
+			children = (
+				18F7290128BCB297002D071F /* workflows */,
+			);
+			path = github;
+			sourceTree = "<group>";
+		};
+		18F7290128BCB297002D071F /* workflows */ = {
+			isa = PBXGroup;
+			children = (
+				18F7290228BCB2B6002D071F /* pullRequest.yml */,
+			);
+			path = workflows;
+			sourceTree = "<group>";
+		};
+		18F7290628BCB421002D071F /* Fastlane */ = {
+			isa = PBXGroup;
+			children = (
+				18F7290728BCB432002D071F /* Fastfile */,
+				18F7290928BCB4E6002D071F /* Scanfile */,
+			);
+			path = Fastlane;
+			sourceTree = "<group>";
+		};
 		1BD98258FA8CF8D877922810 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,7 +200,6 @@
 				9F1B7FAD4CDB2A1A0E410078 /* Pods-HonestMateTests.debug.xcconfig */,
 				A2FCFA54BB2EFE4120524488 /* Pods-HonestMateTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -279,6 +314,7 @@
 			files = (
 				18F728DE28B91059002D071F /* Preview Assets.xcassets in Resources */,
 				18F728DB28B91059002D071F /* Assets.xcassets in Resources */,
+				18F7290328BCB2B6002D071F /* pullRequest.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,7 +443,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				18F728D928B91057002D071F /* ContentView.swift in Sources */,
+				18F7290528BCB383002D071F /* Gemfile in Sources */,
+				18F7290A28BCB4E6002D071F /* Scanfile in Sources */,
 				18F728D728B91057002D071F /* HonestMateApp.swift in Sources */,
+				18F7290828BCB432002D071F /* Fastfile in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
