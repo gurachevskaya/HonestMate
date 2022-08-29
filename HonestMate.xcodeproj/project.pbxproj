@@ -53,7 +53,7 @@
 		18F728ED28B91059002D071F /* HonestMateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HonestMateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F728F128B91059002D071F /* HonestMateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateUITests.swift; sourceTree = "<group>"; };
 		18F728F328B91059002D071F /* HonestMateUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		18F7290228BCB2B6002D071F /* pullRequest.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = pullRequest.yml; sourceTree = "<group>"; };
+		18F7290228BCB2B6002D071F /* pullRequest.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = pullRequest.yml; path = ../../.github/workflows/pullRequest.yml; sourceTree = "<group>"; };
 		18F7290428BCB383002D071F /* Gemfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; };
 		18F7290728BCB432002D071F /* Fastfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Fastfile; sourceTree = "<group>"; };
 		18F7290928BCB4E6002D071F /* Scanfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Scanfile; sourceTree = "<group>"; };
