@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		10D45721496F509CA15C305A /* Pods_HonestMateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14048C7F83BC590EDFC6DC61 /* Pods_HonestMateTests.framework */; };
+		184791DF28C0EFB800BF9717 /* HotestMateApp+Resolving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791DE28C0EFB800BF9717 /* HotestMateApp+Resolving.swift */; };
+		184791E228C0F14C00BF9717 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791E128C0F14C00BF9717 /* SignInView.swift */; };
+		184791E428C0F16C00BF9717 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791E328C0F16C00BF9717 /* SignInViewModel.swift */; };
+		184791E828C1090000BF9717 /* RSwift+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791E728C1090000BF9717 /* RSwift+Ext.swift */; };
+		184791EB28C109E400BF9717 /* RoundedTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791EA28C109E400BF9717 /* RoundedTextButton.swift */; };
 		18F728D728B91057002D071F /* HonestMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D628B91057002D071F /* HonestMateApp.swift */; };
 		18F728D928B91057002D071F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D828B91057002D071F /* ContentView.swift */; };
 		18F728DB28B91059002D071F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F728DA28B91059002D071F /* Assets.xcassets */; };
@@ -43,6 +48,11 @@
 /* Begin PBXFileReference section */
 		0F446593694CA01444E1A173 /* Pods-HonestMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HonestMate.debug.xcconfig"; path = "Target Support Files/Pods-HonestMate/Pods-HonestMate.debug.xcconfig"; sourceTree = "<group>"; };
 		14048C7F83BC590EDFC6DC61 /* Pods_HonestMateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HonestMateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		184791DE28C0EFB800BF9717 /* HotestMateApp+Resolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HotestMateApp+Resolving.swift"; sourceTree = "<group>"; };
+		184791E128C0F14C00BF9717 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		184791E328C0F16C00BF9717 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		184791E728C1090000BF9717 /* RSwift+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSwift+Ext.swift"; sourceTree = "<group>"; };
+		184791EA28C109E400BF9717 /* RoundedTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextButton.swift; sourceTree = "<group>"; };
 		18F728D328B91057002D071F /* HonestMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HonestMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F728D628B91057002D071F /* HonestMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateApp.swift; sourceTree = "<group>"; };
 		18F728D828B91057002D071F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,6 +104,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		184791E028C0F13500BF9717 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				184791E128C0F14C00BF9717 /* SignInView.swift */,
+				184791E328C0F16C00BF9717 /* SignInViewModel.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		184791E628C108ED00BF9717 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				184791E728C1090000BF9717 /* RSwift+Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		184791E928C109D400BF9717 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				184791EC28C109E900BF9717 /* Buttons */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		184791EC28C109E900BF9717 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				184791EA28C109E400BF9717 /* RoundedTextButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		18F728CA28B91056002D071F = {
 			isa = PBXGroup;
 			children = (
@@ -122,10 +165,14 @@
 		18F728D528B91057002D071F /* HonestMate */ = {
 			isa = PBXGroup;
 			children = (
+				184791E928C109D400BF9717 /* Views */,
+				184791E628C108ED00BF9717 /* Extension */,
+				184791E028C0F13500BF9717 /* Modules */,
 				18F728D628B91057002D071F /* HonestMateApp.swift */,
 				18F728D828B91057002D071F /* ContentView.swift */,
 				18F728DA28B91059002D071F /* Assets.xcassets */,
 				18F728DC28B91059002D071F /* Preview Content */,
+				184791DE28C0EFB800BF9717 /* HotestMateApp+Resolving.swift */,
 			);
 			path = HonestMate;
 			sourceTree = "<group>";
@@ -446,7 +493,12 @@
 				18F7290528BCB383002D071F /* Gemfile in Sources */,
 				18F7290A28BCB4E6002D071F /* Scanfile in Sources */,
 				18F728D728B91057002D071F /* HonestMateApp.swift in Sources */,
+				184791E428C0F16C00BF9717 /* SignInViewModel.swift in Sources */,
+				184791E828C1090000BF9717 /* RSwift+Ext.swift in Sources */,
+				184791EB28C109E400BF9717 /* RoundedTextButton.swift in Sources */,
+				184791E228C0F14C00BF9717 /* SignInView.swift in Sources */,
 				18F7290828BCB432002D071F /* Fastfile in Sources */,
+				184791DF28C0EFB800BF9717 /* HotestMateApp+Resolving.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,8 +664,10 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -623,7 +677,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -642,8 +696,10 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -653,7 +709,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

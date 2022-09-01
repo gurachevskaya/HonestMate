@@ -4,6 +4,7 @@ use_frameworks!
 target 'HonestMate' do
  
   pod 'R.swift'
+  pod 'Resolver'
 
   target 'HonestMateTests' do
     inherit! :search_paths

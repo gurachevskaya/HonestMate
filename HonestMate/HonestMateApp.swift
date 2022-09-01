@@ -11,7 +11,7 @@ import SwiftUI
 struct HonestMateApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SignInView(viewModel: SignInViewModel())
         }
     }
 }
