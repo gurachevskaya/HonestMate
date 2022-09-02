@@ -48,8 +48,8 @@ struct SignInView_Previews: PreviewProvider {
             SignInView(viewModel: SignInViewModel())
                 .environment(\.colorScheme, .light)
             
-//            SignInView(viewModel: SignInViewModel())
-//                .environment(\.colorScheme, .dark)
+            SignInView(viewModel: SignInViewModel())
+                .environment(\.colorScheme, .dark)
         }
     }
 }
