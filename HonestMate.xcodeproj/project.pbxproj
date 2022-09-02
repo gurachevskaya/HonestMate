@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		10D45721496F509CA15C305A /* Pods_HonestMateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14048C7F83BC590EDFC6DC61 /* Pods_HonestMateTests.framework */; };
+		184791DC28C0CCCB00BF9717 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 184791DB28C0CCCB00BF9717 /* GoogleService-Info.plist */; };
 		184791DF28C0EFB800BF9717 /* HotestMateApp+Resolving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791DE28C0EFB800BF9717 /* HotestMateApp+Resolving.swift */; };
 		184791E228C0F14C00BF9717 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791E128C0F14C00BF9717 /* SignInView.swift */; };
 		184791E428C0F16C00BF9717 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791E328C0F16C00BF9717 /* SignInViewModel.swift */; };
 		184791E828C1090000BF9717 /* RSwift+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791E728C1090000BF9717 /* RSwift+Ext.swift */; };
 		184791EB28C109E400BF9717 /* RoundedTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791EA28C109E400BF9717 /* RoundedTextButton.swift */; };
-		184791DC28C0CCCB00BF9717 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 184791DB28C0CCCB00BF9717 /* GoogleService-Info.plist */; };
+		184791F028C1F88000BF9717 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791EF28C1F88000BF9717 /* R.generated.swift */; };
+		184791F228C1F8BB00BF9717 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 184791F128C1F8BB00BF9717 /* Localizable.strings */; };
 		18F728D728B91057002D071F /* HonestMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D628B91057002D071F /* HonestMateApp.swift */; };
 		18F728D928B91057002D071F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D828B91057002D071F /* ContentView.swift */; };
 		18F728DB28B91059002D071F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F728DA28B91059002D071F /* Assets.xcassets */; };
@@ -49,12 +51,14 @@
 /* Begin PBXFileReference section */
 		0F446593694CA01444E1A173 /* Pods-HonestMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HonestMate.debug.xcconfig"; path = "Target Support Files/Pods-HonestMate/Pods-HonestMate.debug.xcconfig"; sourceTree = "<group>"; };
 		14048C7F83BC590EDFC6DC61 /* Pods_HonestMateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HonestMateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		184791DB28C0CCCB00BF9717 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		184791DE28C0EFB800BF9717 /* HotestMateApp+Resolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HotestMateApp+Resolving.swift"; sourceTree = "<group>"; };
 		184791E128C0F14C00BF9717 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		184791E328C0F16C00BF9717 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		184791E728C1090000BF9717 /* RSwift+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSwift+Ext.swift"; sourceTree = "<group>"; };
 		184791EA28C109E400BF9717 /* RoundedTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextButton.swift; sourceTree = "<group>"; };
-		184791DB28C0CCCB00BF9717 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		184791EF28C1F88000BF9717 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		184791F128C1F8BB00BF9717 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		18F728D328B91057002D071F /* HonestMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HonestMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F728D628B91057002D071F /* HonestMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateApp.swift; sourceTree = "<group>"; };
 		18F728D828B91057002D071F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -106,6 +110,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		184791DA28C0CC8300BF9717 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				184791EF28C1F88000BF9717 /* R.generated.swift */,
+				184791DB28C0CCCB00BF9717 /* GoogleService-Info.plist */,
+				184791F128C1F8BB00BF9717 /* Localizable.strings */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		184791E028C0F13500BF9717 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,12 +153,11 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
-		184791DA28C0CC8300BF9717 /* Other */ = {
+		184791ED28C1F78600BF9717 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				184791DB28C0CCCB00BF9717 /* GoogleService-Info.plist */,
 			);
-			path = Other;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		18F728CA28B91056002D071F = {
@@ -175,6 +188,7 @@
 		18F728D528B91057002D071F /* HonestMate */ = {
 			isa = PBXGroup;
 			children = (
+				184791ED28C1F78600BF9717 /* Services */,
 				184791E928C109D400BF9717 /* Views */,
 				184791E628C108ED00BF9717 /* Extension */,
 				184791E028C0F13500BF9717 /* Modules */,
@@ -274,6 +288,7 @@
 				18F728D028B91057002D071F /* Frameworks */,
 				18F728D128B91057002D071F /* Resources */,
 				F281FA5BCCAC76910303AC90 /* [CP] Embed Pods Frameworks */,
+				184791EE28C1F7F100BF9717 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -371,6 +386,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				184791F228C1F8BB00BF9717 /* Localizable.strings in Resources */,
 				18F728DE28B91059002D071F /* Preview Assets.xcassets in Resources */,
 				184791DC28C0CCCB00BF9717 /* GoogleService-Info.plist in Resources */,
 				18F728DB28B91059002D071F /* Assets.xcassets in Resources */,
@@ -395,6 +411,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		184791EE28C1F7F100BF9717 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/HonestMate/Other/R.generated.swift\"\n";
+		};
 		471B637B5CE775D3FBBAC24E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -511,6 +545,7 @@
 				184791EB28C109E400BF9717 /* RoundedTextButton.swift in Sources */,
 				184791E228C0F14C00BF9717 /* SignInView.swift in Sources */,
 				18F7290828BCB432002D071F /* Fastfile in Sources */,
+				184791F028C1F88000BF9717 /* R.generated.swift in Sources */,
 				184791DF28C0EFB800BF9717 /* HotestMateApp+Resolving.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

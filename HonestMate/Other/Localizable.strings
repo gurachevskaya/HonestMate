@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  HonestMate
+
+  Created by Karina gurachevskaya on 2.09.22.
+  
+*/
+
+"honestmate" = "Honestmate";
+
+// MARK: Sign in
+
+"signin.email" = "Email";
+"signin.password" = "Password";
+"signin.button.title" = "Sign In";

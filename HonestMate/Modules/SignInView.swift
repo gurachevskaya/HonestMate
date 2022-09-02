@@ -15,15 +15,15 @@ struct SignInView: View {
         VStack {
             Spacer()
 
-            Text("Honestmate")
+            Text(R.string.localizable.honestmate())
                 .font(.largeTitle)
                         
-            TextField("Email", text: $viewModel.email)
+            TextField(R.string.localizable.signinEmail(), text: $viewModel.email)
                 .frame(height: 44)
                 .background(Color(UIColor.systemGray6))
                 .cornerRadius(8)
 
-            SecureField("Password", text: $viewModel.password)
+            SecureField(R.string.localizable.signinPassword(), text: $viewModel.password)
                 .frame(height: 44)
                 .background(Color(UIColor.systemGray6))
                 .cornerRadius(8)
@@ -31,7 +31,7 @@ struct SignInView: View {
             Button {
                 viewModel.login()
             } label: {
-                RoundedTextButton(title: "Sign In", style: .blue)
+                RoundedTextButton(title: R.string.localizable.signinButtonTitle(), style: .blue)
             }
             .padding(.top, 20)
             
