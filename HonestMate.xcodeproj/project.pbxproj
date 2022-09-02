@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		10D45721496F509CA15C305A /* Pods_HonestMateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14048C7F83BC590EDFC6DC61 /* Pods_HonestMateTests.framework */; };
+		184791DC28C0CCCB00BF9717 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 184791DB28C0CCCB00BF9717 /* GoogleService-Info.plist */; };
 		18F728D728B91057002D071F /* HonestMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D628B91057002D071F /* HonestMateApp.swift */; };
 		18F728D928B91057002D071F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D828B91057002D071F /* ContentView.swift */; };
 		18F728DB28B91059002D071F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F728DA28B91059002D071F /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		0F446593694CA01444E1A173 /* Pods-HonestMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HonestMate.debug.xcconfig"; path = "Target Support Files/Pods-HonestMate/Pods-HonestMate.debug.xcconfig"; sourceTree = "<group>"; };
 		14048C7F83BC590EDFC6DC61 /* Pods_HonestMateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HonestMateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		184791DB28C0CCCB00BF9717 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18F728D328B91057002D071F /* HonestMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HonestMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F728D628B91057002D071F /* HonestMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateApp.swift; sourceTree = "<group>"; };
 		18F728D828B91057002D071F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		184791DA28C0CC8300BF9717 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				184791DB28C0CCCB00BF9717 /* GoogleService-Info.plist */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		18F728CA28B91056002D071F = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +132,7 @@
 		18F728D528B91057002D071F /* HonestMate */ = {
 			isa = PBXGroup;
 			children = (
+				184791DA28C0CC8300BF9717 /* Other */,
 				18F728D628B91057002D071F /* HonestMateApp.swift */,
 				18F728D828B91057002D071F /* ContentView.swift */,
 				18F728DA28B91059002D071F /* Assets.xcassets */,
@@ -160,7 +171,8 @@
 			children = (
 				18F7290128BCB297002D071F /* workflows */,
 			);
-			path = github;
+			name = github;
+			path = .github;
 			sourceTree = "<group>";
 		};
 		18F7290128BCB297002D071F /* workflows */ = {
@@ -313,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18F728DE28B91059002D071F /* Preview Assets.xcassets in Resources */,
+				184791DC28C0CCCB00BF9717 /* GoogleService-Info.plist in Resources */,
 				18F728DB28B91059002D071F /* Assets.xcassets in Resources */,
 				18F7290328BCB2B6002D071F /* pullRequest.yml in Resources */,
 			);
@@ -619,7 +632,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = huracheuskaya.HonestMate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huracheuskaya.HonestMate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -649,7 +662,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = huracheuskaya.HonestMate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huracheuskaya.HonestMate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
