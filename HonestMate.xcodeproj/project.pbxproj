@@ -13,6 +13,7 @@
 		184791E428C0F16C00BF9717 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791E328C0F16C00BF9717 /* SignInViewModel.swift */; };
 		184791E828C1090000BF9717 /* RSwift+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791E728C1090000BF9717 /* RSwift+Ext.swift */; };
 		184791EB28C109E400BF9717 /* RoundedTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791EA28C109E400BF9717 /* RoundedTextButton.swift */; };
+		184791DC28C0CCCB00BF9717 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 184791DB28C0CCCB00BF9717 /* GoogleService-Info.plist */; };
 		18F728D728B91057002D071F /* HonestMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D628B91057002D071F /* HonestMateApp.swift */; };
 		18F728D928B91057002D071F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D828B91057002D071F /* ContentView.swift */; };
 		18F728DB28B91059002D071F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F728DA28B91059002D071F /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		184791E328C0F16C00BF9717 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		184791E728C1090000BF9717 /* RSwift+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSwift+Ext.swift"; sourceTree = "<group>"; };
 		184791EA28C109E400BF9717 /* RoundedTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextButton.swift; sourceTree = "<group>"; };
+		184791DB28C0CCCB00BF9717 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18F728D328B91057002D071F /* HonestMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HonestMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F728D628B91057002D071F /* HonestMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateApp.swift; sourceTree = "<group>"; };
 		18F728D828B91057002D071F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -137,6 +139,14 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		184791DA28C0CC8300BF9717 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				184791DB28C0CCCB00BF9717 /* GoogleService-Info.plist */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		18F728CA28B91056002D071F = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +178,7 @@
 				184791E928C109D400BF9717 /* Views */,
 				184791E628C108ED00BF9717 /* Extension */,
 				184791E028C0F13500BF9717 /* Modules */,
+				184791DA28C0CC8300BF9717 /* Other */,
 				18F728D628B91057002D071F /* HonestMateApp.swift */,
 				18F728D828B91057002D071F /* ContentView.swift */,
 				18F728DA28B91059002D071F /* Assets.xcassets */,
@@ -207,7 +218,8 @@
 			children = (
 				18F7290128BCB297002D071F /* workflows */,
 			);
-			path = github;
+			name = github;
+			path = .github;
 			sourceTree = "<group>";
 		};
 		18F7290128BCB297002D071F /* workflows */ = {
@@ -360,6 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18F728DE28B91059002D071F /* Preview Assets.xcassets in Resources */,
+				184791DC28C0CCCB00BF9717 /* GoogleService-Info.plist in Resources */,
 				18F728DB28B91059002D071F /* Assets.xcassets in Resources */,
 				18F7290328BCB2B6002D071F /* pullRequest.yml in Resources */,
 			);
@@ -673,7 +686,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = huracheuskaya.HonestMate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huracheuskaya.HonestMate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -705,7 +718,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = huracheuskaya.HonestMate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huracheuskaya.HonestMate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
