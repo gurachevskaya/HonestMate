@@ -12,33 +12,45 @@ struct SignInView: View {
     @ObservedObject var viewModel = SignInViewModel()
     
     var body: some View {
-        VStack {
-            Spacer()
-
-            Text(R.string.localizable.honestmate())
-                .font(.largeTitle)
-                        
-            TextField(R.string.localizable.signinEmail(), text: $viewModel.email)
-                .frame(height: 44)
-                .background(Color(UIColor.systemGray6))
-                .cornerRadius(8)
-
-            SecureField(R.string.localizable.signinPassword(), text: $viewModel.password)
-                .frame(height: 44)
-                .background(Color(UIColor.systemGray6))
-                .cornerRadius(8)
-
-            Button {
-                viewModel.login()
-            } label: {
-                RoundedTextButton(title: R.string.localizable.signinButtonTitle(), style: .blue)
+        ZStack {
+            VStack {
+                Spacer()
+                
+                Text(R.string.localizable.honestmate())
+                    .font(.largeTitle)
+                
+                TextField(R.string.localizable.signinEmail(), text: $viewModel.email)
+                    .padding(.horizontal, 20)
+                    .frame(height: 50)
+                    .background(Color(UIColor.systemGray6))
+                    .cornerRadius(8)
+                
+                SecureField(R.string.localizable.signinPassword(), text: $viewModel.password)
+                    .padding(.horizontal, 20)
+                    .frame(height: 50)
+                    .background(Color(UIColor.systemGray6))
+                    .cornerRadius(8)
+                
+                Button {
+                    viewModel.login()
+                } label: {
+                    RoundedTextButton(title: R.string.localizable.signinButtonTitle(), style: .blue)
+                }
+                .padding(.top, 20)
+                
+                Spacer()
             }
-            .padding(.top, 20)
+            .padding()
+            .alert(item: $viewModel.alertItem) { alertItem in
+                Alert(title: alertItem.title,
+                      message: alertItem.message,
+                      dismissButton: alertItem.dismissButton)
+            }
             
-            Spacer()
+            if viewModel.isLoading {
+                ProgressView()
+            }
         }
-        .padding()
-        
     }
 }
 

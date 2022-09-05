@@ -16,6 +16,9 @@
 		184791EB28C109E400BF9717 /* RoundedTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791EA28C109E400BF9717 /* RoundedTextButton.swift */; };
 		184791F028C1F88000BF9717 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791EF28C1F88000BF9717 /* R.generated.swift */; };
 		184791F228C1F8BB00BF9717 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 184791F128C1F8BB00BF9717 /* Localizable.strings */; };
+		184791F428C206C500BF9717 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791F328C206C400BF9717 /* AuthService.swift */; };
+		184791F628C2144000BF9717 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791F528C2144000BF9717 /* LoginTextField.swift */; };
+		1858A1BD28C21A940039246A /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858A1BC28C21A940039246A /* AlertItem.swift */; };
 		18F728D728B91057002D071F /* HonestMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D628B91057002D071F /* HonestMateApp.swift */; };
 		18F728D928B91057002D071F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D828B91057002D071F /* ContentView.swift */; };
 		18F728DB28B91059002D071F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F728DA28B91059002D071F /* Assets.xcassets */; };
@@ -59,6 +62,9 @@
 		184791EA28C109E400BF9717 /* RoundedTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextButton.swift; sourceTree = "<group>"; };
 		184791EF28C1F88000BF9717 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		184791F128C1F8BB00BF9717 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		184791F328C206C400BF9717 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		184791F528C2144000BF9717 /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
+		1858A1BC28C21A940039246A /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
 		18F728D328B91057002D071F /* HonestMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HonestMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F728D628B91057002D071F /* HonestMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateApp.swift; sourceTree = "<group>"; };
 		18F728D828B91057002D071F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -141,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				184791EC28C109E900BF9717 /* Buttons */,
+				184791F528C2144000BF9717 /* LoginTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,8 +163,17 @@
 		184791ED28C1F78600BF9717 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				184791F328C206C400BF9717 /* AuthService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		1858A1BB28C21A870039246A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1858A1BC28C21A940039246A /* AlertItem.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		18F728CA28B91056002D071F = {
@@ -188,6 +204,7 @@
 		18F728D528B91057002D071F /* HonestMate */ = {
 			isa = PBXGroup;
 			children = (
+				1858A1BB28C21A870039246A /* Models */,
 				184791ED28C1F78600BF9717 /* Services */,
 				184791E928C109D400BF9717 /* Views */,
 				184791E628C108ED00BF9717 /* Extension */,
@@ -284,11 +301,11 @@
 			buildConfigurationList = 18F728F728B91059002D071F /* Build configuration list for PBXNativeTarget "HonestMate" */;
 			buildPhases = (
 				471B637B5CE775D3FBBAC24E /* [CP] Check Pods Manifest.lock */,
+				184791EE28C1F7F100BF9717 /* R.Swift */,
 				18F728CF28B91057002D071F /* Sources */,
 				18F728D028B91057002D071F /* Frameworks */,
 				18F728D128B91057002D071F /* Resources */,
 				F281FA5BCCAC76910303AC90 /* [CP] Embed Pods Frameworks */,
-				184791EE28C1F7F100BF9717 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -411,7 +428,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		184791EE28C1F7F100BF9717 /* ShellScript */ = {
+		184791EE28C1F7F100BF9717 /* R.Swift */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -421,6 +438,7 @@
 			);
 			inputPaths = (
 			);
+			name = R.Swift;
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -539,8 +557,11 @@
 				18F728D928B91057002D071F /* ContentView.swift in Sources */,
 				18F7290528BCB383002D071F /* Gemfile in Sources */,
 				18F7290A28BCB4E6002D071F /* Scanfile in Sources */,
+				184791F628C2144000BF9717 /* LoginTextField.swift in Sources */,
+				184791F428C206C500BF9717 /* AuthService.swift in Sources */,
 				18F728D728B91057002D071F /* HonestMateApp.swift in Sources */,
 				184791E428C0F16C00BF9717 /* SignInViewModel.swift in Sources */,
+				1858A1BD28C21A940039246A /* AlertItem.swift in Sources */,
 				184791E828C1090000BF9717 /* RSwift+Ext.swift in Sources */,
 				184791EB28C109E400BF9717 /* RoundedTextButton.swift in Sources */,
 				184791E228C0F14C00BF9717 /* SignInView.swift in Sources */,
@@ -633,7 +654,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -687,7 +708,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

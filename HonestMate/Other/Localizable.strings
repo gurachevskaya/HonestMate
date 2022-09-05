@@ -8,6 +8,22 @@
 
 "honestmate" = "Honestmate";
 
+// MARK: Errors
+
+"alert.dismiss.button.title" = "OK";
+
+"alert.invalid.data.title" = "Server Error";
+"alert.invalid.data.message" = "The data received from the server was invalid. Please contact support.";
+
+"alert.invalid.response.title" = "Server Error";
+"alert.invalid.response.message" = "Invalid response from the server. Please try again later or contact support.";
+
+"alert.unable.to.complete.title" = "Server Error";
+"alert.unable.to.complete.message" = "Unable to complete your request at this time. Please check your internet connection.";
+
+"alert.inner.error.title" = "Something went wrong";
+"alert.inner.error.message" = "Please try again later.";
+
 // MARK: Sign in
 
 "signin.email" = "Email";
