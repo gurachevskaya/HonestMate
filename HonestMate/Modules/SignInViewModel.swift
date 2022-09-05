@@ -19,11 +19,27 @@ class SignInViewModel: ObservableObject {
         case facebook, apple, google, mail
     }
     
+    enum PickerCase: Equatable, CaseIterable {
+        case login
+        case register
+        
+        var title: String {
+            switch self {
+            case .login:
+                return R.string.localizable.signinPickerLogin()
+            case .register:
+                return R.string.localizable.signinPickerRegister()
+            }
+        }
+    }
+    
     @Published var email = ""
     @Published var password = ""
+    @Published var confirmPassword = ""
     @Published var isLoading = false
     @Published var alertItem: AlertItem?
-        
+    @Published var selected: PickerCase = .login
+
     private var cancellables: Set<AnyCancellable> = []
     
     func login() {

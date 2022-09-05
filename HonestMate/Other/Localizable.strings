@@ -28,4 +28,8 @@
 
 "signin.email" = "Email";
 "signin.password" = "Password";
-"signin.button.title" = "Sign In";
+"signin.password.confirm" = "Confirm Password";
+"signin.button.title.signin" = "Sign In";
+"signin.button.title.sighup" = "Sign Up";
+"signin.picker.login" = "Login";
+"signin.picker.register" = "Register";
