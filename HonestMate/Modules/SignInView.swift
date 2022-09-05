@@ -11,47 +11,63 @@ struct SignInView: View {
     
     @ObservedObject var viewModel = SignInViewModel()
     
+    var title: some View {
+        Text(R.string.localizable.honestmate())
+            .font(.largeTitle)
+    }
+    
+    var picker: some View {
+        Picker("", selection: $viewModel.selected) {
+            ForEach(SignInViewModel.PickerCase.allCases, id: \.self) { value in
+                Text(value.title).tag(value)
+            }
+        }.pickerStyle(SegmentedPickerStyle())
+    }
+    
+    var emailTextField: some View {
+        TextField(R.string.localizable.signinEmail(), text: $viewModel.email)
+            .modifier(TextFieldCustomRoundStyle())
+    }
+    
+    var passwordTextField: some View {
+        SecureField(R.string.localizable.signinPassword(), text: $viewModel.password)
+            .modifier(TextFieldCustomRoundStyle())
+    }
+    
+    var confirmPasswordTextField: some View {
+        SecureField(R.string.localizable.signinPasswordConfirm(), text: $viewModel.confirmPassword)
+            .modifier(TextFieldCustomRoundStyle())
+    }
+    
+    var actionButton: some View {
+        Button {
+            viewModel.login()
+        } label: {
+            RoundedTextButton(title: viewModel.selected == .login ?  R.string.localizable.signinButtonTitleSignin() : R.string.localizable.signinButtonTitleSighup(), style: .blue)
+        }
+        .padding(.top, 20)
+        .disabled(viewModel.isValidForm)
+    }
+    
     var body: some View {
         ZStack {
             VStack {
                 Spacer()
                 
-                Text(R.string.localizable.honestmate())
-                    .font(.largeTitle)
+                title
                 
-                Picker("", selection: $viewModel.selected) {
-                    ForEach(SignInViewModel.PickerCase.allCases, id: \.self) { value in
-                        Text(value.title).tag(value)
-                    }
-                }.pickerStyle(SegmentedPickerStyle())
+                picker
                 
-                TextField(R.string.localizable.signinEmail(), text: $viewModel.email)
-                    .padding(.horizontal, 20)
-                    .frame(height: 50)
-                    .background(Color(UIColor.systemGray6))
-                    .cornerRadius(8)
+                emailTextField
                     .padding(.top, 30)
                 
-                SecureField(R.string.localizable.signinPassword(), text: $viewModel.password)
-                    .padding(.horizontal, 20)
-                    .frame(height: 50)
-                    .background(Color(UIColor.systemGray6))
-                    .cornerRadius(8)
+                passwordTextField
                 
                 if viewModel.selected == .register {
-                    SecureField(R.string.localizable.signinPasswordConfirm(), text: $viewModel.confirmPassword)
-                        .padding(.horizontal, 20)
-                        .frame(height: 50)
-                        .background(Color(UIColor.systemGray6))
-                        .cornerRadius(8)
+                    confirmPasswordTextField
                 }
                 
-                Button {
-                    viewModel.login()
-                } label: {
-                    RoundedTextButton(title: viewModel.selected == .login ?  R.string.localizable.signinButtonTitleSignin() : R.string.localizable.signinButtonTitleSighup(), style: .blue)
-                }
-                .padding(.top, 20)
+                actionButton
                 
                 Spacer()
             }

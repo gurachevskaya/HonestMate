@@ -36,6 +36,7 @@ class SignInViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     @Published var confirmPassword = ""
+    @Published var isValidForm = false
     @Published var isLoading = false
     @Published var alertItem: AlertItem?
     @Published var selected: PickerCase = .login
