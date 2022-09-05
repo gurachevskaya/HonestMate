@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import Resolver
 
 @main
 struct HonestMateApp: App {
@@ -17,7 +18,7 @@ struct HonestMateApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SignInView(viewModel: SignInViewModel())
+            SignInView(viewModel: SignInViewModel(authService: Resolver.resolve()))
         }
     }
 }

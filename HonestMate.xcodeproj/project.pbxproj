@@ -20,6 +20,8 @@
 		184791F628C2144000BF9717 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791F528C2144000BF9717 /* LoginTextField.swift */; };
 		1858A1BD28C21A940039246A /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858A1BC28C21A940039246A /* AlertItem.swift */; };
 		1858E14F28C6061500521ED8 /* TextFieldCustomRoundStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E14E28C6061400521ED8 /* TextFieldCustomRoundStyle.swift */; };
+		1858E15228C60EBA00521ED8 /* MyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E15128C60EBA00521ED8 /* MyEventsView.swift */; };
+		1858E15428C60F0B00521ED8 /* MyEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E15328C60F0B00521ED8 /* MyEventsViewModel.swift */; };
 		18F728D728B91057002D071F /* HonestMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D628B91057002D071F /* HonestMateApp.swift */; };
 		18F728D928B91057002D071F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D828B91057002D071F /* ContentView.swift */; };
 		18F728DB28B91059002D071F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F728DA28B91059002D071F /* Assets.xcassets */; };
@@ -67,6 +69,8 @@
 		184791F528C2144000BF9717 /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		1858A1BC28C21A940039246A /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
 		1858E14E28C6061400521ED8 /* TextFieldCustomRoundStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCustomRoundStyle.swift; sourceTree = "<group>"; };
+		1858E15128C60EBA00521ED8 /* MyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsView.swift; sourceTree = "<group>"; };
+		1858E15328C60F0B00521ED8 /* MyEventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsViewModel.swift; sourceTree = "<group>"; };
 		18F728D328B91057002D071F /* HonestMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HonestMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F728D628B91057002D071F /* HonestMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateApp.swift; sourceTree = "<group>"; };
 		18F728D828B91057002D071F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 		184791E028C0F13500BF9717 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				1858E15028C60E8D00521ED8 /* MyEvents */,
 				184791E128C0F14C00BF9717 /* SignInView.swift */,
 				184791E328C0F16C00BF9717 /* SignInViewModel.swift */,
 			);
@@ -184,6 +189,15 @@
 				1858E14E28C6061400521ED8 /* TextFieldCustomRoundStyle.swift */,
 			);
 			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		1858E15028C60E8D00521ED8 /* MyEvents */ = {
+			isa = PBXGroup;
+			children = (
+				1858E15128C60EBA00521ED8 /* MyEventsView.swift */,
+				1858E15328C60F0B00521ED8 /* MyEventsViewModel.swift */,
+			);
+			path = MyEvents;
 			sourceTree = "<group>";
 		};
 		18F728CA28B91056002D071F = {
@@ -568,12 +582,14 @@
 				1858E14F28C6061500521ED8 /* TextFieldCustomRoundStyle.swift in Sources */,
 				18F728D928B91057002D071F /* ContentView.swift in Sources */,
 				18F7290528BCB383002D071F /* Gemfile in Sources */,
+				1858E15228C60EBA00521ED8 /* MyEventsView.swift in Sources */,
 				18F7290A28BCB4E6002D071F /* Scanfile in Sources */,
 				184791F628C2144000BF9717 /* LoginTextField.swift in Sources */,
 				184791F428C206C500BF9717 /* AuthService.swift in Sources */,
 				18F728D728B91057002D071F /* HonestMateApp.swift in Sources */,
 				184791E428C0F16C00BF9717 /* SignInViewModel.swift in Sources */,
 				1858A1BD28C21A940039246A /* AlertItem.swift in Sources */,
+				1858E15428C60F0B00521ED8 /* MyEventsViewModel.swift in Sources */,
 				184791E828C1090000BF9717 /* RSwift+Ext.swift in Sources */,
 				184791EB28C109E400BF9717 /* RoundedTextButton.swift in Sources */,
 				184791E228C0F14C00BF9717 /* SignInView.swift in Sources */,

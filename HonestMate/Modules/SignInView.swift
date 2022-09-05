@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct SignInView: View {
     
-    @ObservedObject var viewModel = SignInViewModel()
+    @ObservedObject var viewModel = SignInViewModel(authService: Resolver.resolve())
     
     var title: some View {
         Text(R.string.localizable.honestmate())
@@ -25,8 +26,10 @@ struct SignInView: View {
     }
     
     var emailTextField: some View {
-        TextField(R.string.localizable.signinEmail(), text: $viewModel.email)
-            .modifier(TextFieldCustomRoundStyle())
+        TextField(R.string.localizable.signinEmail(), text: $viewModel.email, onEditingChanged: { _ in
+            viewModel.email = viewModel.email.trimmingCharacters(in: .whitespacesAndNewlines)
+        })
+        .modifier(TextFieldCustomRoundStyle())
     }
     
     var passwordTextField: some View {
@@ -46,7 +49,7 @@ struct SignInView: View {
             RoundedTextButton(title: viewModel.selected == .login ?  R.string.localizable.signinButtonTitleSignin() : R.string.localizable.signinButtonTitleSighup(), style: .blue)
         }
         .padding(.top, 20)
-        .disabled(viewModel.isValidForm)
+        .disabled(!viewModel.actionButtonEnabled)
     }
     
     var body: some View {
@@ -77,7 +80,14 @@ struct SignInView: View {
                       message: alertItem.message,
                       dismissButton: alertItem.dismissButton)
             }
-            
+            .fullScreenCover(isPresented: $viewModel.isShowingMyEvents) {
+                MyEventsView(
+                    viewModel: MyEventsViewModel(
+                        authService: Resolver.resolve(),
+                        isShowingMyEvents: $viewModel.isShowingMyEvents)
+                )
+            }
+
             if viewModel.isLoading {
                 ProgressView()
             }
@@ -88,10 +98,10 @@ struct SignInView: View {
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            SignInView(viewModel: SignInViewModel())
+            SignInView(viewModel: SignInViewModel(authService: Resolver.resolve()))
                 .environment(\.colorScheme, .light)
             
-            SignInView(viewModel: SignInViewModel())
+            SignInView(viewModel: SignInViewModel(authService: Resolver.resolve()))
                 .preferredColorScheme(.dark)
                 .environment(\.colorScheme, .dark)
         }

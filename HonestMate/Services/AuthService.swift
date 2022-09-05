@@ -13,11 +13,16 @@ enum AuthError: Error {
 }
 
 protocol AuthServiceProtocol {
-    func currentUser() -> AnyPublisher<User?, Never>
+    var currentUser: User? { get }
+    
+    func currentUserPublisher() -> AnyPublisher<User?, Never>
     func signin(email: String, password: String) -> AnyPublisher<Void, AuthError>
+    func logout() -> AnyPublisher<Void, AuthError>
 }
 
 final class AuthService: AuthServiceProtocol {
+    var currentUser: User? { Auth.auth().currentUser }
+    
     func signin(email: String, password: String) -> AnyPublisher<Void, AuthError> {
         return Future<Void, AuthError> { promise in
             Auth.auth().signIn(withEmail: email, password: password) { result, error in
@@ -33,7 +38,19 @@ final class AuthService: AuthServiceProtocol {
         .eraseToAnyPublisher()
     }
     
-    func currentUser() -> AnyPublisher<User?, Never> {
+    func currentUserPublisher() -> AnyPublisher<User?, Never> {
         Just(Auth.auth().currentUser).eraseToAnyPublisher()
+    }
+    
+    func logout() -> AnyPublisher<Void, AuthError> {
+        return Future<Void, AuthError> { promise in
+            do {
+                try Auth.auth().signOut()
+                promise(.success(()))
+            } catch {
+                promise(.failure(.failed))
+            }
+        }
+        .eraseToAnyPublisher()
     }
 }
