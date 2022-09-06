@@ -44,7 +44,7 @@ struct SignInView: View {
     
     var actionButton: some View {
         Button {
-            viewModel.login()
+            viewModel.actionButtonTapped()
         } label: {
             RoundedTextButton(title: viewModel.selected == .login ?  R.string.localizable.signinButtonTitleSignin() : R.string.localizable.signinButtonTitleSighup(), style: .blue)
         }
@@ -89,7 +89,7 @@ struct SignInView: View {
             }
 
             if viewModel.isLoading {
-                ProgressView()
+                ProgressView().scaleEffect(2)
             }
         }
     }

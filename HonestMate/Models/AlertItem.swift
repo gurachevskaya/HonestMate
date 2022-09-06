@@ -18,31 +18,55 @@ struct AlertItem: Identifiable, Equatable {
     let dismissButton: Alert.Button
 }
 
+extension AlertItem {
+    init(message: Text) {
+        self.init(
+            title: Text(R.string.localizable.alertInnerErrorTitle()),
+            message: message,
+            dismissButton: .default(Text(R.string.localizable.alertDismissButtonTitle()))
+        )
+    }
+    
+    init(title: Text, message: Text) {
+        self.init(
+            title: title,
+            message: message,
+            dismissButton: .default(Text(R.string.localizable.alertDismissButtonTitle()))
+        )
+    }
+}
 
 struct AlertContext {
     //MARK: - Network Alerts
     static let invalidData = AlertItem(
         title: Text(R.string.localizable.alertInvalidDataTitle()),
-        message: Text(R.string.localizable.alertInvalidDataMessage()),
-        dismissButton: .default(Text(R.string.localizable.alertDismissButtonTitle()))
+        message: Text(R.string.localizable.alertInvalidDataMessage())
     )
     
     static let invalidResponse = AlertItem(
         title: Text(R.string.localizable.alertInvalidResponseTitle()),
-        message: Text(R.string.localizable.alertInvalidResponseMessage()),
-        dismissButton: .default(Text(R.string.localizable.alertDismissButtonTitle()))
+        message: Text(R.string.localizable.alertInvalidResponseMessage())
     )
     
     static let unableToComplete = AlertItem(
         title: Text(R.string.localizable.alertUnableToCompleteTitle()),
-        message: Text(R.string.localizable.alertUnableToCompleteMessage()),
-        dismissButton: .default(Text(R.string.localizable.alertDismissButtonTitle()))
+        message: Text(R.string.localizable.alertUnableToCompleteMessage())
     )
     
     static let innerError = AlertItem(
         title: Text(R.string.localizable.alertInnerErrorTitle()),
-        message: Text(R.string.localizable.alertInnerErrorMessage()),
-        dismissButton: .default(Text(R.string.localizable.alertDismissButtonTitle()))
+        message: Text(R.string.localizable.alertInnerErrorMessage())
+    )
+    
+    //MARK: - Sign in, Sign out
+    static let alreadyInUse = AlertItem(
+        title: Text(R.string.localizable.alertAlreadyInUseTitle()),
+        message: Text(R.string.localizable.alertAlreadyInUseMessage())
+    )
+    
+    static let userNotFound = AlertItem(
+        title: Text(R.string.localizable.alertUserNotFoundTitle()),
+        message: Text(R.string.localizable.alertUserNotFoundMessage())
     )
 }
 

@@ -62,7 +62,34 @@ class SignInViewModel: ObservableObject {
         isValidFormPublisher.assign(to: &$actionButtonEnabled)
     }
     
-    func login() {
+    func actionButtonTapped() {
+        switch selected {
+        case .login:
+            login()
+        case .register:
+            register()
+        }
+    }
+    
+    private func register() {
+        isLoading = true
+        authService.createUser(email: email, password: password)
+            .receive(on: DispatchQueue.main)
+            .sink { [unowned self] completion in
+                isLoading = false
+                
+                switch completion {
+                case .failure(let error):
+                    alertItem = alertItem(for: error)
+                case .finished: break
+                }
+            } receiveValue: { [unowned self] _ in
+                isShowingMyEvents = true
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func login() {
         isLoading = true
         authService.signin(email: email, password: password)
             .receive(on: DispatchQueue.main)
@@ -71,16 +98,26 @@ class SignInViewModel: ObservableObject {
                 
                 switch completion {
                 case .failure(let error):
-                    alertItem = AlertContext.innerError
-                    print("completed with error \(error)")
-                case .finished:
-                    print("finished")
+                    alertItem = alertItem(for: error)
+                case .finished: break
                 }
             } receiveValue: { [unowned self] _ in
                 isShowingMyEvents = true
-                print("completed, go to the next screen")
             }
             .store(in: &cancellables)
+    }
+    
+    private func alertItem(for error: AuthError) -> AlertItem {
+        switch error {
+        case .networkError:
+            return AlertContext.unableToComplete
+        case .alreadyInUse:
+            return AlertContext.alreadyInUse
+        case .userNotFound:
+            return AlertContext.userNotFound
+        case .inner:
+            return AlertContext.innerError
+        }
     }
 }
 
@@ -88,10 +125,28 @@ class SignInViewModel: ObservableObject {
 
 extension SignInViewModel {
     private var isValidFormPublisher: AnyPublisher<Bool, Never> {
-        Publishers.CombineLatest3(
-            validEmailAddress, selected == .login ? validPassword : validAndConfirmedPassword, $agreeTerms
-        ).map { email, pw, terms in
-            email && pw && terms
+        Publishers.CombineLatest(
+            isValidLoginFormPublisher, isValidRegisterFormPublisher
+        ).map { validLogin, validRegister in
+            validLogin || validRegister
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    private var isValidRegisterFormPublisher: AnyPublisher<Bool, Never> {
+        Publishers.CombineLatest4(
+            validEmailAddress, validAndConfirmedPassword, $agreeTerms, $selected
+        ).map { email, validAndConfirmedPassword, terms, selected in
+            email && validAndConfirmedPassword && terms && selected == .register
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    private var isValidLoginFormPublisher: AnyPublisher<Bool, Never> {
+        Publishers.CombineLatest4(
+            validEmailAddress, validPassword, $agreeTerms, $selected
+        ).map { email, validPassword, terms, selected in
+            email && validPassword && terms && selected == .login
         }
         .eraseToAnyPublisher()
     }

@@ -24,6 +24,12 @@
 "alert.inner.error.title" = "Something went wrong";
 "alert.inner.error.message" = "Please try again later.";
 
+"alert.already.in.use.title" = "Sign Up Error";
+"alert.already.in.use.message" = "The email address is already in use by another account.";
+
+"alert.user.not.found.title" = "Sign In Error";
+"alert.user.not.found.message" = "User with this email doesn't exist.";
+
 // MARK: Sign in
 
 "signin.email" = "Email";
