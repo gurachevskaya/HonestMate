@@ -23,10 +23,15 @@ struct HonestMateApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if isLoggedIn {
-                MyEventsView(viewModel: MyEventsViewModel(authService: Resolver.resolve(), isShowingMyEvents: .constant(true)))
-            } else {
-                SignInView(viewModel: SignInViewModel(authService: Resolver.resolve()))
+            ZStack {
+                if isLoggedIn {
+                    MyEventsView(viewModel: MyEventsViewModel(authService: Resolver.resolve(), isShowingMyEvents: .constant(true)))
+                } else {
+                    SignInView(viewModel: SignInViewModel(authService: Resolver.resolve()))
+                }
+            }
+            .onReceive(appState.$isLoggedIn) { newValue in
+                isLoggedIn = newValue
             }
         }
     }
