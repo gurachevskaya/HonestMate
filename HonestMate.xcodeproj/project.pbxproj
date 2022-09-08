@@ -22,6 +22,7 @@
 		1858E14F28C6061500521ED8 /* TextFieldCustomRoundStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E14E28C6061400521ED8 /* TextFieldCustomRoundStyle.swift */; };
 		1858E15228C60EBA00521ED8 /* MyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E15128C60EBA00521ED8 /* MyEventsView.swift */; };
 		1858E15428C60F0B00521ED8 /* MyEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E15328C60F0B00521ED8 /* MyEventsViewModel.swift */; };
+		186FD74528C79D39004B5156 /* AuthPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186FD74428C79D39004B5156 /* AuthPublisher.swift */; };
 		18F728D728B91057002D071F /* HonestMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D628B91057002D071F /* HonestMateApp.swift */; };
 		18F728D928B91057002D071F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D828B91057002D071F /* ContentView.swift */; };
 		18F728DB28B91059002D071F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F728DA28B91059002D071F /* Assets.xcassets */; };
@@ -71,6 +72,7 @@
 		1858E14E28C6061400521ED8 /* TextFieldCustomRoundStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCustomRoundStyle.swift; sourceTree = "<group>"; };
 		1858E15128C60EBA00521ED8 /* MyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsView.swift; sourceTree = "<group>"; };
 		1858E15328C60F0B00521ED8 /* MyEventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsViewModel.swift; sourceTree = "<group>"; };
+		186FD74428C79D39004B5156 /* AuthPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPublisher.swift; sourceTree = "<group>"; };
 		18F728D328B91057002D071F /* HonestMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HonestMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F728D628B91057002D071F /* HonestMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateApp.swift; sourceTree = "<group>"; };
 		18F728D828B91057002D071F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -200,6 +202,14 @@
 			path = MyEvents;
 			sourceTree = "<group>";
 		};
+		186FD74328C79D2D004B5156 /* Publishers */ = {
+			isa = PBXGroup;
+			children = (
+				186FD74428C79D39004B5156 /* AuthPublisher.swift */,
+			);
+			path = Publishers;
+			sourceTree = "<group>";
+		};
 		18F728CA28B91056002D071F = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +238,7 @@
 		18F728D528B91057002D071F /* HonestMate */ = {
 			isa = PBXGroup;
 			children = (
+				186FD74328C79D2D004B5156 /* Publishers */,
 				1858E14D28C605FA00521ED8 /* Modifiers */,
 				1858A1BB28C21A870039246A /* Models */,
 				184791ED28C1F78600BF9717 /* Services */,
@@ -595,6 +606,7 @@
 				184791E228C0F14C00BF9717 /* SignInView.swift in Sources */,
 				18F7290828BCB432002D071F /* Fastfile in Sources */,
 				184791F028C1F88000BF9717 /* R.generated.swift in Sources */,
+				186FD74528C79D39004B5156 /* AuthPublisher.swift in Sources */,
 				184791DF28C0EFB800BF9717 /* HotestMateApp+Resolving.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -682,7 +694,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -736,7 +748,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

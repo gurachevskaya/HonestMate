@@ -11,6 +11,8 @@ import Resolver
 struct MyEventsView: View {
     
     @ObservedObject var viewModel: MyEventsViewModel
+    
+    @State private var appState = AppState()
 
     var body: some View {
         Button {

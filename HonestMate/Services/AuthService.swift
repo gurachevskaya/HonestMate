@@ -18,7 +18,7 @@ enum AuthError: Error {
 protocol AuthServiceProtocol {
     var currentUser: User? { get }
     
-    func currentUserPublisher() -> AnyPublisher<User?, Never>
+    func observeAuthChanges() -> AnyPublisher<Bool, Never>
     func signin(email: String, password: String) -> AnyPublisher<Void, AuthError>
     func createUser(email: String, password: String) -> AnyPublisher<Void, AuthError>
     func logout() -> AnyPublisher<Void, AuthError>
@@ -26,6 +26,10 @@ protocol AuthServiceProtocol {
 
 final class AuthService: AuthServiceProtocol {
     var currentUser: User? { Auth.auth().currentUser }
+    
+    func observeAuthChanges() -> AnyPublisher<Bool, Never> {
+        Publishers.AuthPublisher().eraseToAnyPublisher()
+    }
     
     func signin(email: String, password: String) -> AnyPublisher<Void, AuthError> {
         return Future<Void, AuthError> { promise in
@@ -56,11 +60,7 @@ final class AuthService: AuthServiceProtocol {
         }
         .eraseToAnyPublisher()
     }
-    
-    func currentUserPublisher() -> AnyPublisher<User?, Never> {
-        Just(Auth.auth().currentUser).eraseToAnyPublisher()
-    }
-    
+
     func logout() -> AnyPublisher<Void, AuthError> {
         return Future<Void, AuthError> { [unowned self] promise in
             do {

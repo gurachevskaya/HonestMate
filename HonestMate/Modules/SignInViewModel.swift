@@ -84,7 +84,7 @@ class SignInViewModel: ObservableObject {
                 case .finished: break
                 }
             } receiveValue: { [unowned self] _ in
-                isShowingMyEvents = true
+//                isShowingMyEvents = true
             }
             .store(in: &cancellables)
     }
@@ -102,7 +102,7 @@ class SignInViewModel: ObservableObject {
                 case .finished: break
                 }
             } receiveValue: { [unowned self] _ in
-                isShowingMyEvents = true
+//                isShowingMyEvents = true
             }
             .store(in: &cancellables)
     }
