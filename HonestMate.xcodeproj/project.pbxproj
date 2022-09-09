@@ -23,6 +23,8 @@
 		1858E15228C60EBA00521ED8 /* MyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E15128C60EBA00521ED8 /* MyEventsView.swift */; };
 		1858E15428C60F0B00521ED8 /* MyEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E15328C60F0B00521ED8 /* MyEventsViewModel.swift */; };
 		186FD74528C79D39004B5156 /* AuthPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186FD74428C79D39004B5156 /* AuthPublisher.swift */; };
+		18BA855528CA3E3300F8DC2A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA855428CA3E3300F8DC2A /* Constants.swift */; };
+		18BA855728CA48B700F8DC2A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA855628CA48B700F8DC2A /* AppState.swift */; };
 		18F728D728B91057002D071F /* HonestMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D628B91057002D071F /* HonestMateApp.swift */; };
 		18F728D928B91057002D071F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D828B91057002D071F /* ContentView.swift */; };
 		18F728DB28B91059002D071F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F728DA28B91059002D071F /* Assets.xcassets */; };
@@ -73,6 +75,8 @@
 		1858E15128C60EBA00521ED8 /* MyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsView.swift; sourceTree = "<group>"; };
 		1858E15328C60F0B00521ED8 /* MyEventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsViewModel.swift; sourceTree = "<group>"; };
 		186FD74428C79D39004B5156 /* AuthPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPublisher.swift; sourceTree = "<group>"; };
+		18BA855428CA3E3300F8DC2A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		18BA855628CA48B700F8DC2A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		18F728D328B91057002D071F /* HonestMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HonestMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F728D628B91057002D071F /* HonestMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateApp.swift; sourceTree = "<group>"; };
 		18F728D828B91057002D071F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 				184791EF28C1F88000BF9717 /* R.generated.swift */,
 				184791DB28C0CCCB00BF9717 /* GoogleService-Info.plist */,
 				184791F128C1F8BB00BF9717 /* Localizable.strings */,
+				18BA855428CA3E3300F8DC2A /* Constants.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				184791F328C206C400BF9717 /* AuthService.swift */,
+				18BA855628CA48B700F8DC2A /* AppState.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -591,6 +597,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1858E14F28C6061500521ED8 /* TextFieldCustomRoundStyle.swift in Sources */,
+				18BA855528CA3E3300F8DC2A /* Constants.swift in Sources */,
 				18F728D928B91057002D071F /* ContentView.swift in Sources */,
 				18F7290528BCB383002D071F /* Gemfile in Sources */,
 				1858E15228C60EBA00521ED8 /* MyEventsView.swift in Sources */,
@@ -600,6 +607,7 @@
 				18F728D728B91057002D071F /* HonestMateApp.swift in Sources */,
 				184791E428C0F16C00BF9717 /* SignInViewModel.swift in Sources */,
 				1858A1BD28C21A940039246A /* AlertItem.swift in Sources */,
+				18BA855728CA48B700F8DC2A /* AppState.swift in Sources */,
 				1858E15428C60F0B00521ED8 /* MyEventsViewModel.swift in Sources */,
 				184791E828C1090000BF9717 /* RSwift+Ext.swift in Sources */,
 				184791EB28C109E400BF9717 /* RoundedTextButton.swift in Sources */,
@@ -694,7 +702,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -748,7 +756,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

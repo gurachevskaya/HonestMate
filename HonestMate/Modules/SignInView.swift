@@ -83,8 +83,8 @@ struct SignInView: View {
             .fullScreenCover(isPresented: $viewModel.isShowingMyEvents) {
                 MyEventsView(
                     viewModel: MyEventsViewModel(
-                        authService: Resolver.resolve(),
-                        isShowingMyEvents: $viewModel.isShowingMyEvents)
+                        authService: Resolver.resolve()
+                    )
                 )
             }
 

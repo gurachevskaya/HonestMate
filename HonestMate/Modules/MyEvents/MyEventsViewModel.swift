@@ -11,27 +11,17 @@ import SwiftUI
 
 class MyEventsViewModel: ObservableObject {
     
-    init(authService: AuthServiceProtocol, isShowingMyEvents: Binding<Bool>) {
+    init(authService: AuthServiceProtocol) {
         self.authService = authService
-        self.isShowingMyEvents = isShowingMyEvents
     }
     
-    private var isShowingMyEvents: Binding<Bool>
     private var authService: AuthServiceProtocol
     
     private var cancellables: Set<AnyCancellable> = []
 
     func logout() {
         authService.logout()
-            .sink { [unowned self] completion in
-                switch completion {
-                case .failure(let error):
-                    print(error)
-                case .finished:
-                    isShowingMyEvents.wrappedValue = false
-                }
-            } receiveValue: { _ in
-            }
+            .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
             .store(in: &cancellables)
 
     }

@@ -11,44 +11,22 @@ import Resolver
 
 @main
 struct HonestMateApp: App {
-        
-    @State private var appState = AppState()
-    @State private var isLoggedIn = false
     
+    @ObservedObject private var appState = AppState()
+
     init() {
         FirebaseApp.configure()
-        
-        appState.startObservingAuthChanges()
     }
     
     var body: some Scene {
         WindowGroup {
             ZStack {
-                if isLoggedIn {
-                    MyEventsView(viewModel: MyEventsViewModel(authService: Resolver.resolve(), isShowingMyEvents: .constant(true)))
+                if appState.isLoggedIn {
+                    MyEventsView(viewModel: MyEventsViewModel(authService: Resolver.resolve()))
                 } else {
                     SignInView(viewModel: SignInViewModel(authService: Resolver.resolve()))
                 }
             }
-            .onReceive(appState.$isLoggedIn) { newValue in
-                isLoggedIn = newValue
-            }
         }
-    }
-}
-
-class AppState: ObservableObject {
-    @Published private(set) var isLoggedIn = false
-    
-    private let authService: AuthServiceProtocol
-    
-    func startObservingAuthChanges() {
-        authService
-            .observeAuthChanges()
-            .assign(to: &$isLoggedIn)
-    }
-    
-    init(authService: AuthServiceProtocol = AuthService()) {
-        self.authService = authService
     }
 }

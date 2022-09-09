@@ -12,8 +12,6 @@ struct MyEventsView: View {
     
     @ObservedObject var viewModel: MyEventsViewModel
     
-    @State private var appState = AppState()
-
     var body: some View {
         Button {
             viewModel.logout()
@@ -25,6 +23,6 @@ struct MyEventsView: View {
 
 struct MyEventsView_Previews: PreviewProvider {
     static var previews: some View {
-        MyEventsView(viewModel: MyEventsViewModel(authService: Resolver.resolve(), isShowingMyEvents: .constant(true)))
+        MyEventsView(viewModel: MyEventsViewModel(authService: Resolver.resolve()))
     }
 }
