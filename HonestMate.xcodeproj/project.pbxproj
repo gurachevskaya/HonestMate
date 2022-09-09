@@ -9,6 +9,22 @@
 /* Begin PBXBuildFile section */
 		10D45721496F509CA15C305A /* Pods_HonestMateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14048C7F83BC590EDFC6DC61 /* Pods_HonestMateTests.framework */; };
 		184791DC28C0CCCB00BF9717 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 184791DB28C0CCCB00BF9717 /* GoogleService-Info.plist */; };
+		184791DF28C0EFB800BF9717 /* HotestMateApp+Resolving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791DE28C0EFB800BF9717 /* HotestMateApp+Resolving.swift */; };
+		184791E228C0F14C00BF9717 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791E128C0F14C00BF9717 /* SignInView.swift */; };
+		184791E428C0F16C00BF9717 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791E328C0F16C00BF9717 /* SignInViewModel.swift */; };
+		184791E828C1090000BF9717 /* RSwift+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791E728C1090000BF9717 /* RSwift+Ext.swift */; };
+		184791EB28C109E400BF9717 /* RoundedTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791EA28C109E400BF9717 /* RoundedTextButton.swift */; };
+		184791F028C1F88000BF9717 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791EF28C1F88000BF9717 /* R.generated.swift */; };
+		184791F228C1F8BB00BF9717 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 184791F128C1F8BB00BF9717 /* Localizable.strings */; };
+		184791F428C206C500BF9717 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791F328C206C400BF9717 /* AuthService.swift */; };
+		184791F628C2144000BF9717 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791F528C2144000BF9717 /* LoginTextField.swift */; };
+		1858A1BD28C21A940039246A /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858A1BC28C21A940039246A /* AlertItem.swift */; };
+		1858E14F28C6061500521ED8 /* TextFieldCustomRoundStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E14E28C6061400521ED8 /* TextFieldCustomRoundStyle.swift */; };
+		1858E15228C60EBA00521ED8 /* MyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E15128C60EBA00521ED8 /* MyEventsView.swift */; };
+		1858E15428C60F0B00521ED8 /* MyEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E15328C60F0B00521ED8 /* MyEventsViewModel.swift */; };
+		186FD74528C79D39004B5156 /* AuthPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186FD74428C79D39004B5156 /* AuthPublisher.swift */; };
+		18BA855528CA3E3300F8DC2A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA855428CA3E3300F8DC2A /* Constants.swift */; };
+		18BA855728CA48B700F8DC2A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA855628CA48B700F8DC2A /* AppState.swift */; };
 		18F728D728B91057002D071F /* HonestMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D628B91057002D071F /* HonestMateApp.swift */; };
 		18F728D928B91057002D071F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D828B91057002D071F /* ContentView.swift */; };
 		18F728DB28B91059002D071F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F728DA28B91059002D071F /* Assets.xcassets */; };
@@ -45,6 +61,22 @@
 		0F446593694CA01444E1A173 /* Pods-HonestMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HonestMate.debug.xcconfig"; path = "Target Support Files/Pods-HonestMate/Pods-HonestMate.debug.xcconfig"; sourceTree = "<group>"; };
 		14048C7F83BC590EDFC6DC61 /* Pods_HonestMateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HonestMateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		184791DB28C0CCCB00BF9717 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		184791DE28C0EFB800BF9717 /* HotestMateApp+Resolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HotestMateApp+Resolving.swift"; sourceTree = "<group>"; };
+		184791E128C0F14C00BF9717 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		184791E328C0F16C00BF9717 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		184791E728C1090000BF9717 /* RSwift+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSwift+Ext.swift"; sourceTree = "<group>"; };
+		184791EA28C109E400BF9717 /* RoundedTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextButton.swift; sourceTree = "<group>"; };
+		184791EF28C1F88000BF9717 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		184791F128C1F8BB00BF9717 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		184791F328C206C400BF9717 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		184791F528C2144000BF9717 /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
+		1858A1BC28C21A940039246A /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
+		1858E14E28C6061400521ED8 /* TextFieldCustomRoundStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCustomRoundStyle.swift; sourceTree = "<group>"; };
+		1858E15128C60EBA00521ED8 /* MyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsView.swift; sourceTree = "<group>"; };
+		1858E15328C60F0B00521ED8 /* MyEventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsViewModel.swift; sourceTree = "<group>"; };
+		186FD74428C79D39004B5156 /* AuthPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPublisher.swift; sourceTree = "<group>"; };
+		18BA855428CA3E3300F8DC2A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		18BA855628CA48B700F8DC2A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		18F728D328B91057002D071F /* HonestMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HonestMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F728D628B91057002D071F /* HonestMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateApp.swift; sourceTree = "<group>"; };
 		18F728D828B91057002D071F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,9 +131,89 @@
 		184791DA28C0CC8300BF9717 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				184791EF28C1F88000BF9717 /* R.generated.swift */,
 				184791DB28C0CCCB00BF9717 /* GoogleService-Info.plist */,
+				184791F128C1F8BB00BF9717 /* Localizable.strings */,
+				18BA855428CA3E3300F8DC2A /* Constants.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		184791E028C0F13500BF9717 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				1858E15028C60E8D00521ED8 /* MyEvents */,
+				184791E128C0F14C00BF9717 /* SignInView.swift */,
+				184791E328C0F16C00BF9717 /* SignInViewModel.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		184791E628C108ED00BF9717 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				184791E728C1090000BF9717 /* RSwift+Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		184791E928C109D400BF9717 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				184791EC28C109E900BF9717 /* Buttons */,
+				184791F528C2144000BF9717 /* LoginTextField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		184791EC28C109E900BF9717 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				184791EA28C109E400BF9717 /* RoundedTextButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		184791ED28C1F78600BF9717 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				184791F328C206C400BF9717 /* AuthService.swift */,
+				18BA855628CA48B700F8DC2A /* AppState.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1858A1BB28C21A870039246A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1858A1BC28C21A940039246A /* AlertItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1858E14D28C605FA00521ED8 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				1858E14E28C6061400521ED8 /* TextFieldCustomRoundStyle.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		1858E15028C60E8D00521ED8 /* MyEvents */ = {
+			isa = PBXGroup;
+			children = (
+				1858E15128C60EBA00521ED8 /* MyEventsView.swift */,
+				1858E15328C60F0B00521ED8 /* MyEventsViewModel.swift */,
+			);
+			path = MyEvents;
+			sourceTree = "<group>";
+		};
+		186FD74328C79D2D004B5156 /* Publishers */ = {
+			isa = PBXGroup;
+			children = (
+				186FD74428C79D39004B5156 /* AuthPublisher.swift */,
+			);
+			path = Publishers;
 			sourceTree = "<group>";
 		};
 		18F728CA28B91056002D071F = {
@@ -132,11 +244,19 @@
 		18F728D528B91057002D071F /* HonestMate */ = {
 			isa = PBXGroup;
 			children = (
+				186FD74328C79D2D004B5156 /* Publishers */,
+				1858E14D28C605FA00521ED8 /* Modifiers */,
+				1858A1BB28C21A870039246A /* Models */,
+				184791ED28C1F78600BF9717 /* Services */,
+				184791E928C109D400BF9717 /* Views */,
+				184791E628C108ED00BF9717 /* Extension */,
+				184791E028C0F13500BF9717 /* Modules */,
 				184791DA28C0CC8300BF9717 /* Other */,
 				18F728D628B91057002D071F /* HonestMateApp.swift */,
 				18F728D828B91057002D071F /* ContentView.swift */,
 				18F728DA28B91059002D071F /* Assets.xcassets */,
 				18F728DC28B91059002D071F /* Preview Content */,
+				184791DE28C0EFB800BF9717 /* HotestMateApp+Resolving.swift */,
 			);
 			path = HonestMate;
 			sourceTree = "<group>";
@@ -223,6 +343,7 @@
 			buildConfigurationList = 18F728F728B91059002D071F /* Build configuration list for PBXNativeTarget "HonestMate" */;
 			buildPhases = (
 				471B637B5CE775D3FBBAC24E /* [CP] Check Pods Manifest.lock */,
+				184791EE28C1F7F100BF9717 /* R.Swift */,
 				18F728CF28B91057002D071F /* Sources */,
 				18F728D028B91057002D071F /* Frameworks */,
 				18F728D128B91057002D071F /* Resources */,
@@ -324,6 +445,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				184791F228C1F8BB00BF9717 /* Localizable.strings in Resources */,
 				18F728DE28B91059002D071F /* Preview Assets.xcassets in Resources */,
 				184791DC28C0CCCB00BF9717 /* GoogleService-Info.plist in Resources */,
 				18F728DB28B91059002D071F /* Assets.xcassets in Resources */,
@@ -348,6 +470,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		184791EE28C1F7F100BF9717 /* R.Swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = R.Swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/HonestMate/Other/R.generated.swift\"\n";
+		};
 		471B637B5CE775D3FBBAC24E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -455,11 +596,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1858E14F28C6061500521ED8 /* TextFieldCustomRoundStyle.swift in Sources */,
+				18BA855528CA3E3300F8DC2A /* Constants.swift in Sources */,
 				18F728D928B91057002D071F /* ContentView.swift in Sources */,
 				18F7290528BCB383002D071F /* Gemfile in Sources */,
+				1858E15228C60EBA00521ED8 /* MyEventsView.swift in Sources */,
 				18F7290A28BCB4E6002D071F /* Scanfile in Sources */,
+				184791F628C2144000BF9717 /* LoginTextField.swift in Sources */,
+				184791F428C206C500BF9717 /* AuthService.swift in Sources */,
 				18F728D728B91057002D071F /* HonestMateApp.swift in Sources */,
+				184791E428C0F16C00BF9717 /* SignInViewModel.swift in Sources */,
+				1858A1BD28C21A940039246A /* AlertItem.swift in Sources */,
+				18BA855728CA48B700F8DC2A /* AppState.swift in Sources */,
+				1858E15428C60F0B00521ED8 /* MyEventsViewModel.swift in Sources */,
+				184791E828C1090000BF9717 /* RSwift+Ext.swift in Sources */,
+				184791EB28C109E400BF9717 /* RoundedTextButton.swift in Sources */,
+				184791E228C0F14C00BF9717 /* SignInView.swift in Sources */,
 				18F7290828BCB432002D071F /* Fastfile in Sources */,
+				184791F028C1F88000BF9717 /* R.generated.swift in Sources */,
+				186FD74528C79D39004B5156 /* AuthPublisher.swift in Sources */,
+				184791DF28C0EFB800BF9717 /* HotestMateApp+Resolving.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,7 +702,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -600,7 +756,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -625,6 +781,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -636,7 +793,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -655,6 +812,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -666,7 +824,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

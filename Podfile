@@ -10,6 +10,7 @@ end
 
 def helpers_pods
   pod 'R.swift'
+  pod 'Resolver'
 end
 
 target 'HonestMate' do

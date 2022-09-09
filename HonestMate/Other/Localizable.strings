@@ -1,0 +1,41 @@
+/* 
+  Localizable.strings
+  HonestMate
+
+  Created by Karina gurachevskaya on 2.09.22.
+  
+*/
+
+"honestmate" = "Honestmate";
+
+// MARK: Errors
+
+"alert.dismiss.button.title" = "OK";
+
+"alert.invalid.data.title" = "Server Error";
+"alert.invalid.data.message" = "The data received from the server was invalid. Please contact support.";
+
+"alert.invalid.response.title" = "Server Error";
+"alert.invalid.response.message" = "Invalid response from the server. Please try again later or contact support.";
+
+"alert.unable.to.complete.title" = "Server Error";
+"alert.unable.to.complete.message" = "Unable to complete your request at this time. Please check your internet connection.";
+
+"alert.inner.error.title" = "Something went wrong";
+"alert.inner.error.message" = "Please try again later.";
+
+"alert.already.in.use.title" = "Sign Up Error";
+"alert.already.in.use.message" = "The email address is already in use by another account.";
+
+"alert.user.not.found.title" = "Sign In Error";
+"alert.user.not.found.message" = "User with this email doesn't exist.";
+
+// MARK: Sign in
+
+"signin.email" = "Email";
+"signin.password" = "Password";
+"signin.password.confirm" = "Confirm Password";
+"signin.button.title.signin" = "Sign In";
+"signin.button.title.sighup" = "Sign Up";
+"signin.picker.login" = "Login";
+"signin.picker.register" = "Register";
