@@ -158,8 +158,7 @@
 			children = (
 				18BA855828CB2FFF00F8DC2A /* Splash */,
 				1858E15028C60E8D00521ED8 /* MyEvents */,
-				184791E128C0F14C00BF9717 /* SignInView.swift */,
-				184791E328C0F16C00BF9717 /* SignInViewModel.swift */,
+				185F422928CF882300628DDC /* SignIn */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -231,6 +230,15 @@
 			children = (
 			);
 			path = Cores;
+			sourceTree = "<group>";
+		};
+		185F422928CF882300628DDC /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				184791E128C0F14C00BF9717 /* SignInView.swift */,
+				184791E328C0F16C00BF9717 /* SignInViewModel.swift */,
+			);
+			path = SignIn;
 			sourceTree = "<group>";
 		};
 		186FD74328C79D2D004B5156 /* Publishers */ = {

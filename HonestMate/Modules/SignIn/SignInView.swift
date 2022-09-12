@@ -42,6 +42,10 @@ struct SignInView: View {
             .modifier(TextFieldCustomRoundStyle())
     }
     
+    var signInButtons: some View {
+        SignInButtonsStack(viewModel: viewModel)
+    }
+    
     var actionButton: some View {
         Button {
             viewModel.actionButtonTapped()
@@ -70,9 +74,8 @@ struct SignInView: View {
                     confirmPasswordTextField
                 }
                 
-                if viewModel.loginConfig?.appleEnabled == true {
-                    Text("apple option")
-                }
+                signInButtons
+                    .padding(.top, 30)
                 
                 actionButton
                 
@@ -98,6 +101,32 @@ struct SignInView: View {
         }
     }
 }
+
+struct SignInButtonsStack: View {
+    
+    @ObservedObject private(set) var viewModel: SignInViewModel
+    
+    var body: some View {
+        HStack(spacing: 15) {
+            if viewModel.loginConfig?.facebookEnabled == true {
+                Button(
+                    action: {  },
+                    label: { R.image.facebookLogo.image })
+            }
+            if viewModel.loginConfig?.appleEnabled == true {
+                Button(
+                    action: {  },
+                    label: { R.image.appleLogo.image })
+            }
+            if viewModel.loginConfig?.googleEnabled == true {
+                Button(
+                    action: {  },
+                    label: { R.image.googleLogo.image })
+            }
+        }
+    }
+}
+
 
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {

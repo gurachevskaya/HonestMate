@@ -40,8 +40,8 @@ class SignInViewModel: ObservableObject {
         }
     }
     
-    @Published var email = ""
-    @Published var password = ""
+    @Published var email = "gurachevich@mail.ru"
+    @Published var password = "123456aa"
     @Published var confirmPassword = ""
     @Published var agreeTerms = true
     @Published var actionButtonEnabled = false
