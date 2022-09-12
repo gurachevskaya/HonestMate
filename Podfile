@@ -6,6 +6,7 @@ def firebase_pods
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
+  pod 'Firebase/RemoteConfig'
 end
 
 def helpers_pods

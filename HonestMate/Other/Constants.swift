@@ -11,4 +11,9 @@ enum Constants {
     enum Keys {
         static let isLoggedIn = "isLoggedIn"
     }
+    
+    enum FeatureFlagKeys: String {
+        case loginConfig = "loginConfig"
+    }
+    
 }

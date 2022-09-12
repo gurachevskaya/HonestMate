@@ -6,7 +6,16 @@
 //
 
 import SwiftUI
+import Combine
 
-class AppState: ObservableObject {
+protocol AnyObservableObject: AnyObject {
+    var objectWillChange: ObservableObjectPublisher { get }
+}
+
+protocol AppStateProtocol: AnyObservableObject {
+    var isLoggedIn: Bool { get }
+}
+
+class AppState: AppStateProtocol, ObservableObject {
     @AppStorage(Constants.Keys.isLoggedIn) var isLoggedIn = true
 }

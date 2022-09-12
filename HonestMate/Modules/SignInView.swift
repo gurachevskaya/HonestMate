@@ -10,7 +10,7 @@ import Resolver
 
 struct SignInView: View {
     
-    @ObservedObject var viewModel = SignInViewModel(authService: Resolver.resolve())
+    @ObservedObject var viewModel: SignInViewModel
     
     var title: some View {
         Text(R.string.localizable.honestmate())
@@ -70,6 +70,10 @@ struct SignInView: View {
                     confirmPasswordTextField
                 }
                 
+                if viewModel.loginConfig?.appleEnabled == true {
+                    Text("apple option")
+                }
+                
                 actionButton
                 
                 Spacer()
@@ -98,12 +102,7 @@ struct SignInView: View {
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            SignInView(viewModel: SignInViewModel(authService: Resolver.resolve()))
-                .environment(\.colorScheme, .light)
-            
-            SignInView(viewModel: SignInViewModel(authService: Resolver.resolve()))
-                .preferredColorScheme(.dark)
-                .environment(\.colorScheme, .dark)
+            SignInView(viewModel: SignInViewModel(authService: Resolver.resolve(), loginConfig: nil))
         }
     }
 }

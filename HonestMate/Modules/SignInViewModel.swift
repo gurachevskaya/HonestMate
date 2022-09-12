@@ -12,17 +12,15 @@ import Combine
 
 class SignInViewModel: ObservableObject {
     
-    init(authService: AuthServiceProtocol) {
+    init(authService: AuthServiceProtocol, loginConfig: LoginConfig?) {
         self.authService = authService
+        self.loginConfig = loginConfig
         
         setupPipeline()
-        
-        if authService.currentUser != nil {
-            isShowingMyEvents = true
-        }
     }
     
     private var authService: AuthServiceProtocol
+    var loginConfig: LoginConfig?
     
     enum SignInRoute {
         case facebook, apple, google, mail

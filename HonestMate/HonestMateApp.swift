@@ -12,8 +12,6 @@ import Resolver
 @main
 struct HonestMateApp: App {
     
-    @ObservedObject private var appState = AppState()
-
     init() {
         FirebaseApp.configure()
     }
@@ -21,11 +19,12 @@ struct HonestMateApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
-                if appState.isLoggedIn {
-                    MyEventsView(viewModel: MyEventsViewModel(authService: Resolver.resolve()))
-                } else {
-                    SignInView(viewModel: SignInViewModel(authService: Resolver.resolve()))
-                }
+                SplashView(
+                    viewModel: SplashViewModel(
+                        remoteConfigService: Resolver.resolve(),
+                        appState: Resolver.resolve()
+                    )
+                )
             }
         }
     }
