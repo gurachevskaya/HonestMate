@@ -22,9 +22,15 @@
 		1858E14F28C6061500521ED8 /* TextFieldCustomRoundStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E14E28C6061400521ED8 /* TextFieldCustomRoundStyle.swift */; };
 		1858E15228C60EBA00521ED8 /* MyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E15128C60EBA00521ED8 /* MyEventsView.swift */; };
 		1858E15428C60F0B00521ED8 /* MyEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E15328C60F0B00521ED8 /* MyEventsViewModel.swift */; };
+		185F421528CB44A700628DDC /* RemoteConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F421428CB44A700628DDC /* RemoteConfigService.swift */; };
+		185F421B28CB867B00628DDC /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F421A28CB867B00628DDC /* SplashViewModel.swift */; };
+		185F421D28CB8F1000628DDC /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F421C28CB8F1000628DDC /* AppConfig.swift */; };
+		185F422628CF350000628DDC /* appConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 185F422528CF34FF00628DDC /* appConfig.plist */; };
+		185F422828CF855B00628DDC /* EnvironmentConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F422728CF855B00628DDC /* EnvironmentConstants.swift */; };
 		186FD74528C79D39004B5156 /* AuthPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186FD74428C79D39004B5156 /* AuthPublisher.swift */; };
 		18BA855528CA3E3300F8DC2A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA855428CA3E3300F8DC2A /* Constants.swift */; };
 		18BA855728CA48B700F8DC2A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA855628CA48B700F8DC2A /* AppState.swift */; };
+		18BA855A28CB301600F8DC2A /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA855928CB301600F8DC2A /* SplashView.swift */; };
 		18F728D728B91057002D071F /* HonestMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D628B91057002D071F /* HonestMateApp.swift */; };
 		18F728D928B91057002D071F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D828B91057002D071F /* ContentView.swift */; };
 		18F728DB28B91059002D071F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F728DA28B91059002D071F /* Assets.xcassets */; };
@@ -74,9 +80,15 @@
 		1858E14E28C6061400521ED8 /* TextFieldCustomRoundStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCustomRoundStyle.swift; sourceTree = "<group>"; };
 		1858E15128C60EBA00521ED8 /* MyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsView.swift; sourceTree = "<group>"; };
 		1858E15328C60F0B00521ED8 /* MyEventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsViewModel.swift; sourceTree = "<group>"; };
+		185F421428CB44A700628DDC /* RemoteConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigService.swift; sourceTree = "<group>"; };
+		185F421A28CB867B00628DDC /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		185F421C28CB8F1000628DDC /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		185F422528CF34FF00628DDC /* appConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = appConfig.plist; sourceTree = "<group>"; };
+		185F422728CF855B00628DDC /* EnvironmentConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentConstants.swift; sourceTree = "<group>"; };
 		186FD74428C79D39004B5156 /* AuthPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPublisher.swift; sourceTree = "<group>"; };
 		18BA855428CA3E3300F8DC2A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		18BA855628CA48B700F8DC2A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		18BA855928CB301600F8DC2A /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		18F728D328B91057002D071F /* HonestMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HonestMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F728D628B91057002D071F /* HonestMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateApp.swift; sourceTree = "<group>"; };
 		18F728D828B91057002D071F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -135,6 +147,8 @@
 				184791DB28C0CCCB00BF9717 /* GoogleService-Info.plist */,
 				184791F128C1F8BB00BF9717 /* Localizable.strings */,
 				18BA855428CA3E3300F8DC2A /* Constants.swift */,
+				185F422528CF34FF00628DDC /* appConfig.plist */,
+				185F422728CF855B00628DDC /* EnvironmentConstants.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -142,9 +156,9 @@
 		184791E028C0F13500BF9717 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				18BA855828CB2FFF00F8DC2A /* Splash */,
 				1858E15028C60E8D00521ED8 /* MyEvents */,
-				184791E128C0F14C00BF9717 /* SignInView.swift */,
-				184791E328C0F16C00BF9717 /* SignInViewModel.swift */,
+				185F422928CF882300628DDC /* SignIn */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -179,6 +193,8 @@
 			children = (
 				184791F328C206C400BF9717 /* AuthService.swift */,
 				18BA855628CA48B700F8DC2A /* AppState.swift */,
+				185F421428CB44A700628DDC /* RemoteConfigService.swift */,
+				185F422428CB952600628DDC /* Cores */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -187,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				1858A1BC28C21A940039246A /* AlertItem.swift */,
+				185F421C28CB8F1000628DDC /* AppConfig.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,12 +225,37 @@
 			path = MyEvents;
 			sourceTree = "<group>";
 		};
+		185F422428CB952600628DDC /* Cores */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cores;
+			sourceTree = "<group>";
+		};
+		185F422928CF882300628DDC /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				184791E128C0F14C00BF9717 /* SignInView.swift */,
+				184791E328C0F16C00BF9717 /* SignInViewModel.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
 		186FD74328C79D2D004B5156 /* Publishers */ = {
 			isa = PBXGroup;
 			children = (
 				186FD74428C79D39004B5156 /* AuthPublisher.swift */,
 			);
 			path = Publishers;
+			sourceTree = "<group>";
+		};
+		18BA855828CB2FFF00F8DC2A /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				18BA855928CB301600F8DC2A /* SplashView.swift */,
+				185F421A28CB867B00628DDC /* SplashViewModel.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		18F728CA28B91056002D071F = {
@@ -446,6 +488,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				184791F228C1F8BB00BF9717 /* Localizable.strings in Resources */,
+				185F422628CF350000628DDC /* appConfig.plist in Resources */,
 				18F728DE28B91059002D071F /* Preview Assets.xcassets in Resources */,
 				184791DC28C0CCCB00BF9717 /* GoogleService-Info.plist in Resources */,
 				18F728DB28B91059002D071F /* Assets.xcassets in Resources */,
@@ -597,18 +640,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				1858E14F28C6061500521ED8 /* TextFieldCustomRoundStyle.swift in Sources */,
+				185F421D28CB8F1000628DDC /* AppConfig.swift in Sources */,
 				18BA855528CA3E3300F8DC2A /* Constants.swift in Sources */,
 				18F728D928B91057002D071F /* ContentView.swift in Sources */,
 				18F7290528BCB383002D071F /* Gemfile in Sources */,
 				1858E15228C60EBA00521ED8 /* MyEventsView.swift in Sources */,
 				18F7290A28BCB4E6002D071F /* Scanfile in Sources */,
 				184791F628C2144000BF9717 /* LoginTextField.swift in Sources */,
+				18BA855A28CB301600F8DC2A /* SplashView.swift in Sources */,
 				184791F428C206C500BF9717 /* AuthService.swift in Sources */,
+				185F421528CB44A700628DDC /* RemoteConfigService.swift in Sources */,
 				18F728D728B91057002D071F /* HonestMateApp.swift in Sources */,
 				184791E428C0F16C00BF9717 /* SignInViewModel.swift in Sources */,
 				1858A1BD28C21A940039246A /* AlertItem.swift in Sources */,
 				18BA855728CA48B700F8DC2A /* AppState.swift in Sources */,
+				185F422828CF855B00628DDC /* EnvironmentConstants.swift in Sources */,
 				1858E15428C60F0B00521ED8 /* MyEventsViewModel.swift in Sources */,
+				185F421B28CB867B00628DDC /* SplashViewModel.swift in Sources */,
 				184791E828C1090000BF9717 /* RSwift+Ext.swift in Sources */,
 				184791EB28C109E400BF9717 /* RoundedTextButton.swift in Sources */,
 				184791E228C0F14C00BF9717 /* SignInView.swift in Sources */,

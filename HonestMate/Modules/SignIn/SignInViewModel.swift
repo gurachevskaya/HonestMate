@@ -12,18 +12,19 @@ import Combine
 
 class SignInViewModel: ObservableObject {
     
-    init(authService: AuthServiceProtocol) {
+    init(authService: AuthServiceProtocol, remoteConfigService: RemoteConfigServiceProtocol) {
         self.authService = authService
+        self.remoteConfigService = remoteConfigService
         
         setupPipeline()
-        
-        if authService.currentUser != nil {
-            isShowingMyEvents = true
-        }
     }
     
     private var authService: AuthServiceProtocol
+    private var remoteConfigService: RemoteConfigServiceProtocol
     
+    var loginConfig: LoginConfig? { remoteConfigService.appConfig?.loginConfig }
+    var isloginButtonPink: Bool? { remoteConfigService.appConfig?.isloginButtonPink }
+
     enum SignInRoute {
         case facebook, apple, google, mail
     }
@@ -42,8 +43,8 @@ class SignInViewModel: ObservableObject {
         }
     }
     
-    @Published var email = ""
-    @Published var password = ""
+    @Published var email = "gurachevich@mail.ru"
+    @Published var password = "123456aa"
     @Published var confirmPassword = ""
     @Published var agreeTerms = true
     @Published var actionButtonEnabled = false

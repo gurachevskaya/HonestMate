@@ -8,7 +8,12 @@
 import Foundation
 
 enum Constants {
-    enum Keys {
+    enum StorageKeys {
         static let isLoggedIn = "isLoggedIn"
+    }
+    
+    enum FeatureFlagKeys: String {
+        case loginConfig = "loginConfig"
+        case isloginButtonPink = "isloginButtonPink"
     }
 }

@@ -10,7 +10,7 @@ import Resolver
 
 struct SignInView: View {
     
-    @ObservedObject var viewModel = SignInViewModel(authService: Resolver.resolve())
+    @ObservedObject var viewModel: SignInViewModel
     
     var title: some View {
         Text(R.string.localizable.honestmate())
@@ -42,11 +42,18 @@ struct SignInView: View {
             .modifier(TextFieldCustomRoundStyle())
     }
     
+    var signInButtons: some View {
+        SignInButtonsStack(viewModel: viewModel)
+    }
+    
     var actionButton: some View {
         Button {
             viewModel.actionButtonTapped()
         } label: {
-            RoundedTextButton(title: viewModel.selected == .login ?  R.string.localizable.signinButtonTitleSignin() : R.string.localizable.signinButtonTitleSighup(), style: .blue)
+            RoundedTextButton(
+                title: viewModel.selected == .login ?  R.string.localizable.signinButtonTitleSignin() : R.string.localizable.signinButtonTitleSighup(),
+                style: viewModel.isloginButtonPink == true ? .pink : .blue
+            )
         }
         .padding(.top, 20)
         .disabled(!viewModel.actionButtonEnabled)
@@ -69,6 +76,9 @@ struct SignInView: View {
                 if viewModel.selected == .register {
                     confirmPasswordTextField
                 }
+                
+                signInButtons
+                    .padding(.top, 30)
                 
                 actionButton
                 
@@ -95,15 +105,41 @@ struct SignInView: View {
     }
 }
 
+struct SignInButtonsStack: View {
+    
+    @ObservedObject private(set) var viewModel: SignInViewModel
+    
+    var body: some View {
+        HStack(spacing: 15) {
+            if viewModel.loginConfig?.facebookEnabled == true {
+                Button(
+                    action: {  },
+                    label: { R.image.facebookLogo.image })
+            }
+            if viewModel.loginConfig?.appleEnabled == true {
+                Button(
+                    action: {  },
+                    label: { R.image.appleLogo.image })
+            }
+            if viewModel.loginConfig?.googleEnabled == true {
+                Button(
+                    action: {  },
+                    label: { R.image.googleLogo.image })
+            }
+        }
+    }
+}
+
+
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            SignInView(viewModel: SignInViewModel(authService: Resolver.resolve()))
-                .environment(\.colorScheme, .light)
-            
-            SignInView(viewModel: SignInViewModel(authService: Resolver.resolve()))
-                .preferredColorScheme(.dark)
-                .environment(\.colorScheme, .dark)
+            SignInView(
+                viewModel: SignInViewModel(
+                    authService: Resolver.resolve(),
+                    remoteConfigService: Resolver.resolve()
+                )
+            )
         }
     }
 }

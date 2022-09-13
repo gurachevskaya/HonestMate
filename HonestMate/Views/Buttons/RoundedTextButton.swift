@@ -12,6 +12,7 @@ struct RoundedTextButton: View {
     
     enum RoundedButtonStyle {
         case blue
+        case pink
     }
 
     var title: String
@@ -22,12 +23,15 @@ struct RoundedTextButton: View {
         switch style {
         case .blue:
             return Color.blue
+            
+        case .pink:
+            return Color.pink
         }
     }
     
     private var titleColor: Color {
         switch style {
-        case .blue:
+        case .blue, .pink:
             return .white
         }
     }

@@ -23,6 +23,5 @@ class MyEventsViewModel: ObservableObject {
         authService.logout()
             .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
             .store(in: &cancellables)
-
     }
 }
