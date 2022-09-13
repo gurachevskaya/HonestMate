@@ -43,8 +43,8 @@ class SignInViewModel: ObservableObject {
         }
     }
     
-    @Published var email = "gurachevich@mail.ru"
-    @Published var password = "123456aa"
+    @Published var email = EnvironmentConstants.isDebug ? "gurachevich@mail.ru" : ""
+    @Published var password = EnvironmentConstants.isDebug ? "123456aa" : ""
     @Published var confirmPassword = ""
     @Published var agreeTerms = true
     @Published var actionButtonEnabled = false
@@ -84,9 +84,7 @@ class SignInViewModel: ObservableObject {
                     alertItem = alertItem(for: error)
                 case .finished: break
                 }
-            } receiveValue: { [unowned self] _ in
-//                isShowingMyEvents = true
-            }
+            } receiveValue: { _ in }
             .store(in: &cancellables)
     }
     
@@ -102,9 +100,7 @@ class SignInViewModel: ObservableObject {
                     alertItem = alertItem(for: error)
                 case .finished: break
                 }
-            } receiveValue: { [unowned self] _ in
-//                isShowingMyEvents = true
-            }
+            } receiveValue: { _ in }
             .store(in: &cancellables)
     }
     

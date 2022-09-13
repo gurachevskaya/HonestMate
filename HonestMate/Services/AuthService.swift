@@ -41,7 +41,6 @@ final class AuthService: AuthServiceProtocol {
         return Future<Void, AuthError> { promise in
             Auth.auth().signIn(withEmail: email, password: password) { [unowned self] result, error in
                 if let error = error {
-                    print(error)
                     promise(.failure(mapError(error)))
                 } else if let _ = result?.user {
                     isLoggedIn = true
@@ -56,7 +55,6 @@ final class AuthService: AuthServiceProtocol {
         return Future<Void, AuthError> { [unowned self] promise in
             Auth.auth().createUser(withEmail: email, password: password) { [unowned self] result, error in
                 if let error = error {
-                    print(error)
                     promise(.failure(mapError(error)))
                 } else if let _ = result?.user {
                     isLoggedIn = true
