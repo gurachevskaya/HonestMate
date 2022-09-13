@@ -26,7 +26,7 @@ protocol AuthServiceProtocol {
 }
 
 final class AuthService: AuthServiceProtocol {
-    @AppStorage(Constants.Keys.isLoggedIn) private var isLoggedIn = true
+    @AppStorage(Constants.StorageKeys.isLoggedIn) private var isLoggedIn = true
 
     var currentUser: User? { Auth.auth().currentUser }
     

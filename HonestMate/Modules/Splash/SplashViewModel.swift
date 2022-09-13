@@ -24,7 +24,6 @@ class SplashViewModel: ObservableObject {
     }
     
     private var cancellables: Set<AnyCancellable> = []
-    @Published var loginConfig: LoginConfig?
     
     @Published private(set) var isLoading: Bool = true
     @Published var showMainFlow: Bool = false
@@ -54,12 +53,10 @@ class SplashViewModel: ObservableObject {
     }
     
     func loadConfig() {
-        remoteConfigService.loginConfigPublisher
-            .sink(receiveCompletion: { [unowned self] completion in
+        remoteConfigService.appConfigPublisher
+            .sink(receiveCompletion: { [unowned self] _ in
                 isLoading = false
-            }, receiveValue: { [unowned self] value in
-                loginConfig = value
-            })
+            }, receiveValue: { _ in })
             .store(in: &cancellables)
     }
 }

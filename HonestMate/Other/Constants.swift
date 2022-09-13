@@ -14,5 +14,6 @@ enum Constants {
     
     enum FeatureFlagKeys: String {
         case loginConfig = "loginConfig"
+        case isloginButtonPink = "isloginButtonPink"
     }
 }

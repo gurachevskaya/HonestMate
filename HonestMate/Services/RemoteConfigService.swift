@@ -9,7 +9,9 @@ import Firebase
 import Combine
 
 protocol RemoteConfigServiceProtocol {
-    var loginConfigPublisher: AnyPublisher<LoginConfig, Error> { get }
+    var appConfig: AppConfig? { get }
+
+    var appConfigPublisher: AnyPublisher<AppConfig, Error> { get }
 }
 
 class RemoteConfigService: RemoteConfigServiceProtocol, ObservableObject {
@@ -22,9 +24,11 @@ class RemoteConfigService: RemoteConfigServiceProtocol, ObservableObject {
         loadDefaultValues()
         configSettings()
     }
+    
+    var appConfig: AppConfig?
             
-    var loginConfigPublisher: AnyPublisher<LoginConfig, Error> {
-        return loginPublisher()
+    var appConfigPublisher: AnyPublisher<AppConfig, Error> {
+        return configPublisher()
     }
     
     private func loadDefaultValues() {
@@ -50,6 +54,12 @@ class RemoteConfigService: RemoteConfigServiceProtocol, ObservableObject {
                 if let error = error {
                     promise(.failure(error))
                 } else {
+                    if result == .successFetchedFromRemote {
+                        print("fetched from remote")
+                    }
+                    if result == .successUsingPreFetchedData {
+                        print("pre fetched data")
+                    }
                     promise(.success(result))
                 }
             }
@@ -57,16 +67,29 @@ class RemoteConfigService: RemoteConfigServiceProtocol, ObservableObject {
         .eraseToAnyPublisher()
     }
     
-    private func loginPublisher() -> AnyPublisher<LoginConfig, Error> {
+    private func configPublisher() -> AnyPublisher<AppConfig, Error> {
         fetchAndActivate()
-            .map { [unowned self] _ -> String in
-                remoteConfig.configValue(forKey: Constants.FeatureFlagKeys.loginConfig.rawValue).stringValue ?? ""
+            .map { [unowned self] _ -> AppConfig in
+                mapRemoteConfig()
             }
-            .map { Data($0.utf8) }
-            .decode(
-                type: LoginConfig.self,
-                decoder: JSONDecoder()
-            )
+            .handleEvents(receiveOutput: { [unowned self] config in
+                appConfig = config
+            })
             .eraseToAnyPublisher()
+    }
+    
+    private func mapRemoteConfig() -> AppConfig {
+        let isloginButtonPink = remoteConfig.configValue(forKey: Constants.FeatureFlagKeys.isloginButtonPink.rawValue).boolValue
+        
+        let loginConfigString = remoteConfig.configValue(forKey: Constants.FeatureFlagKeys.loginConfig.rawValue).stringValue ?? ""
+        let loginConfigData = Data(loginConfigString.utf8)
+        let loginConfig = try? JSONDecoder().decode(LoginConfig.self, from: loginConfigData)
+        
+        let appConfig = AppConfig(
+            loginConfig: loginConfig,
+            isloginButtonPink: isloginButtonPink
+        )
+        
+        return appConfig
     }
 }

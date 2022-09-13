@@ -27,7 +27,7 @@ struct SplashView: View {
                         SignInView(
                             viewModel: SignInViewModel(
                                 authService: Resolver.resolve(),
-                                loginConfig: viewModel.loginConfig
+                                remoteConfigService: Resolver.resolve()
                             )
                         )
                     }

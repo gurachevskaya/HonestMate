@@ -50,7 +50,10 @@ struct SignInView: View {
         Button {
             viewModel.actionButtonTapped()
         } label: {
-            RoundedTextButton(title: viewModel.selected == .login ?  R.string.localizable.signinButtonTitleSignin() : R.string.localizable.signinButtonTitleSighup(), style: .blue)
+            RoundedTextButton(
+                title: viewModel.selected == .login ?  R.string.localizable.signinButtonTitleSignin() : R.string.localizable.signinButtonTitleSighup(),
+                style: viewModel.isloginButtonPink == true ? .pink : .blue
+            )
         }
         .padding(.top, 20)
         .disabled(!viewModel.actionButtonEnabled)
@@ -131,7 +134,12 @@ struct SignInButtonsStack: View {
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            SignInView(viewModel: SignInViewModel(authService: Resolver.resolve(), loginConfig: nil))
+            SignInView(
+                viewModel: SignInViewModel(
+                    authService: Resolver.resolve(),
+                    remoteConfigService: Resolver.resolve()
+                )
+            )
         }
     }
 }

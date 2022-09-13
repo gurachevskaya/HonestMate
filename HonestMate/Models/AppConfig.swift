@@ -8,7 +8,8 @@
 import Foundation
 
 struct AppConfig: Codable {
-    let loginConfig: LoginConfig
+    let loginConfig: LoginConfig?
+    let isloginButtonPink: Bool
 }
 
 struct LoginConfig: Codable {

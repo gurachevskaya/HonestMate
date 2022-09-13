@@ -17,5 +17,5 @@ protocol AppStateProtocol: AnyObservableObject {
 }
 
 class AppState: AppStateProtocol, ObservableObject {
-    @AppStorage(Constants.Keys.isLoggedIn) var isLoggedIn = true
+    @AppStorage(Constants.StorageKeys.isLoggedIn) var isLoggedIn = true
 }

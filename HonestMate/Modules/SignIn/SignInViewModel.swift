@@ -12,16 +12,19 @@ import Combine
 
 class SignInViewModel: ObservableObject {
     
-    init(authService: AuthServiceProtocol, loginConfig: LoginConfig?) {
+    init(authService: AuthServiceProtocol, remoteConfigService: RemoteConfigServiceProtocol) {
         self.authService = authService
-        self.loginConfig = loginConfig
+        self.remoteConfigService = remoteConfigService
         
         setupPipeline()
     }
     
     private var authService: AuthServiceProtocol
-    var loginConfig: LoginConfig?
+    private var remoteConfigService: RemoteConfigServiceProtocol
     
+    var loginConfig: LoginConfig? { remoteConfigService.appConfig?.loginConfig }
+    var isloginButtonPink: Bool? { remoteConfigService.appConfig?.isloginButtonPink }
+
     enum SignInRoute {
         case facebook, apple, google, mail
     }
