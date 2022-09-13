@@ -68,5 +68,20 @@ struct AlertContext {
         title: Text(R.string.localizable.alertUserNotFoundTitle()),
         message: Text(R.string.localizable.alertUserNotFoundMessage())
     )
+    
+    static let invalidEmail = AlertItem(
+        title: Text(R.string.localizable.alertInvalidEmailErrorTitle()),
+        message: Text(R.string.localizable.alertInvalidEmailErrorMessage())
+    )
+    
+    static let wrondPassword = AlertItem(
+        title: Text(R.string.localizable.alertWrongPasswordErrorTitle()),
+        message: Text(R.string.localizable.alertWrongPasswordErrorMessage())
+    )
+    
+    static let userDisabled = AlertItem(
+        title: Text(R.string.localizable.alertUserDisabledErrorTitle()),
+        message: Text(R.string.localizable.alertUserDisabledErrorMessage())
+    )
 }
 

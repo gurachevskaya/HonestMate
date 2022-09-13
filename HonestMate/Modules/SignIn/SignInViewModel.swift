@@ -116,6 +116,12 @@ class SignInViewModel: ObservableObject {
             return AlertContext.alreadyInUse
         case .userNotFound:
             return AlertContext.userNotFound
+        case .invalidEmail:
+            return AlertContext.invalidEmail
+        case .wrongPassword:
+            return AlertContext.wrondPassword
+        case .userDisabled:
+            return AlertContext.userDisabled
         case .inner:
             return AlertContext.innerError
         }

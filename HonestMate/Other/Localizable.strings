@@ -30,6 +30,15 @@
 "alert.user.not.found.title" = "Sign In Error";
 "alert.user.not.found.message" = "User with this email doesn't exist.";
 
+"alert.invalid.email.error.title" = "Something went wrong";
+"alert.invalid.email.error.message" = "Your email address appears to be malformed.";
+
+"alert.wrong.password.error.title" = "Something went wrong";
+"alert.wrong.password.error.message" = "Your password is wrong.";
+
+"alert.user.disabled.error.title" = "Something went wrong";
+"alert.user.disabled.error.message" = "User with this email has been disabled.";
+
 // MARK: Sign in
 
 "signin.email" = "Email";

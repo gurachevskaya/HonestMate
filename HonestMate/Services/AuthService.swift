@@ -13,6 +13,9 @@ enum AuthError: Error {
     case networkError
     case alreadyInUse
     case userNotFound
+    case invalidEmail
+    case wrongPassword
+    case userDisabled
     case inner(String)
 }
 
@@ -83,12 +86,18 @@ final class AuthService: AuthServiceProtocol {
             let errorCode = AuthErrorCode(_nsError: nserror)
             
             switch errorCode.code {
+            case .invalidEmail:
+                return .invalidEmail
+            case .wrongPassword:
+                return .wrongPassword
+            case .userDisabled:
+                return .userDisabled
             case .emailAlreadyInUse, .credentialAlreadyInUse, .accountExistsWithDifferentCredential:
                 return .alreadyInUse
-            case .networkError:
-                return .networkError
             case .userNotFound:
                 return .userNotFound
+            case .networkError:
+                return .networkError
             default:
                 return .inner(error.localizedDescription)
             }
