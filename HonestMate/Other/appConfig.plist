@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>isloginButtonPink</key>
+	<true/>
 	<key>loginConfig</key>
 	<string>{&quot;facebookEnabled&quot;: true, &quot;googleEnabled&quot;: true, &quot;appleEnabled&quot;: true}</string>
 </dict>

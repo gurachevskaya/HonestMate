@@ -70,18 +70,40 @@ class RemoteConfigService: RemoteConfigServiceProtocol, ObservableObject {
     private func configPublisher() -> AnyPublisher<Void, Error> {
         fetchAndActivate()
             .map { _ in return () }
-            .handleEvents(receiveOutput: { [unowned self] config in
-                let mappedConfig = mapRemoteConfig()
-                appConfig = mappedConfig
-            })
+            .handleEvents(
+                receiveCompletion: { [unowned self] completion in
+                    switch completion {
+                    case .failure:
+                        let mappedConfig = mapDefaultConfig()
+                        appConfig = mappedConfig
+                        
+                    case .finished:
+                        let mappedConfig = mapRemoteConfig()
+                        appConfig = mappedConfig
+                    }
+                }
+            )
             .eraseToAnyPublisher()
+    }
+    
+    private func mapDefaultConfig() -> AppConfig {
+        let isloginButtonPink = remoteConfig.defaultValue(forKey: Constants.FeatureFlagKeys.isloginButtonPink.rawValue)?.boolValue ?? Bool()
+        
+        let loginConfigData = remoteConfig.defaultValue(forKey: Constants.FeatureFlagKeys.loginConfig.rawValue)?.dataValue ?? Data()
+        let loginConfig = try? JSONDecoder().decode(LoginConfig.self, from: loginConfigData)
+        
+        let appConfig = AppConfig(
+            loginConfig: loginConfig,
+            isloginButtonPink: isloginButtonPink
+        )
+        
+        return appConfig
     }
     
     private func mapRemoteConfig() -> AppConfig {
         let isloginButtonPink = remoteConfig.configValue(forKey: Constants.FeatureFlagKeys.isloginButtonPink.rawValue).boolValue
         
-        let loginConfigString = remoteConfig.configValue(forKey: Constants.FeatureFlagKeys.loginConfig.rawValue).stringValue ?? ""
-        let loginConfigData = Data(loginConfigString.utf8)
+        let loginConfigData = remoteConfig.configValue(forKey: Constants.FeatureFlagKeys.loginConfig.rawValue).dataValue
         let loginConfig = try? JSONDecoder().decode(LoginConfig.self, from: loginConfigData)
         
         let appConfig = AppConfig(
