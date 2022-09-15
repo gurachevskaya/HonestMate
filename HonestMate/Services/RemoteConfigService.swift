@@ -87,9 +87,9 @@ class RemoteConfigService: RemoteConfigServiceProtocol, ObservableObject {
     }
     
     private func mapDefaultConfig() -> AppConfig {
-        let isloginButtonPink = remoteConfig.defaultValue(forKey: Constants.FeatureFlagKeys.isloginButtonPink.rawValue)?.boolValue ?? Bool()
+        let isloginButtonPink = remoteConfig.defaultValue(forKey: Constants.FeatureFlagKeys.isloginButtonPink)?.boolValue ?? Bool()
         
-        let loginConfigData = remoteConfig.defaultValue(forKey: Constants.FeatureFlagKeys.loginConfig.rawValue)?.dataValue ?? Data()
+        let loginConfigData = remoteConfig.defaultValue(forKey: Constants.FeatureFlagKeys.loginConfig)?.dataValue ?? Data()
         let loginConfig = try? JSONDecoder().decode(LoginConfig.self, from: loginConfigData)
         
         let appConfig = AppConfig(
@@ -101,9 +101,9 @@ class RemoteConfigService: RemoteConfigServiceProtocol, ObservableObject {
     }
     
     private func mapRemoteConfig() -> AppConfig {
-        let isloginButtonPink = remoteConfig.configValue(forKey: Constants.FeatureFlagKeys.isloginButtonPink.rawValue).boolValue
+        let isloginButtonPink = remoteConfig.configValue(forKey: Constants.FeatureFlagKeys.isloginButtonPink).boolValue
         
-        let loginConfigData = remoteConfig.configValue(forKey: Constants.FeatureFlagKeys.loginConfig.rawValue).dataValue
+        let loginConfigData = remoteConfig.configValue(forKey: Constants.FeatureFlagKeys.loginConfig).dataValue
         let loginConfig = try? JSONDecoder().decode(LoginConfig.self, from: loginConfigData)
         
         let appConfig = AppConfig(

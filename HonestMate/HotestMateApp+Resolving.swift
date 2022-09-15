@@ -6,8 +6,10 @@
 //
 
 import Resolver
+import Foundation
 
 extension Resolver: ResolverRegistering {
+    
     public static func registerAllServices() {
         registerCores()
         registerServices()
@@ -17,8 +19,14 @@ extension Resolver: ResolverRegistering {
     }
     
     private static func registerServices() {
-        register { AuthService() as AuthServiceProtocol }.scope(.application)
-        register { AppState() as AppStateProtocol }.scope(.application)
-        register { RemoteConfigService() as RemoteConfigServiceProtocol }.scope(.application)
+        if ProcessInfo.processInfo.arguments.contains("testing") {
+            register { AuthServiceMock() as AuthServiceProtocol }.scope(.application)
+            register { AppStateMock() as AppStateProtocol }.scope(.application)
+            register { RemoteConfigMock() as RemoteConfigServiceProtocol }.scope(.application)
+        } else {
+            register { AuthService() as AuthServiceProtocol }.scope(.application)
+            register { AppState() as AppStateProtocol }.scope(.application)
+            register { RemoteConfigService() as RemoteConfigServiceProtocol }.scope(.application)
+        }
     }
 }
