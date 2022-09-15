@@ -95,13 +95,6 @@ struct SignInView: View {
                       message: alertItem.message,
                       dismissButton: alertItem.dismissButton)
             }
-            .fullScreenCover(isPresented: $viewModel.isShowingMyEvents) {
-                MyEventsView(
-                    viewModel: MyEventsViewModel(
-                        authService: Resolver.resolve()
-                    )
-                )
-            }
 
             if viewModel.isLoading {
                 ProgressView().scaleEffect(2)

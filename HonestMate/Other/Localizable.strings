@@ -39,6 +39,12 @@
 "alert.user.disabled.error.title" = "Something went wrong";
 "alert.user.disabled.error.message" = "User with this email has been disabled.";
 
+// MARK: Tabs
+
+"tab.history" = "History";
+"tab.home" = "Home";
+"tab.settings" = "Settings";
+
 // MARK: Sign in
 
 "signin.email" = "Email";

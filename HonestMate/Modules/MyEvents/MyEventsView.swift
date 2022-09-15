@@ -13,16 +13,12 @@ struct MyEventsView: View {
     @ObservedObject var viewModel: MyEventsViewModel
     
     var body: some View {
-        Button {
-            viewModel.logout()
-        } label: {
-            Text("Logout")
-        }
+        Text("Home")
     }
 }
 
 struct MyEventsView_Previews: PreviewProvider {
     static var previews: some View {
-        MyEventsView(viewModel: MyEventsViewModel(authService: Resolver.resolve()))
+        MyEventsView(viewModel: MyEventsViewModel())
     }
 }

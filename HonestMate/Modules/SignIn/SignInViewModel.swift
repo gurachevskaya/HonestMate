@@ -51,7 +51,6 @@ class SignInViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var alertItem: AlertItem?
     @Published var selected: PickerCase = .login
-    @Published var isShowingMyEvents = false
     
     private var cancellables: Set<AnyCancellable> = []
     

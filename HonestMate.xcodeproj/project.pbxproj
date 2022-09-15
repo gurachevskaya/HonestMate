@@ -32,6 +32,10 @@
 		185F423028D21F7800628DDC /* RemoteConfigMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F422F28D21F7800628DDC /* RemoteConfigMock.swift */; };
 		185F423228D31C1000628DDC /* AuthServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F423128D31C1000628DDC /* AuthServiceMock.swift */; };
 		185F423428D323BE00628DDC /* AppStateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F423328D323BE00628DDC /* AppStateMock.swift */; };
+		185F423928D34DD700628DDC /* HonestMateTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F423828D34DD700628DDC /* HonestMateTabView.swift */; };
+		185F423C28D34E6F00628DDC /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F423B28D34E6F00628DDC /* MyProfileView.swift */; };
+		185F423F28D34E9000628DDC /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F423E28D34E9000628DDC /* HistoryView.swift */; };
+		185F424128D35C2500628DDC /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F424028D35C2500628DDC /* MyProfileViewModel.swift */; };
 		186FD74528C79D39004B5156 /* AuthPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186FD74428C79D39004B5156 /* AuthPublisher.swift */; };
 		18BA855528CA3E3300F8DC2A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA855428CA3E3300F8DC2A /* Constants.swift */; };
 		18BA855728CA48B700F8DC2A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA855628CA48B700F8DC2A /* AppState.swift */; };
@@ -93,6 +97,10 @@
 		185F422F28D21F7800628DDC /* RemoteConfigMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigMock.swift; sourceTree = "<group>"; };
 		185F423128D31C1000628DDC /* AuthServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceMock.swift; sourceTree = "<group>"; };
 		185F423328D323BE00628DDC /* AppStateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateMock.swift; sourceTree = "<group>"; };
+		185F423828D34DD700628DDC /* HonestMateTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateTabView.swift; sourceTree = "<group>"; };
+		185F423B28D34E6F00628DDC /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
+		185F423E28D34E9000628DDC /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		185F424028D35C2500628DDC /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
 		186FD74428C79D39004B5156 /* AuthPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPublisher.swift; sourceTree = "<group>"; };
 		18BA855428CA3E3300F8DC2A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		18BA855628CA48B700F8DC2A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -163,9 +171,12 @@
 		184791E028C0F13500BF9717 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				185F423828D34DD700628DDC /* HonestMateTabView.swift */,
 				18BA855828CB2FFF00F8DC2A /* Splash */,
 				1858E15028C60E8D00521ED8 /* MyEvents */,
 				185F422928CF882300628DDC /* SignIn */,
+				185F423D28D34E7800628DDC /* History */,
+				185F423A28D34E5E00628DDC /* MyProfile */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -257,6 +268,23 @@
 				185F423328D323BE00628DDC /* AppStateMock.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		185F423A28D34E5E00628DDC /* MyProfile */ = {
+			isa = PBXGroup;
+			children = (
+				185F423B28D34E6F00628DDC /* MyProfileView.swift */,
+				185F424028D35C2500628DDC /* MyProfileViewModel.swift */,
+			);
+			path = MyProfile;
+			sourceTree = "<group>";
+		};
+		185F423D28D34E7800628DDC /* History */ = {
+			isa = PBXGroup;
+			children = (
+				185F423E28D34E9000628DDC /* HistoryView.swift */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 		186FD74328C79D2D004B5156 /* Publishers */ = {
@@ -667,15 +695,19 @@
 				18F7290A28BCB4E6002D071F /* Scanfile in Sources */,
 				184791F628C2144000BF9717 /* LoginTextField.swift in Sources */,
 				185F423228D31C1000628DDC /* AuthServiceMock.swift in Sources */,
+				185F423C28D34E6F00628DDC /* MyProfileView.swift in Sources */,
 				18BA855A28CB301600F8DC2A /* SplashView.swift in Sources */,
 				184791F428C206C500BF9717 /* AuthService.swift in Sources */,
 				185F421528CB44A700628DDC /* RemoteConfigService.swift in Sources */,
 				18F728D728B91057002D071F /* HonestMateApp.swift in Sources */,
 				184791E428C0F16C00BF9717 /* SignInViewModel.swift in Sources */,
+				185F423F28D34E9000628DDC /* HistoryView.swift in Sources */,
 				1858A1BD28C21A940039246A /* AlertItem.swift in Sources */,
 				18BA855728CA48B700F8DC2A /* AppState.swift in Sources */,
 				185F423428D323BE00628DDC /* AppStateMock.swift in Sources */,
+				185F423928D34DD700628DDC /* HonestMateTabView.swift in Sources */,
 				185F422828CF855B00628DDC /* EnvironmentConstants.swift in Sources */,
+				185F424128D35C2500628DDC /* MyProfileViewModel.swift in Sources */,
 				1858E15428C60F0B00521ED8 /* MyEventsViewModel.swift in Sources */,
 				185F421B28CB867B00628DDC /* SplashViewModel.swift in Sources */,
 				184791E828C1090000BF9717 /* RSwift+Ext.swift in Sources */,
