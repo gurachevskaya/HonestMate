@@ -15,6 +15,7 @@ struct SignInView: View {
     var title: some View {
         Text(R.string.localizable.honestmate())
             .font(.largeTitle)
+            .accessibilityIdentifier(Constants.AccessebilityIDs.titleLabel)
     }
     
     var picker: some View {
@@ -30,16 +31,19 @@ struct SignInView: View {
             viewModel.email = viewModel.email.trimmingCharacters(in: .whitespacesAndNewlines)
         })
         .modifier(TextFieldCustomRoundStyle())
+        .accessibilityIdentifier(Constants.AccessebilityIDs.emailTextField)
     }
     
     var passwordTextField: some View {
         SecureField(R.string.localizable.signinPassword(), text: $viewModel.password)
             .modifier(TextFieldCustomRoundStyle())
+            .accessibilityIdentifier(Constants.AccessebilityIDs.passwordTextField)
     }
     
     var confirmPasswordTextField: some View {
         SecureField(R.string.localizable.signinPasswordConfirm(), text: $viewModel.confirmPassword)
             .modifier(TextFieldCustomRoundStyle())
+            .accessibilityIdentifier(Constants.AccessebilityIDs.confirmPasswordTextField)
     }
     
     var signInButtons: some View {
@@ -57,6 +61,7 @@ struct SignInView: View {
         }
         .padding(.top, 20)
         .disabled(!viewModel.actionButtonEnabled)
+        .accessibilityIdentifier(Constants.AccessebilityIDs.signInButton)
     }
     
     var body: some View {

@@ -27,6 +27,11 @@
 		185F421D28CB8F1000628DDC /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F421C28CB8F1000628DDC /* AppConfig.swift */; };
 		185F422628CF350000628DDC /* appConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 185F422528CF34FF00628DDC /* appConfig.plist */; };
 		185F422828CF855B00628DDC /* EnvironmentConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F422728CF855B00628DDC /* EnvironmentConstants.swift */; };
+		185F422B28D0DCDE00628DDC /* SignInView_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F422A28D0DCDE00628DDC /* SignInView_UITests.swift */; };
+		185F422C28D0E0E800628DDC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA855428CA3E3300F8DC2A /* Constants.swift */; };
+		185F423028D21F7800628DDC /* RemoteConfigMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F422F28D21F7800628DDC /* RemoteConfigMock.swift */; };
+		185F423228D31C1000628DDC /* AuthServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F423128D31C1000628DDC /* AuthServiceMock.swift */; };
+		185F423428D323BE00628DDC /* AppStateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F423328D323BE00628DDC /* AppStateMock.swift */; };
 		186FD74528C79D39004B5156 /* AuthPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186FD74428C79D39004B5156 /* AuthPublisher.swift */; };
 		18BA855528CA3E3300F8DC2A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA855428CA3E3300F8DC2A /* Constants.swift */; };
 		18BA855728CA48B700F8DC2A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA855628CA48B700F8DC2A /* AppState.swift */; };
@@ -36,7 +41,6 @@
 		18F728DB28B91059002D071F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F728DA28B91059002D071F /* Assets.xcassets */; };
 		18F728DE28B91059002D071F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F728DD28B91059002D071F /* Preview Assets.xcassets */; };
 		18F728E828B91059002D071F /* HonestMateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728E728B91059002D071F /* HonestMateTests.swift */; };
-		18F728F228B91059002D071F /* HonestMateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728F128B91059002D071F /* HonestMateUITests.swift */; };
 		18F728F428B91059002D071F /* HonestMateUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728F328B91059002D071F /* HonestMateUITestsLaunchTests.swift */; };
 		18F7290328BCB2B6002D071F /* pullRequest.yml in Resources */ = {isa = PBXBuildFile; fileRef = 18F7290228BCB2B6002D071F /* pullRequest.yml */; };
 		18F7290528BCB383002D071F /* Gemfile in Sources */ = {isa = PBXBuildFile; fileRef = 18F7290428BCB383002D071F /* Gemfile */; };
@@ -85,6 +89,10 @@
 		185F421C28CB8F1000628DDC /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		185F422528CF34FF00628DDC /* appConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = appConfig.plist; sourceTree = "<group>"; };
 		185F422728CF855B00628DDC /* EnvironmentConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentConstants.swift; sourceTree = "<group>"; };
+		185F422A28D0DCDE00628DDC /* SignInView_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView_UITests.swift; sourceTree = "<group>"; };
+		185F422F28D21F7800628DDC /* RemoteConfigMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigMock.swift; sourceTree = "<group>"; };
+		185F423128D31C1000628DDC /* AuthServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceMock.swift; sourceTree = "<group>"; };
+		185F423328D323BE00628DDC /* AppStateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateMock.swift; sourceTree = "<group>"; };
 		186FD74428C79D39004B5156 /* AuthPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPublisher.swift; sourceTree = "<group>"; };
 		18BA855428CA3E3300F8DC2A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		18BA855628CA48B700F8DC2A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -97,7 +105,6 @@
 		18F728E328B91059002D071F /* HonestMateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HonestMateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F728E728B91059002D071F /* HonestMateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateTests.swift; sourceTree = "<group>"; };
 		18F728ED28B91059002D071F /* HonestMateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HonestMateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		18F728F128B91059002D071F /* HonestMateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateUITests.swift; sourceTree = "<group>"; };
 		18F728F328B91059002D071F /* HonestMateUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		18F7290228BCB2B6002D071F /* pullRequest.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = pullRequest.yml; path = ../../.github/workflows/pullRequest.yml; sourceTree = "<group>"; };
 		18F7290428BCB383002D071F /* Gemfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; };
@@ -191,6 +198,7 @@
 		184791ED28C1F78600BF9717 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				185F423528D3277F00628DDC /* Mocks */,
 				184791F328C206C400BF9717 /* AuthService.swift */,
 				18BA855628CA48B700F8DC2A /* AppState.swift */,
 				185F421428CB44A700628DDC /* RemoteConfigService.swift */,
@@ -239,6 +247,16 @@
 				184791E328C0F16C00BF9717 /* SignInViewModel.swift */,
 			);
 			path = SignIn;
+			sourceTree = "<group>";
+		};
+		185F423528D3277F00628DDC /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				185F423128D31C1000628DDC /* AuthServiceMock.swift */,
+				185F422F28D21F7800628DDC /* RemoteConfigMock.swift */,
+				185F423328D323BE00628DDC /* AppStateMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		186FD74328C79D2D004B5156 /* Publishers */ = {
@@ -322,8 +340,8 @@
 		18F728F028B91059002D071F /* HonestMateUITests */ = {
 			isa = PBXGroup;
 			children = (
-				18F728F128B91059002D071F /* HonestMateUITests.swift */,
 				18F728F328B91059002D071F /* HonestMateUITestsLaunchTests.swift */,
+				185F422A28D0DCDE00628DDC /* SignInView_UITests.swift */,
 			);
 			path = HonestMateUITests;
 			sourceTree = "<group>";
@@ -644,9 +662,11 @@
 				18BA855528CA3E3300F8DC2A /* Constants.swift in Sources */,
 				18F728D928B91057002D071F /* ContentView.swift in Sources */,
 				18F7290528BCB383002D071F /* Gemfile in Sources */,
+				185F423028D21F7800628DDC /* RemoteConfigMock.swift in Sources */,
 				1858E15228C60EBA00521ED8 /* MyEventsView.swift in Sources */,
 				18F7290A28BCB4E6002D071F /* Scanfile in Sources */,
 				184791F628C2144000BF9717 /* LoginTextField.swift in Sources */,
+				185F423228D31C1000628DDC /* AuthServiceMock.swift in Sources */,
 				18BA855A28CB301600F8DC2A /* SplashView.swift in Sources */,
 				184791F428C206C500BF9717 /* AuthService.swift in Sources */,
 				185F421528CB44A700628DDC /* RemoteConfigService.swift in Sources */,
@@ -654,6 +674,7 @@
 				184791E428C0F16C00BF9717 /* SignInViewModel.swift in Sources */,
 				1858A1BD28C21A940039246A /* AlertItem.swift in Sources */,
 				18BA855728CA48B700F8DC2A /* AppState.swift in Sources */,
+				185F423428D323BE00628DDC /* AppStateMock.swift in Sources */,
 				185F422828CF855B00628DDC /* EnvironmentConstants.swift in Sources */,
 				1858E15428C60F0B00521ED8 /* MyEventsViewModel.swift in Sources */,
 				185F421B28CB867B00628DDC /* SplashViewModel.swift in Sources */,
@@ -680,7 +701,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				18F728F428B91059002D071F /* HonestMateUITestsLaunchTests.swift in Sources */,
-				18F728F228B91059002D071F /* HonestMateUITests.swift in Sources */,
+				185F422B28D0DCDE00628DDC /* SignInView_UITests.swift in Sources */,
+				185F422C28D0E0E800628DDC /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -832,6 +854,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -863,6 +886,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -886,7 +910,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7WHGP9VV36;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = huracheuskaya.HonestMateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -907,7 +931,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7WHGP9VV36;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = huracheuskaya.HonestMateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -927,6 +951,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7WHGP9VV36;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = huracheuskaya.HonestMateUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -946,6 +971,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7WHGP9VV36;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = huracheuskaya.HonestMateUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

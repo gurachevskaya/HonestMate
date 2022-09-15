@@ -12,8 +12,16 @@ enum Constants {
         static let isLoggedIn = "isLoggedIn"
     }
     
-    enum FeatureFlagKeys: String {
-        case loginConfig = "loginConfig"
-        case isloginButtonPink = "isloginButtonPink"
+    enum FeatureFlagKeys {
+        static let loginConfig = "loginConfig"
+        static let isloginButtonPink = "isloginButtonPink"
+    }
+    
+    enum AccessebilityIDs {
+        static let emailTextField = "email"
+        static let passwordTextField = "password"
+        static let confirmPasswordTextField = "confirmPassword"
+        static let signInButton = "signIn"
+        static let titleLabel = "titleLabel"
     }
 }
