@@ -36,11 +36,7 @@ struct SplashView: View {
                 .fullScreenCover(
                     isPresented: $viewModel.showMainFlow,
                     content: {
-                        MyEventsView(
-                            viewModel: MyEventsViewModel(
-                                authService: Resolver.resolve()
-                            )
-                        )
+                        HonestMateTabView()
                     }
                 )
         }
