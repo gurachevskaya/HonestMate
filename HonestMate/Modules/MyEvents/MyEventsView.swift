@@ -12,8 +12,42 @@ struct MyEventsView: View {
     
     @ObservedObject var viewModel: MyEventsViewModel
     
+    var addExpenseButton: some View {
+        NavigationLink(value: Route.selectType) {
+            RoundedTextButton(
+                title: "Add Expense",
+                style: .pink
+            )
+        }
+    }
+
+    var directPaymentButton: some View {
+        NavigationLink(value: Route.directPayment) {
+            RoundedTextButton(
+                title: "Direct Payment",
+                style: .pink
+            )
+        }
+    }
+    
     var body: some View {
-        Text("Home")
+        NavigationStack(path: $viewModel.path) {
+            HStack {
+                addExpenseButton
+                directPaymentButton
+            }
+            .navigationDestination(for: Route.self) { route in
+                switch route {
+                case .selectType:
+                    SelectExpenseTypeView(viewModel: SelectExpenseTypeViewModel())
+                case .newExpense:
+                    NewExpenseView(viewModel: NewExpenseViewModel())
+                case .directPayment:
+                    DirectPaymentView(viewModel: DirectPaymentViewModel())
+                }
+            }
+        }
+        .padding()
     }
 }
 
