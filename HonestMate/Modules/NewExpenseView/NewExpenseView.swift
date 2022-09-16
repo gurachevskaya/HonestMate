@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct NewExpenseView: View {
     
@@ -18,15 +19,18 @@ struct NewExpenseView: View {
                 .modifier(TextFieldCustomRoundStyle())
 
             Text("Paid by")
-            TextField("Karina", text: $viewModel.description)
+            TextField(viewModel.currentUserName, text: $viewModel.description)
                 .modifier(TextFieldCustomRoundStyle())
+            
+            Text("Type: \(viewModel.expenseType.name)")
         }
+        .navigationBarTitle("New expense", displayMode: .large)
         .padding()
     }
 }
 
 struct NewExpenseView_Previews: PreviewProvider {
     static var previews: some View {
-        NewExpenseView(viewModel: NewExpenseViewModel())
+        NewExpenseView(viewModel: NewExpenseViewModel(expenseType: MockData.expenseType, authService: Resolver.resolve()))
     }
 }

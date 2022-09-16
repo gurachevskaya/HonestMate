@@ -13,6 +13,8 @@ struct DirectPaymentView: View {
 
     var body: some View {
         Text("Direct payment")
+            .navigationBarTitle("Direct payment", displayMode: .large)
+
     }
 }
 

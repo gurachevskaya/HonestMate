@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ExpenseType: Identifiable {
+struct ExpenseType: Identifiable, Hashable {
     let id = UUID()
     let name: String
 }
@@ -21,4 +21,6 @@ struct MockData {
         ExpenseType(name: "Accomodation"),
         ExpenseType(name: "Other")
     ]
+    
+    static var expenseType: ExpenseType = ExpenseType(name: "Food")
 }

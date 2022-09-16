@@ -32,6 +32,7 @@ struct MyEventsView: View {
     
     var body: some View {
         NavigationStack(path: $viewModel.path) {
+            Spacer()
             HStack {
                 addExpenseButton
                 directPaymentButton
@@ -40,8 +41,8 @@ struct MyEventsView: View {
                 switch route {
                 case .selectType:
                     SelectExpenseTypeView(viewModel: SelectExpenseTypeViewModel())
-                case .newExpense:
-                    NewExpenseView(viewModel: NewExpenseViewModel())
+                case .newExpense(let expenseType):
+                    NewExpenseView(viewModel: NewExpenseViewModel(expenseType: expenseType, authService: Resolver.resolve()))
                 case .directPayment:
                     DirectPaymentView(viewModel: DirectPaymentViewModel())
                 }

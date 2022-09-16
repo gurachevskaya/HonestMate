@@ -10,24 +10,19 @@ import SwiftUI
 struct SelectExpenseTypeView: View {
     
     @ObservedObject var viewModel: SelectExpenseTypeViewModel
-
+    
     var body: some View {
-        NavigationView {
-            ScrollView {
-                LazyVGrid(columns: viewModel.columns, spacing: 20) {
-                    ForEach(MockData.expenseTypes) { type in
-                        NavigationLink(value: Route.newExpense) {
-                            ExpenseTypeView(type: type)
-//                                .onTapGesture {
-                                    //                            viewModel.selectedType = type
-//                                }
-                        }
+        ScrollView {
+            LazyVGrid(columns: viewModel.columns, spacing: 20) {
+                ForEach(MockData.expenseTypes) { type in
+                    NavigationLink(value: Route.newExpense(type)) {
+                        ExpenseTypeView(type: type)
                     }
                 }
-                .navigationTitle("Select type of expense")
             }
-            .padding(.top, 20)
+            .navigationBarTitle("Select type of expense", displayMode: .large)
         }
+        .padding(.top, 20)
     }
 }
 

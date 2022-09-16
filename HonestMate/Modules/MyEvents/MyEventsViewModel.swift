@@ -9,9 +9,9 @@ import Foundation
 import Combine
 import SwiftUI
 
-enum Route {
+enum Route: Hashable {
     case selectType
-    case newExpense
+    case newExpense(ExpenseType)
     case directPayment
 }
 

@@ -16,6 +16,7 @@ struct ExpenseTypeView: View {
                 .frame(width: 88, height: 88)
                 .foregroundColor(.yellow)
             Text(type.name)
+                .foregroundColor(.primary)
         }
     }
 }
