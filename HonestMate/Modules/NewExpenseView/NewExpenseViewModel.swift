@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class NewExpenseViewModel: ObservableObject {
     
@@ -22,6 +23,10 @@ class NewExpenseViewModel: ObservableObject {
     
     @Published var description: String = ""
     
+    @Published var amount = 0
+    @Published var selectedDate = Date()
+    @Published var recievers: [Member] = []
+
     var currentUserName: String { authService.currentUser?.displayName ?? "name"}
     
 }

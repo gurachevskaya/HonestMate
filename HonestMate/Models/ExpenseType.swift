@@ -11,16 +11,3 @@ struct ExpenseType: Identifiable, Hashable {
     let id = UUID()
     let name: String
 }
-
-struct MockData {
-    static let expenseTypes: [ExpenseType] = [
-        ExpenseType(name: "Eating out"),
-        ExpenseType(name: "Food"),
-        ExpenseType(name: "Transport"),
-        ExpenseType(name: "Entertainment"),
-        ExpenseType(name: "Accomodation"),
-        ExpenseType(name: "Other")
-    ]
-    
-    static var expenseType: ExpenseType = ExpenseType(name: "Food")
-}

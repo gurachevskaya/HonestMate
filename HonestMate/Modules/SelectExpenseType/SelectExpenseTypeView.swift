@@ -10,13 +10,22 @@ import SwiftUI
 struct SelectExpenseTypeView: View {
     
     @ObservedObject var viewModel: SelectExpenseTypeViewModel
-    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
     var body: some View {
         ScrollView {
             LazyVGrid(columns: viewModel.columns, spacing: 20) {
                 ForEach(MockData.expenseTypes) { type in
-                    NavigationLink(value: Route.newExpense(type)) {
+                    switch viewModel.type {
+                    case .select:
+                        NavigationLink(value: Route.newExpense(type)) {
+                            ExpenseTypeView(type: type)
+                        }
+                    case .reselect:
                         ExpenseTypeView(type: type)
+                            .onTapGesture {
+                                presentationMode.wrappedValue.dismiss()
+                            }
                     }
                 }
             }
@@ -28,6 +37,8 @@ struct SelectExpenseTypeView: View {
 
 struct SelectExpenseTypeView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectExpenseTypeView(viewModel: SelectExpenseTypeViewModel())
+        NavigationStack {
+            SelectExpenseTypeView(viewModel: SelectExpenseTypeViewModel(type: .select))
+        }
     }
 }

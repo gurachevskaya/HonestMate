@@ -7,9 +7,11 @@
 
 import SwiftUI
 
+public typealias Action = () -> ()
+
 struct ExpenseTypeView: View {
     var type: ExpenseType
-    
+
     var body: some View {
         VStack {
             Circle()
@@ -23,6 +25,6 @@ struct ExpenseTypeView: View {
 
 struct ExpenseTypeView_Previews: PreviewProvider {
     static var previews: some View {
-        ExpenseTypeView(type: MockData.expenseTypes[0])
+        ExpenseTypeView(type: MockData.expenseType)
     }
 }

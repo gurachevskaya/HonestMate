@@ -10,6 +10,11 @@ import Combine
 import SwiftUI
 
 class SelectExpenseTypeViewModel: ObservableObject {
+    
+    enum ScreenType {
+        case select
+        case reselect
+    }
         
     var expenseTypes: [ExpenseType] = MockData.expenseTypes
     
@@ -18,5 +23,10 @@ class SelectExpenseTypeViewModel: ObservableObject {
         GridItem(.flexible())
     ]
        
+    var type: ScreenType
+    
+    init(type: ScreenType) {
+        self.type = type
+    }
     
 }

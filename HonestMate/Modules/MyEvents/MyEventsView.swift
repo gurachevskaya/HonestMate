@@ -31,7 +31,7 @@ struct MyEventsView: View {
     }
     
     var body: some View {
-        NavigationStack(path: $viewModel.path) {
+        NavigationStack {
             Spacer()
             HStack {
                 addExpenseButton
@@ -40,11 +40,30 @@ struct MyEventsView: View {
             .navigationDestination(for: Route.self) { route in
                 switch route {
                 case .selectType:
-                    SelectExpenseTypeView(viewModel: SelectExpenseTypeViewModel())
+                    SelectExpenseTypeView(
+                        viewModel: SelectExpenseTypeViewModel(
+                            type: .select
+                        )
+                    )
+                    
+                case .reselectType:
+                    SelectExpenseTypeView(
+                        viewModel: SelectExpenseTypeViewModel(
+                            type: .reselect
+                        )
+                    )
+                    
                 case .newExpense(let expenseType):
-                    NewExpenseView(viewModel: NewExpenseViewModel(expenseType: expenseType, authService: Resolver.resolve()))
+                    NewExpenseView(
+                        viewModel: NewExpenseViewModel(
+                            expenseType: expenseType,
+                            authService: Resolver.resolve()
+                        )
+                    )
                 case .directPayment:
-                    DirectPaymentView(viewModel: DirectPaymentViewModel())
+                    DirectPaymentView(
+                        viewModel: DirectPaymentViewModel()
+                    )
                 }
             }
         }

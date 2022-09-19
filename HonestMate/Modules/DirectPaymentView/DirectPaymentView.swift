@@ -14,12 +14,13 @@ struct DirectPaymentView: View {
     var body: some View {
         Text("Direct payment")
             .navigationBarTitle("Direct payment", displayMode: .large)
-
     }
 }
 
 struct DirectPaymentView_Previews: PreviewProvider {
     static var previews: some View {
-        DirectPaymentView(viewModel: DirectPaymentViewModel())
+        NavigationStack {
+            DirectPaymentView(viewModel: DirectPaymentViewModel())
+        }
     }
 }
