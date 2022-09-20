@@ -42,14 +42,16 @@ struct MyEventsView: View {
                 case .selectType:
                     SelectExpenseTypeView(
                         viewModel: SelectExpenseTypeViewModel(
-                            type: .select
+                            type: .select,
+                            expenseType: nil
                         )
                     )
                     
-                case .reselectType:
+                case .reselectType(let expenseType):
                     SelectExpenseTypeView(
                         viewModel: SelectExpenseTypeViewModel(
-                            type: .reselect
+                            type: .reselect,
+                            expenseType: expenseType
                         )
                     )
                     

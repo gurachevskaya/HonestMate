@@ -24,6 +24,7 @@ struct SelectExpenseTypeView: View {
                     case .reselect:
                         ExpenseTypeView(type: type)
                             .onTapGesture {
+                                viewModel.expenseType?.wrappedValue = type
                                 presentationMode.wrappedValue.dismiss()
                             }
                     }
@@ -38,7 +39,7 @@ struct SelectExpenseTypeView: View {
 struct SelectExpenseTypeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            SelectExpenseTypeView(viewModel: SelectExpenseTypeViewModel(type: .select))
+            SelectExpenseTypeView(viewModel: SelectExpenseTypeViewModel(type: .select, expenseType: .constant(MockData.expenseType)))
         }
     }
 }

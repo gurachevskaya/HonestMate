@@ -11,7 +11,7 @@ import Combine
 
 struct NewExpenseView: View {
     
-    @ObservedObject var viewModel: NewExpenseViewModel
+    @StateObject var viewModel: NewExpenseViewModel
 
     var body: some View {
         ScrollView {
@@ -30,7 +30,7 @@ struct NewExpenseView: View {
                 }
                 
                 Group {
-                    NavigationLink(value: Route.reselectType.self) {
+                    NavigationLink(value: Route.reselectType($viewModel.expenseType)) {
                         HStack {
                             Text("Type: ")
                             Text("\(viewModel.expenseType.name)")
@@ -70,6 +70,9 @@ struct NewExpenseView: View {
                 }
             }
         }
+        .onChange(of: $viewModel.expenseType, perform: { newValue in
+            print("changed", "\(newValue)")
+        })
         .modifier(DismissingKeyboard())
         .navigationBarTitle("New expense", displayMode: .automatic)
         .padding()

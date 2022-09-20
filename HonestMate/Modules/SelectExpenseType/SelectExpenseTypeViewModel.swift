@@ -24,9 +24,11 @@ class SelectExpenseTypeViewModel: ObservableObject {
     ]
        
     var type: ScreenType
-    
-    init(type: ScreenType) {
+    var expenseType: Binding<ExpenseType>?
+
+    init(type: ScreenType, expenseType: Binding<ExpenseType>?) {
         self.type = type
+        self.expenseType = expenseType
     }
     
 }

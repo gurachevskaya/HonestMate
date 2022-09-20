@@ -10,7 +10,7 @@ import SwiftUI
 
 class NewExpenseViewModel: ObservableObject {
     
-    var expenseType: ExpenseType
+    @Published var expenseType: ExpenseType
     var authService: AuthServiceProtocol
     
     init(
@@ -22,7 +22,6 @@ class NewExpenseViewModel: ObservableObject {
     }
     
     @Published var description: String = ""
-    
     @Published var amount = 0
     @Published var selectedDate = Date()
     @Published var recievers: [Member] = []

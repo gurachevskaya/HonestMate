@@ -10,7 +10,7 @@ import SwiftUI
 
 enum Route: Hashable {
     case selectType
-    case reselectType
+    case reselectType(Binding<ExpenseType>)
     case newExpense(ExpenseType)
     case directPayment
 }
