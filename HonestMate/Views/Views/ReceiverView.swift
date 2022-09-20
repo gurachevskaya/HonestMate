@@ -10,33 +10,26 @@ import SwiftUI
 
 struct ReceiverView: View {
     
-    @State var isSelected: Bool = false
+    @Binding var isSelected: Bool
     let member: Member
     
     var body: some View {
-            Button {
-                isSelected.toggle()
-            } label: {
-                VStack {
-                    Circle()
-                        .frame(width: 36, height: 36)
-                        .foregroundColor(.yellow)
-                    Text(member.name)
-                        .foregroundColor(.primary)
-                        .lineLimit(1)
-                    CheckBox(isSelected: $isSelected)
-                        .padding(.top, 5)
-                }
-            }
-        .frame(width: 80)
-        .onChange(of: isSelected) { newValue in
-            
+        VStack {
+            Circle()
+                .frame(width: 36, height: 36)
+                .foregroundColor(.yellow)
+            Text(member.name)
+                .foregroundColor(.primary)
+                .lineLimit(1)
+            CheckBox(isSelected: $isSelected)
+                .padding(.top, 5)
         }
+        .frame(width: 80)
     }
 }
 
 struct ReceiverView_Previews: PreviewProvider {
     static var previews: some View {
-        ReceiverView(member: MockData.member)
+        ReceiverView(isSelected: .constant(true), member: MockData.member)
     }
 }

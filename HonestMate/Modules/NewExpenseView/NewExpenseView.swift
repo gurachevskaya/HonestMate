@@ -40,7 +40,7 @@ struct NewExpenseView: View {
                     .foregroundColor(Color(uiColor: .systemGray))
                 Text("\(viewModel.expenseType.name)")
             }
-            .font(.title3)
+            .font(.subheadline)
         }
     }
     
@@ -48,7 +48,7 @@ struct NewExpenseView: View {
         HStack {
             Text("Date:")
                 .foregroundColor(Color(uiColor: .systemGray))
-                .font(.title3)
+                .font(.subheadline)
             DatePicker("", selection: $viewModel.selectedDate, displayedComponents: .date)
         }
     }
@@ -58,16 +58,20 @@ struct NewExpenseView: View {
             Text("Amount: ")
                 .foregroundColor(Color(uiColor: .systemGray))
             
-            TextField("0", value: $viewModel.amount, formatter: NumberFormatter())
+            TextField("", text: $viewModel.amountText)
                 .keyboardType(.decimalPad)
+                .foregroundColor(viewModel.amountFieldColor)
         }
-        .font(.title3)
+        .font(.subheadline)
     }
     
     private var currency: some View {
-        Text("Currency: PLN")
-            .foregroundColor(Color(uiColor: .systemGray))
-            .font(.title3)
+        HStack {
+            Text("Currency: ")
+                .foregroundColor(Color(uiColor: .systemGray))
+            Text("PLN")
+        }
+        .font(.subheadline)
     }
     
     private var splitBetween: some View {
@@ -76,23 +80,29 @@ struct NewExpenseView: View {
                 .font(.title2)
                 .fontWeight(.bold)
             
-            ScrollView(.horizontal) {
+            ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(MockData.members) { member in
-                        ReceiverView(member: member)
+                        ReceiverView(
+                            isSelected: .constant(viewModel.isSelectedReceiver(member)),
+                            member: member
+                        )
+                        .onTapGesture {
+                            viewModel.toggleSelection(selectable: member)
+                        }
                     }
                 }
             }
-            .scrollIndicators(.never)
         }
     }
-    
+   
     private var okButton: some View {
         Button {
-            
+            viewModel.addExpense()
         } label: {
             RoundedTextButton(title: "OK", style: .pink)
         }
+        .disabled(!viewModel.okButtonEnabled)
         .padding()
     }
         

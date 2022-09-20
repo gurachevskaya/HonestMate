@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Member: Identifiable {
+struct Member: Identifiable, Equatable {
     let id: String
     let name: String
 }
