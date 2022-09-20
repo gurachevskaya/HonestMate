@@ -12,52 +12,61 @@ import Combine
 struct NewExpenseView: View {
     
     @StateObject var viewModel: NewExpenseViewModel
-
+    
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                Group {
+        Form {
+            Section {
+                VStack(alignment: .leading) {
                     Text("Description")
-                        .font(.title)
+                        .font(.title2)
+                    //                                .foregroundColor(Color(uiColor: .systemGray))
+                        .fontWeight(.bold)
                     TextField("Description", text: $viewModel.description, axis: .vertical)
                         .lineLimit(...3)
-                        .modifier(TextFieldCustomRoundStyle()) // ?
-                    
+                }
+                
+                VStack(alignment: .leading) {
                     Text("Paid by")
-                        .font(.title)
+                        .font(.title2)
+                        .fontWeight(.bold)
                     Text(viewModel.currentUserName)
-                        .modifier(TextFieldCustomRoundStyle())
                 }
-                
-                Group {
-                    NavigationLink(value: Route.reselectType($viewModel.expenseType)) {
-                        HStack {
-                            Text("Type: ")
-                            Text("\(viewModel.expenseType.name)")
-                        }
-                        .font(.title)
-                    }
+            }
+            
+            Section {
+                NavigationLink(value: Route.reselectType($viewModel.expenseType)) {
                     HStack {
-                        Text("Date:")
-                            .font(.title)
-                        DatePicker("", selection: $viewModel.selectedDate, displayedComponents: .date)
+                        Text("Type: ")
+                            .foregroundColor(Color(uiColor: .systemGray))
+                        Text("\(viewModel.expenseType.name)")
                     }
-                    HStack {
-                        Text("Amount: ")
-                        TextField("Amount", value: $viewModel.amount, formatter: NumberFormatter())
-                            .keyboardType(.numberPad)
-                    }
-                    .font(.title)
-                    
-                    Text("Currency: PLN")
-                        .font(.title)
+                    .font(.title3)
                 }
+                HStack {
+                    Text("Date:")
+                        .foregroundColor(Color(uiColor: .systemGray))
+                        .font(.title3)
+                    DatePicker("", selection: $viewModel.selectedDate, displayedComponents: .date)
+                }
+                HStack {
+                    Text("Amount: ")
+                        .foregroundColor(Color(uiColor: .systemGray))
+
+                    TextField("0", value: $viewModel.amount, formatter: NumberFormatter())
+                        .keyboardType(.decimalPad)
+                }
+                .font(.title3)
                 
-                Spacer()
-                
-                Group {
+                Text("Currency: PLN")
+                    .foregroundColor(Color(uiColor: .systemGray))
+                    .font(.title3)
+            }
+            
+            Section {
+                VStack(alignment: .leading) {
                     Text("Split between")
-                        .font(.title)
+                        .font(.title2)
+                        .fontWeight(.bold)
                     
                     ScrollView(.horizontal) {
                         HStack {
@@ -70,12 +79,8 @@ struct NewExpenseView: View {
                 }
             }
         }
-        .onChange(of: $viewModel.expenseType, perform: { newValue in
-            print("changed", "\(newValue)")
-        })
         .modifier(DismissingKeyboard())
         .navigationBarTitle("New expense", displayMode: .automatic)
-        .padding()
     }
 }
 

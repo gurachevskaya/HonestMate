@@ -22,7 +22,7 @@ class NewExpenseViewModel: ObservableObject {
     }
     
     @Published var description: String = ""
-    @Published var amount = 0
+    @Published var amount: Double?
     @Published var selectedDate = Date()
     @Published var recievers: [Member] = []
 
