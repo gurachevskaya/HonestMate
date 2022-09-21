@@ -32,12 +32,6 @@ protocol AuthServiceProtocol {
 final class AuthService: AuthServiceProtocol {
     @AppStorage(Constants.StorageKeys.isLoggedIn) private var isLoggedIn = true
     
-    let ref: DatabaseReference
-    
-    init(ref: DatabaseReference) {
-        self.ref = ref
-    }
-
     var currentUser: User? { Auth.auth().currentUser }
     
     func observeAuthChanges() -> AnyPublisher<Bool, Never> {
@@ -74,10 +68,9 @@ final class AuthService: AuthServiceProtocol {
     }
     
     private func saveName(user: User, name: String) {
-        let usersRef = ref.child(Constants.DatabaseReferenceNames.users)
-        let currentUserRef = usersRef.child(user.uid)
-        let userData = ["userName": name] as [String : Any]
-        currentUserRef.updateChildValues(userData)
+        let request = Auth.auth().currentUser?.createProfileChangeRequest()
+        request?.displayName = name
+        request?.commitChanges()
     }
 
     func logout() -> AnyPublisher<Void, AuthError> {
