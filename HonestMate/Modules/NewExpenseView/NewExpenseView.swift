@@ -129,7 +129,6 @@ struct NewExpenseView: View {
             
             okButton
         }
-        .modifier(DismissingKeyboard())
         .navigationBarTitle("New expense", displayMode: .automatic)
     }
 }

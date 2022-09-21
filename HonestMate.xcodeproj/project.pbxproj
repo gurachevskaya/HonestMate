@@ -219,6 +219,7 @@
 		184791E628C108ED00BF9717 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				183543D228D8B13900FDEEA2 /* DismissingKeyboard.swift */,
 				184791E728C1090000BF9717 /* RSwift+Ext.swift */,
 				183543D428D9BA3400FDEEA2 /* Binding+Ext.swift */,
 			);
@@ -273,7 +274,6 @@
 			isa = PBXGroup;
 			children = (
 				1858E14E28C6061400521ED8 /* TextFieldCustomRoundStyle.swift */,
-				183543D228D8B13900FDEEA2 /* DismissingKeyboard.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
