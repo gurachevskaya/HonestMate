@@ -15,6 +15,7 @@
 		183543D128D4C26A00FDEEA2 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183543D028D4C26A00FDEEA2 /* CheckboxView.swift */; };
 		183543D328D8B13900FDEEA2 /* DismissingKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183543D228D8B13900FDEEA2 /* DismissingKeyboard.swift */; };
 		183543D528D9BA3400FDEEA2 /* Binding+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183543D428D9BA3400FDEEA2 /* Binding+Ext.swift */; };
+		183543DC28DB13F100FDEEA2 /* FirebaseCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183543DB28DB13F100FDEEA2 /* FirebaseCore.swift */; };
 		184791DC28C0CCCB00BF9717 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 184791DB28C0CCCB00BF9717 /* GoogleService-Info.plist */; };
 		184791DF28C0EFB800BF9717 /* HotestMateApp+Resolving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791DE28C0EFB800BF9717 /* HotestMateApp+Resolving.swift */; };
 		184791E228C0F14C00BF9717 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791E128C0F14C00BF9717 /* SignInView.swift */; };
@@ -96,6 +97,7 @@
 		183543D028D4C26A00FDEEA2 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		183543D228D8B13900FDEEA2 /* DismissingKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissingKeyboard.swift; sourceTree = "<group>"; };
 		183543D428D9BA3400FDEEA2 /* Binding+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Ext.swift"; sourceTree = "<group>"; };
+		183543DB28DB13F100FDEEA2 /* FirebaseCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCore.swift; sourceTree = "<group>"; };
 		184791DB28C0CCCB00BF9717 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		184791DE28C0EFB800BF9717 /* HotestMateApp+Resolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HotestMateApp+Resolving.swift"; sourceTree = "<group>"; };
 		184791E128C0F14C00BF9717 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				18BA855628CA48B700F8DC2A /* AppState.swift */,
 				185F421428CB44A700628DDC /* RemoteConfigService.swift */,
 				185F422428CB952600628DDC /* Cores */,
+				183543DB28DB13F100FDEEA2 /* FirebaseCore.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -769,6 +772,7 @@
 				18F7290528BCB383002D071F /* Gemfile in Sources */,
 				185F423028D21F7800628DDC /* RemoteConfigMock.swift in Sources */,
 				1858E15228C60EBA00521ED8 /* MyEventsView.swift in Sources */,
+				183543DC28DB13F100FDEEA2 /* FirebaseCore.swift in Sources */,
 				18F7290A28BCB4E6002D071F /* Scanfile in Sources */,
 				183543D528D9BA3400FDEEA2 /* Binding+Ext.swift in Sources */,
 				184791F628C2144000BF9717 /* LoginTextField.swift in Sources */,

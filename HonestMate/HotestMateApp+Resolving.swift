@@ -7,6 +7,7 @@
 
 import Resolver
 import Foundation
+import Firebase
 
 extension Resolver: ResolverRegistering {
     
@@ -16,6 +17,7 @@ extension Resolver: ResolverRegistering {
     }
     
     private static func registerCores() {
+        register { Database.database(url: Constants.databaseUrl).reference() as DatabaseReference }
     }
     
     private static func registerServices() {
@@ -24,7 +26,7 @@ extension Resolver: ResolverRegistering {
             register { AppStateMock() as AppStateProtocol }.scope(.application)
             register { RemoteConfigMock() as RemoteConfigServiceProtocol }.scope(.application)
         } else {
-            register { AuthService() as AuthServiceProtocol }.scope(.application)
+            register { AuthService(ref: Resolver.resolve()) as AuthServiceProtocol }.scope(.application)
             register { AppState() as AppStateProtocol }.scope(.application)
             register { RemoteConfigService() as RemoteConfigServiceProtocol }.scope(.application)
         }

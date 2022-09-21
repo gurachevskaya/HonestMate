@@ -43,6 +43,7 @@ class SignInViewModel: ObservableObject {
         }
     }
     
+    @Published var name = EnvironmentConstants.isDebug ? "name" : ""
     @Published var email = EnvironmentConstants.isDebug ? "gurachevich@mail.ru" : ""
     @Published var password = EnvironmentConstants.isDebug ? "123456aa" : ""
     @Published var confirmPassword = ""
@@ -73,7 +74,7 @@ class SignInViewModel: ObservableObject {
     
     private func register() {
         isLoading = true
-        authService.createUser(email: email, password: password)
+        authService.createUser(name: name, email: email, password: password)
             .receive(on: DispatchQueue.main)
             .sink { [unowned self] completion in
                 isLoading = false
@@ -136,12 +137,20 @@ extension SignInViewModel {
     }
     
     private var isValidRegisterFormPublisher: AnyPublisher<Bool, Never> {
-        Publishers.CombineLatest4(
+        let publisherWithoutName = Publishers.CombineLatest4(
             validEmailAddress, validAndConfirmedPassword, $agreeTerms, $selected
         ).map { email, validAndConfirmedPassword, terms, selected in
             email && validAndConfirmedPassword && terms && selected == .register
         }
         .eraseToAnyPublisher()
+        
+        let publisherWithName = Publishers.CombineLatest(publisherWithoutName, validName)
+            .map { withoutName, name in
+                withoutName && name
+            }
+            .eraseToAnyPublisher()
+        
+        return publisherWithName
     }
     
     private var isValidLoginFormPublisher: AnyPublisher<Bool, Never> {
@@ -165,6 +174,14 @@ extension SignInViewModel {
         $password
             .map { [unowned self] in
                 isValidPassword($0)
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    private var validName: AnyPublisher<Bool, Never> {
+        $name
+            .map {
+                !$0.isEmpty
             }
             .eraseToAnyPublisher()
     }
