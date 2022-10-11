@@ -54,3 +54,17 @@
 "signin.button.title.sighup" = "Sign Up";
 "signin.picker.login" = "Login";
 "signin.picker.register" = "Register";
+
+// MARK: New expense
+
+"new.expense.title" = "New expense";
+"new.expense.description.title" = "Description";
+"new.expense.description.placeholder" = "Description";
+"new.expense.paid.by.title" = "Paid by";
+"new.expense.type" = "Type: ";
+"new.expense.date" = "Date: ";
+"new.expense.amount" = "Amount: ";
+"new.expense.currency" = "Currency: ";
+"new.expense.split.between.title" = "Split between";
+"new.expense.add.expense.button.title" = "OK";
+

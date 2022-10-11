@@ -11,4 +11,5 @@ import SwiftUI
 
 class MyEventsViewModel: ObservableObject {
     
+    @Published var path: [Route] = []
 }

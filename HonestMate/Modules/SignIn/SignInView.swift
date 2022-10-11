@@ -26,6 +26,14 @@ struct SignInView: View {
         }.pickerStyle(SegmentedPickerStyle())
     }
     
+    var nameTextField: some View {
+        TextField("Name", text: $viewModel.name, onEditingChanged: { _ in
+            viewModel.name = viewModel.name.trimmingCharacters(in: .whitespacesAndNewlines)
+        })
+        .modifier(TextFieldCustomRoundStyle())
+        .accessibilityIdentifier(Constants.AccessebilityIDs.emailTextField)
+    }
+    
     var emailTextField: some View {
         TextField(R.string.localizable.signinEmail(), text: $viewModel.email, onEditingChanged: { _ in
             viewModel.email = viewModel.email.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -73,13 +81,20 @@ struct SignInView: View {
                 
                 picker
                 
-                emailTextField
-                    .padding(.top, 30)
+                Spacer().frame(height: 30)
                 
-                passwordTextField
-                
-                if viewModel.selected == .register {
-                    confirmPasswordTextField
+                Group {
+                    if viewModel.selected == .register {
+                        nameTextField
+                    }
+                    
+                    emailTextField
+                    
+                    passwordTextField
+                    
+                    if viewModel.selected == .register {
+                        confirmPasswordTextField
+                    }
                 }
                 
                 signInButtons

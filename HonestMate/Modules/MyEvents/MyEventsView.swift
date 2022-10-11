@@ -12,8 +12,68 @@ struct MyEventsView: View {
     
     @ObservedObject var viewModel: MyEventsViewModel
     
+    var addExpenseButton: some View {
+        NavigationLink(value: Route.selectType) {
+            RoundedTextButton(
+                title: "Add Expense",
+                style: .pink
+            )
+        }
+    }
+
+    var directPaymentButton: some View {
+        NavigationLink(value: Route.directPayment) {
+            RoundedTextButton(
+                title: "Direct Payment",
+                style: .pink
+            )
+        }
+    }
+    
     var body: some View {
-        Text("Home")
+        NavigationStack(path: $viewModel.path) {
+            Spacer()
+            HStack {
+                addExpenseButton
+                directPaymentButton
+            }
+            .navigationDestination(for: Route.self) { route in
+                switch route {
+                case .selectType:
+                    SelectExpenseTypeView(
+                        viewModel: SelectExpenseTypeViewModel(
+                            type: .select,
+                            expenseType: nil,
+                            expensesService: Resolver.resolve()
+                        )
+                    )
+                    
+                case .reselectType(let expenseType):
+                    SelectExpenseTypeView(
+                        viewModel: SelectExpenseTypeViewModel(
+                            type: .reselect,
+                            expenseType: expenseType,
+                            expensesService: Resolver.resolve()
+                        )
+                    )
+                    
+                case .newExpense(let expenseType):
+                    NewExpenseView(
+                        viewModel: NewExpenseViewModel(
+                            expenseType: expenseType,
+                            authService: Resolver.resolve(),
+                            expensesService: Resolver.resolve(),
+                            path: $viewModel.path
+                        )
+                    )
+                case .directPayment:
+                    DirectPaymentView(
+                        viewModel: DirectPaymentViewModel()
+                    )
+                }
+            }
+        }
+        .padding()
     }
 }
 

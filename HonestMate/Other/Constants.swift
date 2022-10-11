@@ -24,4 +24,14 @@ enum Constants {
         static let signInButton = "signIn"
         static let titleLabel = "titleLabel"
     }
+    
+    enum DatabaseReferenceNames {
+        static let users = "users"
+        static let groups = "groups"
+        static let categories = "categories"
+        static let expensesHistory = "expensesHistory"
+        static let members = "members"
+    }
+    
+    static let databaseUrl = "https://honestmate-cc6e0-default-rtdb.europe-west1.firebasedatabase.app/"
 }

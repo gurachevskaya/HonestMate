@@ -26,6 +26,9 @@ struct HonestMateApp: App {
                     )
                 )
             }
+            .onAppear {
+                UIApplication.shared.addTapGestureRecognizer()
+            }
         }
     }
 }

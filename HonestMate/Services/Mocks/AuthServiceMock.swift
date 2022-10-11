@@ -23,7 +23,7 @@ class AuthServiceMock: AuthServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func createUser(email: String, password: String) -> AnyPublisher<Void, AuthError> {
+    func createUser(name: String, email: String, password: String) -> AnyPublisher<Void, AuthError> {
         Fail(error: AuthError.networkError)
             .delay(for: 2, scheduler: RunLoop.main)
             .eraseToAnyPublisher()
