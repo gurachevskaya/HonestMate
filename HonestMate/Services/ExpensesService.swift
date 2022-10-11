@@ -7,69 +7,94 @@
 
 import Foundation
 import Combine
-import Firebase
+import FirebaseFirestore
 
 enum ExpenseServiceError: LocalizedError {
     case inner
+    case decodingError
+    case noData
 }
 
 protocol ExpensesServiceProtocol {
-    func createExpense(expense: ExpenseModel) -> AnyPublisher<Void, ExpenseServiceError>
+    func createExpense(groupID: String, expense: ExpenseModel) -> AnyPublisher<Void, ExpenseServiceError>
     func getDefaultCategories() -> AnyPublisher<[ExpenseCategory], ExpenseServiceError>
+    func getGroupMembers(groupID: String) -> AnyPublisher<[Member], ExpenseServiceError>
 //    func addListenerToExpenses(completion: @escaping (Result<[ExpenseModel],Error>) -> Void)
 }
 
 final class ExpensesService: ExpensesServiceProtocol {
-    let ref: DatabaseReference
+    let db: Firestore
     
-    init(ref: DatabaseReference) {
-        self.ref = ref
+    init(db: Firestore) {
+        self.db = db
     }
     
-    func createExpense(expense: ExpenseModel) -> AnyPublisher<Void, ExpenseServiceError> {
-        let groupsRef = ref.child(Constants.DatabaseReferenceNames.groups)
-        let currentGroupRef = groupsRef.child("1")
-        let historyRef = currentGroupRef.child(Constants.DatabaseReferenceNames.expensesHistory)
-        let uuidRef = historyRef.child(UUID().uuidString)
-        
-        let expenseJson: Any? = try? JSONEncoder().encode(expense).json
-     
+    func createExpense(groupID: String, expense: ExpenseModel) -> AnyPublisher<Void, ExpenseServiceError> {
+        let groupsRef = db.collection(Constants.DatabaseReferenceNames.groups)
+        let currentGroupRef = groupsRef.document(groupID)
+        let historyRef = currentGroupRef.collection(Constants.DatabaseReferenceNames.expensesHistory)
+             
         return Future<Void, ExpenseServiceError> { promise in
-            uuidRef.setValue(expenseJson) { error, _ in
-                if let error = error {
-                    print(error)
-                    promise(.failure(.inner))
-                } else {
-                    promise(.success(()))
-                }
+            do {
+                let _ = try historyRef.addDocument(from: expense)
+                promise(.success(()))
+            } catch let error {
+                promise(.failure(.inner))
             }
         }
         .eraseToAnyPublisher()
     }
     
     func getDefaultCategories() -> AnyPublisher<[ExpenseCategory], ExpenseServiceError> {
-        let categoriesRef = ref.child(Constants.DatabaseReferenceNames.categories)
+        let categoriesRef = db.collection(Constants.DatabaseReferenceNames.categories)
       
         return Future<[ExpenseCategory], ExpenseServiceError> { promise in
-            categoriesRef.observeSingleEvent(of: .value) { snapshot in
-                guard let data = snapshot.value as? [String] else {
-                    preconditionFailure("Check type in Firebase")
+            categoriesRef.addSnapshotListener { snapshot, error in
+                if let error = error {
+                    promise(.failure(.inner))
                 }
-                let categories = data.map {
-                    ExpenseCategory(
-                        id: UUID().uuidString,
-                        name: $0
-                    )
+                
+                guard let data = snapshot?.documents else {
+                    promise(.failure(.noData))
+                    return
                 }
+                
+                let categories = data.compactMap {
+                    try? $0.data(as: ExpenseCategory.self)
+                }
+                
                 promise(.success(categories))
             }
         }
         .eraseToAnyPublisher()
     }
     
-//    func getGroupMembers(amount: Double, paidByUserID: String, password: String) -> AnyPublisher<Void, ExpenseServiceError> {
-//
-//    }
+    func getGroupMembers(groupID: String) -> AnyPublisher<[Member], ExpenseServiceError> {
+        let groupsRef = db.collection(Constants.DatabaseReferenceNames.groups)
+        let currentGroup = groupsRef.document(groupID)
+        let groupMembersRef = currentGroup.collection(Constants.DatabaseReferenceNames.members)
+        
+        return Future<[Member], ExpenseServiceError> { promise in
+            groupMembersRef.getDocuments { snapshot, error in
+                if let error = error {
+                    promise(.failure(.inner))
+                }
+
+                guard let data = snapshot?.documents else {
+                    promise(.failure(.noData))
+                    return
+                }
+
+                let members = data.compactMap {
+                    try? $0.data(as: Member.self)
+                }
+
+                promise(.success(members))
+            }
+            
+        }
+        .eraseToAnyPublisher()
+    }
     
     
 //    func addListenerToExpenses(completion: @escaping (Result<[ExpenseModel],Error>) -> Void) {

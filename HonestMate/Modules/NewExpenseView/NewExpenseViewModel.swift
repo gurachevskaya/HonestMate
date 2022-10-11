@@ -33,6 +33,7 @@ class NewExpenseViewModel: ObservableObject {
     @Published var description: String = ""
     @Published var amountText: String = ""
     @Published var selectedDate = Date()
+    @Published var groupMembers: [Member] = []
     @Published var recievers: [Member] = []
     
     @Published var amountFieldColor: Color = .primary
@@ -109,6 +110,22 @@ class NewExpenseViewModel: ObservableObject {
         recievers.contains(member)
     }
     
+    func loadGroupMembers() {
+        expensesService.getGroupMembers(groupID: MockData.currentGroup)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] subscription in
+                switch subscription {
+                case .finished: break
+                case .failure(let error):
+                    // TODO: map error
+                    self?.alertItem = AlertContext.innerError
+                }
+            } receiveValue: { [weak self] members in
+                self?.groupMembers = members
+            }
+            .store(in: &cancellables)
+    }
+    
     func addExpense() {
         guard
             let amount = Double(amountText),
@@ -121,12 +138,12 @@ class NewExpenseViewModel: ObservableObject {
             amount: amount,
             description: description,
             date: selectedDate,
-            categoryID: expenseType.id,
+            category: expenseType.name,
             payerID: payerID,
-            between: [payerID]
+            between: recievers.compactMap { $0.id }
         )
         
-        expensesService.createExpense(expense: expenseModel)
+        expensesService.createExpense(groupID: MockData.currentGroup, expense: expenseModel)
             .receive(on: DispatchQueue.main)
             .sink { [unowned self] subscription in
                 switch subscription {

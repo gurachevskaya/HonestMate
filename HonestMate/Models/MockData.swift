@@ -26,4 +26,7 @@ struct MockData {
         "2XbqvhHg94S1UAdgRFWXCQakXra2",
         "8vSUg7L0d2Xth6nGhmlwVRV9JVA2"
     ]
+    
+    static let currentGroup = "5Pcoq4Yq4zwabAGmaafj"
+    static let defaultCurrency = "USD"
 }

@@ -15,17 +15,17 @@ struct NewExpenseView: View {
 
     private var description: some View {
         VStack(alignment: .leading) {
-            Text("Description")
+            Text(R.string.localizable.newExpenseDescriptionTitle())
                 .font(.title2)
                 .fontWeight(.bold)
-            TextField("Description", text: $viewModel.description, axis: .vertical)
+            TextField(R.string.localizable.newExpenseDescriptionPlaceholder(), text: $viewModel.description, axis: .vertical)
                 .lineLimit(...3)
         }
     }
     
     private var paidBy: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Paid by")
+            Text(R.string.localizable.newExpensePaidByTitle())
                 .font(.title2)
                 .fontWeight(.bold)
             Text(viewModel.currentUserName)
@@ -35,7 +35,7 @@ struct NewExpenseView: View {
     private var expenseType: some View {
         NavigationLink(value: Route.reselectType($viewModel.expenseType)) {
             HStack {
-                Text("Type: ")
+                Text(R.string.localizable.newExpenseType())
                     .foregroundColor(Color(uiColor: .systemGray))
                 Text("\(viewModel.expenseType.name)")
             }
@@ -45,7 +45,7 @@ struct NewExpenseView: View {
     
     private var date: some View {
         HStack {
-            Text("Date:")
+            Text(R.string.localizable.newExpenseDate())
                 .foregroundColor(Color(uiColor: .systemGray))
                 .font(.subheadline)
             DatePicker("", selection: $viewModel.selectedDate, displayedComponents: .date)
@@ -54,7 +54,7 @@ struct NewExpenseView: View {
     
     private var amount: some View {
         HStack {
-            Text("Amount: ")
+            Text(R.string.localizable.newExpenseAmount())
                 .foregroundColor(Color(uiColor: .systemGray))
             
             TextField("", text: $viewModel.amountText)
@@ -66,22 +66,22 @@ struct NewExpenseView: View {
     
     private var currency: some View {
         HStack {
-            Text("Currency: ")
+            Text(R.string.localizable.newExpenseCurrency())
                 .foregroundColor(Color(uiColor: .systemGray))
-            Text("PLN")
+            Text(MockData.defaultCurrency)
         }
         .font(.subheadline)
     }
     
     private var splitBetween: some View {
         VStack(alignment: .leading) {
-            Text("Split between")
+            Text(R.string.localizable.newExpenseSplitBetweenTitle())
                 .font(.title2)
                 .fontWeight(.bold)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    ForEach(MockData.members) { member in
+                    ForEach(viewModel.groupMembers) { member in
                         ReceiverView(
                             isSelected: .constant(viewModel.isSelectedReceiver(member)),
                             member: member
@@ -99,7 +99,7 @@ struct NewExpenseView: View {
         Button {
             viewModel.addExpense()
         } label: {
-            RoundedTextButton(title: "OK", style: .pink)
+            RoundedTextButton(title: R.string.localizable.newExpenseAddExpenseButtonTitle(), style: .pink)
         }
         .disabled(!viewModel.okButtonEnabled)
         .padding()
@@ -129,8 +129,11 @@ struct NewExpenseView: View {
             
             okButton
         }
-        .background(Color(uiColor: .systemGray6))
-        .navigationBarTitle("New expense", displayMode: .automatic)
+        .onAppear {
+            viewModel.loadGroupMembers()
+        }
+        .background(Color(uiColor: .systemGray6)).edgesIgnoringSafeArea(.all)
+        .navigationBarTitle(R.string.localizable.newExpenseTitle(), displayMode: .automatic)
         .alert(item: $viewModel.alertItem) { alertItem in
             Alert(
                 title: alertItem.title,

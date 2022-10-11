@@ -13,7 +13,7 @@ struct ExpenseModel: Codable {
     let amount: Double
     let description: String?
     let date: Date
-    let categoryID: String
+    let category: String
     let payerID: String
     let between: [UserIdentifier]
 }
