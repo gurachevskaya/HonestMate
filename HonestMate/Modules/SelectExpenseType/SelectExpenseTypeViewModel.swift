@@ -16,7 +16,8 @@ class SelectExpenseTypeViewModel: ObservableObject {
         case reselect
     }
         
-    var expenseTypes: [ExpenseType] = MockData.expenseTypes
+    @Published var expenseTypes: [ExpenseCategory] = []
+    @Published var alertItem: AlertItem?
     
     let columns: [GridItem] = [
         GridItem(.flexible()),
@@ -24,11 +25,34 @@ class SelectExpenseTypeViewModel: ObservableObject {
     ]
        
     var type: ScreenType
-    var expenseType: Binding<ExpenseType>?
+    var expenseType: Binding<ExpenseCategory>?
+    private var expensesService: ExpensesServiceProtocol
 
-    init(type: ScreenType, expenseType: Binding<ExpenseType>?) {
+    init(
+        type: ScreenType,
+        expenseType: Binding<ExpenseCategory>?,
+        expensesService: ExpensesServiceProtocol
+    ) {
         self.type = type
         self.expenseType = expenseType
+        self.expensesService = expensesService
     }
     
+    private var cancellables: Set<AnyCancellable> = []
+    
+    func getExpenseCategories() {
+        expensesService.getDefaultCategories()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] subscription in
+                switch subscription {
+                case .finished: break
+                case .failure(let error):
+                    // TODO: map error
+                    self?.alertItem = AlertContext.innerError
+                }
+            } receiveValue: { [weak self] expenses in
+                self?.expenseTypes = expenses
+            }
+            .store(in: &cancellables)
+    }
 }

@@ -12,12 +12,11 @@ import Combine
 struct NewExpenseView: View {
     
     @StateObject var viewModel: NewExpenseViewModel
-    
+
     private var description: some View {
         VStack(alignment: .leading) {
             Text("Description")
                 .font(.title2)
-            //                                .foregroundColor(Color(uiColor: .systemGray))
                 .fontWeight(.bold)
             TextField("Description", text: $viewModel.description, axis: .vertical)
                 .lineLimit(...3)
@@ -25,7 +24,7 @@ struct NewExpenseView: View {
     }
     
     private var paidBy: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 10) {
             Text("Paid by")
                 .font(.title2)
                 .fontWeight(.bold)
@@ -125,18 +124,32 @@ struct NewExpenseView: View {
                     splitBetween
                 }
             }
+            .scrollContentBackground(.hidden)
             .scrollIndicators(.never)
             
             okButton
         }
+        .background(Color(uiColor: .systemGray6))
         .navigationBarTitle("New expense", displayMode: .automatic)
+        .alert(item: $viewModel.alertItem) { alertItem in
+            Alert(
+                title: alertItem.title,
+                message: alertItem.message,
+                dismissButton: alertItem.dismissButton
+            )
+        }
     }
 }
 
 struct NewExpenseView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            NewExpenseView(viewModel: NewExpenseViewModel(expenseType: MockData.expenseType, authService: Resolver.resolve()))
+            NewExpenseView(viewModel: NewExpenseViewModel(
+                expenseType: MockData.expenseType,
+                authService: Resolver.resolve(),
+                expensesService: Resolver.resolve(),
+                path: .constant([])
+            ))
         }
     }
 }

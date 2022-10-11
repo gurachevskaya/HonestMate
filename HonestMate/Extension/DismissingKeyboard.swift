@@ -10,14 +10,26 @@ import SwiftUI
 
 extension UIApplication {
     func addTapGestureRecognizer() {
-        let scenes = UIApplication.shared.connectedScenes
-        let windowScene = scenes.first as? UIWindowScene
+        let windowScene = connectedScenes.first as? UIWindowScene
         guard let window = windowScene?.windows.first else { return }
         let tapGesture = UITapGestureRecognizer(target: window, action: #selector(UIView.endEditing))
         tapGesture.requiresExclusiveTouchType = false
         tapGesture.cancelsTouchesInView = false
         tapGesture.delegate = self
         window.addGestureRecognizer(tapGesture)
+    }
+    
+    func addBackAnimation() {
+        let animation = CATransition()
+        animation.isRemovedOnCompletion = true
+        animation.type = .moveIn
+        animation.subtype = .fromLeft
+        animation.duration = 0.3
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        
+        let windowScene = connectedScenes.first as? UIWindowScene
+        let window = windowScene?.windows.first
+        window?.layer.add(animation, forKey: nil)
     }
 }
 

@@ -8,16 +8,7 @@
 import Foundation
 
 struct MockData {
-    static let expenseTypes: [ExpenseType] = [
-        ExpenseType(name: "Eating out"),
-        ExpenseType(name: "Food"),
-        ExpenseType(name: "Transport"),
-        ExpenseType(name: "Entertainment"),
-        ExpenseType(name: "Accomodation"),
-        ExpenseType(name: "Other")
-    ]
-    
-    static let expenseType: ExpenseType = ExpenseType(name: "Food")
+    static let expenseType: ExpenseCategory = ExpenseCategory(id: "2", name: "Food")
     
     static let members: [Member] = [
         Member(id: "1", name: "Karina"),
@@ -30,4 +21,9 @@ struct MockData {
     ]
     
     static let member = Member(id: "2", name: "Dima")
+    
+    static let group = [
+        "2XbqvhHg94S1UAdgRFWXCQakXra2",
+        "8vSUg7L0d2Xth6nGhmlwVRV9JVA2"
+    ]
 }

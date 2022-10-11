@@ -11,29 +11,39 @@ import Combine
 
 class NewExpenseViewModel: ObservableObject {
     
-    @Published var expenseType: ExpenseType
-    var authService: AuthServiceProtocol
+    @Published var expenseType: ExpenseCategory
+    private var authService: AuthServiceProtocol
+    private var expensesService: ExpensesServiceProtocol
+    private var path: Binding<[Route]>
     
     init(
-        expenseType: ExpenseType,
-        authService: AuthServiceProtocol
+        expenseType: ExpenseCategory,
+        authService: AuthServiceProtocol,
+        expensesService: ExpensesServiceProtocol,
+        path: Binding<[Route]>
     ) {
         self.expenseType = expenseType
         self.authService = authService
+        self.expensesService = expensesService
+        self.path = path
         
         setupPipeline()
     }
     
     @Published var description: String = ""
     @Published var amountText: String = ""
-    @Published var amount: Double?
     @Published var selectedDate = Date()
     @Published var recievers: [Member] = []
     
     @Published var amountFieldColor: Color = .primary
     @Published var okButtonEnabled: Bool = false
+    
+    @Published var alertItem: AlertItem?
 
     var currentUserName: String { authService.currentUser?.displayName ?? "name"}
+    private var currentUserID: String? { authService.currentUser?.uid }
+    
+    private var cancellables = Set<AnyCancellable>()
     
     private func setupPipeline() {
         configureAmountTextFieldBehavior()
@@ -82,6 +92,10 @@ class NewExpenseViewModel: ObservableObject {
         .eraseToAnyPublisher()
     }
     
+    private func popToRootView() {
+        UIApplication.shared.addBackAnimation()
+        path.wrappedValue = []
+    }
     
     func toggleSelection(selectable: Member) {
         if let existingIndex = recievers.firstIndex(where: { $0 == selectable }) {
@@ -96,6 +110,34 @@ class NewExpenseViewModel: ObservableObject {
     }
     
     func addExpense() {
+        guard
+            let amount = Double(amountText),
+            let payerID = currentUserID
+        else {
+            return
+        }
+  
+        let expenseModel = ExpenseModel(
+            amount: amount,
+            description: description,
+            date: selectedDate,
+            categoryID: expenseType.id,
+            payerID: payerID,
+            between: [payerID]
+        )
         
+        expensesService.createExpense(expense: expenseModel)
+            .receive(on: DispatchQueue.main)
+            .sink { [unowned self] subscription in
+                switch subscription {
+                case .finished:
+                    popToRootView()
+                    
+                case .failure(let error):
+                    // TODO: map error
+                    alertItem = AlertContext.innerError
+                }
+            } receiveValue: { _ in }
+            .store(in: &cancellables)
     }
 }

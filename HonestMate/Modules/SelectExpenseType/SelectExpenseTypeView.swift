@@ -6,16 +6,17 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct SelectExpenseTypeView: View {
     
-    @ObservedObject var viewModel: SelectExpenseTypeViewModel
+    @StateObject var viewModel: SelectExpenseTypeViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var body: some View {
         ScrollView {
             LazyVGrid(columns: viewModel.columns, spacing: 20) {
-                ForEach(MockData.expenseTypes) { type in
+                ForEach(viewModel.expenseTypes) { type in
                     switch viewModel.type {
                     case .select:
                         NavigationLink(value: Route.newExpense(type)) {
@@ -30,7 +31,17 @@ struct SelectExpenseTypeView: View {
                     }
                 }
             }
-            .navigationBarTitle("Select type of expense", displayMode: .large)
+            .navigationBarTitle("Select type", displayMode: .large)
+        }
+        .alert(item: $viewModel.alertItem) { alertItem in
+            Alert(
+                title: alertItem.title,
+                message: alertItem.message,
+                dismissButton: alertItem.dismissButton
+            )
+        }
+        .onAppear {
+            viewModel.getExpenseCategories()
         }
         .padding(.top, 20)
     }
@@ -39,7 +50,11 @@ struct SelectExpenseTypeView: View {
 struct SelectExpenseTypeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            SelectExpenseTypeView(viewModel: SelectExpenseTypeViewModel(type: .select, expenseType: .constant(MockData.expenseType)))
+            SelectExpenseTypeView(viewModel: SelectExpenseTypeViewModel(
+                type: .select,
+                expenseType: .constant(MockData.expenseType),
+                expensesService: Resolver.resolve())
+            )
         }
     }
 }

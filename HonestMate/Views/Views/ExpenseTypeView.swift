@@ -10,7 +10,7 @@ import SwiftUI
 public typealias Action = () -> ()
 
 struct ExpenseTypeView: View {
-    var type: ExpenseType
+    var type: ExpenseCategory
 
     var body: some View {
         VStack {
