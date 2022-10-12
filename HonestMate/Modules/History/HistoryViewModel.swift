@@ -31,4 +31,18 @@ class HistoryViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
+    
+    func delete(at offsets: IndexSet) {
+        offsets.map { history[$0] }.forEach { item in
+            deleteItem(id: item.id ?? "", groupID: MockData.currentGroup)
+        }
+        history.remove(atOffsets: offsets)
+    }
+    
+    private func deleteItem(id: String, groupID: String) {
+        expensesService.deleteExpense(id: id, groupID: groupID)
+            .receive(on: DispatchQueue.main)
+            .sink { _ in } receiveValue: { _ in }
+            .store(in: &cancellables)
+    }
 }

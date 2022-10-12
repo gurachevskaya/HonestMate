@@ -20,6 +20,7 @@ protocol ExpensesServiceProtocol {
     func getDefaultCategories() -> AnyPublisher<[ExpenseCategory], ExpenseServiceError>
     func getGroupMembers(groupID: String) -> AnyPublisher<[Member], ExpenseServiceError>
     func addListenerToExpenses(groupID: String) -> AnyPublisher<[HistoryItemModel], ExpenseServiceError>
+    func deleteExpense(id: String, groupID: String) -> AnyPublisher<Void, ExpenseServiceError>
 }
 
 final class ExpensesService: ExpensesServiceProtocol {
@@ -107,5 +108,24 @@ final class ExpensesService: ExpensesServiceProtocol {
             }
             .mapError { _ in .inner }
             .eraseToAnyPublisher()
+    }
+    
+    func deleteExpense(id: String, groupID: String) -> AnyPublisher<Void, ExpenseServiceError> {
+        let groupsCollection = db.collection(Constants.DatabaseReferenceNames.groups)
+        let currentGroupDocument = groupsCollection.document(groupID)
+        let historyCollection = currentGroupDocument.collection(Constants.DatabaseReferenceNames.expensesHistory)
+        let historyItem = historyCollection.document(id)
+
+        return Future<Void, ExpenseServiceError> { promise in
+            historyItem.delete { error in
+                if let error = error {
+                    promise(.failure(.inner))
+                    return
+                }
+                
+                promise(.success(()))
+            }
+        }
+        .eraseToAnyPublisher()
     }
 }

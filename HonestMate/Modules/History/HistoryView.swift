@@ -19,6 +19,7 @@ struct HistoryView: View {
                     ForEach(viewModel.history) { item in
                         HistoryItemView(historyItem: item)
                     }
+                    .onDelete(perform: delete)
                 }
             }
             .navigationBarTitle("Group name", displayMode: .large)
@@ -27,6 +28,10 @@ struct HistoryView: View {
             }
         }
     }
+    
+    private func delete(at offsets: IndexSet) {
+        viewModel.delete(at: offsets)
+     }
 }
 
 struct HistoryView_Previews: PreviewProvider {
