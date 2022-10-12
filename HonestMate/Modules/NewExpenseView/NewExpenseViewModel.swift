@@ -136,7 +136,7 @@ class NewExpenseViewModel: ObservableObject {
   
         let expenseModel = ExpenseModel(
             amount: amount,
-            description: description,
+            description: description.isEmpty ? nil : description,
             date: selectedDate,
             category: expenseType.name,
             payerID: payerID,

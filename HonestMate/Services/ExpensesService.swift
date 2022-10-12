@@ -99,7 +99,7 @@ final class ExpensesService: ExpensesServiceProtocol {
     func addListenerToExpenses(groupID: String) -> AnyPublisher<[HistoryItemModel], ExpenseServiceError> {
         let groupsCollection = db.collection(Constants.DatabaseReferenceNames.groups)
         let currentGroupDocument = groupsCollection.document(groupID)
-        let historyCollection = currentGroupDocument.collection(Constants.DatabaseReferenceNames.expensesHistory)
+        let historyCollection = currentGroupDocument.collection(Constants.DatabaseReferenceNames.expensesHistory).order(by: "date", descending: true)
         
         return Publishers.SnapshotPublisher(historyCollection, includeMetadataChanges: true)
             .map { snapshot in

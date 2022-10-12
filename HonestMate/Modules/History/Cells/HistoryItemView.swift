@@ -13,7 +13,7 @@ struct HistoryItemView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Text(historyItem.description?.capitalized ?? "Expense")
+                Text(historyItem.description?.capitalized ?? historyItem.category)
                 Circle()
                     .frame(width: 20, height: 20)
                     .foregroundColor(.yellow)

@@ -13,17 +13,19 @@ struct HistoryView: View {
     @StateObject var viewModel: HistoryViewModel
 
     var body: some View {
-        VStack {
-            List {
-                ForEach(viewModel.history) { item in
-                    HistoryItemView(historyItem: item)
+        NavigationStack {
+            VStack {
+                List {
+                    ForEach(viewModel.history) { item in
+                        HistoryItemView(historyItem: item)
+                    }
                 }
             }
+            .navigationBarTitle("Group name", displayMode: .large)
+            .onAppear {
+                viewModel.loadHistory()
+            }
         }
-        .onAppear {
-            viewModel.loadHistory()
-        }
-        .navigationBarTitle("Group name", displayMode: .large)
     }
 }
 
