@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct HistoryView: View {
     
-    @ObservedObject var viewModel: HistoryViewModel
+    @StateObject var viewModel: HistoryViewModel
 
     var body: some View {
         VStack {
@@ -19,6 +20,9 @@ struct HistoryView: View {
                 }
             }
         }
+        .onAppear {
+            viewModel.loadHistory()
+        }
         .navigationBarTitle("Group name", displayMode: .large)
     }
 }
@@ -26,7 +30,7 @@ struct HistoryView: View {
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            HistoryView(viewModel: HistoryViewModel())
+            HistoryView(viewModel: HistoryViewModel(expensesService: Resolver.resolve()))
         }
     }
 }

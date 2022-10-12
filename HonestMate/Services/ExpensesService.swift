@@ -19,7 +19,7 @@ protocol ExpensesServiceProtocol {
     func createExpense(groupID: String, expense: ExpenseModel) -> AnyPublisher<Void, ExpenseServiceError>
     func getDefaultCategories() -> AnyPublisher<[ExpenseCategory], ExpenseServiceError>
     func getGroupMembers(groupID: String) -> AnyPublisher<[Member], ExpenseServiceError>
-//    func addListenerToExpenses(completion: @escaping (Result<[ExpenseModel],Error>) -> Void)
+    func addListenerToExpenses(groupID: String) -> AnyPublisher<[HistoryItemModel], ExpenseServiceError>
 }
 
 final class ExpensesService: ExpensesServiceProtocol {
@@ -30,13 +30,13 @@ final class ExpensesService: ExpensesServiceProtocol {
     }
     
     func createExpense(groupID: String, expense: ExpenseModel) -> AnyPublisher<Void, ExpenseServiceError> {
-        let groupsRef = db.collection(Constants.DatabaseReferenceNames.groups)
-        let currentGroupRef = groupsRef.document(groupID)
-        let historyRef = currentGroupRef.collection(Constants.DatabaseReferenceNames.expensesHistory)
+        let groupsCollection = db.collection(Constants.DatabaseReferenceNames.groups)
+        let currentGroupDocument = groupsCollection.document(groupID)
+        let historyCollection = currentGroupDocument.collection(Constants.DatabaseReferenceNames.expensesHistory)
              
         return Future<Void, ExpenseServiceError> { promise in
             do {
-                let _ = try historyRef.addDocument(from: expense)
+                let _ = try historyCollection.addDocument(from: expense)
                 promise(.success(()))
             } catch let error {
                 promise(.failure(.inner))
@@ -46,10 +46,10 @@ final class ExpensesService: ExpensesServiceProtocol {
     }
     
     func getDefaultCategories() -> AnyPublisher<[ExpenseCategory], ExpenseServiceError> {
-        let categoriesRef = db.collection(Constants.DatabaseReferenceNames.categories)
+        let categoriesCollection = db.collection(Constants.DatabaseReferenceNames.categories)
       
         return Future<[ExpenseCategory], ExpenseServiceError> { promise in
-            categoriesRef.addSnapshotListener { snapshot, error in
+            categoriesCollection.addSnapshotListener { snapshot, error in
                 if let error = error {
                     promise(.failure(.inner))
                 }
@@ -70,12 +70,12 @@ final class ExpensesService: ExpensesServiceProtocol {
     }
     
     func getGroupMembers(groupID: String) -> AnyPublisher<[Member], ExpenseServiceError> {
-        let groupsRef = db.collection(Constants.DatabaseReferenceNames.groups)
-        let currentGroup = groupsRef.document(groupID)
-        let groupMembersRef = currentGroup.collection(Constants.DatabaseReferenceNames.members)
+        let groupsCollection = db.collection(Constants.DatabaseReferenceNames.groups)
+        let currentGroupDocument = groupsCollection.document(groupID)
+        let groupMembersCollection = currentGroupDocument.collection(Constants.DatabaseReferenceNames.members)
         
         return Future<[Member], ExpenseServiceError> { promise in
-            groupMembersRef.getDocuments { snapshot, error in
+            groupMembersCollection.getDocuments { snapshot, error in
                 if let error = error {
                     promise(.failure(.inner))
                 }
@@ -91,33 +91,21 @@ final class ExpensesService: ExpensesServiceProtocol {
 
                 promise(.success(members))
             }
-            
         }
         .eraseToAnyPublisher()
     }
     
     
-//    func addListenerToExpenses(completion: @escaping (Result<[ExpenseModel],Error>) -> Void) {
-//        let groupsRef = ref.child("groups")
-//        let currentGroupRef = groupsRef.child("1")
-//        let historyRef = currentGroupRef.child("expensesHistory")
-//
-//        groupsRef.observe(.value) { snapshot, someString  in
-//            guard
-//                let data = snapshot.value as? [String: Any]
-//            else {
-//                preconditionFailure("Check type in Firebase")
-//            }
-//
-//            let expenses = data.values.compactMap {
-//                try? JSONDecoder().decode([ExpenseModel].self, from: $0 as! Data)
-//            }
-//
-//            print(expenses)
-//
-//            //            let history: [ExpenseModel] = data.map { model in
-//            //                completion(.success(model))
-//            //            }
-//        }
-//    }
+    func addListenerToExpenses(groupID: String) -> AnyPublisher<[HistoryItemModel], ExpenseServiceError> {
+        let groupsCollection = db.collection(Constants.DatabaseReferenceNames.groups)
+        let currentGroupDocument = groupsCollection.document(groupID)
+        let historyCollection = currentGroupDocument.collection(Constants.DatabaseReferenceNames.expensesHistory)
+        
+        return Publishers.SnapshotPublisher(historyCollection, includeMetadataChanges: true)
+            .map { snapshot in
+                snapshot.documents.compactMap { try? $0.data(as: HistoryItemModel.self) }
+            }
+            .mapError { _ in .inner }
+            .eraseToAnyPublisher()
+    }
 }
