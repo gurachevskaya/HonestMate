@@ -74,6 +74,7 @@
 "history.date.title" = "Date:";
 "history.paid.by.title" = "Paid by";
 "history.share.between.title" = "Share between: %d mates";
-
+"history.see.all" = "See All";
+"history.hide.all" = "Hide All";
 
 
