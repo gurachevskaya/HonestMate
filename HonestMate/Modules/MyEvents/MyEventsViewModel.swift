@@ -12,4 +12,5 @@ import SwiftUI
 class MyEventsViewModel: ObservableObject {
     
     @Published var path: [Route] = []
+    @Published var history: [HistoryItemModel] = MockData.history    
 }
