@@ -66,6 +66,10 @@
 		18D49A3228F08CB60022087D /* ExpensesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D49A3128F08CB60022087D /* ExpensesService.swift */; };
 		18D49A3428F091E40022087D /* ExpenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D49A3328F091E40022087D /* ExpenseModel.swift */; };
 		18E6EF7B28F81B9B0061DE8D /* View+IsHidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E6EF7A28F81B9B0061DE8D /* View+IsHidden.swift */; };
+		18E6EF7E28F8542D0061DE8D /* ChooseGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E6EF7D28F8542D0061DE8D /* ChooseGroupView.swift */; };
+		18E6EF8028F8543B0061DE8D /* ChooseGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E6EF7F28F8543B0061DE8D /* ChooseGroupViewModel.swift */; };
+		18E6EF8228F85B210061DE8D /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E6EF8128F85B210061DE8D /* GroupModel.swift */; };
+		18E6EF8428F85DC60061DE8D /* GroupsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E6EF8328F85DC60061DE8D /* GroupsService.swift */; };
 		18F728D728B91057002D071F /* HonestMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D628B91057002D071F /* HonestMateApp.swift */; };
 		18F728D928B91057002D071F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D828B91057002D071F /* ContentView.swift */; };
 		18F728DB28B91059002D071F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F728DA28B91059002D071F /* Assets.xcassets */; };
@@ -157,6 +161,10 @@
 		18D49A3128F08CB60022087D /* ExpensesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesService.swift; sourceTree = "<group>"; };
 		18D49A3328F091E40022087D /* ExpenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseModel.swift; sourceTree = "<group>"; };
 		18E6EF7A28F81B9B0061DE8D /* View+IsHidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+IsHidden.swift"; sourceTree = "<group>"; };
+		18E6EF7D28F8542D0061DE8D /* ChooseGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGroupView.swift; sourceTree = "<group>"; };
+		18E6EF7F28F8543B0061DE8D /* ChooseGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGroupViewModel.swift; sourceTree = "<group>"; };
+		18E6EF8128F85B210061DE8D /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
+		18E6EF8328F85DC60061DE8D /* GroupsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsService.swift; sourceTree = "<group>"; };
 		18F728D328B91057002D071F /* HonestMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HonestMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F728D628B91057002D071F /* HonestMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateApp.swift; sourceTree = "<group>"; };
 		18F728D828B91057002D071F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -230,6 +238,7 @@
 				18A4D4D928D47ABF00BA2793 /* NewExpenseView */,
 				18A4D4DE28D4844400BA2793 /* DirectPaymentView */,
 				185F422928CF882300628DDC /* SignIn */,
+				18E6EF7C28F854100061DE8D /* ChooseGroup */,
 				185F423D28D34E7800628DDC /* History */,
 				185F423A28D34E5E00628DDC /* MyProfile */,
 			);
@@ -277,6 +286,7 @@
 				185F422428CB952600628DDC /* Cores */,
 				183543DB28DB13F100FDEEA2 /* FirebaseCore.swift */,
 				18D49A3128F08CB60022087D /* ExpensesService.swift */,
+				18E6EF8328F85DC60061DE8D /* GroupsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -293,6 +303,7 @@
 				18D49A3328F091E40022087D /* ExpenseModel.swift */,
 				182466B228F6F89100572A11 /* UserIdentifier.swift */,
 				182466B428F6F8CC00572A11 /* UserName.swift */,
+				18E6EF8128F85B210061DE8D /* GroupModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -420,6 +431,15 @@
 				185F421A28CB867B00628DDC /* SplashViewModel.swift */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		18E6EF7C28F854100061DE8D /* ChooseGroup */ = {
+			isa = PBXGroup;
+			children = (
+				18E6EF7D28F8542D0061DE8D /* ChooseGroupView.swift */,
+				18E6EF7F28F8543B0061DE8D /* ChooseGroupViewModel.swift */,
+			);
+			path = ChooseGroup;
 			sourceTree = "<group>";
 		};
 		18F728CA28B91056002D071F = {
@@ -809,6 +829,7 @@
 				18F728D928B91057002D071F /* ContentView.swift in Sources */,
 				18D49A3228F08CB60022087D /* ExpensesService.swift in Sources */,
 				18F7290528BCB383002D071F /* Gemfile in Sources */,
+				18E6EF8228F85B210061DE8D /* GroupModel.swift in Sources */,
 				185F423028D21F7800628DDC /* RemoteConfigMock.swift in Sources */,
 				1858E15228C60EBA00521ED8 /* MyEventsView.swift in Sources */,
 				182466AE28F6B2F700572A11 /* SnapshotPublisher.swift in Sources */,
@@ -828,6 +849,7 @@
 				183543D128D4C26A00FDEEA2 /* CheckboxView.swift in Sources */,
 				18A4D4E028D4845700BA2793 /* DirectPaymentViewModel.swift in Sources */,
 				185F421528CB44A700628DDC /* RemoteConfigService.swift in Sources */,
+				18E6EF7E28F8542D0061DE8D /* ChooseGroupView.swift in Sources */,
 				182466B328F6F89100572A11 /* UserIdentifier.swift in Sources */,
 				18F728D728B91057002D071F /* HonestMateApp.swift in Sources */,
 				184791E428C0F16C00BF9717 /* SignInViewModel.swift in Sources */,
@@ -849,10 +871,12 @@
 				185F422828CF855B00628DDC /* EnvironmentConstants.swift in Sources */,
 				185F424128D35C2500628DDC /* MyProfileViewModel.swift in Sources */,
 				1858E15428C60F0B00521ED8 /* MyEventsViewModel.swift in Sources */,
+				18E6EF8028F8543B0061DE8D /* ChooseGroupViewModel.swift in Sources */,
 				18D49A3428F091E40022087D /* ExpenseModel.swift in Sources */,
 				185F421B28CB867B00628DDC /* SplashViewModel.swift in Sources */,
 				184791E828C1090000BF9717 /* RSwift+Ext.swift in Sources */,
 				183543D328D8B13900FDEEA2 /* DismissingKeyboard.swift in Sources */,
+				18E6EF8428F85DC60061DE8D /* GroupsService.swift in Sources */,
 				184791EB28C109E400BF9717 /* RoundedTextButton.swift in Sources */,
 				184791E228C0F14C00BF9717 /* SignInView.swift in Sources */,
 				183543CB28D4C0E400FDEEA2 /* ReceiverView.swift in Sources */,

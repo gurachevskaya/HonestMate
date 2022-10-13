@@ -26,11 +26,13 @@ extension Resolver: ResolverRegistering {
             register { AppStateMock() as AppStateProtocol }.scope(.application)
             register { RemoteConfigMock() as RemoteConfigServiceProtocol }.scope(.application)
             register { ExpensesService(db: Resolver.resolve(Firestore.self)) as ExpensesServiceProtocol }.scope(.application)
+            register { GroupsService(db: Resolver.resolve(Firestore.self)) as GroupsServiceProtocol }.scope(.application)
         } else {
             register { AuthService() as AuthServiceProtocol }.scope(.application)
             register { AppState() as AppStateProtocol }.scope(.application)
             register { RemoteConfigService() as RemoteConfigServiceProtocol }.scope(.application)
             register { ExpensesService(db: Resolver.resolve(Firestore.self)) as ExpensesServiceProtocol }.scope(.application)
+            register { GroupsService(db: Resolver.resolve(Firestore.self)) as GroupsServiceProtocol }.scope(.application)
         }
     }
 }

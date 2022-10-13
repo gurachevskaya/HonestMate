@@ -12,16 +12,19 @@ class HistoryViewModel: ObservableObject {
     
     private var expensesService: ExpensesServiceProtocol
     
-    init(expensesService: ExpensesServiceProtocol) {
+    init(
+        expensesService: ExpensesServiceProtocol
+    ) {
         self.expensesService = expensesService
     }
-    
+        
     @Published var history: [ExpenseModel] = []
-    
+    private var groupID: String = MockData.currentGroup
+
     private var cancellables: Set<AnyCancellable> = []
     
     func loadHistory() {
-        expensesService.addListenerToExpenses(groupID: MockData.currentGroup)
+        expensesService.addListenerToExpenses(groupID: groupID)
             .receive(on: DispatchQueue.main)
             .sink { subscription in
                 print(subscription)
@@ -34,7 +37,7 @@ class HistoryViewModel: ObservableObject {
     
     func delete(at offsets: IndexSet) {
         offsets.map { history[$0] }.forEach { item in
-            deleteItem(id: item.id ?? "", groupID: MockData.currentGroup)
+            deleteItem(id: item.id ?? "", groupID: groupID)
         }
         history.remove(atOffsets: offsets)
     }
