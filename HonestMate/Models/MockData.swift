@@ -30,16 +30,6 @@ struct MockData {
     static let currentGroup = "5Pcoq4Yq4zwabAGmaafj"
     static let defaultCurrency = "USD"
     
-    static let history = [
-        HistoryItemModel(description: "coffee", category: "Food", amount: 20, date: Date(), payerID: "1", between: ["1", "2"]),
-        HistoryItemModel(category: "Food", amount: 30, date: Date(), payerID: "1", between: ["1", "2"]),
-        HistoryItemModel(category: "Food", amount: 40, date: Date(), payerID: "1", between: ["1", "2"]),
-        HistoryItemModel(description: "taxi", category: "Transport", amount: 50, date: Date(), payerID: "1", between: ["1", "2"]),
-        HistoryItemModel(category: "Food", amount: 60, date: Date(), payerID: "1", between: ["1", "2"]),
-        HistoryItemModel(category: "Food", amount: 70.6, date: Date(), payerID: "1", between: ["1", "2"]),
-        HistoryItemModel(category: "Food", amount: 15, date: Date(), payerID: "1", between: ["1", "2"]),
-    ]
-    
-    static let historyItem = HistoryItemModel(category: "Food", amount: 20, date: Date(), payerID: "1", between: ["1", "2"])
+    static let historyItem = ExpenseModel(category: "Food", amount: 20, date: Date(), payer: "1", between: ["1", "2"])
 
 }

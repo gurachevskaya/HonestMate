@@ -6,14 +6,14 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
-typealias UserIdentifier = String
-
-struct ExpenseModel: Codable {
-    let amount: Double
-    let description: String?
-    let date: Date
-    let category: String
-    let payerID: String
-    let between: [UserIdentifier]
+struct ExpenseModel: Identifiable, Hashable, Codable {
+    @DocumentID var id: String? = UUID().uuidString
+    var description: String?
+    var category: String
+    var amount: Double
+    var date: Date
+    var payer: UserName
+    var between: [UserName]
 }

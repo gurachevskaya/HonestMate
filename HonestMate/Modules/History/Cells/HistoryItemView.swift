@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct HistoryItemView: View {
-    var historyItem: HistoryItemModel
+    var historyItem: ExpenseModel
     
     @State var showMembers: Bool = false
+    
+    private var membersString: String {
+        historyItem.between.joined(separator: ", ")
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -28,19 +32,21 @@ struct HistoryItemView: View {
             VStack(alignment: .leading) {
                 Text(R.string.localizable.historyDateTitle() + " ") +
                      Text(historyItem.date, format: Date.FormatStyle().year().month().day().weekday())
-                Text(R.string.localizable.historyPaidByTitle() + " \(historyItem.payerID)")
+                Text(R.string.localizable.historyPaidByTitle() + " \(historyItem.payer)")
                 HStack {
                     Text(R.string.localizable.historyShareBetweenTitle(historyItem.between.count))
-                    Button {
-                        showMembers.toggle()
-                    } label: {
-                        Text(showMembers ? R.string.localizable.historyHideAll() : R.string.localizable.historySeeAll())
-                            .foregroundColor(.blue)
-                            .fontWeight(.bold)
-                    }
+                    
+                    Text(showMembers ? R.string.localizable.historyHideAll() : R.string.localizable.historySeeAll())
+                        .foregroundColor(.blue)
+                        .fontWeight(.bold)
+                        .padding(.leading, 4)
+                        .onTapGesture {
+                            showMembers.toggle()
+                        }
+                        .animation(.none)
                 }
+
                 if showMembers {
-                    let membersString = historyItem.between.joined(separator: ", ")
                     Text(membersString)
                 }
             }

@@ -19,7 +19,7 @@ protocol ExpensesServiceProtocol {
     func createExpense(groupID: String, expense: ExpenseModel) -> AnyPublisher<Void, ExpenseServiceError>
     func getDefaultCategories() -> AnyPublisher<[ExpenseCategory], ExpenseServiceError>
     func getGroupMembers(groupID: String) -> AnyPublisher<[Member], ExpenseServiceError>
-    func addListenerToExpenses(groupID: String) -> AnyPublisher<[HistoryItemModel], ExpenseServiceError>
+    func addListenerToExpenses(groupID: String) -> AnyPublisher<[ExpenseModel], ExpenseServiceError>
     func deleteExpense(id: String, groupID: String) -> AnyPublisher<Void, ExpenseServiceError>
 }
 
@@ -97,14 +97,14 @@ final class ExpensesService: ExpensesServiceProtocol {
     }
     
     
-    func addListenerToExpenses(groupID: String) -> AnyPublisher<[HistoryItemModel], ExpenseServiceError> {
+    func addListenerToExpenses(groupID: String) -> AnyPublisher<[ExpenseModel], ExpenseServiceError> {
         let groupsCollection = db.collection(Constants.DatabaseReferenceNames.groups)
         let currentGroupDocument = groupsCollection.document(groupID)
         let historyCollection = currentGroupDocument.collection(Constants.DatabaseReferenceNames.expensesHistory).order(by: "date", descending: true)
         
         return Publishers.SnapshotPublisher(historyCollection, includeMetadataChanges: true)
             .map { snapshot in
-                snapshot.documents.compactMap { try? $0.data(as: HistoryItemModel.self) }
+                snapshot.documents.compactMap { try? $0.data(as: ExpenseModel.self) }
             }
             .mapError { _ in .inner }
             .eraseToAnyPublisher()

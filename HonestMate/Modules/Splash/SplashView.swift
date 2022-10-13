@@ -20,7 +20,6 @@ struct SplashView: View {
                 .onAppear {
                     viewModel.loadConfig()
                 }
-            
                 .fullScreenCover(
                     isPresented: $viewModel.showLoginFlow,
                     content: {

@@ -11,15 +11,24 @@ import Resolver
 struct HistoryView: View {
     
     @StateObject var viewModel: HistoryViewModel
-
+    
     var body: some View {
         NavigationStack {
             VStack {
                 List {
                     ForEach(viewModel.history) { item in
-                        HistoryItemView(historyItem: item)
+                        NavigationLink(value: HistoryRoute.expenseDetails(item)) {
+                            HistoryItemView(historyItem: item)
+                                .animation(Animation.spring())
+                        }
                     }
-                    .onDelete(perform: delete)
+                    .onDelete(perform: viewModel.delete)
+                }
+            }
+            .navigationDestination(for: HistoryRoute.self) { route in
+                switch route {
+                case .expenseDetails(let model):
+                    EmptyView().foregroundColor(.red)
                 }
             }
             .navigationBarTitle("Group name", displayMode: .large)
@@ -28,10 +37,6 @@ struct HistoryView: View {
             }
         }
     }
-    
-    private func delete(at offsets: IndexSet) {
-        viewModel.delete(at: offsets)
-     }
 }
 
 struct HistoryView_Previews: PreviewProvider {

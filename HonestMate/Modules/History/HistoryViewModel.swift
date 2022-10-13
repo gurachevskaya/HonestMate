@@ -16,7 +16,7 @@ class HistoryViewModel: ObservableObject {
         self.expensesService = expensesService
     }
     
-    @Published var history: [HistoryItemModel] = []
+    @Published var history: [ExpenseModel] = []
     
     private var cancellables: Set<AnyCancellable> = []
     
