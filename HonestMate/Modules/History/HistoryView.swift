@@ -6,15 +6,43 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct HistoryView: View {
+    
+    @StateObject var viewModel: HistoryViewModel
+    
     var body: some View {
-        Text("History")
+        NavigationStack {
+            VStack {
+                List {
+                    ForEach(viewModel.history) { item in
+                        NavigationLink(value: HistoryRoute.expenseDetails(item)) {
+                            HistoryItemView(historyItem: item)
+                                .animation(Animation.spring())
+                        }
+                    }
+                    .onDelete(perform: viewModel.delete)
+                }
+            }
+            .navigationDestination(for: HistoryRoute.self) { route in
+                switch route {
+                case .expenseDetails(let model):
+                    EmptyView().foregroundColor(.red)
+                }
+            }
+            .navigationBarTitle("Group name", displayMode: .large)
+            .onAppear {
+                viewModel.loadHistory()
+            }
+        }
     }
 }
 
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryView()
+        NavigationStack {
+            HistoryView(viewModel: HistoryViewModel(expensesService: Resolver.resolve()))
+        }
     }
 }

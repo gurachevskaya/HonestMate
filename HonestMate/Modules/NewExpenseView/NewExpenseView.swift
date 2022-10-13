@@ -132,7 +132,7 @@ struct NewExpenseView: View {
         .onAppear {
             viewModel.loadGroupMembers()
         }
-        .background(Color(uiColor: .systemGray6)).edgesIgnoringSafeArea(.all)
+        .background(Color(uiColor: .systemGray6))
         .navigationBarTitle(R.string.localizable.newExpenseTitle(), displayMode: .automatic)
         .alert(item: $viewModel.alertItem) { alertItem in
             Alert(

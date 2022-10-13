@@ -15,3 +15,7 @@ enum Route: Hashable {
     case directPayment
 }
 
+enum HistoryRoute: Hashable {
+    case expenseDetails(ExpenseModel)
+}
+

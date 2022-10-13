@@ -129,20 +129,20 @@ class NewExpenseViewModel: ObservableObject {
     func addExpense() {
         guard
             let amount = Double(amountText),
-            let payerID = currentUserID
+            let payer = groupMembers.first(where: { $0.id == currentUserID })
         else {
             return
         }
   
         let expenseModel = ExpenseModel(
-            amount: amount,
-            description: description,
-            date: selectedDate,
+            description: description.isEmpty ? nil : description,
             category: expenseType.name,
-            payerID: payerID,
-            between: recievers.compactMap { $0.id }
+            amount: amount,
+            date: selectedDate,
+            payer: payer.name,
+            between: recievers.compactMap { $0.name }
         )
-        
+            
         expensesService.createExpense(groupID: MockData.currentGroup, expense: expenseModel)
             .receive(on: DispatchQueue.main)
             .sink { [unowned self] subscription in
