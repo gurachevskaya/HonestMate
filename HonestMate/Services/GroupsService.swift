@@ -29,28 +29,23 @@ final class GroupsService: GroupsServiceProtocol {
     func getUserGroups(userID: UserIdentifier) -> AnyPublisher<[GroupModel], GroupsServiceError> {
         let usersCollection = db.collection(Constants.DatabaseReferenceNames.users)
         let currentUserDocument = usersCollection.document(userID)
+        
+        let groupsCollection = db.collection(Constants.DatabaseReferenceNames.groups)
 
         return Future<[GroupModel], GroupsServiceError> { promise in
-            currentUserDocument.getDocument { [weak self] snapshot, error in
+            currentUserDocument.getDocument { snapshot, error in
                 if let error = error {
                     promise(.failure(.inner))
                 }
                 
-                guard let data = snapshot else {
-                    promise(.failure(.noData))
-                    return
-                }
-                
-                let user = try? data.data(as: UserInfoModel.self)
+                let user = try? snapshot?.data(as: UserInfoModel.self)
                 
                 guard let userGroups = user?.groups else {
                     promise(.failure(.noData))
                     return
                 }
                 
-                let groupsCollection = self?.db.collection(Constants.DatabaseReferenceNames.groups)
-                
-                groupsCollection?.getDocuments { groupsSnapshot, error in
+                groupsCollection.getDocuments { groupsSnapshot, error in
                     if let error = error {
                         promise(.failure(.inner))
                     }

@@ -18,18 +18,22 @@ extension Resolver: ResolverRegistering {
     
     private static func registerCores() {
         register { Firestore.firestore() as Firestore }
+        
+        if ProcessInfo.processInfo.arguments.contains("testing") {
+            register { AppStateMock() as AppStateProtocol }.scope(.application)
+        } else {
+            register { AppState() as AppStateProtocol }.scope(.application)
+        }
     }
     
     private static func registerServices() {
         if ProcessInfo.processInfo.arguments.contains("testing") {
             register { AuthServiceMock() as AuthServiceProtocol }.scope(.application)
-            register { AppStateMock() as AppStateProtocol }.scope(.application)
             register { RemoteConfigMock() as RemoteConfigServiceProtocol }.scope(.application)
             register { ExpensesService(db: Resolver.resolve(Firestore.self)) as ExpensesServiceProtocol }.scope(.application)
             register { GroupsService(db: Resolver.resolve(Firestore.self)) as GroupsServiceProtocol }.scope(.application)
         } else {
-            register { AuthService() as AuthServiceProtocol }.scope(.application)
-            register { AppState() as AppStateProtocol }.scope(.application)
+            register { AuthService(appState: Resolver.resolve()) as AuthServiceProtocol }.scope(.application)
             register { RemoteConfigService() as RemoteConfigServiceProtocol }.scope(.application)
             register { ExpensesService(db: Resolver.resolve(Firestore.self)) as ExpensesServiceProtocol }.scope(.application)
             register { GroupsService(db: Resolver.resolve(Firestore.self)) as GroupsServiceProtocol }.scope(.application)

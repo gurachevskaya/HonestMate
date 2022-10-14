@@ -13,26 +13,37 @@ class ChooseGroupViewModel: ObservableObject {
     
     private var groupsService: GroupsServiceProtocol?
     private var authService: AuthServiceProtocol
-
+    private var appState: AppStateProtocol
+    
     init(
         groupsService: GroupsServiceProtocol,
-        authService: AuthServiceProtocol
+        authService: AuthServiceProtocol,
+        appState: AppStateProtocol
     ) {
         self.groupsService = groupsService
         self.authService = authService
+        self.appState = appState
     }
     
     private var currentUserID: String? { authService.currentUser?.uid }
     
-    @AppStorage(Constants.StorageKeys.groupID) var groupID = ""
     @Published var groups: [GroupModel] = []
     @Published var alertItem: AlertItem?
-    
+    @AppStorage(Constants.StorageKeys.groupID) private var groupID = ""
+
     private var cancellables: Set<AnyCancellable> = []
+    
+    func choseGroup(groupID: String) {
+        appState.groupID = groupID
+    }
     
     func getUserGroups() {
         guard let currentUserID = currentUserID else {
             // TODO: map error
+            authService.logout()
+                .sink { _ in } receiveValue: { _ in }
+                .store(in: &cancellables)
+
             alertItem = AlertContext.innerError
             return
         }

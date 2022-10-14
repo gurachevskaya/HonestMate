@@ -31,11 +31,22 @@ struct SplashView: View {
                         )
                     }
                 )
-            
                 .fullScreenCover(
                     isPresented: $viewModel.showMainFlow,
                     content: {
                         HonestMateTabView()
+                    }
+                )
+                .fullScreenCover(
+                    isPresented: $viewModel.showGroupsScreen,
+                    content: {
+                       ChooseGroupView(
+                            viewModel: ChooseGroupViewModel(
+                                groupsService: Resolver.resolve(),
+                                authService: Resolver.resolve(),
+                                appState: Resolver.resolve()
+                            )
+                        )
                     }
                 )
         }

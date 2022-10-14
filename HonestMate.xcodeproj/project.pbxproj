@@ -71,6 +71,7 @@
 		18E6EF8228F85B210061DE8D /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E6EF8128F85B210061DE8D /* GroupModel.swift */; };
 		18E6EF8428F85DC60061DE8D /* GroupsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E6EF8328F85DC60061DE8D /* GroupsService.swift */; };
 		18E6EF8628F884B30061DE8D /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E6EF8528F884B30061DE8D /* UserInfoModel.swift */; };
+		18E6EF8928F9B3480061DE8D /* Clearable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E6EF8828F9B3480061DE8D /* Clearable.swift */; };
 		18F728D728B91057002D071F /* HonestMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D628B91057002D071F /* HonestMateApp.swift */; };
 		18F728D928B91057002D071F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D828B91057002D071F /* ContentView.swift */; };
 		18F728DB28B91059002D071F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F728DA28B91059002D071F /* Assets.xcassets */; };
@@ -167,6 +168,7 @@
 		18E6EF8128F85B210061DE8D /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
 		18E6EF8328F85DC60061DE8D /* GroupsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsService.swift; sourceTree = "<group>"; };
 		18E6EF8528F884B30061DE8D /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
+		18E6EF8828F9B3480061DE8D /* Clearable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clearable.swift; sourceTree = "<group>"; };
 		18F728D328B91057002D071F /* HonestMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HonestMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F728D628B91057002D071F /* HonestMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateApp.swift; sourceTree = "<group>"; };
 		18F728D828B91057002D071F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -445,6 +447,14 @@
 			path = ChooseGroup;
 			sourceTree = "<group>";
 		};
+		18E6EF8728F9B33D0061DE8D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				18E6EF8828F9B3480061DE8D /* Clearable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		18F728CA28B91056002D071F = {
 			isa = PBXGroup;
 			children = (
@@ -473,6 +483,7 @@
 		18F728D528B91057002D071F /* HonestMate */ = {
 			isa = PBXGroup;
 			children = (
+				18E6EF8728F9B33D0061DE8D /* Protocols */,
 				186FD74328C79D2D004B5156 /* Publishers */,
 				1858E14D28C605FA00521ED8 /* Modifiers */,
 				1858A1BB28C21A870039246A /* Models */,
@@ -863,6 +874,7 @@
 				18A4D4E228D4847800BA2793 /* DirectPaymentView.swift in Sources */,
 				182466B528F6F8CC00572A11 /* UserName.swift in Sources */,
 				1858A1BD28C21A940039246A /* AlertItem.swift in Sources */,
+				18E6EF8928F9B3480061DE8D /* Clearable.swift in Sources */,
 				18BA855728CA48B700F8DC2A /* AppState.swift in Sources */,
 				187C36D528F4427B00894BBA /* Encodable+Ext.swift in Sources */,
 				185F423428D323BE00628DDC /* AppStateMock.swift in Sources */,

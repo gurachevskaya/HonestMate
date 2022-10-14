@@ -15,12 +15,10 @@ struct ChooseGroupView: View {
     var body: some View {
         List {
             ForEach(viewModel.groups) { group in
-                //                NavigationLink(value: HistoryRoute.history(group)) {
                 Text(group.name)
                     .onTapGesture {
-                        viewModel.groupID = group.id ?? ""
+                        viewModel.choseGroup(groupID: group.id ?? "")
                     }
-                //                }
             }
         }
         .onAppear {
@@ -33,7 +31,7 @@ struct ChooseGroupView: View {
 struct ChooseGroup_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ChooseGroupView(viewModel: ChooseGroupViewModel(groupsService: Resolver.resolve(), authService: Resolver.resolve()))
+            ChooseGroupView(viewModel: ChooseGroupViewModel(groupsService: Resolver.resolve(), authService: Resolver.resolve(), appState: Resolver.resolve()))
         }
     }
 }
