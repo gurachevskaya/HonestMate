@@ -23,7 +23,6 @@ struct ChooseGroupView: View {
                 //                }
             }
         }
-        
         .onAppear {
             viewModel.getUserGroups()
         }

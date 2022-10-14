@@ -29,24 +29,47 @@ final class GroupsService: GroupsServiceProtocol {
     func getUserGroups(userID: UserIdentifier) -> AnyPublisher<[GroupModel], GroupsServiceError> {
         let usersCollection = db.collection(Constants.DatabaseReferenceNames.users)
         let currentUserDocument = usersCollection.document(userID)
-        let groupsCollection = currentUserDocument.collection(Constants.DatabaseReferenceNames.groups)
 
         return Future<[GroupModel], GroupsServiceError> { promise in
-            groupsCollection.getDocuments { snapshot, error in
+            currentUserDocument.getDocument { [weak self] snapshot, error in
                 if let error = error {
                     promise(.failure(.inner))
                 }
                 
-                guard let data = snapshot?.documents else {
+                guard let data = snapshot else {
                     promise(.failure(.noData))
                     return
                 }
                 
-                let groups = data.compactMap {
-                    try? $0.data(as: GroupModel.self)
+                let user = try? data.data(as: UserInfoModel.self)
+                
+                guard let userGroups = user?.groups else {
+                    promise(.failure(.noData))
+                    return
                 }
                 
-                promise(.success(groups))
+                let groupsCollection = self?.db.collection(Constants.DatabaseReferenceNames.groups)
+                
+                groupsCollection?.getDocuments { groupsSnapshot, error in
+                    if let error = error {
+                        promise(.failure(.inner))
+                    }
+                    
+                    guard let data = groupsSnapshot?.documents else {
+                        promise(.failure(.noData))
+                        return
+                    }
+                    
+                    let groups = data.compactMap {
+                        try? $0.data(as: GroupModel.self)
+                    }
+                    
+                    let filteredGroups = groups.filter { group in
+                        userGroups.contains(group.id ?? "")
+                    }
+                                        
+                    promise(.success(filteredGroups))
+                }
             }
         }
         .eraseToAnyPublisher()

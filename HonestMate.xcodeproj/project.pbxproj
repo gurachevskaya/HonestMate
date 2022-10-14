@@ -70,6 +70,7 @@
 		18E6EF8028F8543B0061DE8D /* ChooseGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E6EF7F28F8543B0061DE8D /* ChooseGroupViewModel.swift */; };
 		18E6EF8228F85B210061DE8D /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E6EF8128F85B210061DE8D /* GroupModel.swift */; };
 		18E6EF8428F85DC60061DE8D /* GroupsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E6EF8328F85DC60061DE8D /* GroupsService.swift */; };
+		18E6EF8628F884B30061DE8D /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E6EF8528F884B30061DE8D /* UserInfoModel.swift */; };
 		18F728D728B91057002D071F /* HonestMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D628B91057002D071F /* HonestMateApp.swift */; };
 		18F728D928B91057002D071F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F728D828B91057002D071F /* ContentView.swift */; };
 		18F728DB28B91059002D071F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F728DA28B91059002D071F /* Assets.xcassets */; };
@@ -165,6 +166,7 @@
 		18E6EF7F28F8543B0061DE8D /* ChooseGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGroupViewModel.swift; sourceTree = "<group>"; };
 		18E6EF8128F85B210061DE8D /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
 		18E6EF8328F85DC60061DE8D /* GroupsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsService.swift; sourceTree = "<group>"; };
+		18E6EF8528F884B30061DE8D /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		18F728D328B91057002D071F /* HonestMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HonestMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F728D628B91057002D071F /* HonestMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateApp.swift; sourceTree = "<group>"; };
 		18F728D828B91057002D071F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				182466B228F6F89100572A11 /* UserIdentifier.swift */,
 				182466B428F6F8CC00572A11 /* UserName.swift */,
 				18E6EF8128F85B210061DE8D /* GroupModel.swift */,
+				18E6EF8528F884B30061DE8D /* UserInfoModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -884,6 +887,7 @@
 				184791F028C1F88000BF9717 /* R.generated.swift in Sources */,
 				186FD74528C79D39004B5156 /* AuthPublisher.swift in Sources */,
 				184791DF28C0EFB800BF9717 /* HotestMateApp+Resolving.swift in Sources */,
+				18E6EF8628F884B30061DE8D /* UserInfoModel.swift in Sources */,
 				183543CD28D4C11800FDEEA2 /* Member.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
