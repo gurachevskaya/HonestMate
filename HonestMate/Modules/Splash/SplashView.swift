@@ -17,6 +17,8 @@ struct SplashView: View {
     var body: some View {
         ZStack {
             Text("honestmate")
+                .font(.title)
+                .fontWeight(.bold)
                 .onAppear {
                     viewModel.loadConfig()
                 }
@@ -35,18 +37,6 @@ struct SplashView: View {
                     isPresented: $viewModel.showMainFlow,
                     content: {
                         HonestMateTabView()
-                    }
-                )
-                .fullScreenCover(
-                    isPresented: $viewModel.showGroupsScreen,
-                    content: {
-                       ChooseGroupView(
-                            viewModel: ChooseGroupViewModel(
-                                groupsService: Resolver.resolve(),
-                                authService: Resolver.resolve(),
-                                appState: Resolver.resolve()
-                            )
-                        )
                     }
                 )
         }

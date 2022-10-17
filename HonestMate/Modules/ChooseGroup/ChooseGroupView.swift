@@ -13,18 +13,21 @@ struct ChooseGroupView: View {
     @StateObject var viewModel: ChooseGroupViewModel
 
     var body: some View {
-        List {
-            ForEach(viewModel.groups) { group in
-                Text(group.name)
-                    .onTapGesture {
-                        viewModel.chooseGroup(group: group)
-                    }
+        VStack {
+            List {
+                ForEach(viewModel.groups) { group in
+                    GroupView(group: group)
+                        .onTapGesture {
+                            viewModel.chooseGroup(group: group)
+                        }
+                }
             }
         }
+        .navigationBarTitle("My Groups", displayMode: .large)
+        .navigationBarBackButtonHidden(true)
         .onAppear {
             viewModel.getUserGroups()
         }
-        .navigationBarTitle("My Groups", displayMode: .large)
     }
 }
 

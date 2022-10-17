@@ -24,8 +24,10 @@ class SignInViewModel: ObservableObject {
     
     var loginConfig: LoginConfig? { remoteConfigService.appConfig?.loginConfig }
     var isloginButtonPink: Bool? { remoteConfigService.appConfig?.isloginButtonPink }
+    
+    var path: [SignInRoute] = []
 
-    enum SignInRoute {
+    enum SignInOption {
         case facebook, apple, google, mail
     }
     
@@ -82,7 +84,8 @@ class SignInViewModel: ObservableObject {
                 switch completion {
                 case .failure(let error):
                     alertItem = alertItem(for: error)
-                case .finished: break
+                case .finished:
+                    path.append(.chooseGroup)
                 }
             } receiveValue: { _ in }
             .store(in: &cancellables)
@@ -98,7 +101,8 @@ class SignInViewModel: ObservableObject {
                 switch completion {
                 case .failure(let error):
                     alertItem = alertItem(for: error)
-                case .finished: break
+                case .finished:
+                    path.append(.chooseGroup)
                 }
             } receiveValue: { _ in }
             .store(in: &cancellables)

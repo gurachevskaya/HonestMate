@@ -19,3 +19,7 @@ enum HistoryRoute: Hashable {
     case expenseDetails(ExpenseModel)
 }
 
+enum SignInRoute: Hashable {
+    case chooseGroup
+}
+

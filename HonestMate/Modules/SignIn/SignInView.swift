@@ -14,7 +14,8 @@ struct SignInView: View {
     
     var title: some View {
         Text(R.string.localizable.honestmate())
-            .font(.largeTitle)
+            .font(.title)
+            .fontWeight(.bold)
             .accessibilityIdentifier(Constants.AccessebilityIDs.titleLabel)
     }
     
@@ -73,46 +74,59 @@ struct SignInView: View {
     }
     
     var body: some View {
-        ZStack {
-            VStack {
-                Spacer()
-                
-                title
-                
-                picker
-                
-                Spacer().frame(height: 30)
-                
-                Group {
-                    if viewModel.selected == .register {
-                        nameTextField
+        NavigationStack(path: $viewModel.path) {
+            ZStack {
+                VStack {
+                    Spacer()
+                    
+                    title
+                    
+                    picker
+                    
+                    Spacer().frame(height: 30)
+                    
+                    Group {
+                        if viewModel.selected == .register {
+                            nameTextField
+                        }
+                        
+                        emailTextField
+                        
+                        passwordTextField
+                        
+                        if viewModel.selected == .register {
+                            confirmPasswordTextField
+                        }
                     }
                     
-                    emailTextField
+                    signInButtons
+                        .padding(.top, 30)
                     
-                    passwordTextField
+                    actionButton
                     
-                    if viewModel.selected == .register {
-                        confirmPasswordTextField
-                    }
+                    Spacer()
+                }
+                .padding()
+                .alert(item: $viewModel.alertItem) { alertItem in
+                    Alert(title: alertItem.title,
+                          message: alertItem.message,
+                          dismissButton: alertItem.dismissButton)
                 }
                 
-                signInButtons
-                    .padding(.top, 30)
-                
-                actionButton
-                
-                Spacer()
+                if viewModel.isLoading {
+                    ProgressView().scaleEffect(2)
+                }
             }
-            .padding()
-            .alert(item: $viewModel.alertItem) { alertItem in
-                Alert(title: alertItem.title,
-                      message: alertItem.message,
-                      dismissButton: alertItem.dismissButton)
-            }
-
-            if viewModel.isLoading {
-                ProgressView().scaleEffect(2)
+            .navigationDestination(for: SignInRoute.self) { route in
+                switch route {
+                case .chooseGroup:
+                    ChooseGroupView(
+                        viewModel: ChooseGroupViewModel(
+                            groupsService: Resolver.resolve(),
+                            authService: Resolver.resolve(),
+                            appState: Resolver.resolve())
+                    )
+                }
             }
         }
     }
