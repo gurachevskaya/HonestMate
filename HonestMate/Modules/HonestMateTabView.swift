@@ -18,7 +18,9 @@ struct HonestMateTabView: View {
     var body: some View {
         TabView(selection: $selection) {
             HistoryView(viewModel: HistoryViewModel(
-                expensesService: Resolver.resolve()
+                expensesService: Resolver.resolve(),
+                appState: Resolver.resolve(),
+                groupsService: Resolver.resolve()
             ))
                 .tabItem {
                     Image(systemName: "list.bullet")

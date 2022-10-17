@@ -17,7 +17,7 @@ struct ChooseGroupView: View {
             ForEach(viewModel.groups) { group in
                 Text(group.name)
                     .onTapGesture {
-                        viewModel.choseGroup(groupID: group.id ?? "")
+                        viewModel.chooseGroup(group: group)
                     }
             }
         }

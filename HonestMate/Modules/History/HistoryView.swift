@@ -31,8 +31,9 @@ struct HistoryView: View {
                     EmptyView().foregroundColor(.red)
                 }
             }
-            .navigationBarTitle("Group name", displayMode: .large)
+            .navigationBarTitle(viewModel.groupName, displayMode: .large)
             .onAppear {
+                viewModel.loadGroupName()
                 viewModel.loadHistory()
             }
         }
@@ -42,7 +43,7 @@ struct HistoryView: View {
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            HistoryView(viewModel: HistoryViewModel(expensesService: Resolver.resolve()))
+            HistoryView(viewModel: HistoryViewModel(expensesService: Resolver.resolve(), appState: Resolver.resolve(), groupsService: Resolver.resolve()))
         }
     }
 }

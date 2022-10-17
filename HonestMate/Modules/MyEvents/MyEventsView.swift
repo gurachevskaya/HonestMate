@@ -63,6 +63,7 @@ struct MyEventsView: View {
                             expenseType: expenseType,
                             authService: Resolver.resolve(),
                             expensesService: Resolver.resolve(),
+                            appState: Resolver.resolve(),
                             path: $viewModel.path
                         )
                     )

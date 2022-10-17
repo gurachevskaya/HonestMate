@@ -35,15 +35,18 @@ extension Publishers {
             subscriber.receive(subscription: subscription)
         }
         
-        private final class SnapshotSubscription<SubscriberType: Subscriber>: Combine.Subscription where SubscriberType.Input == QuerySnapshot, SubscriberType.Failure == Error {
+        private final class SnapshotSubscription<S: Subscriber>: Combine.Subscription where S.Input == QuerySnapshot, S.Failure == Error {
             
             private var registration: ListenerRegistration?
-            
+            private var subscriber: S?
+
             init(
-                subscriber: SubscriberType,
+                subscriber: S,
                 query: Query,
                 includeMetadataChanges: Bool
             ) {
+                self.subscriber = subscriber
+                
                 registration = query.addSnapshotListener(includeMetadataChanges: includeMetadataChanges) { querySnapshot, error in
                     if let error = error {
                         subscriber.receive(completion: .failure(error))
@@ -58,6 +61,7 @@ extension Publishers {
             func request(_ demand: Subscribers.Demand) {}
             
             func cancel() {
+                subscriber = nil
                 registration?.remove()
                 registration = nil
             }

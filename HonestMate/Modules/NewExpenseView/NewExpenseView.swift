@@ -151,6 +151,7 @@ struct NewExpenseView_Previews: PreviewProvider {
                 expenseType: MockData.expenseType,
                 authService: Resolver.resolve(),
                 expensesService: Resolver.resolve(),
+                appState: Resolver.resolve(),
                 path: .constant([])
             ))
         }

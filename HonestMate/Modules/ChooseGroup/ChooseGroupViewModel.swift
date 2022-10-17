@@ -33,8 +33,8 @@ class ChooseGroupViewModel: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
     
-    func choseGroup(groupID: String) {
-        appState.groupID = groupID
+    func chooseGroup(group: GroupModel) {
+        appState.groupID = group.id ?? ""
     }
     
     func getUserGroups() {

@@ -17,6 +17,7 @@ enum GroupsServiceError: LocalizedError {
 
 protocol GroupsServiceProtocol {
     func getUserGroups(userID: UserIdentifier) -> AnyPublisher<[GroupModel], GroupsServiceError>
+    func getGroup(groupID: String) -> AnyPublisher<GroupModel, GroupsServiceError>
 }
 
 final class GroupsService: GroupsServiceProtocol {
@@ -24,6 +25,18 @@ final class GroupsService: GroupsServiceProtocol {
     
     init(db: Firestore) {
         self.db = db
+    }
+    
+    func getGroup(groupID: String) -> AnyPublisher<GroupModel, GroupsServiceError> {
+        let groupsCollection = db.collection(Constants.DatabaseReferenceNames.groups)
+        let groupDocument = groupsCollection.document(groupID)
+                
+        return Publishers.FirestoreDocumentPublisher(ref: groupDocument)
+            .tryMap { snapshot in
+                try snapshot.data(as: GroupModel.self)
+            }
+            .mapError { _ in .inner }
+            .eraseToAnyPublisher()
     }
     
     func getUserGroups(userID: UserIdentifier) -> AnyPublisher<[GroupModel], GroupsServiceError> {
