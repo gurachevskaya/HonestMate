@@ -33,7 +33,7 @@ struct HonestMateTabView: View {
                     Text(R.string.localizable.tabHome())
                 }.tag(1)
             
-            MyProfileView(viewModel: MyProfileViewModel(authService: Resolver.resolve()))
+            MyProfileView(viewModel: MyProfileViewModel(authService: Resolver.resolve(), appState: Resolver.resolve()))
                 .tabItem {
                     Image(systemName: "gearshape")
                     Text(R.string.localizable.tabSettings())
