@@ -8,6 +8,12 @@
 import Foundation
 
 enum Constants {
+    enum SFSymbols {
+        static let list = "list.bullet"
+        static let house = "house"
+        static let gearshape = "gearshape"
+    }
+    
     enum StorageKeys {
         static let isLoggedIn = "isLoggedIn"
         static let groupID = "groupID"

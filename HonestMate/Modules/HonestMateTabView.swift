@@ -19,19 +19,19 @@ struct HonestMateTabView: View {
         TabView(selection: $selection) {
             HistoryRoute.history.view()
                 .tabItem {
-                    Image(systemName: "list.bullet")
+                    Image(systemName: Constants.SFSymbols.list)
                     Text(R.string.localizable.tabHistory())
                 }.tag(0)
             
             HomeRoute.home.view()
             .tabItem {
-                Image(systemName: "house")
+                Image(systemName: Constants.SFSymbols.house)
                 Text(R.string.localizable.tabHome())
             }.tag(1)
             
             ProfileRoute.profile.view()
                 .tabItem {
-                    Image(systemName: "gearshape")
+                    Image(systemName: Constants.SFSymbols.gearshape)
                     Text(R.string.localizable.tabSettings())
                 }.tag(2)
         }
