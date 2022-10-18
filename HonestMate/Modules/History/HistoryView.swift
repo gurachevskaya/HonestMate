@@ -26,10 +26,7 @@ struct HistoryView: View {
                 }
             }
             .navigationDestination(for: HistoryRoute.self) { route in
-                switch route {
-                case .expenseDetails(let model):
-                    EmptyView().foregroundColor(.red)
-                }
+                route.view()
             }
             .navigationBarTitle(viewModel.groupName, displayMode: .large)
             .onAppear {

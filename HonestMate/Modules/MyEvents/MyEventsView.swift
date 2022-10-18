@@ -11,9 +11,9 @@ import Resolver
 struct MyEventsView: View {
     
     @ObservedObject var viewModel: MyEventsViewModel
-    
+
     var addExpenseButton: some View {
-        NavigationLink(value: Route.selectType) {
+        NavigationLink(value: HomeRoute.selectType) {
             RoundedTextButton(
                 title: "Add Expense",
                 style: .pink
@@ -22,7 +22,7 @@ struct MyEventsView: View {
     }
 
     var directPaymentButton: some View {
-        NavigationLink(value: Route.directPayment) {
+        NavigationLink(value: HomeRoute.directPayment) {
             RoundedTextButton(
                 title: "Direct Payment",
                 style: .pink
@@ -31,47 +31,14 @@ struct MyEventsView: View {
     }
     
     var body: some View {
-        NavigationStack(path: $viewModel.path) {
+        NavigationStack(path: $viewModel.navigationState.homePath) {
             Spacer()
             HStack {
                 addExpenseButton
                 directPaymentButton
             }
-            .navigationDestination(for: Route.self) { route in
-                switch route {
-                case .selectType:
-                    SelectExpenseTypeView(
-                        viewModel: SelectExpenseTypeViewModel(
-                            type: .select,
-                            expenseType: nil,
-                            expensesService: Resolver.resolve()
-                        )
-                    )
-                    
-                case .reselectType(let expenseType):
-                    SelectExpenseTypeView(
-                        viewModel: SelectExpenseTypeViewModel(
-                            type: .reselect,
-                            expenseType: expenseType,
-                            expensesService: Resolver.resolve()
-                        )
-                    )
-                    
-                case .newExpense(let expenseType):
-                    NewExpenseView(
-                        viewModel: NewExpenseViewModel(
-                            expenseType: expenseType,
-                            authService: Resolver.resolve(),
-                            expensesService: Resolver.resolve(),
-                            appState: Resolver.resolve(),
-                            path: $viewModel.path
-                        )
-                    )
-                case .directPayment:
-                    DirectPaymentView(
-                        viewModel: DirectPaymentViewModel()
-                    )
-                }
+            .navigationDestination(for: HomeRoute.self) { route in
+                route.view()
             }
         }
         .padding()
@@ -80,6 +47,6 @@ struct MyEventsView: View {
 
 struct MyEventsView_Previews: PreviewProvider {
     static var previews: some View {
-        MyEventsView(viewModel: MyEventsViewModel())
+        MyEventsView(viewModel: MyEventsViewModel(navigationState: Resolver.resolve()))
     }
 }

@@ -19,7 +19,7 @@ struct SelectExpenseTypeView: View {
                 ForEach(viewModel.expenseTypes) { type in
                     switch viewModel.type {
                     case .select:
-                        NavigationLink(value: Route.newExpense(type)) {
+                        NavigationLink(value: HomeRoute.newExpense(type)) {
                             ExpenseTypeView(type: type)
                         }
                     case .reselect:

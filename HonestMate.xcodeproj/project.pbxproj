@@ -8,11 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		10D45721496F509CA15C305A /* Pods_HonestMateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14048C7F83BC590EDFC6DC61 /* Pods_HonestMateTests.framework */; };
+		1816E42528FEB24600BA9EE1 /* NavigationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816E42428FEB24600BA9EE1 /* NavigationRoute.swift */; };
+		1816E42A28FEB4DB00BA9EE1 /* HomeRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816E42928FEB4DB00BA9EE1 /* HomeRoute.swift */; };
+		1816E42C28FEECA100BA9EE1 /* HistoryRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816E42B28FEECA100BA9EE1 /* HistoryRoute.swift */; };
+		1816E42E28FEECB800BA9EE1 /* SignInRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816E42D28FEECB800BA9EE1 /* SignInRoute.swift */; };
+		1816E43028FF007600BA9EE1 /* ProfileRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816E42F28FF007600BA9EE1 /* ProfileRoute.swift */; };
+		1816E43228FF08B200BA9EE1 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816E43128FF08B200BA9EE1 /* NavigationState.swift */; };
+		1816E43428FF0ED000BA9EE1 /* AnyCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816E43328FF0ED000BA9EE1 /* AnyCancellable.swift */; };
 		182466AA28F5D54500572A11 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182466A928F5D54500572A11 /* HistoryViewModel.swift */; };
 		182466AE28F6B2F700572A11 /* SnapshotPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182466AD28F6B2F700572A11 /* SnapshotPublisher.swift */; };
 		182466B328F6F89100572A11 /* UserIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182466B228F6F89100572A11 /* UserIdentifier.swift */; };
 		182466B528F6F8CC00572A11 /* UserName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182466B428F6F8CC00572A11 /* UserName.swift */; };
-		183543C928D4C06900FDEEA2 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183543C828D4C06900FDEEA2 /* Route.swift */; };
 		183543CB28D4C0E400FDEEA2 /* ReceiverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183543CA28D4C0E400FDEEA2 /* ReceiverView.swift */; };
 		183543CD28D4C11800FDEEA2 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183543CC28D4C11800FDEEA2 /* Member.swift */; };
 		183543CF28D4C16F00FDEEA2 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183543CE28D4C16F00FDEEA2 /* MockData.swift */; };
@@ -108,11 +114,17 @@
 /* Begin PBXFileReference section */
 		0F446593694CA01444E1A173 /* Pods-HonestMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HonestMate.debug.xcconfig"; path = "Target Support Files/Pods-HonestMate/Pods-HonestMate.debug.xcconfig"; sourceTree = "<group>"; };
 		14048C7F83BC590EDFC6DC61 /* Pods_HonestMateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HonestMateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1816E42428FEB24600BA9EE1 /* NavigationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRoute.swift; sourceTree = "<group>"; };
+		1816E42928FEB4DB00BA9EE1 /* HomeRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRoute.swift; sourceTree = "<group>"; };
+		1816E42B28FEECA100BA9EE1 /* HistoryRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRoute.swift; sourceTree = "<group>"; };
+		1816E42D28FEECB800BA9EE1 /* SignInRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRoute.swift; sourceTree = "<group>"; };
+		1816E42F28FF007600BA9EE1 /* ProfileRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRoute.swift; sourceTree = "<group>"; };
+		1816E43128FF08B200BA9EE1 /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
+		1816E43328FF0ED000BA9EE1 /* AnyCancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCancellable.swift; sourceTree = "<group>"; };
 		182466A928F5D54500572A11 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		182466AD28F6B2F700572A11 /* SnapshotPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotPublisher.swift; sourceTree = "<group>"; };
 		182466B228F6F89100572A11 /* UserIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdentifier.swift; sourceTree = "<group>"; };
 		182466B428F6F8CC00572A11 /* UserName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserName.swift; sourceTree = "<group>"; };
-		183543C828D4C06900FDEEA2 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		183543CA28D4C0E400FDEEA2 /* ReceiverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverView.swift; sourceTree = "<group>"; };
 		183543CC28D4C11800FDEEA2 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		183543CE28D4C16F00FDEEA2 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
@@ -223,6 +235,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1816E42628FEB48F00BA9EE1 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				1816E42428FEB24600BA9EE1 /* NavigationRoute.swift */,
+				1816E42928FEB4DB00BA9EE1 /* HomeRoute.swift */,
+				1816E42B28FEECA100BA9EE1 /* HistoryRoute.swift */,
+				1816E42D28FEECB800BA9EE1 /* SignInRoute.swift */,
+				1816E42F28FF007600BA9EE1 /* ProfileRoute.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		184791DA28C0CC8300BF9717 /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +319,7 @@
 				183543DB28DB13F100FDEEA2 /* FirebaseCore.swift */,
 				18D49A3128F08CB60022087D /* ExpensesService.swift */,
 				18E6EF8328F85DC60061DE8D /* GroupsService.swift */,
+				1816E43128FF08B200BA9EE1 /* NavigationState.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -302,10 +327,10 @@
 		1858A1BB28C21A870039246A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1816E42628FEB48F00BA9EE1 /* Navigation */,
 				1858A1BC28C21A940039246A /* AlertItem.swift */,
 				185F421C28CB8F1000628DDC /* AppConfig.swift */,
 				18A4D4D728D384BA00BA2793 /* ExpenseCategory.swift */,
-				183543C828D4C06900FDEEA2 /* Route.swift */,
 				183543CC28D4C11800FDEEA2 /* Member.swift */,
 				183543CE28D4C16F00FDEEA2 /* MockData.swift */,
 				18D49A3328F091E40022087D /* ExpenseModel.swift */,
@@ -465,6 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				18E6EF8828F9B3480061DE8D /* Clearable.swift */,
+				1816E43328FF0ED000BA9EE1 /* AnyCancellable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -856,10 +882,12 @@
 				18BA855528CA3E3300F8DC2A /* Constants.swift in Sources */,
 				18F728D928B91057002D071F /* ContentView.swift in Sources */,
 				18D49A3228F08CB60022087D /* ExpensesService.swift in Sources */,
+				1816E43428FF0ED000BA9EE1 /* AnyCancellable.swift in Sources */,
 				18F7290528BCB383002D071F /* Gemfile in Sources */,
 				18E6EF8228F85B210061DE8D /* GroupModel.swift in Sources */,
 				185F423028D21F7800628DDC /* RemoteConfigMock.swift in Sources */,
 				1858E15228C60EBA00521ED8 /* MyEventsView.swift in Sources */,
+				1816E43228FF08B200BA9EE1 /* NavigationState.swift in Sources */,
 				182466AE28F6B2F700572A11 /* SnapshotPublisher.swift in Sources */,
 				183543DC28DB13F100FDEEA2 /* FirebaseCore.swift in Sources */,
 				18F7290A28BCB4E6002D071F /* Scanfile in Sources */,
@@ -878,25 +906,28 @@
 				18A4D4D828D384BA00BA2793 /* ExpenseCategory.swift in Sources */,
 				183543D128D4C26A00FDEEA2 /* CheckboxView.swift in Sources */,
 				18A4D4E028D4845700BA2793 /* DirectPaymentViewModel.swift in Sources */,
+				1816E42528FEB24600BA9EE1 /* NavigationRoute.swift in Sources */,
 				185F421528CB44A700628DDC /* RemoteConfigService.swift in Sources */,
 				18E6EF7E28F8542D0061DE8D /* ChooseGroupView.swift in Sources */,
 				182466B328F6F89100572A11 /* UserIdentifier.swift in Sources */,
 				18F728D728B91057002D071F /* HonestMateApp.swift in Sources */,
 				184791E428C0F16C00BF9717 /* SignInViewModel.swift in Sources */,
 				18E6EF7B28F81B9B0061DE8D /* View+IsHidden.swift in Sources */,
+				1816E42A28FEB4DB00BA9EE1 /* HomeRoute.swift in Sources */,
 				187C36D728F47CE600894BBA /* DataSnapshot+Ext.swift in Sources */,
 				185F423F28D34E9000628DDC /* HistoryView.swift in Sources */,
 				1879862828F5CC9600E5AC34 /* HistoryItemView.swift in Sources */,
 				18A4D4E228D4847800BA2793 /* DirectPaymentView.swift in Sources */,
+				1816E43028FF007600BA9EE1 /* ProfileRoute.swift in Sources */,
 				182466B528F6F8CC00572A11 /* UserName.swift in Sources */,
 				1858A1BD28C21A940039246A /* AlertItem.swift in Sources */,
 				18E6EF8928F9B3480061DE8D /* Clearable.swift in Sources */,
 				18BA855728CA48B700F8DC2A /* AppState.swift in Sources */,
 				187C36D528F4427B00894BBA /* Encodable+Ext.swift in Sources */,
 				185F423428D323BE00628DDC /* AppStateMock.swift in Sources */,
+				1816E42E28FEECB800BA9EE1 /* SignInRoute.swift in Sources */,
 				18A4D4D128D3830000BA2793 /* SelectExpenseTypeView.swift in Sources */,
 				182466AA28F5D54500572A11 /* HistoryViewModel.swift in Sources */,
-				183543C928D4C06900FDEEA2 /* Route.swift in Sources */,
 				185F423928D34DD700628DDC /* HonestMateTabView.swift in Sources */,
 				18A4D4D328D3830F00BA2793 /* SelectExpenseTypeViewModel.swift in Sources */,
 				185F422828CF855B00628DDC /* EnvironmentConstants.swift in Sources */,
@@ -915,6 +946,7 @@
 				184791F028C1F88000BF9717 /* R.generated.swift in Sources */,
 				186FD74528C79D39004B5156 /* AuthPublisher.swift in Sources */,
 				184791DF28C0EFB800BF9717 /* HotestMateApp+Resolving.swift in Sources */,
+				1816E42C28FEECA100BA9EE1 /* HistoryRoute.swift in Sources */,
 				18E6EF8628F884B30061DE8D /* UserInfoModel.swift in Sources */,
 				183543CD28D4C11800FDEEA2 /* Member.swift in Sources */,
 			);

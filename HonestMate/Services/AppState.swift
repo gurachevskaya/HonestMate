@@ -6,11 +6,6 @@
 //
 
 import SwiftUI
-import Combine
-
-protocol AnyObservableObject: AnyObject {
-    var objectWillChange: ObservableObjectPublisher { get }
-}
 
 protocol AppStateProtocol: AnyObservableObject, Clearable {
     var isLoggedIn: Bool { get set }
@@ -20,7 +15,7 @@ protocol AppStateProtocol: AnyObservableObject, Clearable {
 class AppState: AppStateProtocol, ObservableObject {
     @AppStorage(Constants.StorageKeys.isLoggedIn) var isLoggedIn = true
     @AppStorage(Constants.StorageKeys.groupID) var groupID = ""
-    
+
     func clear() {
         isLoggedIn = false
         groupID = ""

@@ -24,20 +24,11 @@ struct SplashView: View {
                 }
                 .fullScreenCover(
                     isPresented: $showLoginFlow,
-                    content: {
-                        SignInView(
-                            viewModel: SignInViewModel(
-                                authService: Resolver.resolve(),
-                                remoteConfigService: Resolver.resolve()
-                            )
-                        )
-                    }
+                    content: { SignInRoute.signIn.view() }
                 )
                 .fullScreenCover(
                     isPresented: $showMainFlow,
-                    content: {
-                        HonestMateTabView()
-                    }
+                    content: { HonestMateTabView() }
                 )
         }
         .onChange(of: viewModel.showLoginFlow) { newValue in
