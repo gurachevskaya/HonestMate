@@ -40,8 +40,4 @@ class MyProfileViewModel: ObservableObject {
             .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
             .store(in: &cancellables)
     }
-    
-    func changeGroup() {
-        shouldShowChooseGroup = true
-    }
 }

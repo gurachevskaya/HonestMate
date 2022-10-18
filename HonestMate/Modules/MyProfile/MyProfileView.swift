@@ -10,11 +10,13 @@ import Resolver
 
 struct MyProfileView: View {
     @ObservedObject var viewModel: MyProfileViewModel
+    
+    @State var shouldShowChooseGroup = false
 
     var body: some View {
         List {
             Button {
-                viewModel.changeGroup()
+                shouldShowChooseGroup = true
             } label: {
                 Text("Change Group")
             }
@@ -25,8 +27,11 @@ struct MyProfileView: View {
                 Text("Logout")
             }
         }
+        .onReceive(viewModel.$shouldShowChooseGroup) { newValue in
+            shouldShowChooseGroup = newValue
+        }
         .foregroundColor(.primary)
-        .fullScreenCover(isPresented: $viewModel.shouldShowChooseGroup) {
+        .fullScreenCover(isPresented: $shouldShowChooseGroup) {
             ChooseGroupView(
                 viewModel: ChooseGroupViewModel(
                     groupsService: Resolver.resolve(),

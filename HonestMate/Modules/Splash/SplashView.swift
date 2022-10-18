@@ -23,7 +23,7 @@ struct SplashView: View {
                     viewModel.loadConfig()
                 }
                 .fullScreenCover(
-                    isPresented: $viewModel.showLoginFlow,
+                    isPresented: $showLoginFlow,
                     content: {
                         SignInView(
                             viewModel: SignInViewModel(
@@ -34,7 +34,7 @@ struct SplashView: View {
                     }
                 )
                 .fullScreenCover(
-                    isPresented: $viewModel.showMainFlow,
+                    isPresented: $showMainFlow,
                     content: {
                         HonestMateTabView()
                     }
