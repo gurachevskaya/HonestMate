@@ -11,7 +11,6 @@ import Resolver
 struct MyEventsView: View {
     
     @ObservedObject var viewModel: MyEventsViewModel
-    @StateObject var appState = AppState()
 
     var addExpenseButton: some View {
         NavigationLink(value: HomeRoute.selectType) {
@@ -32,7 +31,7 @@ struct MyEventsView: View {
     }
     
     var body: some View {
-        NavigationStack(path: $appState.homePath) {
+        NavigationStack(path: $viewModel.navigationState.homePath) {
             Spacer()
             HStack {
                 addExpenseButton
@@ -42,13 +41,12 @@ struct MyEventsView: View {
                 route.view()
             }
         }
-        .environmentObject(appState)
         .padding()
     }
 }
 
 struct MyEventsView_Previews: PreviewProvider {
     static var previews: some View {
-        MyEventsView(viewModel: MyEventsViewModel())
+        MyEventsView(viewModel: MyEventsViewModel(navigationState: Resolver.resolve()))
     }
 }

@@ -21,7 +21,9 @@ enum HomeRoute: NavigationRoute, Hashable {
         switch self {
         case .home:
             MyEventsView(
-                viewModel: MyEventsViewModel()
+                viewModel: MyEventsViewModel(
+                    navigationState: Resolver.resolve()
+                )
             )
         case .selectType:
             SelectExpenseTypeView(

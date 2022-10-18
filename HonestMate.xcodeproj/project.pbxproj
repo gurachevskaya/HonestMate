@@ -12,6 +12,9 @@
 		1816E42A28FEB4DB00BA9EE1 /* HomeRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816E42928FEB4DB00BA9EE1 /* HomeRoute.swift */; };
 		1816E42C28FEECA100BA9EE1 /* HistoryRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816E42B28FEECA100BA9EE1 /* HistoryRoute.swift */; };
 		1816E42E28FEECB800BA9EE1 /* SignInRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816E42D28FEECB800BA9EE1 /* SignInRoute.swift */; };
+		1816E43028FF007600BA9EE1 /* ProfileRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816E42F28FF007600BA9EE1 /* ProfileRoute.swift */; };
+		1816E43228FF08B200BA9EE1 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816E43128FF08B200BA9EE1 /* NavigationState.swift */; };
+		1816E43428FF0ED000BA9EE1 /* AnyCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816E43328FF0ED000BA9EE1 /* AnyCancellable.swift */; };
 		182466AA28F5D54500572A11 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182466A928F5D54500572A11 /* HistoryViewModel.swift */; };
 		182466AE28F6B2F700572A11 /* SnapshotPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182466AD28F6B2F700572A11 /* SnapshotPublisher.swift */; };
 		182466B328F6F89100572A11 /* UserIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182466B228F6F89100572A11 /* UserIdentifier.swift */; };
@@ -115,6 +118,9 @@
 		1816E42928FEB4DB00BA9EE1 /* HomeRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRoute.swift; sourceTree = "<group>"; };
 		1816E42B28FEECA100BA9EE1 /* HistoryRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRoute.swift; sourceTree = "<group>"; };
 		1816E42D28FEECB800BA9EE1 /* SignInRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRoute.swift; sourceTree = "<group>"; };
+		1816E42F28FF007600BA9EE1 /* ProfileRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRoute.swift; sourceTree = "<group>"; };
+		1816E43128FF08B200BA9EE1 /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
+		1816E43328FF0ED000BA9EE1 /* AnyCancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCancellable.swift; sourceTree = "<group>"; };
 		182466A928F5D54500572A11 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		182466AD28F6B2F700572A11 /* SnapshotPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotPublisher.swift; sourceTree = "<group>"; };
 		182466B228F6F89100572A11 /* UserIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdentifier.swift; sourceTree = "<group>"; };
@@ -236,6 +242,7 @@
 				1816E42928FEB4DB00BA9EE1 /* HomeRoute.swift */,
 				1816E42B28FEECA100BA9EE1 /* HistoryRoute.swift */,
 				1816E42D28FEECB800BA9EE1 /* SignInRoute.swift */,
+				1816E42F28FF007600BA9EE1 /* ProfileRoute.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -312,6 +319,7 @@
 				183543DB28DB13F100FDEEA2 /* FirebaseCore.swift */,
 				18D49A3128F08CB60022087D /* ExpensesService.swift */,
 				18E6EF8328F85DC60061DE8D /* GroupsService.swift */,
+				1816E43128FF08B200BA9EE1 /* NavigationState.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -482,6 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				18E6EF8828F9B3480061DE8D /* Clearable.swift */,
+				1816E43328FF0ED000BA9EE1 /* AnyCancellable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -873,10 +882,12 @@
 				18BA855528CA3E3300F8DC2A /* Constants.swift in Sources */,
 				18F728D928B91057002D071F /* ContentView.swift in Sources */,
 				18D49A3228F08CB60022087D /* ExpensesService.swift in Sources */,
+				1816E43428FF0ED000BA9EE1 /* AnyCancellable.swift in Sources */,
 				18F7290528BCB383002D071F /* Gemfile in Sources */,
 				18E6EF8228F85B210061DE8D /* GroupModel.swift in Sources */,
 				185F423028D21F7800628DDC /* RemoteConfigMock.swift in Sources */,
 				1858E15228C60EBA00521ED8 /* MyEventsView.swift in Sources */,
+				1816E43228FF08B200BA9EE1 /* NavigationState.swift in Sources */,
 				182466AE28F6B2F700572A11 /* SnapshotPublisher.swift in Sources */,
 				183543DC28DB13F100FDEEA2 /* FirebaseCore.swift in Sources */,
 				18F7290A28BCB4E6002D071F /* Scanfile in Sources */,
@@ -907,6 +918,7 @@
 				185F423F28D34E9000628DDC /* HistoryView.swift in Sources */,
 				1879862828F5CC9600E5AC34 /* HistoryItemView.swift in Sources */,
 				18A4D4E228D4847800BA2793 /* DirectPaymentView.swift in Sources */,
+				1816E43028FF007600BA9EE1 /* ProfileRoute.swift in Sources */,
 				182466B528F6F8CC00572A11 /* UserName.swift in Sources */,
 				1858A1BD28C21A940039246A /* AlertItem.swift in Sources */,
 				18E6EF8928F9B3480061DE8D /* Clearable.swift in Sources */,

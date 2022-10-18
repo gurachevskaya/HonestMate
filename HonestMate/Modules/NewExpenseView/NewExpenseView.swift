@@ -12,7 +12,7 @@ import Combine
 struct NewExpenseView: View {
     
     @StateObject var viewModel: NewExpenseViewModel
-    @EnvironmentObject var appState: AppState
+//    @EnvironmentObject var navigationState: NavigationState
     
     private var description: some View {
         VStack(alignment: .leading) {
@@ -130,11 +130,11 @@ struct NewExpenseView: View {
             
             okButton
         }
-        .onChange(of: $viewModel.shouldPopToRoot) { newValue in
-            if newValue.wrappedValue == true {
-                appState.homePath = []
-            }
-        }
+//        .onChange(of: $viewModel.shouldPopToRoot) { newValue in
+//            if newValue.wrappedValue == true {
+//                appState.homePath = []
+//            }
+//        }
         .onAppear {
             viewModel.loadGroupMembers()
         }

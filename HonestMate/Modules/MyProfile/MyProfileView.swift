@@ -32,13 +32,7 @@ struct MyProfileView: View {
         }
         .foregroundColor(.primary)
         .fullScreenCover(isPresented: $shouldShowChooseGroup) {
-            ChooseGroupView(
-                viewModel: ChooseGroupViewModel(
-                    groupsService: Resolver.resolve(),
-                    authService: Resolver.resolve(),
-                    appState: Resolver.resolve()
-                )
-            )
+            ProfileRoute.chooseGroup.view()
         }
     }
 }

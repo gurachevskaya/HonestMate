@@ -8,9 +8,12 @@
 import Foundation
 import SwiftUI
 import Combine
+import Resolver
 
 class NewExpenseViewModel: ObservableObject {
     
+    var navigationState: NavigationStateProtocol = Resolver.resolve()
+
     @Published var expenseType: ExpenseCategory
     private var authService: AuthServiceProtocol
     private var expensesService: ExpensesServiceProtocol
@@ -96,7 +99,10 @@ class NewExpenseViewModel: ObservableObject {
     
     private func popToRootView() {
         UIApplication.shared.addBackAnimation()
-        shouldPopToRoot = true
+        print(navigationState.homePath)
+        navigationState.homePath = []
+        print(navigationState.homePath)
+//        shouldPopToRoot = true
     }
     
     func toggleSelection(selectable: Member) {

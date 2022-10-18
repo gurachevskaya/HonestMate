@@ -18,6 +18,7 @@ extension Resolver: ResolverRegistering {
     
     private static func registerCores() {
         register { Firestore.firestore() as Firestore }
+        register { NavigationState() as NavigationStateProtocol }.scope(.application)
         
         if ProcessInfo.processInfo.arguments.contains("testing") {
             register { AppStateMock() as AppStateProtocol }.scope(.application)
