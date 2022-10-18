@@ -18,13 +18,13 @@ struct MyProfileView: View {
             Button {
                 shouldShowChooseGroup = true
             } label: {
-                Text("Change Group")
+                Text(R.string.localizable.profileChangeGroup())
             }
             
             Button {
                 viewModel.logout()
             } label: {
-                Text("Logout")
+                Text(R.string.localizable.profileLogout())
             }
         }
         .onReceive(viewModel.$shouldShowChooseGroup) { newValue in

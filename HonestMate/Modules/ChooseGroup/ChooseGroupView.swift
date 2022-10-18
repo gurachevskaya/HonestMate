@@ -23,7 +23,7 @@ struct ChooseGroupView: View {
                 }
             }
         }
-        .navigationBarTitle("My Groups", displayMode: .large)
+        .navigationBarTitle(R.string.localizable.chooseGroupMyGroupsTitle(), displayMode: .large)
         .navigationBarBackButtonHidden(true)
         .onAppear {
             viewModel.getUserGroups()
