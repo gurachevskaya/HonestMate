@@ -77,4 +77,11 @@
 "history.see.all" = "See All";
 "history.hide.all" = "Hide All";
 
+// MARK: Choose group
 
+"choose.group.my.groups.title" = "My Groups";
+
+// MARK: Profile
+
+"profile.change.group" = "Change Group";
+"profile.logout" = "Logout";

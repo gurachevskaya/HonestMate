@@ -10,18 +10,41 @@ import Resolver
 
 struct MyProfileView: View {
     @ObservedObject var viewModel: MyProfileViewModel
+    
+    @State var shouldShowChooseGroup = false
 
     var body: some View {
-        Button {
-            viewModel.logout()
-        } label: {
-            Text("Logout")
+        List {
+            Button {
+                shouldShowChooseGroup = true
+            } label: {
+                Text(R.string.localizable.profileChangeGroup())
+            }
+            
+            Button {
+                viewModel.logout()
+            } label: {
+                Text(R.string.localizable.profileLogout())
+            }
+        }
+        .onReceive(viewModel.$shouldShowChooseGroup) { newValue in
+            shouldShowChooseGroup = newValue
+        }
+        .foregroundColor(.primary)
+        .fullScreenCover(isPresented: $shouldShowChooseGroup) {
+            ChooseGroupView(
+                viewModel: ChooseGroupViewModel(
+                    groupsService: Resolver.resolve(),
+                    authService: Resolver.resolve(),
+                    appState: Resolver.resolve()
+                )
+            )
         }
     }
 }
 
 struct MyProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        MyProfileView(viewModel: MyProfileViewModel(authService: Resolver.resolve()))
+        MyProfileView(viewModel: MyProfileViewModel(authService: Resolver.resolve(), appState: Resolver.resolve()))
     }
 }

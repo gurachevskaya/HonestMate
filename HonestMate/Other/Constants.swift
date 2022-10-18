@@ -10,6 +10,7 @@ import Foundation
 enum Constants {
     enum StorageKeys {
         static let isLoggedIn = "isLoggedIn"
+        static let groupID = "groupID"
     }
     
     enum FeatureFlagKeys {
@@ -32,6 +33,4 @@ enum Constants {
         static let expensesHistory = "expensesHistory"
         static let members = "members"
     }
-    
-    static let databaseUrl = "https://honestmate-cc6e0-default-rtdb.europe-west1.firebasedatabase.app/"
 }

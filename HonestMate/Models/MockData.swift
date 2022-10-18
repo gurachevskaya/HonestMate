@@ -27,7 +27,9 @@ struct MockData {
         "8vSUg7L0d2Xth6nGhmlwVRV9JVA2"
     ]
     
-    static let currentGroup = "5Pcoq4Yq4zwabAGmaafj"
+    static let currentGroupID = "5Pcoq4Yq4zwabAGmaafj"
+    static let currentGroup = GroupModel(id: "5Pcoq4Yq4zwabAGmaafj", name: "Georgia", created: Date())
+
     static let defaultCurrency = "USD"
     
     static let historyItem = ExpenseModel(category: "Food", amount: 20, date: Date(), payer: "1", between: ["1", "2"])

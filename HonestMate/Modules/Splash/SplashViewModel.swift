@@ -28,25 +28,27 @@ class SplashViewModel: ObservableObject {
     @Published private(set) var isLoading: Bool = true
     @Published var showMainFlow: Bool = false
     @Published var showLoginFlow: Bool = false
-    
+
     private func setupPipeline() {
         appState.objectWillChange
             .sink { [unowned self] _ in
-                showMainFlow = appState.isLoggedIn && !isLoading
-                showLoginFlow = !appState.isLoggedIn && !isLoading
+                if !isLoading {
+                    showMainFlow = appState.isLoggedIn && !appState.groupID.isEmpty
+                    showLoginFlow = !appState.isLoggedIn || appState.groupID.isEmpty
+                }
             }
-            .store(in: &cancellables)
-        
-        $isLoading
-            .map { [unowned self] in
-                $0 == false && appState.isLoggedIn
-            }
-            .assign(to: \.showMainFlow, on: self)
             .store(in: &cancellables)
 
         $isLoading
             .map { [unowned self] in
-                $0 == false && !appState.isLoggedIn
+                $0 == false && appState.isLoggedIn && !appState.groupID.isEmpty
+            }
+            .assign(to: \.showMainFlow, on: self)
+            .store(in: &cancellables)
+        
+        $isLoading
+            .map { [unowned self] in
+                ($0 == false && !appState.isLoggedIn) || ($0 == false && appState.groupID.isEmpty)
             }
             .assign(to: \.showLoginFlow, on: self)
             .store(in: &cancellables)

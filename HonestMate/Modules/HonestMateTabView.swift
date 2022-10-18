@@ -17,7 +17,11 @@ struct HonestMateTabView: View {
     
     var body: some View {
         TabView(selection: $selection) {
-            HistoryView(viewModel: HistoryViewModel(expensesService: Resolver.resolve()))
+            HistoryView(viewModel: HistoryViewModel(
+                expensesService: Resolver.resolve(),
+                appState: Resolver.resolve(),
+                groupsService: Resolver.resolve()
+            ))
                 .tabItem {
                     Image(systemName: "list.bullet")
                     Text(R.string.localizable.tabHistory())
@@ -29,7 +33,7 @@ struct HonestMateTabView: View {
                     Text(R.string.localizable.tabHome())
                 }.tag(1)
             
-            MyProfileView(viewModel: MyProfileViewModel(authService: Resolver.resolve()))
+            MyProfileView(viewModel: MyProfileViewModel(authService: Resolver.resolve(), appState: Resolver.resolve()))
                 .tabItem {
                     Image(systemName: "gearshape")
                     Text(R.string.localizable.tabSettings())

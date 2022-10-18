@@ -29,8 +29,12 @@ protocol AuthServiceProtocol {
     func logout() -> AnyPublisher<Void, AuthError>
 }
 
-final class AuthService: AuthServiceProtocol {
-    @AppStorage(Constants.StorageKeys.isLoggedIn) private var isLoggedIn = true
+final class AuthService: AuthServiceProtocol {    
+    private var appState: AppStateProtocol
+    
+    init(appState: AppStateProtocol) {
+        self.appState = appState
+    }
     
     var currentUser: User? { Auth.auth().currentUser }
     
@@ -44,7 +48,7 @@ final class AuthService: AuthServiceProtocol {
                 if let error = error {
                     promise(.failure(mapError(error)))
                 } else if let _ = result?.user {
-                    isLoggedIn = true
+                    appState.isLoggedIn = true
                     promise(.success(()))
                 }
             }
@@ -59,7 +63,7 @@ final class AuthService: AuthServiceProtocol {
                     promise(.failure(mapError(error)))
                 } else if let user = result?.user {
                     saveName(user: user, name: name)
-                    isLoggedIn = true
+                    appState.isLoggedIn = true
                     promise(.success(()))
                 }
             }
@@ -77,7 +81,7 @@ final class AuthService: AuthServiceProtocol {
         return Future<Void, AuthError> { [unowned self] promise in
             do {
                 try Auth.auth().signOut()
-                isLoggedIn = false
+                appState.clear()
                 promise(.success(()))
             } catch let error {
                 print(error)

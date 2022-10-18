@@ -14,17 +14,20 @@ class NewExpenseViewModel: ObservableObject {
     @Published var expenseType: ExpenseCategory
     private var authService: AuthServiceProtocol
     private var expensesService: ExpensesServiceProtocol
+    private var appState: AppStateProtocol
     private var path: Binding<[Route]>
     
     init(
         expenseType: ExpenseCategory,
         authService: AuthServiceProtocol,
         expensesService: ExpensesServiceProtocol,
+        appState: AppStateProtocol,
         path: Binding<[Route]>
     ) {
         self.expenseType = expenseType
         self.authService = authService
         self.expensesService = expensesService
+        self.appState = appState
         self.path = path
         
         setupPipeline()
@@ -111,7 +114,7 @@ class NewExpenseViewModel: ObservableObject {
     }
     
     func loadGroupMembers() {
-        expensesService.getGroupMembers(groupID: MockData.currentGroup)
+        expensesService.getGroupMembers(groupID: appState.groupID)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] subscription in
                 switch subscription {
@@ -143,7 +146,7 @@ class NewExpenseViewModel: ObservableObject {
             between: recievers.compactMap { $0.name }
         )
             
-        expensesService.createExpense(groupID: MockData.currentGroup, expense: expenseModel)
+        expensesService.createExpense(groupID: appState.groupID, expense: expenseModel)
             .receive(on: DispatchQueue.main)
             .sink { [unowned self] subscription in
                 switch subscription {

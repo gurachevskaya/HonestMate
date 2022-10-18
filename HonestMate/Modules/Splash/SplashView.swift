@@ -17,11 +17,13 @@ struct SplashView: View {
     var body: some View {
         ZStack {
             Text("honestmate")
+                .font(.title)
+                .fontWeight(.bold)
                 .onAppear {
                     viewModel.loadConfig()
                 }
                 .fullScreenCover(
-                    isPresented: $viewModel.showLoginFlow,
+                    isPresented: $showLoginFlow,
                     content: {
                         SignInView(
                             viewModel: SignInViewModel(
@@ -31,9 +33,8 @@ struct SplashView: View {
                         )
                     }
                 )
-            
                 .fullScreenCover(
-                    isPresented: $viewModel.showMainFlow,
+                    isPresented: $showMainFlow,
                     content: {
                         HonestMateTabView()
                     }

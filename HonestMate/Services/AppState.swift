@@ -12,10 +12,17 @@ protocol AnyObservableObject: AnyObject {
     var objectWillChange: ObservableObjectPublisher { get }
 }
 
-protocol AppStateProtocol: AnyObservableObject {
-    var isLoggedIn: Bool { get }
+protocol AppStateProtocol: AnyObservableObject, Clearable {
+    var isLoggedIn: Bool { get set }
+    var groupID: String { get set }
 }
 
 class AppState: AppStateProtocol, ObservableObject {
     @AppStorage(Constants.StorageKeys.isLoggedIn) var isLoggedIn = true
+    @AppStorage(Constants.StorageKeys.groupID) var groupID = ""
+    
+    func clear() {
+        isLoggedIn = false
+        groupID = ""
+    }
 }

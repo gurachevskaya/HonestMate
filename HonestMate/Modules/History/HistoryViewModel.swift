@@ -11,17 +11,45 @@ import Combine
 class HistoryViewModel: ObservableObject {
     
     private var expensesService: ExpensesServiceProtocol
+    private var appState: AppStateProtocol
+    private var groupsService: GroupsServiceProtocol
     
-    init(expensesService: ExpensesServiceProtocol) {
+    init(
+        expensesService: ExpensesServiceProtocol,
+        appState: AppStateProtocol,
+        groupsService: GroupsServiceProtocol
+    ) {
         self.expensesService = expensesService
+        self.appState = appState
+        self.groupsService = groupsService
+        
+        setupPipeline()
     }
-    
+        
     @Published var history: [ExpenseModel] = []
-    
+    @Published var groupName: String = ""
+
     private var cancellables: Set<AnyCancellable> = []
     
+    private func setupPipeline() {
+        appState.objectWillChange
+            .sink { [unowned self] _ in
+                objectWillChange.send()
+            }
+            .store(in: &cancellables)
+    }
+    
+    func loadGroupName() {
+        groupsService.getGroup(groupID: appState.groupID)
+            .receive(on: DispatchQueue.main)
+            .map { $0.name }
+            .replaceError(with: "")
+            .assign(to: \.groupName, on: self)
+            .store(in: &cancellables)
+    }
+    
     func loadHistory() {
-        expensesService.addListenerToExpenses(groupID: MockData.currentGroup)
+        expensesService.addListenerToExpenses(groupID: appState.groupID)
             .receive(on: DispatchQueue.main)
             .sink { subscription in
                 print(subscription)
@@ -34,7 +62,10 @@ class HistoryViewModel: ObservableObject {
     
     func delete(at offsets: IndexSet) {
         offsets.map { history[$0] }.forEach { item in
-            deleteItem(id: item.id ?? "", groupID: MockData.currentGroup)
+            deleteItem(
+                id: item.id ?? "",
+                groupID: appState.groupID
+            )
         }
         history.remove(atOffsets: offsets)
     }
