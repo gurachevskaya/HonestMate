@@ -15,12 +15,14 @@ protocol AnyObservableObject: AnyObject {
 protocol AppStateProtocol: AnyObservableObject, Clearable {
     var isLoggedIn: Bool { get set }
     var groupID: String { get set }
+    var homePath: [HomeRoute] { get set }
 }
 
 class AppState: AppStateProtocol, ObservableObject {
     @AppStorage(Constants.StorageKeys.isLoggedIn) var isLoggedIn = true
     @AppStorage(Constants.StorageKeys.groupID) var groupID = ""
-    
+    @Published var homePath: [HomeRoute] = []
+
     func clear() {
         isLoggedIn = false
         groupID = ""

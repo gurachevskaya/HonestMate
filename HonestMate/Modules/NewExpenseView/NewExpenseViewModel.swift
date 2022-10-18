@@ -15,20 +15,17 @@ class NewExpenseViewModel: ObservableObject {
     private var authService: AuthServiceProtocol
     private var expensesService: ExpensesServiceProtocol
     private var appState: AppStateProtocol
-    private var path: Binding<[Route]>
     
     init(
         expenseType: ExpenseCategory,
         authService: AuthServiceProtocol,
         expensesService: ExpensesServiceProtocol,
-        appState: AppStateProtocol,
-        path: Binding<[Route]>
+        appState: AppStateProtocol
     ) {
         self.expenseType = expenseType
         self.authService = authService
         self.expensesService = expensesService
         self.appState = appState
-        self.path = path
         
         setupPipeline()
     }
@@ -43,6 +40,7 @@ class NewExpenseViewModel: ObservableObject {
     @Published var okButtonEnabled: Bool = false
     
     @Published var alertItem: AlertItem?
+    @Published var shouldPopToRoot = false
 
     var currentUserName: String { authService.currentUser?.displayName ?? "name"}
     private var currentUserID: String? { authService.currentUser?.uid }
@@ -98,7 +96,7 @@ class NewExpenseViewModel: ObservableObject {
     
     private func popToRootView() {
         UIApplication.shared.addBackAnimation()
-        path.wrappedValue = []
+        shouldPopToRoot = true
     }
     
     func toggleSelection(selectable: Member) {

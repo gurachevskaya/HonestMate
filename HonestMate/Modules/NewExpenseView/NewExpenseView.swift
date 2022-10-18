@@ -12,7 +12,8 @@ import Combine
 struct NewExpenseView: View {
     
     @StateObject var viewModel: NewExpenseViewModel
-
+    @EnvironmentObject var appState: AppState
+    
     private var description: some View {
         VStack(alignment: .leading) {
             Text(R.string.localizable.newExpenseDescriptionTitle())
@@ -33,7 +34,7 @@ struct NewExpenseView: View {
     }
     
     private var expenseType: some View {
-        NavigationLink(value: Route.reselectType($viewModel.expenseType)) {
+        NavigationLink(value: HomeRoute.reselectType($viewModel.expenseType)) {
             HStack {
                 Text(R.string.localizable.newExpenseType())
                     .foregroundColor(Color(uiColor: .systemGray))
@@ -129,6 +130,11 @@ struct NewExpenseView: View {
             
             okButton
         }
+        .onChange(of: $viewModel.shouldPopToRoot) { newValue in
+            if newValue.wrappedValue == true {
+                appState.homePath = []
+            }
+        }
         .onAppear {
             viewModel.loadGroupMembers()
         }
@@ -151,8 +157,7 @@ struct NewExpenseView_Previews: PreviewProvider {
                 expenseType: MockData.expenseType,
                 authService: Resolver.resolve(),
                 expensesService: Resolver.resolve(),
-                appState: Resolver.resolve(),
-                path: .constant([])
+                appState: Resolver.resolve()
             ))
         }
     }

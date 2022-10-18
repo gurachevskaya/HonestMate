@@ -118,15 +118,7 @@ struct SignInView: View {
                 }
             }
             .navigationDestination(for: SignInRoute.self) { route in
-                switch route {
-                case .chooseGroup:
-                    ChooseGroupView(
-                        viewModel: ChooseGroupViewModel(
-                            groupsService: Resolver.resolve(),
-                            authService: Resolver.resolve(),
-                            appState: Resolver.resolve())
-                    )
-                }
+                route.view()
             }
         }
     }
