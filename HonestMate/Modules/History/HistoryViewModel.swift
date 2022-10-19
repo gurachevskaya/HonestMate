@@ -97,7 +97,7 @@ class HistoryViewModel: ObservableObject {
                 case .finished: break
                 case .failure:
                     self?.history.insert(item, at: index)
-                    self?.alertItem = AlertContext.innerError
+                    self?.alertItem = AlertContext.deletingError
                     self?.state = .error
                 }
             } receiveValue: { _ in }

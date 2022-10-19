@@ -39,6 +39,9 @@
 "alert.user.disabled.error.title" = "Something went wrong";
 "alert.user.disabled.error.message" = "User with this email has been disabled.";
 
+"alert.history.deleting.error.title" = "Deleting error";
+"alert.history.deleting.error.message" = "Something went wrong while deleting. Please try again later.";
+
 // MARK: Tabs
 
 "tab.history" = "History";
