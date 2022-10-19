@@ -12,23 +12,24 @@ import Resolver
 
 class NewExpenseViewModel: ObservableObject {
     
-    var navigationState: NavigationStateProtocol = Resolver.resolve()
-
     @Published var expenseType: ExpenseCategory
     private var authService: AuthServiceProtocol
     private var expensesService: ExpensesServiceProtocol
     private var appState: AppStateProtocol
+    var navigationState: NavigationStateProtocol
     
     init(
         expenseType: ExpenseCategory,
         authService: AuthServiceProtocol,
         expensesService: ExpensesServiceProtocol,
-        appState: AppStateProtocol
+        appState: AppStateProtocol,
+        navigationState: NavigationStateProtocol
     ) {
         self.expenseType = expenseType
         self.authService = authService
         self.expensesService = expensesService
         self.appState = appState
+        self.navigationState = navigationState
         
         setupPipeline()
     }
@@ -43,7 +44,6 @@ class NewExpenseViewModel: ObservableObject {
     @Published var okButtonEnabled: Bool = false
     
     @Published var alertItem: AlertItem?
-    @Published var shouldPopToRoot = false
 
     var currentUserName: String { authService.currentUser?.displayName ?? "name"}
     private var currentUserID: String? { authService.currentUser?.uid }
@@ -70,21 +70,13 @@ class NewExpenseViewModel: ObservableObject {
    
     private var validAmountPublisher: AnyPublisher<Bool, Never> {
         $amountText
-            .map {
-                if let _ = Double($0) {
-                    return true
-                } else {
-                    return false
-                }
-            }
+            .map { Double($0) != nil }
             .eraseToAnyPublisher()
     }
     
     private var receiversSelectedPublisher: AnyPublisher<Bool, Never> {
         $recievers
-            .map {
-                !$0.isEmpty
-            }
+            .map { !$0.isEmpty }
             .eraseToAnyPublisher()
     }
     
@@ -99,10 +91,7 @@ class NewExpenseViewModel: ObservableObject {
     
     private func popToRootView() {
         UIApplication.shared.addBackAnimation()
-        print(navigationState.homePath)
         navigationState.homePath = []
-        print(navigationState.homePath)
-//        shouldPopToRoot = true
     }
     
     func toggleSelection(selectable: Member) {
@@ -123,8 +112,7 @@ class NewExpenseViewModel: ObservableObject {
             .sink { [weak self] subscription in
                 switch subscription {
                 case .finished: break
-                case .failure(let error):
-                    // TODO: map error
+                case .failure:
                     self?.alertItem = AlertContext.innerError
                 }
             } receiveValue: { [weak self] members in
@@ -157,8 +145,7 @@ class NewExpenseViewModel: ObservableObject {
                 case .finished:
                     popToRootView()
                     
-                case .failure(let error):
-                    // TODO: map error
+                case .failure:
                     alertItem = AlertContext.innerError
                 }
             } receiveValue: { _ in }

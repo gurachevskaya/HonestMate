@@ -47,7 +47,8 @@ enum HomeRoute: NavigationRoute, Hashable {
                     expenseType: expenseType,
                     authService: Resolver.resolve(),
                     expensesService: Resolver.resolve(),
-                    appState: Resolver.resolve()
+                    appState: Resolver.resolve(),
+                    navigationState: Resolver.resolve()
                 )
             )
         case .directPayment:
