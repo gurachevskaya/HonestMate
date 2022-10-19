@@ -25,8 +25,18 @@ class HistoryViewModel: ObservableObject {
         
         setupPipeline()
     }
+    
+    enum State {
+        case idle
+        case loading
+        case loaded
+        case error
+    }
         
+    @Published private(set) var state = State.idle
+
     @Published var history: [ExpenseModel] = []
+    @Published var alertItem: AlertItem?
     @Published var groupName: String = ""
 
     private var cancellables: Set<AnyCancellable> = []
@@ -39,7 +49,12 @@ class HistoryViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func loadGroupName() {
+    func loadData() {
+        loadGroupName()
+        loadHistory()
+    }
+    
+    private func loadGroupName() {
         groupsService.getGroup(groupID: appState.groupID)
             .receive(on: DispatchQueue.main)
             .map { $0.name }
@@ -48,32 +63,44 @@ class HistoryViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func loadHistory() {
+    private func loadHistory() {
+        state = .loading
         expensesService.addListenerToExpenses(groupID: appState.groupID)
             .receive(on: DispatchQueue.main)
-            .sink { subscription in
-                print(subscription)
+            .sink { [weak self] subscription in
+                switch subscription {
+                case .finished: break
+                case .failure:
+                    self?.alertItem = AlertContext.innerError
+                    self?.state = .error
+                }
             } receiveValue: { [weak self] model in
-                print(model)
                 self?.history = model
+                self?.state = .loaded
             }
             .store(in: &cancellables)
     }
     
     func delete(at offsets: IndexSet) {
-        offsets.map { history[$0] }.forEach { item in
-            deleteItem(
-                id: item.id ?? "",
-                groupID: appState.groupID
-            )
+        offsets.map { $0 }.forEach { index in
+            deleteItem(index: index)
         }
         history.remove(atOffsets: offsets)
     }
     
-    private func deleteItem(id: String, groupID: String) {
-        expensesService.deleteExpense(id: id, groupID: groupID)
+    private func deleteItem(index: Int) {
+        let item = history[index]
+        expensesService.deleteExpense(id: item.id ?? "", groupID: appState.groupID)
             .receive(on: DispatchQueue.main)
-            .sink { _ in } receiveValue: { _ in }
+            .sink { [weak self] subscription in
+                switch subscription {
+                case .finished: break
+                case .failure:
+                    self?.history.insert(item, at: index)
+                    self?.alertItem = AlertContext.innerError
+                    self?.state = .error
+                }
+            } receiveValue: { _ in }
             .store(in: &cancellables)
     }
 }
