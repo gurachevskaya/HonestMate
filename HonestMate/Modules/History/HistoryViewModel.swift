@@ -67,17 +67,13 @@ class HistoryViewModel: ObservableObject {
         state = .loading
         expensesService.addListenerToExpenses(groupID: appState.groupID)
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] subscription in
-                switch subscription {
-                case .finished: break
-                case .failure:
-                    self?.alertItem = AlertContext.innerError
-                    self?.state = .error
-                }
-            } receiveValue: { [weak self] model in
-                self?.history = model
-                self?.state = .loaded
+            .map { [weak self] in self?.history = $0 }
+            .map { _ in State.loaded }
+            .catch { [weak self] error in
+                self?.alertItem = AlertContext.innerError
+                return Just(State.error)
             }
+            .weakAssign(to: \.state, on: self)
             .store(in: &cancellables)
     }
     
