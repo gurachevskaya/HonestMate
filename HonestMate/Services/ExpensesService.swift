@@ -10,9 +10,7 @@ import Combine
 import FirebaseFirestore
 
 enum ExpenseServiceError: LocalizedError {
-    case inner
-    case decodingError
-    case noData
+    case inner(Error)
 }
 
 protocol ExpensesServiceProtocol {
@@ -40,7 +38,7 @@ final class ExpensesService: ExpensesServiceProtocol {
                 let _ = try historyCollection.addDocument(from: expense)
                 promise(.success(()))
             } catch let error {
-                promise(.failure(.inner))
+                promise(.failure(.inner(error)))
             }
         }
         .eraseToAnyPublisher()
@@ -48,15 +46,16 @@ final class ExpensesService: ExpensesServiceProtocol {
     
     func getDefaultCategories() -> AnyPublisher<[ExpenseCategory], ExpenseServiceError> {
         let categoriesCollection = db.collection(Constants.DatabaseReferenceNames.categories)
-      
+
         return Future<[ExpenseCategory], ExpenseServiceError> { promise in
             categoriesCollection.addSnapshotListener { snapshot, error in
                 if let error = error {
-                    promise(.failure(.inner))
+                    promise(.failure(.inner(error)))
+                    return
                 }
                 
                 guard let data = snapshot?.documents else {
-                    promise(.failure(.noData))
+                    promise(.success([]))
                     return
                 }
                 
@@ -78,11 +77,12 @@ final class ExpensesService: ExpensesServiceProtocol {
         return Future<[Member], ExpenseServiceError> { promise in
             groupMembersCollection.getDocuments { snapshot, error in
                 if let error = error {
-                    promise(.failure(.inner))
+                    promise(.failure(.inner(error)))
+                    return
                 }
 
                 guard let data = snapshot?.documents else {
-                    promise(.failure(.noData))
+                    promise(.success([]))
                     return
                 }
 
@@ -106,7 +106,7 @@ final class ExpensesService: ExpensesServiceProtocol {
             .map { snapshot in
                 snapshot.documents.compactMap { try? $0.data(as: ExpenseModel.self) }
             }
-            .mapError { _ in .inner }
+            .mapError { error in .inner(error) }
             .eraseToAnyPublisher()
     }
     
@@ -119,7 +119,7 @@ final class ExpensesService: ExpensesServiceProtocol {
         return Future<Void, ExpenseServiceError> { promise in
             historyItem.delete { error in
                 if let error = error {
-                    promise(.failure(.inner))
+                    promise(.failure(.inner(error)))
                     return
                 }
                 
