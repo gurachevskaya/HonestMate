@@ -43,8 +43,8 @@ class HistoryViewModel: ObservableObject {
     
     private func setupPipeline() {
         appState.objectWillChange
-            .sink { [unowned self] _ in
-                objectWillChange.send()
+            .sink { [weak self] _ in
+                self?.objectWillChange.send()
             }
             .store(in: &cancellables)
     }

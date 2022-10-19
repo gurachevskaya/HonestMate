@@ -140,13 +140,13 @@ class NewExpenseViewModel: ObservableObject {
             
         expensesService.createExpense(groupID: appState.groupID, expense: expenseModel)
             .receive(on: DispatchQueue.main)
-            .sink { [unowned self] subscription in
+            .sink { [weak self] subscription in
                 switch subscription {
                 case .finished:
-                    popToRootView()
+                    self?.popToRootView()
                     
                 case .failure:
-                    alertItem = AlertContext.innerError
+                    self?.alertItem = AlertContext.innerError
                 }
             } receiveValue: { _ in }
             .store(in: &cancellables)
