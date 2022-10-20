@@ -11,19 +11,6 @@ import SwiftUI
 
 class SelectExpenseTypeViewModel: ObservableObject {
     
-    enum ScreenType {
-        case select
-        case reselect
-    }
-        
-    @Published var expenseTypes: [ExpenseCategory] = []
-    @Published var alertItem: AlertItem?
-    
-    let columns: [GridItem] = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
-       
     var type: ScreenType
     var expenseType: Binding<ExpenseCategory>?
     private var expensesService: ExpensesServiceProtocol
@@ -38,24 +25,43 @@ class SelectExpenseTypeViewModel: ObservableObject {
         self.expensesService = expensesService
     }
     
+    enum ScreenType {
+        case select
+        case reselect
+    }
+    
+    enum State {
+        case idle
+        case loading
+        case loaded([ExpenseCategory])
+        case error(String)
+    }
+        
+    @Published private(set) var state = State.idle
+
+    let columns: [GridItem] = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
+    
     private var cancellables: Set<AnyCancellable> = []
     
     func getExpenseCategories() {
+        state = .loading
+        
         expensesService.getDefaultCategories()
             .receive(on: DispatchQueue.main)
             .map { categories in
                 categories.filter { $0.isActive }
             }
-            .sink { [weak self] subscription in
-                switch subscription {
-                case .finished: break
-                case .failure(let error):
-                    // TODO: map error
-                    self?.alertItem = AlertContext.innerError
-                }
-            } receiveValue: { [weak self] expenses in
-                self?.expenseTypes = expenses
+            .map { model in
+                State.loaded(model)
             }
+            .catch { error in
+                // TODO: map error
+                Just(State.error(error.localizedDescription))
+            }
+            .weakAssign(to: \.state, on: self)
             .store(in: &cancellables)
     }
 }

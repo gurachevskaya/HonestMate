@@ -14,9 +14,30 @@ struct SelectExpenseTypeView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var body: some View {
+        content
+            .navigationBarTitle(R.string.localizable.selectExpenseTypeTitle(), displayMode: .large)
+            .onAppear {
+                viewModel.getExpenseCategories()
+            }
+    }
+    
+    private var content: some View {
+        switch viewModel.state {
+        case .idle:
+            return Color.clear.eraseToAnyView()
+        case .loading:
+            return ProgressView().scaleEffect(2).eraseToAnyView()
+        case .error(let error):
+            return errorView(error).eraseToAnyView()
+        case .loaded(let model):
+            return categories(model: model).eraseToAnyView()
+        }
+    }
+    
+    private func categories(model: [ExpenseCategory]) -> some View {
         ScrollView {
             LazyVGrid(columns: viewModel.columns, spacing: 20) {
-                ForEach(viewModel.expenseTypes) { type in
+                ForEach(model) { type in
                     switch viewModel.type {
                     case .select:
                         NavigationLink(value: HomeRoute.newExpense(type)) {
@@ -31,19 +52,13 @@ struct SelectExpenseTypeView: View {
                     }
                 }
             }
-            .navigationBarTitle(R.string.localizable.selectExpenseTypeTitle(), displayMode: .large)
-        }
-        .alert(item: $viewModel.alertItem) { alertItem in
-            Alert(
-                title: alertItem.title,
-                message: alertItem.message,
-                dismissButton: alertItem.dismissButton
-            )
-        }
-        .onAppear {
-            viewModel.getExpenseCategories()
         }
         .padding(.top, 20)
+    }
+    
+    private func errorView(_ error: String) -> some View {
+        Text(error)
+            .foregroundColor(.secondary)
     }
 }
 
