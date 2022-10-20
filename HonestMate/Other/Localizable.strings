@@ -58,6 +58,10 @@
 "signin.picker.login" = "Login";
 "signin.picker.register" = "Register";
 
+// MARK: Select Expense type
+
+"select.expense.type.title" = "Select Type";
+
 // MARK: New expense
 
 "new.expense.title" = "New expense";

@@ -31,7 +31,7 @@ struct SelectExpenseTypeView: View {
                     }
                 }
             }
-            .navigationBarTitle("Select type", displayMode: .large)
+            .navigationBarTitle(R.string.localizable.selectExpenseTypeTitle(), displayMode: .large)
         }
         .alert(item: $viewModel.alertItem) { alertItem in
             Alert(

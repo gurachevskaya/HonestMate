@@ -43,6 +43,9 @@ class SelectExpenseTypeViewModel: ObservableObject {
     func getExpenseCategories() {
         expensesService.getDefaultCategories()
             .receive(on: DispatchQueue.main)
+            .map { categories in
+                categories.filter { $0.isActive }
+            }
             .sink { [weak self] subscription in
                 switch subscription {
                 case .finished: break
