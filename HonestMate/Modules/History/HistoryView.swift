@@ -16,12 +16,12 @@ struct HistoryView: View {
         NavigationStack {
             content
                 .navigationBarTitle(viewModel.groupName, displayMode: .large)
+                .navigationDestination(for: HistoryRoute.self) { route in
+                    route.view()
+                }
         }
         .onAppear {
             viewModel.loadData()
-        }
-        .navigationDestination(for: HistoryRoute.self) { route in
-            route.view()
         }
     }
     
