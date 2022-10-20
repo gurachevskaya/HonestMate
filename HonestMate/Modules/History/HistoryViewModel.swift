@@ -59,7 +59,7 @@ class HistoryViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .map { $0.name }
             .replaceError(with: "")
-            .assign(to: \.groupName, on: self)
+            .weakAssign(to: \.groupName, on: self)
             .store(in: &cancellables)
     }
     
