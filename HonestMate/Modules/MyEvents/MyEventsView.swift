@@ -11,6 +11,22 @@ import Resolver
 struct MyEventsView: View {
     
     @ObservedObject var viewModel: MyEventsViewModel
+    
+    var body: some View {
+        NavigationStack(path: $viewModel.navigationState.homePath) {
+            VStack {
+                Spacer()
+                HStack {
+                    addExpenseButton
+                    directPaymentButton
+                }
+            }
+            .padding()
+            .navigationDestination(for: HomeRoute.self) { route in
+                route.view()
+            }
+        }
+    }
 
     var addExpenseButton: some View {
         NavigationLink(value: HomeRoute.selectType) {
@@ -27,22 +43,6 @@ struct MyEventsView: View {
                 title: "Direct Payment",
                 style: .pink
             )
-        }
-    }
-    
-    var body: some View {
-        NavigationStack(path: $viewModel.navigationState.homePath) {
-            VStack {
-                Spacer()
-                HStack {
-                    addExpenseButton
-                    directPaymentButton
-                }
-            }
-            .padding()
-            .navigationDestination(for: HomeRoute.self) { route in
-                route.view()
-            }
         }
     }
 }

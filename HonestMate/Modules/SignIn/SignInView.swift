@@ -12,6 +12,56 @@ struct SignInView: View {
     
     @ObservedObject var viewModel: SignInViewModel
     
+    var body: some View {
+        NavigationStack(path: $viewModel.path) {
+            ZStack {
+                VStack {
+                    Spacer()
+                    
+                    title
+                    
+                    picker
+                    
+                    Spacer().frame(height: 30)
+                    
+                    Group {
+                        if viewModel.selected == .register {
+                            nameTextField
+                        }
+                        
+                        emailTextField
+                        
+                        passwordTextField
+                        
+                        if viewModel.selected == .register {
+                            confirmPasswordTextField
+                        }
+                    }
+                    
+                    signInButtons
+                        .padding(.top, 30)
+                    
+                    actionButton
+                    
+                    Spacer()
+                }
+                .padding()
+                .alert(item: $viewModel.alertItem) { alertItem in
+                    Alert(title: alertItem.title,
+                          message: alertItem.message,
+                          dismissButton: alertItem.dismissButton)
+                }
+                
+                if viewModel.isLoading {
+                    ProgressView().scaleEffect(2)
+                }
+            }
+            .navigationDestination(for: SignInRoute.self) { route in
+                route.view()
+            }
+        }
+    }
+    
     var title: some View {
         Text(R.string.localizable.honestmate())
             .font(.title)
@@ -73,55 +123,6 @@ struct SignInView: View {
         .accessibilityIdentifier(Constants.AccessebilityIDs.signInButton)
     }
     
-    var body: some View {
-        NavigationStack(path: $viewModel.path) {
-            ZStack {
-                VStack {
-                    Spacer()
-                    
-                    title
-                    
-                    picker
-                    
-                    Spacer().frame(height: 30)
-                    
-                    Group {
-                        if viewModel.selected == .register {
-                            nameTextField
-                        }
-                        
-                        emailTextField
-                        
-                        passwordTextField
-                        
-                        if viewModel.selected == .register {
-                            confirmPasswordTextField
-                        }
-                    }
-                    
-                    signInButtons
-                        .padding(.top, 30)
-                    
-                    actionButton
-                    
-                    Spacer()
-                }
-                .padding()
-                .alert(item: $viewModel.alertItem) { alertItem in
-                    Alert(title: alertItem.title,
-                          message: alertItem.message,
-                          dismissButton: alertItem.dismissButton)
-                }
-                
-                if viewModel.isLoading {
-                    ProgressView().scaleEffect(2)
-                }
-            }
-            .navigationDestination(for: SignInRoute.self) { route in
-                route.view()
-            }
-        }
-    }
 }
 
 struct SignInButtonsStack: View {
