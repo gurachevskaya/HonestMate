@@ -18,13 +18,12 @@ class RemoteConfigMock: RemoteConfigServiceProtocol {
         isloginButtonPink: true
     )
     
-    var appConfigPublisher: AnyPublisher<Void, Error> {
+    var appConfigPublisher: AnyPublisher<Void, Never> {
         configPublisherMock()
     }
 
-    private func configPublisherMock() -> AnyPublisher<Void, Error> {
+    private func configPublisherMock() -> AnyPublisher<Void, Never> {
         return Just(())
-            .setFailureType(to: Error.self)
             .eraseToAnyPublisher()
     }
 }

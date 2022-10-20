@@ -11,7 +11,7 @@ import Combine
 protocol RemoteConfigServiceProtocol {
     var appConfig: AppConfig? { get }
 
-    var appConfigPublisher: AnyPublisher<Void, Error> { get }
+    var appConfigPublisher: AnyPublisher<Void, Never> { get }
 }
 
 class RemoteConfigService: RemoteConfigServiceProtocol, ObservableObject {
@@ -27,7 +27,7 @@ class RemoteConfigService: RemoteConfigServiceProtocol, ObservableObject {
     
     var appConfig: AppConfig?
             
-    var appConfigPublisher: AnyPublisher<Void, Error> {
+    var appConfigPublisher: AnyPublisher<Void, Never> {
         return configPublisher()
     }
     
@@ -67,9 +67,10 @@ class RemoteConfigService: RemoteConfigServiceProtocol, ObservableObject {
         .eraseToAnyPublisher()
     }
     
-    private func configPublisher() -> AnyPublisher<Void, Error> {
+    private func configPublisher() -> AnyPublisher<Void, Never> {
         fetchAndActivate()
             .map { _ in return () }
+            .replaceError(with: ())
             .handleEvents(
                 receiveCompletion: { [unowned self] completion in
                     switch completion {

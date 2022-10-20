@@ -56,9 +56,8 @@ class SplashViewModel: ObservableObject {
     
     func loadConfig() {
         remoteConfigService.appConfigPublisher
-            .sink(receiveCompletion: { [unowned self] _ in
-                isLoading = false
-            }, receiveValue: { _ in })
+            .map { false }
+            .weakAssign(to: \.isLoading, on: self)
             .store(in: &cancellables)
     }
 }
