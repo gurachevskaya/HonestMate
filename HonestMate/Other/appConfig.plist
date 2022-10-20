@@ -5,6 +5,6 @@
 	<key>isloginButtonPink</key>
 	<true/>
 	<key>loginConfig</key>
-	<string>{&quot;facebookEnabled&quot;: true, &quot;googleEnabled&quot;: true, &quot;appleEnabled&quot;: true}</string>
+	<string>{&quot;facebookEnabled&quot;: false, &quot;googleEnabled&quot;: false, &quot;appleEnabled&quot;: false}</string>
 </dict>
 </plist>
