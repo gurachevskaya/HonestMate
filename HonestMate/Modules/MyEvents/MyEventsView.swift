@@ -32,16 +32,18 @@ struct MyEventsView: View {
     
     var body: some View {
         NavigationStack(path: $viewModel.navigationState.homePath) {
-            Spacer()
-            HStack {
-                addExpenseButton
-                directPaymentButton
+            VStack {
+                Spacer()
+                HStack {
+                    addExpenseButton
+                    directPaymentButton
+                }
             }
+            .padding()
             .navigationDestination(for: HomeRoute.self) { route in
                 route.view()
             }
         }
-        .padding()
     }
 }
 
