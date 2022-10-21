@@ -62,8 +62,6 @@
 		18A4D4D828D384BA00BA2793 /* ExpenseCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A4D4D728D384BA00BA2793 /* ExpenseCategory.swift */; };
 		18A4D4DB28D47AD000BA2793 /* NewExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A4D4DA28D47AD000BA2793 /* NewExpenseView.swift */; };
 		18A4D4DD28D47AE300BA2793 /* NewExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A4D4DC28D47AE300BA2793 /* NewExpenseViewModel.swift */; };
-		18A4D4E028D4845700BA2793 /* DirectPaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A4D4DF28D4845700BA2793 /* DirectPaymentViewModel.swift */; };
-		18A4D4E228D4847800BA2793 /* DirectPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A4D4E128D4847800BA2793 /* DirectPaymentView.swift */; };
 		18A861B328FD6D5E0056D748 /* DocumentPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A861B228FD6D5E0056D748 /* DocumentPublisher.swift */; };
 		18A861B628FD733F0056D748 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A861B528FD733F0056D748 /* GroupView.swift */; };
 		18BA855528CA3E3300F8DC2A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA855428CA3E3300F8DC2A /* Constants.swift */; };
@@ -165,8 +163,6 @@
 		18A4D4D728D384BA00BA2793 /* ExpenseCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategory.swift; sourceTree = "<group>"; };
 		18A4D4DA28D47AD000BA2793 /* NewExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExpenseView.swift; sourceTree = "<group>"; };
 		18A4D4DC28D47AE300BA2793 /* NewExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExpenseViewModel.swift; sourceTree = "<group>"; };
-		18A4D4DF28D4845700BA2793 /* DirectPaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectPaymentViewModel.swift; sourceTree = "<group>"; };
-		18A4D4E128D4847800BA2793 /* DirectPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectPaymentView.swift; sourceTree = "<group>"; };
 		18A861B228FD6D5E0056D748 /* DocumentPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPublisher.swift; sourceTree = "<group>"; };
 		18A861B528FD733F0056D748 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		18BA855428CA3E3300F8DC2A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -284,7 +280,6 @@
 				1858E15028C60E8D00521ED8 /* MyEvents */,
 				18A4D4CF28D382DC00BA2793 /* SelectExpenseType */,
 				18A4D4D928D47ABF00BA2793 /* NewExpenseView */,
-				18A4D4DE28D4844400BA2793 /* DirectPaymentView */,
 				185F422928CF882300628DDC /* SignIn */,
 				18E6EF7C28F854100061DE8D /* ChooseGroup */,
 				185F423D28D34E7800628DDC /* History */,
@@ -458,15 +453,6 @@
 				18A4D4DC28D47AE300BA2793 /* NewExpenseViewModel.swift */,
 			);
 			path = NewExpenseView;
-			sourceTree = "<group>";
-		};
-		18A4D4DE28D4844400BA2793 /* DirectPaymentView */ = {
-			isa = PBXGroup;
-			children = (
-				18A4D4E128D4847800BA2793 /* DirectPaymentView.swift */,
-				18A4D4DF28D4845700BA2793 /* DirectPaymentViewModel.swift */,
-			);
-			path = DirectPaymentView;
 			sourceTree = "<group>";
 		};
 		18A861B428FD73330056D748 /* Cells */ = {
@@ -916,7 +902,6 @@
 				18A4D4D828D384BA00BA2793 /* ExpenseCategory.swift in Sources */,
 				183543D128D4C26A00FDEEA2 /* CheckboxView.swift in Sources */,
 				1816E43B29004B3200BA9EE1 /* WeakAssign.swift in Sources */,
-				18A4D4E028D4845700BA2793 /* DirectPaymentViewModel.swift in Sources */,
 				1816E42528FEB24600BA9EE1 /* NavigationRoute.swift in Sources */,
 				185F421528CB44A700628DDC /* RemoteConfigService.swift in Sources */,
 				18E6EF7E28F8542D0061DE8D /* ChooseGroupView.swift in Sources */,
@@ -926,7 +911,6 @@
 				1816E42A28FEB4DB00BA9EE1 /* HomeRoute.swift in Sources */,
 				185F423F28D34E9000628DDC /* HistoryView.swift in Sources */,
 				1879862828F5CC9600E5AC34 /* HistoryItemView.swift in Sources */,
-				18A4D4E228D4847800BA2793 /* DirectPaymentView.swift in Sources */,
 				1816E43028FF007600BA9EE1 /* ProfileRoute.swift in Sources */,
 				182466B528F6F8CC00572A11 /* UserName.swift in Sources */,
 				1858A1BD28C21A940039246A /* AlertItem.swift in Sources */,
