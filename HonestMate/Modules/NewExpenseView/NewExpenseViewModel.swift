@@ -142,7 +142,13 @@ class NewExpenseViewModel: ObservableObject {
                     self?.alertItem = AlertContext.innerError
                 }
             } receiveValue: { [weak self] members in
-                self?.groupMembers = members
+                guard let self else { return }
+                switch self.expenseType {
+                case .newExpense:
+                    self.groupMembers = members
+                case .directPayment:
+                    self.groupMembers = members.filter { $0.id != self.currentUserID }
+                }
             }
             .store(in: &cancellables)
     }
