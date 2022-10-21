@@ -37,10 +37,6 @@ class NewExpenseViewModel: ObservableObject {
         setupPipeline()
     }
     
-    deinit {
-        print("deinit")
-    }
-    
     @Published var description: String = ""
     @Published var amountText: String = ""
     @Published var selectedDate = Date()

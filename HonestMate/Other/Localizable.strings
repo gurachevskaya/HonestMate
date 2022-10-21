@@ -85,9 +85,11 @@
 "history.expense" = "Expense";
 "history.date.title" = "Date:";
 "history.paid.by.title" = "Paid by";
+"history.received.by.title" = "Received by";
 "history.share.between.title" = "Share between: %d mates";
 "history.see.all" = "See All";
 "history.hide.all" = "Hide All";
+"history.expense.title.direct.payment" = "Direct payment";
 
 // MARK: Choose group
 

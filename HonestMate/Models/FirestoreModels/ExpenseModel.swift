@@ -10,7 +10,7 @@ import FirebaseFirestoreSwift
 
 struct ExpenseModel: Identifiable, Hashable, Codable {
     @DocumentID var id: String? = UUID().uuidString
-    var expenseType: ExpenseType? = .newExpense
+    var expenseType: ExpenseType
     var description: String?
     var category: String?
     var amount: Double
