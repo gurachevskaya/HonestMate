@@ -12,7 +12,7 @@ struct ExpenseModel: Identifiable, Hashable, Codable {
     @DocumentID var id: String? = UUID().uuidString
     var expenseType: ExpenseType
     var description: String?
-    var category: String?
+    var category: ExpenseCategory?
     var amount: Double
     var date: Date
     var payer: UserName

@@ -20,7 +20,7 @@ struct HistoryItemView: View {
         let type = historyItem.expenseType
         switch type {
         case .newExpense:
-            return historyItem.description?.capitalized ?? (historyItem.category ?? "")
+            return historyItem.description?.capitalized ?? (historyItem.category?.name ?? "")
         case .directPayment:
             return R.string.localizable.historyExpenseTitleDirectPayment()
         }
@@ -33,7 +33,7 @@ struct HistoryItemView: View {
                 if historyItem.expenseType == .newExpense {
                     Circle()
                         .frame(width: 20, height: 20)
-                        .foregroundColor(.yellow)
+                        .foregroundColor(Color(hex: historyItem.category?.hexColor ?? "#FC6DAB"))
                 }
                 Spacer()
                 Text(String(format: "%.2f", historyItem.amount))

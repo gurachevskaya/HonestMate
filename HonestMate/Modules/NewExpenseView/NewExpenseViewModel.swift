@@ -40,6 +40,7 @@ class NewExpenseViewModel: ObservableObject {
     @Published var description: String = ""
     @Published var amountText: String = ""
     @Published var selectedDate = Date()
+    @Published var payer: Member?
     @Published var groupMembers: [Member] = []
     @Published var recievers: [Member] = []
     
@@ -139,6 +140,7 @@ class NewExpenseViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] members in
                 guard let self else { return }
+                self.payer = members.first(where: { $0.id == self.currentUserID })
                 switch self.expenseType {
                 case .newExpense:
                     self.groupMembers = members
@@ -152,7 +154,7 @@ class NewExpenseViewModel: ObservableObject {
     func addExpense() {
         guard
             let amount = Double(amountText),
-            let payer = groupMembers.first(where: { $0.id == currentUserID })
+            let payer = self.payer
         else {
             return
         }
@@ -160,7 +162,7 @@ class NewExpenseViewModel: ObservableObject {
         let expenseModel = ExpenseModel(
             expenseType: expenseType,
             description: description.isEmpty ? nil : description,
-            category: expenseCategory?.name == nil ? nil : expenseCategory?.name,
+            category: expenseCategory == nil ? nil : expenseCategory,
             amount: amount,
             date: selectedDate,
             payer: payer.name,
