@@ -10,7 +10,7 @@ import Resolver
 import Combine
 
 struct NewExpenseView: View {
-    
+
     @StateObject var viewModel: NewExpenseViewModel
     
     var body: some View {
@@ -22,7 +22,9 @@ struct NewExpenseView: View {
                 }
                 
                 Section {
-                    expenseType
+                    if viewModel.shouldShowExpenseType {
+                        expenseType
+                    }
                     date
                     amount
                     currency
@@ -41,7 +43,7 @@ struct NewExpenseView: View {
             viewModel.loadGroupMembers()
         }
         .background(Color(uiColor: .systemGray6))
-        .navigationBarTitle(R.string.localizable.newExpenseTitle(), displayMode: .automatic)
+        .navigationBarTitle(viewModel.screenTitle, displayMode: .large)
         .alert(item: $viewModel.alertItem) { alertItem in
             Alert(
                 title: alertItem.title,
@@ -71,11 +73,11 @@ struct NewExpenseView: View {
     }
     
     private var expenseType: some View {
-        NavigationLink(value: HomeRoute.reselectType($viewModel.expenseType)) {
+        NavigationLink(value: HomeRoute.reselectType($viewModel.expenseCategory)) {
             HStack {
                 Text(R.string.localizable.newExpenseType())
                     .foregroundColor(Color(uiColor: .systemGray))
-                Text("\(viewModel.expenseType.name)")
+                Text("\(viewModel.expenseCategory?.name ?? "")")
             }
             .font(.subheadline)
         }
@@ -113,7 +115,7 @@ struct NewExpenseView: View {
     
     private var splitBetween: some View {
         VStack(alignment: .leading) {
-            Text(R.string.localizable.newExpenseSplitBetweenTitle())
+            Text(viewModel.splitBetweenTitle)
                 .font(.title2)
                 .fontWeight(.bold)
             
@@ -148,12 +150,37 @@ struct NewExpenseView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             NewExpenseView(viewModel: NewExpenseViewModel(
-                expenseType: MockData.expenseType,
+                expenseCategory: MockData.expenseType,
+                expenseType: .newExpense,
                 authService: Resolver.resolve(),
                 expensesService: Resolver.resolve(),
                 appState: Resolver.resolve(),
                 navigationState: Resolver.resolve()
             ))
         }
+        
+//        NavigationStack {
+//            NewExpenseView(viewModel: NewExpenseViewModel(
+//                expenseCategory: MockData.expenseType,
+//                expenseType: .directPayment,
+//                authService: Resolver.resolve(),
+//                expensesService: Resolver.resolve(),
+//                appState: Resolver.resolve(),
+//                navigationState: Resolver.resolve()
+//            ))
+//        }
     }
+    
+//    static var previews2: some View {
+//        NavigationStack {
+//            NewExpenseView(viewModel: NewExpenseViewModel(
+//                expenseCategory: MockData.expenseType,
+//                expenseType: .directPayment,
+//                authService: Resolver.resolve(),
+//                expensesService: Resolver.resolve(),
+//                appState: Resolver.resolve(),
+//                navigationState: Resolver.resolve()
+//            ))
+//        }
+//    }
 }

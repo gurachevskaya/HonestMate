@@ -12,19 +12,22 @@ import Resolver
 
 class NewExpenseViewModel: ObservableObject {
     
-    @Published var expenseType: ExpenseCategory
+    @Published var expenseCategory: ExpenseCategory?
+    private var expenseType: ExpenseType
     private var authService: AuthServiceProtocol
     private var expensesService: ExpensesServiceProtocol
     private var appState: AppStateProtocol
     var navigationState: NavigationStateProtocol
     
     init(
-        expenseType: ExpenseCategory,
+        expenseCategory: ExpenseCategory?,
+        expenseType: ExpenseType,
         authService: AuthServiceProtocol,
         expensesService: ExpensesServiceProtocol,
         appState: AppStateProtocol,
         navigationState: NavigationStateProtocol
     ) {
+        self.expenseCategory = expenseCategory
         self.expenseType = expenseType
         self.authService = authService
         self.expensesService = expensesService
@@ -37,6 +40,7 @@ class NewExpenseViewModel: ObservableObject {
     @Published var description: String = ""
     @Published var amountText: String = ""
     @Published var selectedDate = Date()
+    @Published var payer: Member?
     @Published var groupMembers: [Member] = []
     @Published var recievers: [Member] = []
     
@@ -47,6 +51,16 @@ class NewExpenseViewModel: ObservableObject {
 
     var currentUserName: String { authService.currentUser?.displayName ?? "name"}
     private var currentUserID: String? { authService.currentUser?.uid }
+    
+    var screenTitle: String {
+        expenseType == .newExpense ? R.string.localizable.newExpenseTitle() : R.string.localizable.directPaymentTitle()
+    }
+    var splitBetweenTitle: String {
+        expenseType == .newExpense ? R.string.localizable.newExpenseSplitBetweenTitle() : R.string.localizable.directPaymentReceivedBy()
+    }
+    var shouldShowExpenseType: Bool {
+        expenseType == .newExpense
+    }
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -95,10 +109,19 @@ class NewExpenseViewModel: ObservableObject {
     }
     
     func toggleSelection(selectable: Member) {
-        if let existingIndex = recievers.firstIndex(where: { $0 == selectable }) {
-            recievers.remove(at: existingIndex)
-        } else {
-            recievers.append(selectable)
+        switch expenseType {
+        case .newExpense:
+            if let existingIndex = recievers.firstIndex(where: { $0 == selectable }) {
+                recievers.remove(at: existingIndex)
+            } else {
+                recievers.append(selectable)
+            }
+        case .directPayment:
+            if let existingIndex = recievers.firstIndex(where: { $0 == selectable }) {
+                recievers.remove(at: existingIndex)
+            } else {
+                recievers = [selectable]
+            }
         }
     }
     
@@ -116,7 +139,14 @@ class NewExpenseViewModel: ObservableObject {
                     self?.alertItem = AlertContext.innerError
                 }
             } receiveValue: { [weak self] members in
-                self?.groupMembers = members
+                guard let self else { return }
+                self.payer = members.first(where: { $0.id == self.currentUserID })
+                switch self.expenseType {
+                case .newExpense:
+                    self.groupMembers = members
+                case .directPayment:
+                    self.groupMembers = members.filter { $0.id != self.currentUserID }
+                }
             }
             .store(in: &cancellables)
     }
@@ -124,14 +154,15 @@ class NewExpenseViewModel: ObservableObject {
     func addExpense() {
         guard
             let amount = Double(amountText),
-            let payer = groupMembers.first(where: { $0.id == currentUserID })
+            let payer = self.payer
         else {
             return
         }
-  
+        
         let expenseModel = ExpenseModel(
+            expenseType: expenseType,
             description: description.isEmpty ? nil : description,
-            category: expenseType.name,
+            category: expenseCategory == nil ? nil : expenseCategory,
             amount: amount,
             date: selectedDate,
             payer: payer.name,
