@@ -93,14 +93,7 @@ class NewExpenseViewModel: ObservableObject {
     
     private var receiversSelectedPublisher: AnyPublisher<Bool, Never> {
         $recievers
-            .map { [unowned self] in
-                switch self.expenseType {
-                case .newExpense:
-                    return !$0.isEmpty
-                case .directPayment:
-                    return $0.count == 1
-                }
-            }
+            .map { !$0.isEmpty }
             .eraseToAnyPublisher()
     }
     
