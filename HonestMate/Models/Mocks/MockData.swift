@@ -8,7 +8,7 @@
 import Foundation
 
 struct MockData {
-    static let expenseType: ExpenseCategory = ExpenseCategory(id: "2", name: "Food")
+    static let expenseType: ExpenseCategory = ExpenseCategory(id: "2", isActive: true, name: "Food", hexColor: "#dd5bd4")
     
     static let members: [Member] = [
         Member(id: "1", name: "Karina"),

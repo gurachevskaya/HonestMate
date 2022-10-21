@@ -12,7 +12,44 @@ import Combine
 struct NewExpenseView: View {
     
     @StateObject var viewModel: NewExpenseViewModel
-//    @EnvironmentObject var navigationState: NavigationState
+    
+    var body: some View {
+        VStack {
+            Form {
+                Section {
+                    description
+                    paidBy
+                }
+                
+                Section {
+                    expenseType
+                    date
+                    amount
+                    currency
+                }
+                
+                Section {
+                    splitBetween
+                }
+            }
+            .scrollContentBackground(.hidden)
+            .scrollIndicators(.never)
+            
+            okButton
+        }
+        .onAppear {
+            viewModel.loadGroupMembers()
+        }
+        .background(Color(uiColor: .systemGray6))
+        .navigationBarTitle(R.string.localizable.newExpenseTitle(), displayMode: .automatic)
+        .alert(item: $viewModel.alertItem) { alertItem in
+            Alert(
+                title: alertItem.title,
+                message: alertItem.message,
+                dismissButton: alertItem.dismissButton
+            )
+        }
+    }
     
     private var description: some View {
         VStack(alignment: .leading) {
@@ -105,49 +142,6 @@ struct NewExpenseView: View {
         .disabled(!viewModel.okButtonEnabled)
         .padding()
     }
-        
-    var body: some View {
-        VStack {
-            Form {
-                Section {
-                    description
-                    paidBy
-                }
-                
-                Section {
-                    expenseType
-                    date
-                    amount
-                    currency
-                }
-                
-                Section {
-                    splitBetween
-                }
-            }
-            .scrollContentBackground(.hidden)
-            .scrollIndicators(.never)
-            
-            okButton
-        }
-//        .onChange(of: $viewModel.shouldPopToRoot) { newValue in
-//            if newValue.wrappedValue == true {
-//                appState.homePath = []
-//            }
-//        }
-        .onAppear {
-            viewModel.loadGroupMembers()
-        }
-        .background(Color(uiColor: .systemGray6))
-        .navigationBarTitle(R.string.localizable.newExpenseTitle(), displayMode: .automatic)
-        .alert(item: $viewModel.alertItem) { alertItem in
-            Alert(
-                title: alertItem.title,
-                message: alertItem.message,
-                dismissButton: alertItem.dismissButton
-            )
-        }
-    }
 }
 
 struct NewExpenseView_Previews: PreviewProvider {
@@ -157,7 +151,8 @@ struct NewExpenseView_Previews: PreviewProvider {
                 expenseType: MockData.expenseType,
                 authService: Resolver.resolve(),
                 expensesService: Resolver.resolve(),
-                appState: Resolver.resolve()
+                appState: Resolver.resolve(),
+                navigationState: Resolver.resolve()
             ))
         }
     }

@@ -5,18 +5,18 @@
 //  Created by Karina gurachevskaya on 13.10.22.
 //
 
-import Foundation
 import Combine
 import FirebaseFirestore
 
-
 enum GroupsServiceError: LocalizedError {
-    case inner
+    case inner(Error)
+    case mapping
     case noData
 }
 
 protocol GroupsServiceProtocol {
-    func getUserGroups(userID: UserIdentifier) -> AnyPublisher<[GroupModel], GroupsServiceError>
+    func getUserInfo(userID: UserIdentifier) -> AnyPublisher<UserInfoModel, GroupsServiceError>
+    func getGroups() -> AnyPublisher<[GroupModel], GroupsServiceError>
     func getGroup(groupID: String) -> AnyPublisher<GroupModel, GroupsServiceError>
 }
 
@@ -35,36 +35,22 @@ final class GroupsService: GroupsServiceProtocol {
             .tryMap { snapshot in
                 try snapshot.data(as: GroupModel.self)
             }
-            .mapError { _ in .inner }
+            .mapError { error in .inner(error) }
             .eraseToAnyPublisher()
     }
     
-    func getUserGroups(userID: UserIdentifier) -> AnyPublisher<[GroupModel], GroupsServiceError> {
-        let usersCollection = db.collection(Constants.DatabaseReferenceNames.users)
-        let currentUserDocument = usersCollection.document(userID)
-        
+    func getGroups() -> AnyPublisher<[GroupModel], GroupsServiceError> {
         let groupsCollection = db.collection(Constants.DatabaseReferenceNames.groups)
 
         return Future<[GroupModel], GroupsServiceError> { promise in
-            currentUserDocument.getDocument { snapshot, error in
-                if let error = error {
-                    promise(.failure(.inner))
-                }
-                
-                let user = try? snapshot?.data(as: UserInfoModel.self)
-                
-                guard let userGroups = user?.groups else {
-                    promise(.failure(.noData))
-                    return
-                }
-                
                 groupsCollection.getDocuments { groupsSnapshot, error in
                     if let error = error {
-                        promise(.failure(.inner))
+                        promise(.failure(.inner(error)))
+                        return
                     }
-                    
+                                        
                     guard let data = groupsSnapshot?.documents else {
-                        promise(.failure(.noData))
+                        promise(.success([]))
                         return
                     }
                     
@@ -72,11 +58,33 @@ final class GroupsService: GroupsServiceProtocol {
                         try? $0.data(as: GroupModel.self)
                     }
                     
-                    let filteredGroups = groups.filter { group in
-                        userGroups.contains(group.id ?? "")
-                    }
-                                        
-                    promise(.success(filteredGroups))
+                    promise(.success(groups))
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    func getUserInfo(userID: UserIdentifier) -> AnyPublisher<UserInfoModel, GroupsServiceError> {
+        let usersCollection = db.collection(Constants.DatabaseReferenceNames.users)
+        let currentUserDocument = usersCollection.document(userID)
+        
+        return Future<UserInfoModel, GroupsServiceError> { promise in
+            currentUserDocument.getDocument { snapshot, error in
+                if let error = error {
+                    promise(.failure(.inner(error)))
+                    return
+                }
+                
+                guard let snapshot = snapshot else {
+                    promise(.failure(.noData))
+                    return
+                }
+
+                do {
+                    let user = try snapshot.data(as: UserInfoModel.self)
+                    promise(.success(user))
+                } catch {
+                    promise(.failure(.mapping))
                 }
             }
         }

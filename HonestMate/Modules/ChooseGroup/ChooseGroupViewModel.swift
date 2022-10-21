@@ -11,7 +11,7 @@ import SwiftUI
 
 class ChooseGroupViewModel: ObservableObject {
     
-    private var groupsService: GroupsServiceProtocol?
+    private var groupsService: GroupsServiceProtocol
     private var authService: AuthServiceProtocol
     private var appState: AppStateProtocol
     
@@ -47,7 +47,16 @@ class ChooseGroupViewModel: ObservableObject {
             alertItem = AlertContext.innerError
             return
         }
-        groupsService?.getUserGroups(userID: currentUserID)
+        
+        let userInfoPublisher = groupsService.getUserInfo(userID: currentUserID)
+        let groupsPublisher = groupsService.getGroups()
+        
+        userInfoPublisher.zip(groupsPublisher) { userInfo, groups in
+                let filteredGroups = groups.filter { group in
+                    userInfo.groups.contains(group.id ?? "")
+                }
+                return filteredGroups
+            }
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] subscription in
                 switch subscription {

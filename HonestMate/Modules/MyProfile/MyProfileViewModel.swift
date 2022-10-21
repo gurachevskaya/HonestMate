@@ -29,8 +29,8 @@ class MyProfileViewModel: ObservableObject {
     
     private func setupPipeline() {
         appState.objectWillChange
-            .sink { [unowned self] _ in
-                shouldShowChooseGroup = false
+            .sink { [weak self] _ in
+                self?.shouldShowChooseGroup = false
             }
             .store(in: &cancellables)
     }

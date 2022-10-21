@@ -16,7 +16,7 @@ struct ExpenseTypeView: View {
         VStack {
             Circle()
                 .frame(width: 88, height: 88)
-                .foregroundColor(.yellow)
+                .foregroundColor(Color(hex: type.hexColor))
             Text(type.name)
                 .foregroundColor(.primary)
         }

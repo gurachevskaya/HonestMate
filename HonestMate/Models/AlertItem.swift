@@ -83,5 +83,12 @@ struct AlertContext {
         title: Text(R.string.localizable.alertUserDisabledErrorTitle()),
         message: Text(R.string.localizable.alertUserDisabledErrorMessage())
     )
+    
+    // MARK: - History error
+    
+    static let deletingError = AlertItem(
+        title: Text(R.string.localizable.alertHistoryDeletingErrorTitle()),
+        message: Text(R.string.localizable.alertHistoryDeletingErrorMessage())
+    )
 }
 

@@ -43,22 +43,21 @@ class SplashViewModel: ObservableObject {
             .map { [unowned self] in
                 $0 == false && appState.isLoggedIn && !appState.groupID.isEmpty
             }
-            .assign(to: \.showMainFlow, on: self)
+            .weakAssign(to: \.showMainFlow, on: self)
             .store(in: &cancellables)
         
         $isLoading
             .map { [unowned self] in
                 ($0 == false && !appState.isLoggedIn) || ($0 == false && appState.groupID.isEmpty)
             }
-            .assign(to: \.showLoginFlow, on: self)
+            .weakAssign(to: \.showLoginFlow, on: self)
             .store(in: &cancellables)
     }
     
     func loadConfig() {
         remoteConfigService.appConfigPublisher
-            .sink(receiveCompletion: { [unowned self] _ in
-                isLoading = false
-            }, receiveValue: { _ in })
+            .map { false }
+            .weakAssign(to: \.isLoading, on: self)
             .store(in: &cancellables)
     }
 }
