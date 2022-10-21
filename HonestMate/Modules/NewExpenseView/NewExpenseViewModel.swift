@@ -37,9 +37,8 @@ class NewExpenseViewModel: ObservableObject {
         setupPipeline()
     }
     
-    enum ExpenseType {
-        case newExpense
-        case directPayment
+    deinit {
+        print("deinit")
     }
     
     @Published var description: String = ""
@@ -94,7 +93,14 @@ class NewExpenseViewModel: ObservableObject {
     
     private var receiversSelectedPublisher: AnyPublisher<Bool, Never> {
         $recievers
-            .map { !$0.isEmpty }
+            .map { [unowned self] in
+                switch self.expenseType {
+                case .newExpense:
+                    return !$0.isEmpty
+                case .directPayment:
+                    return $0.count == 1
+                }
+            }
             .eraseToAnyPublisher()
     }
     
@@ -113,10 +119,19 @@ class NewExpenseViewModel: ObservableObject {
     }
     
     func toggleSelection(selectable: Member) {
-        if let existingIndex = recievers.firstIndex(where: { $0 == selectable }) {
-            recievers.remove(at: existingIndex)
-        } else {
-            recievers.append(selectable)
+        switch expenseType {
+        case .newExpense:
+            if let existingIndex = recievers.firstIndex(where: { $0 == selectable }) {
+                recievers.remove(at: existingIndex)
+            } else {
+                recievers.append(selectable)
+            }
+        case .directPayment:
+            if let existingIndex = recievers.firstIndex(where: { $0 == selectable }) {
+                recievers.remove(at: existingIndex)
+            } else {
+                recievers = [selectable]
+            }
         }
     }
     
@@ -147,16 +162,10 @@ class NewExpenseViewModel: ObservableObject {
             return
         }
         
-        switch expenseType {
-        case .newExpense:
-            print("create new expense")
-        case .directPayment:
-            print("create direct payment")
-        }
-  
         let expenseModel = ExpenseModel(
+            expenseType: expenseType,
             description: description.isEmpty ? nil : description,
-            category: expenseCategory?.name ?? "",
+            category: expenseCategory?.name == nil ? nil : expenseCategory?.name,
             amount: amount,
             date: selectedDate,
             payer: payer.name,
