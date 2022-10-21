@@ -75,6 +75,11 @@
 "new.expense.split.between.title" = "Split between";
 "new.expense.add.expense.button.title" = "OK";
 
+// MARK: Direct Payment
+
+"direct.payment.title" = "Direct payment";
+"direct.payment.received.by" = "Received by";
+
 // MARK: History
 
 "history.expense" = "Expense";

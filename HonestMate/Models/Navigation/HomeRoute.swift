@@ -12,7 +12,7 @@ enum HomeRoute: NavigationRoute, Hashable {
         
     case home
     case selectType
-    case reselectType(Binding<ExpenseCategory>)
+    case reselectType(Binding<ExpenseCategory?>)
     case newExpense(ExpenseCategory)
     case directPayment
     
@@ -29,22 +29,23 @@ enum HomeRoute: NavigationRoute, Hashable {
             SelectExpenseTypeView(
                 viewModel: SelectExpenseTypeViewModel(
                     type: .select,
-                    expenseType: nil,
+                    expenseCategory: nil,
                     expensesService: Resolver.resolve()
                 )
             )
-        case .reselectType(let expenseType):
+        case .reselectType(let expenseCategory):
             SelectExpenseTypeView(
                 viewModel: SelectExpenseTypeViewModel(
                     type: .reselect,
-                    expenseType: expenseType,
+                    expenseCategory: expenseCategory,
                     expensesService: Resolver.resolve()
                 )
             )
-        case .newExpense(let expenseType):
+        case .newExpense(let expenseCategory):
             NewExpenseView(
                 viewModel: NewExpenseViewModel(
-                    expenseType: expenseType,
+                    expenseCategory: expenseCategory,
+                    expenseType: .newExpense,
                     authService: Resolver.resolve(),
                     expensesService: Resolver.resolve(),
                     appState: Resolver.resolve(),
@@ -52,8 +53,15 @@ enum HomeRoute: NavigationRoute, Hashable {
                 )
             )
         case .directPayment:
-            DirectPaymentView(
-                viewModel: DirectPaymentViewModel()
+            NewExpenseView(
+                viewModel: NewExpenseViewModel(
+                    expenseCategory: nil,
+                    expenseType: .directPayment,
+                    authService: Resolver.resolve(),
+                    expensesService: Resolver.resolve(),
+                    appState: Resolver.resolve(),
+                    navigationState: Resolver.resolve()
+                )
             )
         }
     }

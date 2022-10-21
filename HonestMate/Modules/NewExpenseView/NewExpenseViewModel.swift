@@ -12,19 +12,22 @@ import Resolver
 
 class NewExpenseViewModel: ObservableObject {
     
-    @Published var expenseType: ExpenseCategory
+    @Published var expenseCategory: ExpenseCategory?
+    private var expenseType: ExpenseType
     private var authService: AuthServiceProtocol
     private var expensesService: ExpensesServiceProtocol
     private var appState: AppStateProtocol
     var navigationState: NavigationStateProtocol
     
     init(
-        expenseType: ExpenseCategory,
+        expenseCategory: ExpenseCategory?,
+        expenseType: ExpenseType,
         authService: AuthServiceProtocol,
         expensesService: ExpensesServiceProtocol,
         appState: AppStateProtocol,
         navigationState: NavigationStateProtocol
     ) {
+        self.expenseCategory = expenseCategory
         self.expenseType = expenseType
         self.authService = authService
         self.expensesService = expensesService
@@ -32,6 +35,11 @@ class NewExpenseViewModel: ObservableObject {
         self.navigationState = navigationState
         
         setupPipeline()
+    }
+    
+    enum ExpenseType {
+        case newExpense
+        case directPayment
     }
     
     @Published var description: String = ""
@@ -47,6 +55,16 @@ class NewExpenseViewModel: ObservableObject {
 
     var currentUserName: String { authService.currentUser?.displayName ?? "name"}
     private var currentUserID: String? { authService.currentUser?.uid }
+    
+    var screenTitle: String {
+        expenseType == .newExpense ? R.string.localizable.newExpenseTitle() : R.string.localizable.directPaymentTitle()
+    }
+    var splitBetweenTitle: String {
+        expenseType == .newExpense ? R.string.localizable.newExpenseSplitBetweenTitle() : R.string.localizable.directPaymentReceivedBy()
+    }
+    var shouldShowExpenseType: Bool {
+        expenseType == .newExpense
+    }
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -128,10 +146,17 @@ class NewExpenseViewModel: ObservableObject {
         else {
             return
         }
+        
+        switch expenseType {
+        case .newExpense:
+            print("create new expense")
+        case .directPayment:
+            print("create direct payment")
+        }
   
         let expenseModel = ExpenseModel(
             description: description.isEmpty ? nil : description,
-            category: expenseType.name,
+            category: expenseCategory?.name ?? "",
             amount: amount,
             date: selectedDate,
             payer: payer.name,

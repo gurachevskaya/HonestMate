@@ -12,16 +12,16 @@ import SwiftUI
 class SelectExpenseTypeViewModel: ObservableObject {
     
     var type: ScreenType
-    var expenseType: Binding<ExpenseCategory>?
+    var expenseCategory: Binding<ExpenseCategory?>?
     private var expensesService: ExpensesServiceProtocol
 
     init(
         type: ScreenType,
-        expenseType: Binding<ExpenseCategory>?,
+        expenseCategory: Binding<ExpenseCategory?>?,
         expensesService: ExpensesServiceProtocol
     ) {
         self.type = type
-        self.expenseType = expenseType
+        self.expenseCategory = expenseCategory
         self.expensesService = expensesService
     }
     
