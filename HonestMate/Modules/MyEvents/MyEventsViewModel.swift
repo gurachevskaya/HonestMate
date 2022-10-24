@@ -32,12 +32,25 @@ class MyEventsViewModel: ObservableObject {
             print(newValue)
         }
     }
+    
+    @Published var myBalanceViewColor: Color = .primary
 
     private func setupPipeline() {
         navigationState.objectWillChange.sink { [weak self] _ in
             self?.objectWillChange.send()
         }
         .store(in: &cancellables)
+        
+        configureMyBalanceBehavior()
+    }
+    
+    private func configureMyBalanceBehavior() {
+        $myBalance
+            .map { balance -> Color in
+                balance >= 0 ? R.color.customGreen.color : R.color.customRed.color
+            }
+            .eraseToAnyPublisher()
+            .assign(to: &$myBalanceViewColor)
     }
 
     func getBalances() {
@@ -51,7 +64,7 @@ class MyEventsViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .replaceError(with: [:])
             .map { balances in
-                let myBalance = balances.first(where: { $0.key == "Karina" })
+                let myBalance = balances.first(where: { $0.key == "Arina" })
                 return myBalance?.value ?? 0
             }
             .weakAssign(to: \.myBalance, on: self)

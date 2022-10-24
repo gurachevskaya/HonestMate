@@ -43,7 +43,7 @@ struct MyEventsView: View {
         .font(.title3)
         .padding(28)
         .frame(height: 50)
-        .background(R.color.customPink.color)
+        .background(viewModel.myBalanceViewColor)
         .cornerRadius(10)
     }
     
