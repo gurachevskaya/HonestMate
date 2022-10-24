@@ -32,6 +32,6 @@ struct MockData {
 
     static let defaultCurrency = "USD"
     
-    static let historyItem = ExpenseModel(expenseType: .newExpense, category: MockData.expenseType, amount: 20, date: Date(), payer: "1", between: ["1", "2"])
+    static let historyItem = ExpenseModel(expenseType: .newExpense, category: MockData.expenseType, amount: 20, date: Date(), payer: MockData.member, between: [Member(id: "1", name: "Karina"),  Member(id: "1", name: "Arina")])
 
 }

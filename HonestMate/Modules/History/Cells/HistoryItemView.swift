@@ -13,7 +13,7 @@ struct HistoryItemView: View {
     @State var showMembers: Bool = false
     
     private var membersString: String {
-        historyItem.between.joined(separator: ", ")
+        historyItem.between.map { $0.name }.joined(separator: ", ")
     }
     
     private var expenseTitle: String {
@@ -45,7 +45,7 @@ struct HistoryItemView: View {
                 Text(R.string.localizable.historyDateTitle() + " ") +
                      Text(historyItem.date, format: Date.FormatStyle().year().month().day().weekday())
                 
-                Text(R.string.localizable.historyPaidByTitle() + " \(historyItem.payer)")
+                Text(R.string.localizable.historyPaidByTitle() + " \(historyItem.payer.name)")
                 
                 if historyItem.expenseType == .newExpense {
                     newExpense
@@ -80,7 +80,7 @@ struct HistoryItemView: View {
     }
     
     var directPayment: some View {
-        Text(R.string.localizable.historyReceivedByTitle() + " \(historyItem.between.first ?? "")")
+        Text(R.string.localizable.historyReceivedByTitle() + " \(historyItem.between.first?.name ?? "")")
     }
 }
 

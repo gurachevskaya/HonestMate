@@ -165,8 +165,8 @@ class NewExpenseViewModel: ObservableObject {
             category: expenseCategory == nil ? nil : expenseCategory,
             amount: amount,
             date: selectedDate,
-            payer: payer.name,
-            between: recievers.compactMap { $0.name }
+            payer: payer,
+            between: recievers
         )
             
         expensesService.createExpense(groupID: appState.groupID, expense: expenseModel)

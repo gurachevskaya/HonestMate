@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import FirebaseFirestore
+import FirebaseAuth
 
 enum ExpenseServiceError: LocalizedError {
     case inner(Error)
@@ -19,9 +20,11 @@ protocol ExpensesServiceProtocol {
     func getGroupMembers(groupID: String) -> AnyPublisher<[Member], ExpenseServiceError>
     func addListenerToExpenses(groupID: String) -> AnyPublisher<[ExpenseModel], ExpenseServiceError>
     func deleteExpense(id: String, groupID: String) -> AnyPublisher<Void, ExpenseServiceError>
+    func getBalances(groupID: String) -> AnyPublisher<[UserName: Double], ExpenseServiceError>
 }
 
 final class ExpensesService: ExpensesServiceProtocol {
+
     let db: Firestore
     
     init(db: Firestore) {
@@ -128,4 +131,29 @@ final class ExpensesService: ExpensesServiceProtocol {
         }
         .eraseToAnyPublisher()
     }
+    
+    func getBalances(groupID: String) -> AnyPublisher<[UserName: Double], ExpenseServiceError> {
+        addListenerToExpenses(groupID: groupID)
+            .map { [unowned self] expenses in
+                calculateBalances(expenses: expenses)
+            }
+            .removeDuplicates()
+            .eraseToAnyPublisher()
+    }
+    
+    private func calculateBalances(expenses: [ExpenseModel]) -> [UserName: Double] {
+        var balances: [String: Double] = [:]
+        
+        for expense in expenses {
+            balances[expense.payer.name] = (balances[expense.payer.name] ?? 0) + expense.amount
+            
+            let amountForOne = expense.amount / Double(expense.between.count)
+            
+            for member in expense.between {
+                balances[member.name] = (balances[member.name] ?? 0) - amountForOne
+            }
+        }
+        return balances
+    }
+    
 }
