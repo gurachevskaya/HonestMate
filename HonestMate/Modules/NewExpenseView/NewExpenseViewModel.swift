@@ -49,7 +49,6 @@ class NewExpenseViewModel: ObservableObject {
     
     @Published var alertItem: AlertItem?
 
-    var currentUserName: String { authService.currentUser?.displayName ?? "name"}
     private var currentUserID: String? { authService.currentUser?.uid }
     
     var screenTitle: String {

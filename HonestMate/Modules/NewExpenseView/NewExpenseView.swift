@@ -68,7 +68,9 @@ struct NewExpenseView: View {
             Text(R.string.localizable.newExpensePaidByTitle())
                 .font(.title2)
                 .fontWeight(.bold)
-            Text(viewModel.currentUserName)
+            NavigationLink(value: HomeRoute.selectPayer($viewModel.payer, viewModel.groupMembers)) {
+                Text(viewModel.payer?.name ?? "")
+            }
         }
     }
     
