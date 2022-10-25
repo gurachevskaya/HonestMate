@@ -13,13 +13,16 @@ class MyEventsViewModel: ObservableObject {
     
     @Published var navigationState: NavigationStateProtocol
     private var expensesService: ExpensesServiceProtocol
+    private var authService: AuthServiceProtocol
     
     init(
         navigationState: NavigationStateProtocol,
-        expensesService: ExpensesServiceProtocol
+        expensesService: ExpensesServiceProtocol,
+        authService: AuthServiceProtocol
     ) {
         self.navigationState = navigationState
         self.expensesService = expensesService
+        self.authService = authService
         
         setupPipeline()
     }
@@ -64,7 +67,7 @@ class MyEventsViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .replaceError(with: [])
             .map { balances in
-                let myBalance = balances.first(where: { $0.member.id == "2XbqvhHg94S1UAdgRFWXCQakXra2" })
+                let myBalance = balances.first(where: { $0.member.id == self.authService.currentUser?.uid })
                 return myBalance?.balance ?? 0
             }
             .weakAssign(to: \.myBalance, on: self)

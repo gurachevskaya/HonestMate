@@ -24,7 +24,7 @@ struct MyEventsView: View {
                         y: .value("Balance", balance.balance)
                     )
                 }
-                .foregroundColor(.accentColor)
+                .foregroundColor(Color(uiColor:.systemGray3))
                 .padding()
   
                 Spacer()
@@ -80,7 +80,8 @@ struct MyEventsView_Previews: PreviewProvider {
     static var previews: some View {
         MyEventsView(viewModel: MyEventsViewModel(
             navigationState: Resolver.resolve(),
-            expensesService: Resolver.resolve()
+            expensesService: Resolver.resolve(),
+            authService: Resolver.resolve()
         ))
     }
 }
