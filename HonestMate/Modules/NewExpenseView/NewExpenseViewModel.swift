@@ -40,11 +40,7 @@ class NewExpenseViewModel: ObservableObject {
     @Published var description: String = ""
     @Published var amountText: String = ""
     @Published var selectedDate = Date()
-    @Published var payer: MemberModel? {
-        willSet {
-            print(newValue)
-        }
-    }
+    @Published var payer: MemberModel?
     @Published var groupMembers: [MemberModel] = []
     @Published var recievers: [MemberModel] = []
     
