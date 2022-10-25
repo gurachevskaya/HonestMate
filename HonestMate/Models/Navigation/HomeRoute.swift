@@ -22,7 +22,11 @@ enum HomeRoute: NavigationRoute, Hashable {
         case .home:
             MyEventsView(
                 viewModel: MyEventsViewModel(
-                    navigationState: Resolver.resolve()
+                    navigationState: Resolver.resolve(),
+                    expensesService: Resolver.resolve(),
+                    authService: Resolver.resolve(),
+                    appState: Resolver.resolve(),
+                    remoteConfig: Resolver.resolve()
                 )
             )
         case .selectType:

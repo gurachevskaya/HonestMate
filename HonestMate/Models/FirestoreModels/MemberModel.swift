@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-struct Member: Identifiable, Equatable, Codable {
+struct MemberModel: Identifiable, Equatable, Hashable, Codable {
     @DocumentID var id: String? = UUID().uuidString
     let name: String
 }

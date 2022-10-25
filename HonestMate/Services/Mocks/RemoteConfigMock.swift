@@ -15,7 +15,7 @@ class RemoteConfigMock: RemoteConfigServiceProtocol {
             googleEnabled: true,
             appleEnabled: true
         ),
-        isloginButtonPink: true
+        accentColor: "#d3419d"
     )
     
     var appConfigPublisher: AnyPublisher<Void, Never> {

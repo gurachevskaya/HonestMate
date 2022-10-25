@@ -115,7 +115,7 @@ struct SignInView: View {
         } label: {
             RoundedTextButton(
                 title: viewModel.selected == .login ?  R.string.localizable.signinButtonTitleSignin() : R.string.localizable.signinButtonTitleSighup(),
-                style: viewModel.isloginButtonPink == true ? .pink : .blue
+                style: .filled(Color(hex: viewModel.accentColor ?? ""))
             )
         }
         .padding(.top, 20)

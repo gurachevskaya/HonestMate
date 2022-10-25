@@ -23,6 +23,13 @@ struct ChooseGroupView: View {
                 }
             }
         }
+        .alert(item: $viewModel.alertItem) { alertItem in
+            Alert(
+                title: alertItem.title,
+                message: alertItem.message,
+                dismissButton: alertItem.dismissButton
+            )
+        }
         .navigationBarTitle(R.string.localizable.chooseGroupMyGroupsTitle(), displayMode: .large)
         .navigationBarBackButtonHidden(true)
         .onAppear {

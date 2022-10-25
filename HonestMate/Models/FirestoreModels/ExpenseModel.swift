@@ -15,6 +15,11 @@ struct ExpenseModel: Identifiable, Hashable, Codable {
     var category: ExpenseCategory?
     var amount: Double
     var date: Date
-    var payer: UserName
-    var between: [UserName]
+    var payer: Member
+    var between: [Member]
+}
+
+struct Member: Codable, Hashable {
+    let id: String
+    let name: String
 }

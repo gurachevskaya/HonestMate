@@ -40,9 +40,9 @@ class NewExpenseViewModel: ObservableObject {
     @Published var description: String = ""
     @Published var amountText: String = ""
     @Published var selectedDate = Date()
-    @Published var payer: Member?
-    @Published var groupMembers: [Member] = []
-    @Published var recievers: [Member] = []
+    @Published var payer: MemberModel?
+    @Published var groupMembers: [MemberModel] = []
+    @Published var recievers: [MemberModel] = []
     
     @Published var amountFieldColor: Color = .primary
     @Published var okButtonEnabled: Bool = false
@@ -108,7 +108,7 @@ class NewExpenseViewModel: ObservableObject {
         navigationState.homePath = []
     }
     
-    func toggleSelection(selectable: Member) {
+    func toggleSelection(selectable: MemberModel) {
         switch expenseType {
         case .newExpense:
             if let existingIndex = recievers.firstIndex(where: { $0 == selectable }) {
@@ -125,7 +125,7 @@ class NewExpenseViewModel: ObservableObject {
         }
     }
     
-    func isSelectedReceiver(_ member: Member) -> Bool {
+    func isSelectedReceiver(_ member: MemberModel) -> Bool {
         recievers.contains(member)
     }
     
@@ -165,8 +165,8 @@ class NewExpenseViewModel: ObservableObject {
             category: expenseCategory == nil ? nil : expenseCategory,
             amount: amount,
             date: selectedDate,
-            payer: payer.name,
-            between: recievers.compactMap { $0.name }
+            payer: Member(id: payer.id ?? "", name: payer.name),
+            between: recievers.map { Member(id: $0.id ?? "", name: $0.name) }
         )
             
         expensesService.createExpense(groupID: appState.groupID, expense: expenseModel)

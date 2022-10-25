@@ -9,7 +9,7 @@ import Foundation
 
 struct AppConfig: Codable {
     let loginConfig: LoginConfig?
-    let isloginButtonPink: Bool
+    let accentColor: String
 }
 
 struct LoginConfig: Codable {

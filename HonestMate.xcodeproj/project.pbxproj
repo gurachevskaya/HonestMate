@@ -22,7 +22,7 @@
 		182466B328F6F89100572A11 /* UserIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182466B228F6F89100572A11 /* UserIdentifier.swift */; };
 		182466B528F6F8CC00572A11 /* UserName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182466B428F6F8CC00572A11 /* UserName.swift */; };
 		183543CB28D4C0E400FDEEA2 /* ReceiverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183543CA28D4C0E400FDEEA2 /* ReceiverView.swift */; };
-		183543CD28D4C11800FDEEA2 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183543CC28D4C11800FDEEA2 /* Member.swift */; };
+		183543CD28D4C11800FDEEA2 /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183543CC28D4C11800FDEEA2 /* MemberModel.swift */; };
 		183543CF28D4C16F00FDEEA2 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183543CE28D4C16F00FDEEA2 /* MockData.swift */; };
 		183543D128D4C26A00FDEEA2 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183543D028D4C26A00FDEEA2 /* CheckboxView.swift */; };
 		183543D328D8B13900FDEEA2 /* UIApplication+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183543D228D8B13900FDEEA2 /* UIApplication+Ext.swift */; };
@@ -36,6 +36,8 @@
 		184791F028C1F88000BF9717 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791EF28C1F88000BF9717 /* R.generated.swift */; };
 		184791F228C1F8BB00BF9717 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 184791F128C1F8BB00BF9717 /* Localizable.strings */; };
 		184791F428C206C500BF9717 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791F328C206C400BF9717 /* AuthService.swift */; };
+		184C4EA72907DF3300F68E02 /* BalanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C4EA62907DF3300F68E02 /* BalanceModel.swift */; };
+		184C4EA92907F85000F68E02 /* HonestMateTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C4EA82907F85000F68E02 /* HonestMateTabViewModel.swift */; };
 		1858A1BD28C21A940039246A /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858A1BC28C21A940039246A /* AlertItem.swift */; };
 		1858E14F28C6061500521ED8 /* TextFieldCustomRoundStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E14E28C6061400521ED8 /* TextFieldCustomRoundStyle.swift */; };
 		1858E15228C60EBA00521ED8 /* MyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E15128C60EBA00521ED8 /* MyEventsView.swift */; };
@@ -125,7 +127,7 @@
 		182466B228F6F89100572A11 /* UserIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdentifier.swift; sourceTree = "<group>"; };
 		182466B428F6F8CC00572A11 /* UserName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserName.swift; sourceTree = "<group>"; };
 		183543CA28D4C0E400FDEEA2 /* ReceiverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverView.swift; sourceTree = "<group>"; };
-		183543CC28D4C11800FDEEA2 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		183543CC28D4C11800FDEEA2 /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
 		183543CE28D4C16F00FDEEA2 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		183543D028D4C26A00FDEEA2 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		183543D228D8B13900FDEEA2 /* UIApplication+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Ext.swift"; sourceTree = "<group>"; };
@@ -139,6 +141,8 @@
 		184791EF28C1F88000BF9717 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		184791F128C1F8BB00BF9717 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		184791F328C206C400BF9717 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		184C4EA62907DF3300F68E02 /* BalanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceModel.swift; sourceTree = "<group>"; };
+		184C4EA82907F85000F68E02 /* HonestMateTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateTabViewModel.swift; sourceTree = "<group>"; };
 		1858A1BC28C21A940039246A /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
 		1858E14E28C6061400521ED8 /* TextFieldCustomRoundStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCustomRoundStyle.swift; sourceTree = "<group>"; };
 		1858E15128C60EBA00521ED8 /* MyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsView.swift; sourceTree = "<group>"; };
@@ -245,7 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				18A4D4D728D384BA00BA2793 /* ExpenseCategory.swift */,
-				183543CC28D4C11800FDEEA2 /* Member.swift */,
+				183543CC28D4C11800FDEEA2 /* MemberModel.swift */,
 				18D49A3328F091E40022087D /* ExpenseModel.swift */,
 				18E6EF8128F85B210061DE8D /* GroupModel.swift */,
 				18E6EF8528F884B30061DE8D /* UserInfoModel.swift */,
@@ -277,7 +281,8 @@
 		184791E028C0F13500BF9717 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				185F423828D34DD700628DDC /* HonestMateTabView.swift */,
+				184C4EAB2907FAB500F68E02 /* TabView */,
+				184C4EAA2907FAAE00F68E02 /* New Group */,
 				18BA855828CB2FFF00F8DC2A /* Splash */,
 				1858E15028C60E8D00521ED8 /* MyEvents */,
 				18A4D4CF28D382DC00BA2793 /* SelectExpenseType */,
@@ -333,6 +338,22 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		184C4EAA2907FAAE00F68E02 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		184C4EAB2907FAB500F68E02 /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				185F423828D34DD700628DDC /* HonestMateTabView.swift */,
+				184C4EA82907F85000F68E02 /* HonestMateTabViewModel.swift */,
+			);
+			path = TabView;
+			sourceTree = "<group>";
+		};
 		1858A1BB28C21A870039246A /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,6 +365,7 @@
 				182466B228F6F89100572A11 /* UserIdentifier.swift */,
 				182466B428F6F8CC00572A11 /* UserName.swift */,
 				18C033892902AE6F0040DBBE /* ExpenseType.swift */,
+				184C4EA62907DF3300F68E02 /* BalanceModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -880,6 +902,7 @@
 				1858E14F28C6061500521ED8 /* TextFieldCustomRoundStyle.swift in Sources */,
 				185F421D28CB8F1000628DDC /* AppConfig.swift in Sources */,
 				18BA855528CA3E3300F8DC2A /* Constants.swift in Sources */,
+				184C4EA72907DF3300F68E02 /* BalanceModel.swift in Sources */,
 				18F728D928B91057002D071F /* ContentView.swift in Sources */,
 				18D49A3228F08CB60022087D /* ExpensesService.swift in Sources */,
 				1816E43428FF0ED000BA9EE1 /* AnyCancellable.swift in Sources */,
@@ -934,6 +957,7 @@
 				185F421B28CB867B00628DDC /* SplashViewModel.swift in Sources */,
 				184791E828C1090000BF9717 /* RSwift+Ext.swift in Sources */,
 				183543D328D8B13900FDEEA2 /* UIApplication+Ext.swift in Sources */,
+				184C4EA92907F85000F68E02 /* HonestMateTabViewModel.swift in Sources */,
 				18E6EF8428F85DC60061DE8D /* GroupsService.swift in Sources */,
 				184791EB28C109E400BF9717 /* RoundedTextButton.swift in Sources */,
 				184791E228C0F14C00BF9717 /* SignInView.swift in Sources */,
@@ -944,7 +968,7 @@
 				184791DF28C0EFB800BF9717 /* HotestMateApp+Resolving.swift in Sources */,
 				1816E42C28FEECA100BA9EE1 /* HistoryRoute.swift in Sources */,
 				18E6EF8628F884B30061DE8D /* UserInfoModel.swift in Sources */,
-				183543CD28D4C11800FDEEA2 /* Member.swift in Sources */,
+				183543CD28D4C11800FDEEA2 /* MemberModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

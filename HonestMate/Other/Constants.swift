@@ -21,7 +21,7 @@ enum Constants {
     
     enum FeatureFlagKeys {
         static let loginConfig = "loginConfig"
-        static let isloginButtonPink = "isloginButtonPink"
+        static let accentColor = "accentColor"
     }
     
     enum AccessebilityIDs {

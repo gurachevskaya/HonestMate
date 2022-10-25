@@ -23,7 +23,7 @@ class SignInViewModel: ObservableObject {
     private var remoteConfigService: RemoteConfigServiceProtocol
     
     var loginConfig: LoginConfig? { remoteConfigService.appConfig?.loginConfig }
-    var isloginButtonPink: Bool? { remoteConfigService.appConfig?.isloginButtonPink }
+    var accentColor: String? { remoteConfigService.appConfig?.accentColor }
     
     var path: [SignInRoute] = []
 

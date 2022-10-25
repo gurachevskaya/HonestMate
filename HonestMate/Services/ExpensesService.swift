@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import FirebaseFirestore
+import FirebaseAuth
 
 enum ExpenseServiceError: LocalizedError {
     case inner(Error)
@@ -16,12 +17,14 @@ enum ExpenseServiceError: LocalizedError {
 protocol ExpensesServiceProtocol {
     func createExpense(groupID: String, expense: ExpenseModel) -> AnyPublisher<Void, ExpenseServiceError>
     func getDefaultCategories() -> AnyPublisher<[ExpenseCategory], ExpenseServiceError>
-    func getGroupMembers(groupID: String) -> AnyPublisher<[Member], ExpenseServiceError>
+    func getGroupMembers(groupID: String) -> AnyPublisher<[MemberModel], ExpenseServiceError>
     func addListenerToExpenses(groupID: String) -> AnyPublisher<[ExpenseModel], ExpenseServiceError>
     func deleteExpense(id: String, groupID: String) -> AnyPublisher<Void, ExpenseServiceError>
+    func getBalances(groupID: String) -> AnyPublisher<[BalanceModel], ExpenseServiceError>
 }
 
 final class ExpensesService: ExpensesServiceProtocol {
+
     let db: Firestore
     
     init(db: Firestore) {
@@ -69,12 +72,12 @@ final class ExpensesService: ExpensesServiceProtocol {
         .eraseToAnyPublisher()
     }
     
-    func getGroupMembers(groupID: String) -> AnyPublisher<[Member], ExpenseServiceError> {
+    func getGroupMembers(groupID: String) -> AnyPublisher<[MemberModel], ExpenseServiceError> {
         let groupsCollection = db.collection(Constants.DatabaseReferenceNames.groups)
         let currentGroupDocument = groupsCollection.document(groupID)
         let groupMembersCollection = currentGroupDocument.collection(Constants.DatabaseReferenceNames.members)
         
-        return Future<[Member], ExpenseServiceError> { promise in
+        return Future<[MemberModel], ExpenseServiceError> { promise in
             groupMembersCollection.getDocuments { snapshot, error in
                 if let error = error {
                     promise(.failure(.inner(error)))
@@ -87,7 +90,7 @@ final class ExpensesService: ExpensesServiceProtocol {
                 }
 
                 let members = data.compactMap {
-                    try? $0.data(as: Member.self)
+                    try? $0.data(as: MemberModel.self)
                 }
 
                 promise(.success(members))
@@ -128,4 +131,37 @@ final class ExpensesService: ExpensesServiceProtocol {
         }
         .eraseToAnyPublisher()
     }
+    
+    func getBalances(groupID: String) -> AnyPublisher<[BalanceModel], ExpenseServiceError> {
+        addListenerToExpenses(groupID: groupID)
+            .map { [unowned self] expenses in
+                calculateBalances(expenses: expenses)
+            }
+            .removeDuplicates()
+            .eraseToAnyPublisher()
+    }
+    
+    private func calculateBalances(expenses: [ExpenseModel]) -> [BalanceModel] {
+        var balances: [BalanceModel] = []
+        
+        for expense in expenses {
+            if let i = balances.firstIndex(where: { $0.member.id == expense.payer.id }) {
+                balances[i].balance += expense.amount
+            } else {
+                balances.append(BalanceModel(member: expense.payer, balance: expense.amount))
+            }
+            
+            let amountForOne = expense.amount / Double(expense.between.count)
+            
+            for member in expense.between {
+                if let i = balances.firstIndex(where: { $0.member.id == member.id }) {
+                    balances[i].balance -= amountForOne
+                } else {
+                    balances.append(BalanceModel(member: member, balance: -amountForOne))
+                }
+            }
+        }
+        return balances
+    }
+    
 }
