@@ -40,7 +40,11 @@ class NewExpenseViewModel: ObservableObject {
     @Published var description: String = ""
     @Published var amountText: String = ""
     @Published var selectedDate = Date()
-    @Published var payer: MemberModel?
+    @Published var payer: MemberModel? {
+        willSet {
+            print(newValue)
+        }
+    }
     @Published var groupMembers: [MemberModel] = []
     @Published var recievers: [MemberModel] = []
     
@@ -139,7 +143,9 @@ class NewExpenseViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] members in
                 guard let self else { return }
-                self.payer = members.first(where: { $0.id == self.currentUserID })
+                if self.payer == nil {
+                    self.payer = members.first(where: { $0.id == self.currentUserID })
+                }
                 switch self.expenseType {
                 case .newExpense:
                     self.groupMembers = members

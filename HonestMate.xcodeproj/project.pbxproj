@@ -40,6 +40,7 @@
 		184C4EA92907F85000F68E02 /* HonestMateTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C4EA82907F85000F68E02 /* HonestMateTabViewModel.swift */; };
 		184C4EAE2907FDF400F68E02 /* SelectPayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C4EAD2907FDF400F68E02 /* SelectPayerView.swift */; };
 		184C4EB02907FE0300F68E02 /* SelectPayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C4EAF2907FE0300F68E02 /* SelectPayerViewModel.swift */; };
+		184C4EB22908269900F68E02 /* PayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C4EB12908269900F68E02 /* PayerView.swift */; };
 		1858A1BD28C21A940039246A /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858A1BC28C21A940039246A /* AlertItem.swift */; };
 		1858E14F28C6061500521ED8 /* TextFieldCustomRoundStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E14E28C6061400521ED8 /* TextFieldCustomRoundStyle.swift */; };
 		1858E15228C60EBA00521ED8 /* MyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E15128C60EBA00521ED8 /* MyEventsView.swift */; };
@@ -147,6 +148,7 @@
 		184C4EA82907F85000F68E02 /* HonestMateTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateTabViewModel.swift; sourceTree = "<group>"; };
 		184C4EAD2907FDF400F68E02 /* SelectPayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPayerView.swift; sourceTree = "<group>"; };
 		184C4EAF2907FE0300F68E02 /* SelectPayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPayerViewModel.swift; sourceTree = "<group>"; };
+		184C4EB12908269900F68E02 /* PayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayerView.swift; sourceTree = "<group>"; };
 		1858A1BC28C21A940039246A /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
 		1858E14E28C6061400521ED8 /* TextFieldCustomRoundStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCustomRoundStyle.swift; sourceTree = "<group>"; };
 		1858E15128C60EBA00521ED8 /* MyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsView.swift; sourceTree = "<group>"; };
@@ -481,6 +483,7 @@
 				18A4D4D528D383DD00BA2793 /* ExpenseTypeView.swift */,
 				183543CA28D4C0E400FDEEA2 /* ReceiverView.swift */,
 				183543D028D4C26A00FDEEA2 /* CheckboxView.swift */,
+				184C4EB12908269900F68E02 /* PayerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -960,6 +963,7 @@
 				18E6EF8928F9B3480061DE8D /* Clearable.swift in Sources */,
 				18BA855728CA48B700F8DC2A /* AppState.swift in Sources */,
 				185F423428D323BE00628DDC /* AppStateMock.swift in Sources */,
+				184C4EB22908269900F68E02 /* PayerView.swift in Sources */,
 				1816E42E28FEECB800BA9EE1 /* SignInRoute.swift in Sources */,
 				18A4D4D128D3830000BA2793 /* SelectExpenseTypeView.swift in Sources */,
 				182466AA28F5D54500572A11 /* HistoryViewModel.swift in Sources */,
