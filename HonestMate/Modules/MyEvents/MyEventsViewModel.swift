@@ -14,15 +14,18 @@ class MyEventsViewModel: ObservableObject {
     @Published var navigationState: NavigationStateProtocol
     private var expensesService: ExpensesServiceProtocol
     private var authService: AuthServiceProtocol
+    private var appState: AppStateProtocol
     
     init(
         navigationState: NavigationStateProtocol,
         expensesService: ExpensesServiceProtocol,
-        authService: AuthServiceProtocol
+        authService: AuthServiceProtocol,
+        appState: AppStateProtocol
     ) {
         self.navigationState = navigationState
         self.expensesService = expensesService
         self.authService = authService
+        self.appState = appState
         
         setupPipeline()
     }
@@ -57,13 +60,13 @@ class MyEventsViewModel: ObservableObject {
     }
 
     func getBalances() {
-        expensesService.getBalances(groupID: MockData.currentGroupID)
+        expensesService.getBalances(groupID: appState.groupID)
             .receive(on: DispatchQueue.main)
             .replaceError(with: [])
             .weakAssign(to: \.balances, on: self)
             .store(in: &cancellables)
         
-        expensesService.getBalances(groupID: MockData.currentGroupID)
+        expensesService.getBalances(groupID: appState.groupID)
             .receive(on: DispatchQueue.main)
             .replaceError(with: [])
             .map { balances in

@@ -81,7 +81,8 @@ struct MyEventsView_Previews: PreviewProvider {
         MyEventsView(viewModel: MyEventsViewModel(
             navigationState: Resolver.resolve(),
             expensesService: Resolver.resolve(),
-            authService: Resolver.resolve()
+            authService: Resolver.resolve(),
+            appState: Resolver.resolve()
         ))
     }
 }

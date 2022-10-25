@@ -24,7 +24,8 @@ enum HomeRoute: NavigationRoute, Hashable {
                 viewModel: MyEventsViewModel(
                     navigationState: Resolver.resolve(),
                     expensesService: Resolver.resolve(),
-                    authService: Resolver.resolve()
+                    authService: Resolver.resolve(),
+                    appState: Resolver.resolve()
                 )
             )
         case .selectType:
