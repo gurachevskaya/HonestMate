@@ -133,22 +133,31 @@ final class ExpensesService: ExpensesServiceProtocol {
     }
     
     func getBalances(groupID: String) -> AnyPublisher<[BalanceModel], ExpenseServiceError> {
-        addListenerToExpenses(groupID: groupID)
-            .map { [unowned self] expenses in
-                calculateBalances(expenses: expenses)
+        let membersPublisher = getGroupMembers(groupID: groupID)
+        let expensesPublisher = addListenerToExpenses(groupID: groupID)
+
+        return Publishers.CombineLatest(membersPublisher, expensesPublisher)
+            .map { [unowned self] members, expenses in
+                calculateBalances(
+                    expenses: expenses,
+                    members: members.map { Member(id: $0.id ?? "", name: $0.name) }
+                )
             }
             .removeDuplicates()
             .eraseToAnyPublisher()
     }
     
-    private func calculateBalances(expenses: [ExpenseModel]) -> [BalanceModel] {
-        var balances: [BalanceModel] = []
+    private func calculateBalances(expenses: [ExpenseModel], members: [Member]) -> [BalanceModel] {
+        var balances: [BalanceModel] = members.map {
+            BalanceModel(
+                member: $0,
+                balance: 0
+            )
+        }
         
         for expense in expenses {
             if let i = balances.firstIndex(where: { $0.member.id == expense.payer.id }) {
                 balances[i].balance += expense.amount
-            } else {
-                balances.append(BalanceModel(member: expense.payer, balance: expense.amount))
             }
             
             let amountForOne = expense.amount / Double(expense.between.count)
@@ -156,8 +165,6 @@ final class ExpensesService: ExpensesServiceProtocol {
             for member in expense.between {
                 if let i = balances.firstIndex(where: { $0.member.id == member.id }) {
                     balances[i].balance -= amountForOne
-                } else {
-                    balances.append(BalanceModel(member: member, balance: -amountForOne))
                 }
             }
         }
