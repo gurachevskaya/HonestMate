@@ -37,6 +37,7 @@
 		184791F228C1F8BB00BF9717 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 184791F128C1F8BB00BF9717 /* Localizable.strings */; };
 		184791F428C206C500BF9717 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791F328C206C400BF9717 /* AuthService.swift */; };
 		184C4EA72907DF3300F68E02 /* BalanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C4EA62907DF3300F68E02 /* BalanceModel.swift */; };
+		184C4EA92907F85000F68E02 /* HonestMateTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C4EA82907F85000F68E02 /* HonestMateTabViewModel.swift */; };
 		1858A1BD28C21A940039246A /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858A1BC28C21A940039246A /* AlertItem.swift */; };
 		1858E14F28C6061500521ED8 /* TextFieldCustomRoundStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E14E28C6061400521ED8 /* TextFieldCustomRoundStyle.swift */; };
 		1858E15228C60EBA00521ED8 /* MyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E15128C60EBA00521ED8 /* MyEventsView.swift */; };
@@ -141,6 +142,7 @@
 		184791F128C1F8BB00BF9717 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		184791F328C206C400BF9717 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		184C4EA62907DF3300F68E02 /* BalanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceModel.swift; sourceTree = "<group>"; };
+		184C4EA82907F85000F68E02 /* HonestMateTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateTabViewModel.swift; sourceTree = "<group>"; };
 		1858A1BC28C21A940039246A /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
 		1858E14E28C6061400521ED8 /* TextFieldCustomRoundStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCustomRoundStyle.swift; sourceTree = "<group>"; };
 		1858E15128C60EBA00521ED8 /* MyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsView.swift; sourceTree = "<group>"; };
@@ -279,7 +281,8 @@
 		184791E028C0F13500BF9717 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				185F423828D34DD700628DDC /* HonestMateTabView.swift */,
+				184C4EAB2907FAB500F68E02 /* TabView */,
+				184C4EAA2907FAAE00F68E02 /* New Group */,
 				18BA855828CB2FFF00F8DC2A /* Splash */,
 				1858E15028C60E8D00521ED8 /* MyEvents */,
 				18A4D4CF28D382DC00BA2793 /* SelectExpenseType */,
@@ -333,6 +336,22 @@
 				18E6EF8328F85DC60061DE8D /* GroupsService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		184C4EAA2907FAAE00F68E02 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		184C4EAB2907FAB500F68E02 /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				185F423828D34DD700628DDC /* HonestMateTabView.swift */,
+				184C4EA82907F85000F68E02 /* HonestMateTabViewModel.swift */,
+			);
+			path = TabView;
 			sourceTree = "<group>";
 		};
 		1858A1BB28C21A870039246A /* Models */ = {
@@ -938,6 +957,7 @@
 				185F421B28CB867B00628DDC /* SplashViewModel.swift in Sources */,
 				184791E828C1090000BF9717 /* RSwift+Ext.swift in Sources */,
 				183543D328D8B13900FDEEA2 /* UIApplication+Ext.swift in Sources */,
+				184C4EA92907F85000F68E02 /* HonestMateTabViewModel.swift in Sources */,
 				18E6EF8428F85DC60061DE8D /* GroupsService.swift in Sources */,
 				184791EB28C109E400BF9717 /* RoundedTextButton.swift in Sources */,
 				184791E228C0F14C00BF9717 /* SignInView.swift in Sources */,

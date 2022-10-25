@@ -30,7 +30,9 @@ struct SplashView: View {
                     isPresented: $showMainFlow,
                     content: {
                         HonestMateTabView(
-                            remoteConfig: Resolver.resolve()
+                            viewModel: HonestMateTabViewModel(
+                                remoteConfig: Resolver.resolve()
+                            )
                         )
                     }
                 )
