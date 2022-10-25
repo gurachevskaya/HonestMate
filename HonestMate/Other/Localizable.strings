@@ -99,3 +99,10 @@
 
 "profile.change.group" = "Change Group";
 "profile.logout" = "Logout";
+
+// MARK: Home
+
+"home.my.balance" = "my balance";
+"home.add.expense.button.title" = "Add Expense";
+"home.direct.payment.button.title" = "Direct Payment";
+

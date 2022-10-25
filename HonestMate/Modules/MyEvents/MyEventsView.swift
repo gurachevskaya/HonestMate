@@ -17,15 +17,7 @@ struct MyEventsView: View {
         NavigationStack(path: $viewModel.navigationState.homePath) {
             VStack {
                 myBalanceView
-                
-                Chart(viewModel.balances) { balance in
-                    BarMark(
-                        x: .value("Name", balance.member.name),
-                        y: .value("Balance", balance.balance)
-                    )
-                }
-                .foregroundColor(Color(uiColor:.systemGray3))
-                .padding()
+                chart
   
                 Spacer()
                 
@@ -46,7 +38,7 @@ struct MyEventsView: View {
 
     var myBalanceView: some View {
         HStack {
-            Text("my balance")
+            Text(R.string.localizable.homeMyBalance())
             Spacer()
             Text(String(format: "%.1f", viewModel.myBalance) )
         }
@@ -57,10 +49,21 @@ struct MyEventsView: View {
         .cornerRadius(10)
     }
     
+    var chart: some View {
+        Chart(viewModel.balances) { balance in
+            BarMark(
+                x: .value("Name", balance.member.name),
+                y: .value("Balance", balance.balance)
+            )
+        }
+        .foregroundColor(Color(uiColor:.systemGray3))
+        .padding()
+    }
+    
     var addExpenseButton: some View {
         NavigationLink(value: HomeRoute.selectType) {
             RoundedTextButton(
-                title: "Add Expense",
+                title: R.string.localizable.homeAddExpenseButtonTitle(),
                 style: .pink
             )
         }
@@ -69,7 +72,7 @@ struct MyEventsView: View {
     var directPaymentButton: some View {
         NavigationLink(value: HomeRoute.directPayment) {
             RoundedTextButton(
-                title: "Direct Payment",
+                title: R.string.localizable.homeDirectPaymentButtonTitle(),
                 style: .pink
             )
         }
