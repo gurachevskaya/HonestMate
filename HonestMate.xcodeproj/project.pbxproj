@@ -38,6 +38,9 @@
 		184791F428C206C500BF9717 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184791F328C206C400BF9717 /* AuthService.swift */; };
 		184C4EA72907DF3300F68E02 /* BalanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C4EA62907DF3300F68E02 /* BalanceModel.swift */; };
 		184C4EA92907F85000F68E02 /* HonestMateTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C4EA82907F85000F68E02 /* HonestMateTabViewModel.swift */; };
+		184C4EAE2907FDF400F68E02 /* SelectPayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C4EAD2907FDF400F68E02 /* SelectPayerView.swift */; };
+		184C4EB02907FE0300F68E02 /* SelectPayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C4EAF2907FE0300F68E02 /* SelectPayerViewModel.swift */; };
+		184C4EB22908269900F68E02 /* PayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C4EB12908269900F68E02 /* PayerView.swift */; };
 		1858A1BD28C21A940039246A /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858A1BC28C21A940039246A /* AlertItem.swift */; };
 		1858E14F28C6061500521ED8 /* TextFieldCustomRoundStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E14E28C6061400521ED8 /* TextFieldCustomRoundStyle.swift */; };
 		1858E15228C60EBA00521ED8 /* MyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858E15128C60EBA00521ED8 /* MyEventsView.swift */; };
@@ -143,6 +146,9 @@
 		184791F328C206C400BF9717 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		184C4EA62907DF3300F68E02 /* BalanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceModel.swift; sourceTree = "<group>"; };
 		184C4EA82907F85000F68E02 /* HonestMateTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateTabViewModel.swift; sourceTree = "<group>"; };
+		184C4EAD2907FDF400F68E02 /* SelectPayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPayerView.swift; sourceTree = "<group>"; };
+		184C4EAF2907FE0300F68E02 /* SelectPayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPayerViewModel.swift; sourceTree = "<group>"; };
+		184C4EB12908269900F68E02 /* PayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayerView.swift; sourceTree = "<group>"; };
 		1858A1BC28C21A940039246A /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
 		1858E14E28C6061400521ED8 /* TextFieldCustomRoundStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCustomRoundStyle.swift; sourceTree = "<group>"; };
 		1858E15128C60EBA00521ED8 /* MyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsView.swift; sourceTree = "<group>"; };
@@ -286,6 +292,7 @@
 				18BA855828CB2FFF00F8DC2A /* Splash */,
 				1858E15028C60E8D00521ED8 /* MyEvents */,
 				18A4D4CF28D382DC00BA2793 /* SelectExpenseType */,
+				184C4EAC2907FDDE00F68E02 /* SelectPayer */,
 				18A4D4D928D47ABF00BA2793 /* NewExpenseView */,
 				185F422928CF882300628DDC /* SignIn */,
 				18E6EF7C28F854100061DE8D /* ChooseGroup */,
@@ -352,6 +359,15 @@
 				184C4EA82907F85000F68E02 /* HonestMateTabViewModel.swift */,
 			);
 			path = TabView;
+			sourceTree = "<group>";
+		};
+		184C4EAC2907FDDE00F68E02 /* SelectPayer */ = {
+			isa = PBXGroup;
+			children = (
+				184C4EAD2907FDF400F68E02 /* SelectPayerView.swift */,
+				184C4EAF2907FE0300F68E02 /* SelectPayerViewModel.swift */,
+			);
+			path = SelectPayer;
 			sourceTree = "<group>";
 		};
 		1858A1BB28C21A870039246A /* Models */ = {
@@ -467,6 +483,7 @@
 				18A4D4D528D383DD00BA2793 /* ExpenseTypeView.swift */,
 				183543CA28D4C0E400FDEEA2 /* ReceiverView.swift */,
 				183543D028D4C26A00FDEEA2 /* CheckboxView.swift */,
+				184C4EB12908269900F68E02 /* PayerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -917,6 +934,7 @@
 				183543D528D9BA3400FDEEA2 /* Binding+Ext.swift in Sources */,
 				183543CF28D4C16F00FDEEA2 /* MockData.swift in Sources */,
 				18A4D4D628D383DD00BA2793 /* ExpenseTypeView.swift in Sources */,
+				184C4EB02907FE0300F68E02 /* SelectPayerViewModel.swift in Sources */,
 				18A4D4DD28D47AE300BA2793 /* NewExpenseViewModel.swift in Sources */,
 				185F423228D31C1000628DDC /* AuthServiceMock.swift in Sources */,
 				18C0338A2902AE6F0040DBBE /* ExpenseType.swift in Sources */,
@@ -926,6 +944,7 @@
 				18BA855A28CB301600F8DC2A /* SplashView.swift in Sources */,
 				184791F428C206C500BF9717 /* AuthService.swift in Sources */,
 				18A861B328FD6D5E0056D748 /* DocumentPublisher.swift in Sources */,
+				184C4EAE2907FDF400F68E02 /* SelectPayerView.swift in Sources */,
 				18A4D4D828D384BA00BA2793 /* ExpenseCategory.swift in Sources */,
 				183543D128D4C26A00FDEEA2 /* CheckboxView.swift in Sources */,
 				1816E43B29004B3200BA9EE1 /* WeakAssign.swift in Sources */,
@@ -944,6 +963,7 @@
 				18E6EF8928F9B3480061DE8D /* Clearable.swift in Sources */,
 				18BA855728CA48B700F8DC2A /* AppState.swift in Sources */,
 				185F423428D323BE00628DDC /* AppStateMock.swift in Sources */,
+				184C4EB22908269900F68E02 /* PayerView.swift in Sources */,
 				1816E42E28FEECB800BA9EE1 /* SignInRoute.swift in Sources */,
 				18A4D4D128D3830000BA2793 /* SelectExpenseTypeView.swift in Sources */,
 				182466AA28F5D54500572A11 /* HistoryViewModel.swift in Sources */,

@@ -49,7 +49,6 @@ class NewExpenseViewModel: ObservableObject {
     
     @Published var alertItem: AlertItem?
 
-    var currentUserName: String { authService.currentUser?.displayName ?? "name"}
     private var currentUserID: String? { authService.currentUser?.uid }
     
     var screenTitle: String {
@@ -140,7 +139,9 @@ class NewExpenseViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] members in
                 guard let self else { return }
-                self.payer = members.first(where: { $0.id == self.currentUserID })
+                if self.payer == nil {
+                    self.payer = members.first(where: { $0.id == self.currentUserID })
+                }
                 switch self.expenseType {
                 case .newExpense:
                     self.groupMembers = members

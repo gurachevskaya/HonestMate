@@ -11,6 +11,7 @@ import Resolver
 enum HomeRoute: NavigationRoute, Hashable {
         
     case home
+    case selectPayer(Binding<MemberModel?>, [MemberModel])
     case selectType
     case reselectType(Binding<ExpenseCategory?>)
     case newExpense(ExpenseCategory)
@@ -27,6 +28,13 @@ enum HomeRoute: NavigationRoute, Hashable {
                     authService: Resolver.resolve(),
                     appState: Resolver.resolve(),
                     remoteConfig: Resolver.resolve()
+                )
+            )
+        case .selectPayer(let payer, let members):
+            SelectPayerView(
+                viewModel: SelectPayerViewModel(
+                    payer: payer,
+                    members: members
                 )
             )
         case .selectType:
