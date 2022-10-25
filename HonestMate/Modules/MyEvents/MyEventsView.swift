@@ -64,7 +64,7 @@ struct MyEventsView: View {
         NavigationLink(value: HomeRoute.selectType) {
             RoundedTextButton(
                 title: R.string.localizable.homeAddExpenseButtonTitle(),
-                style: .pink
+                style: .filled(viewModel.accentColor)
             )
         }
     }
@@ -73,7 +73,7 @@ struct MyEventsView: View {
         NavigationLink(value: HomeRoute.directPayment) {
             RoundedTextButton(
                 title: R.string.localizable.homeDirectPaymentButtonTitle(),
-                style: .pink
+                style: .filled(viewModel.accentColor)
             )
         }
     }
@@ -85,7 +85,8 @@ struct MyEventsView_Previews: PreviewProvider {
             navigationState: Resolver.resolve(),
             expensesService: Resolver.resolve(),
             authService: Resolver.resolve(),
-            appState: Resolver.resolve()
+            appState: Resolver.resolve(),
+            remoteConfig: Resolver.resolve()
         ))
     }
 }

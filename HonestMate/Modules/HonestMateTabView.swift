@@ -11,7 +11,11 @@ import Resolver
 struct HonestMateTabView: View {
     @State private var selection = 1
     
-    init() {
+    private var remoteConfig: RemoteConfigServiceProtocol
+    
+    init(remoteConfig: RemoteConfigServiceProtocol) {
+        self.remoteConfig = remoteConfig
+        
         UITabBar.appearance().backgroundColor = UIColor.systemGray6
     }
     
@@ -35,12 +39,12 @@ struct HonestMateTabView: View {
                     Text(R.string.localizable.tabSettings())
                 }.tag(2)
         }
-        .accentColor(.pink)
+        .accentColor(Color(hex: remoteConfig.appConfig?.accentColor ?? ""))
     }
 }
 
 struct HonestMateTabView_Previews: PreviewProvider {
     static var previews: some View {
-        HonestMateTabView()
+        HonestMateTabView(remoteConfig: Resolver.resolve())
     }
 }

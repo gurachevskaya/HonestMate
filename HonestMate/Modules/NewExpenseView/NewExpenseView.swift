@@ -139,7 +139,10 @@ struct NewExpenseView: View {
         Button {
             viewModel.addExpense()
         } label: {
-            RoundedTextButton(title: R.string.localizable.newExpenseAddExpenseButtonTitle(), style: .pink)
+            RoundedTextButton(
+                title: R.string.localizable.newExpenseAddExpenseButtonTitle(),
+                style: .filled(.pink)
+            )
         }
         .disabled(!viewModel.okButtonEnabled)
         .padding()

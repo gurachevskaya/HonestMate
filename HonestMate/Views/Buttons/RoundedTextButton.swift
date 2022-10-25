@@ -11,8 +11,7 @@ struct RoundedTextButton: View {
     @Environment(\.isEnabled) var isEnabled
     
     enum RoundedButtonStyle {
-        case blue
-        case pink
+        case filled(Color)
     }
 
     var title: String
@@ -21,17 +20,14 @@ struct RoundedTextButton: View {
     
     private var backgroundColor: Color {
         switch style {
-        case .blue:
-            return Color.blue
-            
-        case .pink:
-            return Color.pink
+        case .filled(let color):
+            return color
         }
     }
     
     private var titleColor: Color {
         switch style {
-        case .blue, .pink:
+        case .filled:
             return .white
         }
     }
@@ -50,6 +46,6 @@ struct RoundedTextButton: View {
 
 struct RoundedTextButton_Previews: PreviewProvider {
     static var previews: some View {
-        RoundedTextButton(title: "title", style: .blue)
+        RoundedTextButton(title: "title", style: .filled(.pink))
     }
 }

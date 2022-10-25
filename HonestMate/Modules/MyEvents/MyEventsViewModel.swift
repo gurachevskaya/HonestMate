@@ -15,17 +15,20 @@ class MyEventsViewModel: ObservableObject {
     private var expensesService: ExpensesServiceProtocol
     private var authService: AuthServiceProtocol
     private var appState: AppStateProtocol
+    private var remoteConfig: RemoteConfigServiceProtocol
     
     init(
         navigationState: NavigationStateProtocol,
         expensesService: ExpensesServiceProtocol,
         authService: AuthServiceProtocol,
-        appState: AppStateProtocol
+        appState: AppStateProtocol,
+        remoteConfig: RemoteConfigServiceProtocol
     ) {
         self.navigationState = navigationState
         self.expensesService = expensesService
         self.authService = authService
         self.appState = appState
+        self.remoteConfig = remoteConfig
         
         setupPipeline()
     }
@@ -33,13 +36,10 @@ class MyEventsViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
     
     @Published var myBalance: Double = 0
-    @Published var balances: [BalanceModel] = [] {
-        willSet {
-            print(newValue)
-        }
-    }
-    
+    @Published var balances: [BalanceModel] = []
     @Published var myBalanceViewColor: Color = .primary
+    
+    var accentColor: Color { Color(hex: remoteConfig.appConfig?.accentColor ?? "") }
 
     private func setupPipeline() {
         navigationState.objectWillChange.sink { [weak self] _ in

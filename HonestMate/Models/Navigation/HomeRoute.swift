@@ -25,7 +25,8 @@ enum HomeRoute: NavigationRoute, Hashable {
                     navigationState: Resolver.resolve(),
                     expensesService: Resolver.resolve(),
                     authService: Resolver.resolve(),
-                    appState: Resolver.resolve()
+                    appState: Resolver.resolve(),
+                    remoteConfig: Resolver.resolve()
                 )
             )
         case .selectType:

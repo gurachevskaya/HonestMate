@@ -29,7 +29,7 @@ protocol AuthServiceProtocol {
     func logout() -> AnyPublisher<Void, AuthError>
 }
 
-final class AuthService: AuthServiceProtocol {    
+final class AuthService: AuthServiceProtocol {
     private var appState: AppStateProtocol
     
     init(appState: AppStateProtocol) {
