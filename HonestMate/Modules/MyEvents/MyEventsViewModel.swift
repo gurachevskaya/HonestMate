@@ -16,19 +16,22 @@ class MyEventsViewModel: ObservableObject {
     private var authService: AuthServiceProtocol
     private var appState: AppStateProtocol
     private var remoteConfig: RemoteConfigServiceProtocol
+    private var groupsService: GroupsServiceProtocol
     
     init(
         navigationState: NavigationStateProtocol,
         expensesService: ExpensesServiceProtocol,
         authService: AuthServiceProtocol,
         appState: AppStateProtocol,
-        remoteConfig: RemoteConfigServiceProtocol
+        remoteConfig: RemoteConfigServiceProtocol,
+        groupsService: GroupsServiceProtocol
     ) {
         self.navigationState = navigationState
         self.expensesService = expensesService
         self.authService = authService
         self.appState = appState
         self.remoteConfig = remoteConfig
+        self.groupsService = groupsService
         
         setupPipeline()
     }

@@ -86,7 +86,8 @@ struct MyEventsView_Previews: PreviewProvider {
             expensesService: Resolver.resolve(),
             authService: Resolver.resolve(),
             appState: Resolver.resolve(),
-            remoteConfig: Resolver.resolve()
+            remoteConfig: Resolver.resolve(),
+            groupsService: Resolver.resolve()
         ))
     }
 }

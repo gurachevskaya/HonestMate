@@ -163,29 +163,5 @@ struct NewExpenseView_Previews: PreviewProvider {
                 navigationState: Resolver.resolve()
             ))
         }
-        
-//        NavigationStack {
-//            NewExpenseView(viewModel: NewExpenseViewModel(
-//                expenseCategory: MockData.expenseType,
-//                expenseType: .directPayment,
-//                authService: Resolver.resolve(),
-//                expensesService: Resolver.resolve(),
-//                appState: Resolver.resolve(),
-//                navigationState: Resolver.resolve()
-//            ))
-//        }
     }
-    
-//    static var previews2: some View {
-//        NavigationStack {
-//            NewExpenseView(viewModel: NewExpenseViewModel(
-//                expenseCategory: MockData.expenseType,
-//                expenseType: .directPayment,
-//                authService: Resolver.resolve(),
-//                expensesService: Resolver.resolve(),
-//                appState: Resolver.resolve(),
-//                navigationState: Resolver.resolve()
-//            ))
-//        }
-//    }
 }

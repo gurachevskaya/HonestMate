@@ -27,7 +27,8 @@ enum HomeRoute: NavigationRoute, Hashable {
                     expensesService: Resolver.resolve(),
                     authService: Resolver.resolve(),
                     appState: Resolver.resolve(),
-                    remoteConfig: Resolver.resolve()
+                    remoteConfig: Resolver.resolve(),
+                    groupsService: Resolver.resolve()
                 )
             )
         case .selectPayer(let payer, let members):
