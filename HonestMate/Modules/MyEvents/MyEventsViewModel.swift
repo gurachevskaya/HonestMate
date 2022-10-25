@@ -27,7 +27,7 @@ class MyEventsViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
     
     @Published var myBalance: Double = 0
-    @Published var balances: [UserName: Double] = [:] {
+    @Published var balances: [BalanceModel] = [] {
         willSet {
             print(newValue)
         }
@@ -56,16 +56,16 @@ class MyEventsViewModel: ObservableObject {
     func getBalances() {
         expensesService.getBalances(groupID: MockData.currentGroupID)
             .receive(on: DispatchQueue.main)
-            .replaceError(with: [:])
+            .replaceError(with: [])
             .weakAssign(to: \.balances, on: self)
             .store(in: &cancellables)
         
         expensesService.getBalances(groupID: MockData.currentGroupID)
             .receive(on: DispatchQueue.main)
-            .replaceError(with: [:])
+            .replaceError(with: [])
             .map { balances in
-                let myBalance = balances.first(where: { $0.key == "Arina" })
-                return myBalance?.value ?? 0
+                let myBalance = balances.first(where: { $0.member.id == "2XbqvhHg94S1UAdgRFWXCQakXra2" })
+                return myBalance?.balance ?? 0
             }
             .weakAssign(to: \.myBalance, on: self)
             .store(in: &cancellables)

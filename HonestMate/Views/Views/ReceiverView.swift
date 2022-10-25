@@ -11,7 +11,7 @@ import SwiftUI
 struct ReceiverView: View {
     
     @Binding var isSelected: Bool
-    let member: Member
+    let member: MemberModel
     
     var body: some View {
         VStack {
@@ -30,6 +30,6 @@ struct ReceiverView: View {
 
 struct ReceiverView_Previews: PreviewProvider {
     static var previews: some View {
-        ReceiverView(isSelected: .constant(true), member: MockData.member)
+        ReceiverView(isSelected: .constant(true), member: MockData.memberModel)
     }
 }

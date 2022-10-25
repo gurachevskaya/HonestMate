@@ -18,3 +18,8 @@ struct ExpenseModel: Identifiable, Hashable, Codable {
     var payer: Member
     var between: [Member]
 }
+
+struct Member: Codable, Hashable {
+    let id: String
+    let name: String
+}

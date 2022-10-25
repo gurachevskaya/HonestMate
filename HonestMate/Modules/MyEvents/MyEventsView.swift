@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Resolver
+import Charts
 
 struct MyEventsView: View {
     
@@ -17,6 +18,15 @@ struct MyEventsView: View {
             VStack {
                 myBalanceView
                 
+                Chart(viewModel.balances) { balance in
+                    BarMark(
+                        x: .value("Name", balance.member.name),
+                        y: .value("Balance", balance.balance)
+                    )
+                }
+                .foregroundColor(.accentColor)
+                .padding()
+  
                 Spacer()
                 
                 HStack {
