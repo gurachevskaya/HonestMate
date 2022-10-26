@@ -9,7 +9,7 @@ import SwiftUI
 
 class ExpenseDetailsViewModel: ObservableObject {
     
-    var expense: ExpenseModel
+    @Published var expense: ExpenseModel
     var remoteConfig: RemoteConfigServiceProtocol
     
     init(

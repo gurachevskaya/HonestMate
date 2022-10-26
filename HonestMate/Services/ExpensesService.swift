@@ -16,6 +16,7 @@ enum ExpenseServiceError: LocalizedError {
 
 protocol ExpensesServiceProtocol {
     func createExpense(groupID: String, expense: ExpenseModel) -> AnyPublisher<Void, ExpenseServiceError>
+    func editExpense(groupID: String, expense: ExpenseModel) -> AnyPublisher<Void, ExpenseServiceError>
     func getDefaultCategories() -> AnyPublisher<[ExpenseCategory], ExpenseServiceError>
     func getGroupMembers(groupID: String) -> AnyPublisher<[MemberModel], ExpenseServiceError>
     func addListenerToExpenses(groupID: String) -> AnyPublisher<[ExpenseModel], ExpenseServiceError>
@@ -39,6 +40,23 @@ final class ExpensesService: ExpensesServiceProtocol {
         return Future<Void, ExpenseServiceError> { promise in
             do {
                 let _ = try historyCollection.addDocument(from: expense)
+                promise(.success(()))
+            } catch let error {
+                promise(.failure(.inner(error)))
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    func editExpense(groupID: String, expense: ExpenseModel) -> AnyPublisher<Void, ExpenseServiceError> {
+        let groupsCollection = db.collection(Constants.DatabaseReferenceNames.groups)
+        let currentGroupDocument = groupsCollection.document(groupID)
+        let historyCollection = currentGroupDocument.collection(Constants.DatabaseReferenceNames.expensesHistory)
+        let expenseDocument = historyCollection.document(expense.id ?? "")
+        
+        return Future<Void, ExpenseServiceError> { promise in
+            do {
+                try expenseDocument.setData(from: expense)
                 promise(.success(()))
             } catch let error {
                 promise(.failure(.inner(error)))

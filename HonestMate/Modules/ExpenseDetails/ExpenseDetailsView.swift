@@ -50,7 +50,7 @@ struct ExpenseDetailsView: View {
             .padding(.vertical)
         }
         .toolbar {
-            NavigationLink(value: HistoryRoute.editExpense(viewModel.expense)) {
+            NavigationLink(value: HistoryRoute.editExpense($viewModel.expense)) {
                 Text(R.string.localizable.expenseDetailsEditButtonTitle())
             }
         }

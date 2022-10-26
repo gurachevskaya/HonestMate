@@ -139,7 +139,7 @@ struct NewExpenseView: View {
    
     private var okButton: some View {
         Button {
-            viewModel.addExpense()
+            viewModel.okButtonTapped()
         } label: {
             RoundedTextButton(
                 title: R.string.localizable.newExpenseAddExpenseButtonTitle(),
