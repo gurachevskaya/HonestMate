@@ -23,7 +23,7 @@ class ExpenseDetailsViewModel: ObservableObject {
     var title: String {
         switch expense.expenseType {
         case .directPayment:
-            return "Direct Payment"
+            return R.string.localizable.expenseDetailsDirectPaymentTitle()
         case .newExpense:
             return expense.description ?? (expense.category?.name ?? "")
         }
@@ -38,5 +38,4 @@ class ExpenseDetailsViewModel: ObservableObject {
             return Color(hex: expense.category?.hexColor ?? "")
         }
     }
-    
 }

@@ -68,42 +68,42 @@ struct ExpenseDetailsView: View {
     
     private var categoryView: some View {
         DetailView(
-            title: Text("Category"),
+            title: Text(R.string.localizable.expenseDetailsCategory()),
             value: Text(viewModel.expense.category?.name ?? "")
         )
     }
     
     private var dateView: some View {
         DetailView(
-            title: Text("Date"),
+            title: Text(R.string.localizable.expenseDetailsDate()),
             value: Text(viewModel.expense.date, format: Date.FormatStyle().year().month().day().weekday())
         )
     }
     
     private var amountView: some View {
         DetailView(
-            title: Text("Amount"),
+            title: Text(R.string.localizable.expenseDetailsAmount()),
             value: Text(String(format: "%.1f", viewModel.expense.amount) + " " + MockData.defaultCurrency)
         )
     }
     
     private var paidByView: some View {
         DetailView(
-            title: Text("Paid by"),
+            title: Text(R.string.localizable.expenseDetailsPaidBy()),
             value: Text(viewModel.expense.payer.name)
         )
     }
     
     private var betweenView: some View {
         DetailView(
-            title: Text("Between"),
+            title: Text(R.string.localizable.expenseDetailsBetween()),
             value: Text(viewModel.expense.between.map {$0.name }.joined(separator: ", "))
         )
     }
     
     private var receivedByView: some View {
         DetailView(
-            title: Text("Received by"),
+            title: Text(R.string.localizable.expenseDetailsReceivedBy()),
             value: Text(viewModel.expense.between.first?.name ?? "")
         )
     }

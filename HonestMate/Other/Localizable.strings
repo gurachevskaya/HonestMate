@@ -91,6 +91,16 @@
 "history.hide.all" = "Hide All";
 "history.expense.title.direct.payment" = "Direct payment";
 
+// MARK: Details
+
+"expense.details.category" = "Category";
+"expense.details.date" = "Date";
+"expense.details.amount" = "Amount";
+"expense.details.paid.by" = "Paid by";
+"expense.details.between" = "Between";
+"expense.details.received.by" = "Received by";
+"expense.details.direct.payment.title" = "Direct Payment";
+
 // MARK: Choose group
 
 "choose.group.my.groups.title" = "My Groups";
