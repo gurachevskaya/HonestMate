@@ -31,7 +31,8 @@ enum HistoryRoute: NavigationRoute, Hashable {
                 viewModel: HistoryViewModel(
                     expensesService: Resolver.resolve(),
                     appState: Resolver.resolve(),
-                    groupsService: Resolver.resolve()
+                    groupsService: Resolver.resolve(),
+                    navigationState: Resolver.resolve()
                 )
             )
             

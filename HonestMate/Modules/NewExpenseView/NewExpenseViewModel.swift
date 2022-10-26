@@ -12,7 +12,7 @@ import Resolver
 
 class NewExpenseViewModel: ObservableObject {
     
-    var expense: Binding<ExpenseModel>?
+    private var expense: Binding<ExpenseModel>?
     @Published var expenseCategory: ExpenseCategory?
     private var expenseType: ExpenseType
     private var authService: AuthServiceProtocol
@@ -38,7 +38,7 @@ class NewExpenseViewModel: ObservableObject {
         self.navigationState = navigationState
                         
         setupPipeline()
-        setupInitialState()
+        setupInitialStateIfNeeded()
     }
             
     @Published var description: String = ""
@@ -86,13 +86,15 @@ class NewExpenseViewModel: ObservableObject {
         configureOkButtonBehavior()
     }
     
-    private func setupInitialState() {
-        description = expense?.wrappedValue.description ?? ""
-        amountText = "\(expense?.wrappedValue.amount ?? 0)"
-        selectedDate = expense?.wrappedValue.date ?? Date()
-        payer = MemberModel(id: expense?.wrappedValue.payer.id, name: expense?.wrappedValue.payer.name ?? "")
-        recievers = expense?.wrappedValue.between.map { MemberModel(id: $0.id, name: $0.name) } ?? []
-        expenseCategory = expense?.wrappedValue.category
+    private func setupInitialStateIfNeeded() {
+        guard let expense = expense else { return }
+        
+        description = expense.wrappedValue.description ?? ""
+        amountText = "\(expense.wrappedValue.amount)"
+        selectedDate = expense.wrappedValue.date
+        payer = MemberModel(id: expense.wrappedValue.payer.id, name: expense.wrappedValue.payer.name)
+        recievers = expense.wrappedValue.between.map { MemberModel(id: $0.id, name: $0.name) }
+        expenseCategory = expense.wrappedValue.category
     }
     
     private func configureAmountTextFieldBehavior() {
@@ -131,7 +133,7 @@ class NewExpenseViewModel: ObservableObject {
     
     private func popToRootView() {
         UIApplication.shared.addBackAnimation()
-        navigationState.homePath = []
+        navigationState.homePath = NavigationPath()
     }
     
     func okButtonTapped() {
@@ -197,7 +199,8 @@ class NewExpenseViewModel: ObservableObject {
                 case .finished:
                     self?.expense?.wrappedValue = expenseModel
                     // TODO: pop view controller
-//                    self?.popToRootView()
+                    UIApplication.shared.addBackAnimation()
+                    self?.navigationState.historyPath.removeLast()
                     
                 case .failure:
                     self?.alertItem = AlertContext.innerError
