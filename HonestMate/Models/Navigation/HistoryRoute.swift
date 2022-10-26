@@ -17,8 +17,13 @@ enum HistoryRoute: NavigationRoute, Hashable {
     @ViewBuilder
     func view() -> some View {
         switch self {
-        case .expenseDetails(_):
-            EmptyView().foregroundColor(.red)
+        case .expenseDetails(let expense):
+            ExpenseDetailsView(
+                viewModel: ExpenseDetailsViewModel(
+                    expense: expense,
+                    remoteConfig: Resolver.resolve()
+                )
+            )
             
         case .history:
             HistoryView(
