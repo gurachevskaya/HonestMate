@@ -10,13 +10,19 @@ import SwiftUI
 struct DetailView: View {
     var title: Text
     var value: Text
+    var withDivider: Bool = true
     
     var body: some View {
-        HStack {
-            title
-                .fontWeight(.medium)
-            Spacer()
-            value
+        VStack(spacing: 20) {
+            HStack {
+                title
+                    .fontWeight(.medium)
+                Spacer()
+                value
+            }
+            if withDivider {
+                BasicDivider()
+            }
         }
     }
 }

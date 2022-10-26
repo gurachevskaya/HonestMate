@@ -21,17 +21,13 @@ struct ExpenseDetailsView: View {
                 VStack(spacing: 20) {
                     if viewModel.expense.expenseType == .newExpense {
                         categoryView
-                        BasicDivider()
                     }
                     
                     dateView
-                    BasicDivider()
                     
                     amountView
-                    BasicDivider()
                     
                     paidByView
-                    BasicDivider()
                     
                     if viewModel.expense.expenseType == .newExpense {
                         betweenView
@@ -41,15 +37,26 @@ struct ExpenseDetailsView: View {
                         receivedByView
                     }
                     
+                    if let description = viewModel.expense.description {
+                        descriptionView(description: description)
+                    }
+                    
                     Spacer()
                 }
                 .font(.title2)
                 .padding()
             }
+            .scrollIndicators(.hidden)
+            .padding(.vertical)
+        }
+        .toolbar {
+            Button(R.string.localizable.expenseDetailsEditButtonTitle()) {
+                print("Edit tapped!")
+            }
         }
         .ignoresSafeArea()
     }
-    
+
     private var headerView: some View {
         ZStack {
             Rectangle()
@@ -63,6 +70,16 @@ struct ExpenseDetailsView: View {
                     .fontWeight(.medium)
                     .padding()
             }
+        }
+    }
+    
+    private func descriptionView(description: String) -> some View {
+        VStack(alignment: .leading, spacing: 20) {
+            BasicDivider()
+            Text(R.string.localizable.expenseDetailsDescription())
+                .fontWeight(.medium)
+            Text(description)
+                .foregroundColor(.secondary)
         }
     }
     
@@ -97,14 +114,16 @@ struct ExpenseDetailsView: View {
     private var betweenView: some View {
         DetailView(
             title: Text(R.string.localizable.expenseDetailsBetween()),
-            value: Text(viewModel.expense.between.map {$0.name }.joined(separator: ", "))
+            value: Text(viewModel.expense.between.map {$0.name }.joined(separator: ", ")),
+            withDivider: false
         )
     }
     
     private var receivedByView: some View {
         DetailView(
             title: Text(R.string.localizable.expenseDetailsReceivedBy()),
-            value: Text(viewModel.expense.between.first?.name ?? "")
+            value: Text(viewModel.expense.between.first?.name ?? ""),
+            withDivider: false
         )
     }
 }

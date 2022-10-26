@@ -93,6 +93,7 @@
 
 // MARK: Details
 
+"expense.details.description" = "Description";
 "expense.details.category" = "Category";
 "expense.details.date" = "Date";
 "expense.details.amount" = "Amount";
@@ -100,6 +101,7 @@
 "expense.details.between" = "Between";
 "expense.details.received.by" = "Received by";
 "expense.details.direct.payment.title" = "Direct Payment";
+"expense.details.edit.button.title" = "Edit";
 
 // MARK: Choose group
 

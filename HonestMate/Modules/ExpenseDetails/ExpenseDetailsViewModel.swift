@@ -25,7 +25,7 @@ class ExpenseDetailsViewModel: ObservableObject {
         case .directPayment:
             return R.string.localizable.expenseDetailsDirectPaymentTitle()
         case .newExpense:
-            return expense.description ?? (expense.category?.name ?? "")
+            return expense.category?.name ?? ""
         }
     }
     
@@ -33,9 +33,8 @@ class ExpenseDetailsViewModel: ObservableObject {
         switch expense.expenseType {
         case .directPayment:
             return Color(hex: remoteConfig.appConfig?.accentColor ?? "").opacity(0.5)
-
         case .newExpense:
-            return Color(hex: expense.category?.hexColor ?? "")
+            return Color(hex: expense.category?.hexColor ?? "").opacity(0.5)
         }
     }
 }
