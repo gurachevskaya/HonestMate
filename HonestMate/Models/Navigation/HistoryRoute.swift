@@ -13,6 +13,7 @@ enum HistoryRoute: NavigationRoute, Hashable {
     
     case history
     case expenseDetails(ExpenseModel)
+    case editExpense(ExpenseModel)
     
     @ViewBuilder
     func view() -> some View {
@@ -31,6 +32,19 @@ enum HistoryRoute: NavigationRoute, Hashable {
                     expensesService: Resolver.resolve(),
                     appState: Resolver.resolve(),
                     groupsService: Resolver.resolve()
+                )
+            )
+            
+        case .editExpense(let expense):
+            NewExpenseView(
+                viewModel: NewExpenseViewModel(
+                    expense: expense,
+                    expenseCategory: expense.category,
+                    expenseType: .newExpense,
+                    authService: Resolver.resolve(),
+                    expensesService: Resolver.resolve(),
+                    appState: Resolver.resolve(),
+                    navigationState: Resolver.resolve()
                 )
             )
         }

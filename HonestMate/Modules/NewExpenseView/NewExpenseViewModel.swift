@@ -12,6 +12,7 @@ import Resolver
 
 class NewExpenseViewModel: ObservableObject {
     
+    @Published var expense: ExpenseModel?
     @Published var expenseCategory: ExpenseCategory?
     private var expenseType: ExpenseType
     private var authService: AuthServiceProtocol
@@ -20,6 +21,7 @@ class NewExpenseViewModel: ObservableObject {
     var navigationState: NavigationStateProtocol
     
     init(
+        expense: ExpenseModel?,
         expenseCategory: ExpenseCategory?,
         expenseType: ExpenseType,
         authService: AuthServiceProtocol,
@@ -27,16 +29,18 @@ class NewExpenseViewModel: ObservableObject {
         appState: AppStateProtocol,
         navigationState: NavigationStateProtocol
     ) {
+        self.expense = expense
         self.expenseCategory = expenseCategory
         self.expenseType = expenseType
         self.authService = authService
         self.expensesService = expensesService
         self.appState = appState
         self.navigationState = navigationState
-        
+                        
         setupPipeline()
+        setupInitialState()
     }
-    
+            
     @Published var description: String = ""
     @Published var amountText: String = ""
     @Published var selectedDate = Date()
@@ -50,14 +54,28 @@ class NewExpenseViewModel: ObservableObject {
     @Published var alertItem: AlertItem?
 
     private var currentUserID: String? { authService.currentUser?.uid }
+    private var isEditMode: Bool { expense != nil }
     
     var screenTitle: String {
-        expenseType == .newExpense ? R.string.localizable.newExpenseTitle() : R.string.localizable.directPaymentTitle()
+        switch expenseType {
+        case .newExpense:
+            if isEditMode {
+                return "Edit Expense"
+            } else {
+                return R.string.localizable.newExpenseTitle()
+            }
+        case .directPayment:
+            if isEditMode {
+                return "Edit Payment"
+            } else {
+                return R.string.localizable.directPaymentTitle()
+            }
+        }
     }
     var splitBetweenTitle: String {
         expenseType == .newExpense ? R.string.localizable.newExpenseSplitBetweenTitle() : R.string.localizable.directPaymentReceivedBy()
     }
-    var shouldShowExpenseType: Bool {
+    var shouldShowExpenseCategory: Bool {
         expenseType == .newExpense
     }
     
@@ -66,6 +84,15 @@ class NewExpenseViewModel: ObservableObject {
     private func setupPipeline() {
         configureAmountTextFieldBehavior()
         configureOkButtonBehavior()
+    }
+    
+    private func setupInitialState() {
+        description = expense?.description ?? ""
+        amountText = "\(expense?.amount ?? 0)"
+        selectedDate = expense?.date ?? Date()
+        payer = MemberModel(id: expense?.payer.id, name: expense?.payer.name ?? "")
+        recievers = expense?.between.map { MemberModel(id: $0.id, name: $0.name) } ?? []
+        expenseCategory = expense?.category
     }
     
     private func configureAmountTextFieldBehavior() {

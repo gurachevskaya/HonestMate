@@ -22,8 +22,8 @@ struct NewExpenseView: View {
                 }
                 
                 Section {
-                    if viewModel.shouldShowExpenseType {
-                        expenseType
+                    if viewModel.shouldShowExpenseCategory {
+                        expenseCategory
                     }
                     date
                     amount
@@ -74,7 +74,7 @@ struct NewExpenseView: View {
         }
     }
     
-    private var expenseType: some View {
+    private var expenseCategory: some View {
         NavigationLink(value: HomeRoute.reselectType($viewModel.expenseCategory)) {
             HStack {
                 Text(R.string.localizable.newExpenseType())
@@ -155,6 +155,7 @@ struct NewExpenseView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             NewExpenseView(viewModel: NewExpenseViewModel(
+                expense: nil,
                 expenseCategory: MockData.expenseType,
                 expenseType: .newExpense,
                 authService: Resolver.resolve(),

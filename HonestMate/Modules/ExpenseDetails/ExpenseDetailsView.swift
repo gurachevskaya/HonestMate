@@ -50,8 +50,8 @@ struct ExpenseDetailsView: View {
             .padding(.vertical)
         }
         .toolbar {
-            Button(R.string.localizable.expenseDetailsEditButtonTitle()) {
-                print("Edit tapped!")
+            NavigationLink(value: HistoryRoute.editExpense(viewModel.expense)) {
+                Text(R.string.localizable.expenseDetailsEditButtonTitle())
             }
         }
         .ignoresSafeArea()

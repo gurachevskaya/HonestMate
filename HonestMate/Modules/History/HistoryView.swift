@@ -19,6 +19,9 @@ struct HistoryView: View {
                 .navigationDestination(for: HistoryRoute.self) { route in
                     route.view()
                 }
+                .navigationDestination(for: HomeRoute.self) { route in
+                    route.view()
+                }
         }
         .onAppear {
             viewModel.loadData()
