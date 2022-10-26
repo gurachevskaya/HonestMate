@@ -60,13 +60,13 @@ class NewExpenseViewModel: ObservableObject {
         switch expenseType {
         case .newExpense:
             if isEditMode {
-                return "Edit Expense"
+                return R.string.localizable.newExpenseAddExpenseEditExpenseTitle()
             } else {
                 return R.string.localizable.newExpenseTitle()
             }
         case .directPayment:
             if isEditMode {
-                return "Edit Payment"
+                return R.string.localizable.newExpenseAddExpenseEditPaymentTitle()
             } else {
                 return R.string.localizable.directPaymentTitle()
             }

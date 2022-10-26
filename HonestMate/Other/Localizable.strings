@@ -62,7 +62,7 @@
 
 "select.expense.type.title" = "Select Type";
 
-// MARK: New expense
+// MARK: Expense
 
 "new.expense.title" = "New expense";
 "new.expense.description.title" = "Description";
@@ -74,6 +74,8 @@
 "new.expense.currency" = "Currency: ";
 "new.expense.split.between.title" = "Split between";
 "new.expense.add.expense.button.title" = "OK";
+"new.expense.add.expense.edit.expense.title" = "Edit Expense";
+"new.expense.add.expense.edit.payment.title" = "Edit Payment";
 
 // MARK: Direct Payment
 
