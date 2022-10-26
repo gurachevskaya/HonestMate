@@ -73,16 +73,6 @@ struct ExpenseDetailsView: View {
         }
     }
     
-    private func descriptionView(description: String) -> some View {
-        VStack(alignment: .leading, spacing: 20) {
-            BasicDivider()
-            Text(R.string.localizable.expenseDetailsDescription())
-                .fontWeight(.medium)
-            Text(description)
-                .foregroundColor(.secondary)
-        }
-    }
-    
     private var categoryView: some View {
         DetailView(
             title: Text(R.string.localizable.expenseDetailsCategory()),
@@ -125,6 +115,16 @@ struct ExpenseDetailsView: View {
             value: Text(viewModel.expense.between.first?.name ?? ""),
             withDivider: false
         )
+    }
+    
+    private func descriptionView(description: String) -> some View {
+        VStack(alignment: .leading, spacing: 20) {
+            BasicDivider()
+            Text(R.string.localizable.expenseDetailsDescription())
+                .fontWeight(.medium)
+            Text(description)
+                .foregroundColor(.secondary)
+        }
     }
 }
 
