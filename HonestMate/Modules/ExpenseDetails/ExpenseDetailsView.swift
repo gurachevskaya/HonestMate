@@ -13,77 +13,34 @@ struct ExpenseDetailsView: View {
     @StateObject var viewModel: ExpenseDetailsViewModel
     
     var body: some View {
-        ScrollView {
-            VStack {
-                ZStack {
-                    Rectangle()
-                        .fill(viewModel.headerColor)
-                    
-                    VStack {
-                        Spacer()
-                        Text(viewModel.title)
-                            .multilineTextAlignment(.center)
-                            .font(.title)
-                            .fontWeight(.medium)
-                            .padding()
-                    }
-                }
+        VStack {
+            headerView
                 .frame(height: 200)
-                
+            
+            ScrollView {
                 VStack(spacing: 20) {
-                    if let category = viewModel.expense.category {
-                        HStack {
-                            Text("Category")
-                            Spacer()
-                            Text(category.name)
-                        }
-                        
-                        Divider()
-                            .background(Color.gray)
+                    if viewModel.expense.expenseType == .newExpense {
+                        categoryView
+                        BasicDivider()
                     }
                     
-                    HStack {
-                        Text("Date")
-                        Spacer()
-                        Text(viewModel.expense.date, format: Date.FormatStyle().year().month().day().weekday())
-                    }
+                    dateView
+                    BasicDivider()
                     
-                    Divider()
-                        .background(Color.gray)
+                    amountView
+                    BasicDivider()
                     
-                    HStack {
-                        Text("Amount")
-                        Spacer()
-                        Text(String(format: "%.1f", viewModel.expense.amount) + " USD")
-                    }
-                    
-                    Divider()
-                        .background(Color.gray)
-                    
-                    HStack {
-                        Text("Paid by")
-                        Spacer()
-                        Text(viewModel.expense.payer.name)
-                    }
-                    
-                    Divider()
-                        .background(Color.gray)
+                    paidByView
+                    BasicDivider()
                     
                     if viewModel.expense.expenseType == .newExpense {
-                        HStack {
-                            Text("Between")
-                            Spacer()
-                            Text(viewModel.expense.between.map {$0.name }.joined(separator: ", "))
-                        }
+                        betweenView
                     }
                     
                     if viewModel.expense.expenseType == .directPayment {
-                        HStack {
-                            Text("Received by")
-                            Spacer()
-                            Text(viewModel.expense.between.first?.name ?? "")
-                        }
+                        receivedByView
                     }
+                    
                     Spacer()
                 }
                 .font(.title2)
@@ -92,10 +49,71 @@ struct ExpenseDetailsView: View {
         }
         .ignoresSafeArea()
     }
+    
+    private var headerView: some View {
+        ZStack {
+            Rectangle()
+                .fill(viewModel.headerColor)
+            
+            VStack {
+                Spacer()
+                Text(viewModel.title)
+                    .multilineTextAlignment(.center)
+                    .font(.title)
+                    .fontWeight(.medium)
+                    .padding()
+            }
+        }
+    }
+    
+    private var categoryView: some View {
+        DetailView(
+            title: Text("Category"),
+            value: Text(viewModel.expense.category?.name ?? "")
+        )
+    }
+    
+    private var dateView: some View {
+        DetailView(
+            title: Text("Date"),
+            value: Text(viewModel.expense.date, format: Date.FormatStyle().year().month().day().weekday())
+        )
+    }
+    
+    private var amountView: some View {
+        DetailView(
+            title: Text("Amount"),
+            value: Text(String(format: "%.1f", viewModel.expense.amount) + " " + MockData.defaultCurrency)
+        )
+    }
+    
+    private var paidByView: some View {
+        DetailView(
+            title: Text("Paid by"),
+            value: Text(viewModel.expense.payer.name)
+        )
+    }
+    
+    private var betweenView: some View {
+        DetailView(
+            title: Text("Between"),
+            value: Text(viewModel.expense.between.map {$0.name }.joined(separator: ", "))
+        )
+    }
+    
+    private var receivedByView: some View {
+        DetailView(
+            title: Text("Received by"),
+            value: Text(viewModel.expense.between.first?.name ?? "")
+        )
+    }
 }
 
 struct ExpenseDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ExpenseDetailsView(viewModel: ExpenseDetailsViewModel(expense: MockData.historyItem, remoteConfig: Resolver.resolve()))
+        ExpenseDetailsView(viewModel: ExpenseDetailsViewModel(
+            expense: MockData.historyItem,
+            remoteConfig: Resolver.resolve()
+        ))
     }
 }
