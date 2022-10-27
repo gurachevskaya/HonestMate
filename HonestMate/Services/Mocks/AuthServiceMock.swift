@@ -10,6 +10,19 @@ import Combine
 import Firebase
 
 class AuthServiceMock: AuthServiceProtocol {
+    
+    var shouldFail = false
+    var loginWasCalled = false
+    var registerWasCalled = false
+    var logoutWasCalled = false
+    
+    func reset() {
+        shouldFail = false
+        loginWasCalled = false
+        registerWasCalled = false
+        logoutWasCalled = false
+    }
+    
     var currentUser: User?
     
     func observeAuthChanges() -> AnyPublisher<Bool, Never> {
@@ -18,20 +31,44 @@ class AuthServiceMock: AuthServiceProtocol {
     }
     
     func signin(email: String, password: String) -> AnyPublisher<Void, AuthError> {
-        Fail(error: AuthError.networkError)
-            .delay(for: 2, scheduler: RunLoop.main)
-            .eraseToAnyPublisher()
+        loginWasCalled = true
+        
+        if shouldFail {
+            return Fail(error: AuthError.networkError)
+                .delay(for: 2, scheduler: RunLoop.main)
+                .eraseToAnyPublisher()
+        } else {
+            return Just(())
+                .setFailureType(to: AuthError.self)
+                .eraseToAnyPublisher()
+        }
     }
     
     func createUser(name: String, email: String, password: String) -> AnyPublisher<Void, AuthError> {
-        Fail(error: AuthError.networkError)
-            .delay(for: 2, scheduler: RunLoop.main)
-            .eraseToAnyPublisher()
+        registerWasCalled = true
+        
+        if shouldFail {
+            return Fail(error: AuthError.alreadyInUse)
+                .delay(for: 2, scheduler: RunLoop.main)
+                .eraseToAnyPublisher()
+        } else {
+            return Just(())
+                .setFailureType(to: AuthError.self)
+                .eraseToAnyPublisher()
+        }
     }
     
     func logout() -> AnyPublisher<Void, AuthError> {
-        Just(())
-            .setFailureType(to: AuthError.self)
-            .eraseToAnyPublisher()
+        logoutWasCalled = true
+        
+        if shouldFail {
+            return Fail(error: AuthError.networkError)
+                .delay(for: 2, scheduler: RunLoop.main)
+                .eraseToAnyPublisher()
+        } else {
+            return Just(())
+                .setFailureType(to: AuthError.self)
+                .eraseToAnyPublisher()
+        }
     }
 }

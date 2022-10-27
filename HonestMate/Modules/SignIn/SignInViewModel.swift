@@ -25,7 +25,7 @@ class SignInViewModel: ObservableObject {
     var loginConfig: LoginConfig? { remoteConfigService.appConfig?.loginConfig }
     var accentColor: String? { remoteConfigService.appConfig?.accentColor }
     
-    var path: [SignInRoute] = []
+    @Published var path: [SignInRoute] = []
 
     enum SignInOption {
         case facebook, apple, google, mail

@@ -59,6 +59,7 @@
 		185F423C28D34E6F00628DDC /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F423B28D34E6F00628DDC /* MyProfileView.swift */; };
 		185F423F28D34E9000628DDC /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F423E28D34E9000628DDC /* HistoryView.swift */; };
 		185F424128D35C2500628DDC /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F424028D35C2500628DDC /* MyProfileViewModel.swift */; };
+		185F423728D3374700628DDC /* SignInViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F423628D3374700628DDC /* SignInViewModel_Tests.swift */; };
 		186FD74528C79D39004B5156 /* AuthPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186FD74428C79D39004B5156 /* AuthPublisher.swift */; };
 		1879862828F5CC9600E5AC34 /* HistoryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879862728F5CC9600E5AC34 /* HistoryItemView.swift */; };
 		18A4D4D128D3830000BA2793 /* SelectExpenseTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A4D4D028D3830000BA2793 /* SelectExpenseTypeView.swift */; };
@@ -166,6 +167,7 @@
 		185F423B28D34E6F00628DDC /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		185F423E28D34E9000628DDC /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		185F424028D35C2500628DDC /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
+		185F423628D3374700628DDC /* SignInViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel_Tests.swift; sourceTree = "<group>"; };
 		186FD74428C79D39004B5156 /* AuthPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPublisher.swift; sourceTree = "<group>"; };
 		1879862728F5CC9600E5AC34 /* HistoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItemView.swift; sourceTree = "<group>"; };
 		18A4D4D028D3830000BA2793 /* SelectExpenseTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExpenseTypeView.swift; sourceTree = "<group>"; };
@@ -591,6 +593,7 @@
 			isa = PBXGroup;
 			children = (
 				18F728E728B91059002D071F /* HonestMateTests.swift */,
+				185F423628D3374700628DDC /* SignInViewModel_Tests.swift */,
 			);
 			path = HonestMateTests;
 			sourceTree = "<group>";
@@ -996,6 +999,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185F423728D3374700628DDC /* SignInViewModel_Tests.swift in Sources */,
 				18F728E828B91059002D071F /* HonestMateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1270,6 +1274,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"HonestMate/Preview Content\"";
 				DEVELOPMENT_TEAM = 7WHGP9VV36;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_TESTABILITY = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1408,6 +1413,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7WHGP9VV36;
+				ENABLE_TESTABILITY = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
@@ -1448,6 +1454,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7WHGP9VV36;
+				ENABLE_TESTABILITY = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
