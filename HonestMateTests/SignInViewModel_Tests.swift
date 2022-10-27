@@ -14,24 +14,26 @@ final class SignInViewModel_Tests: XCTestCase {
     
     var sut: SignInViewModel!
     
+    private var authService = AuthServiceMock()
+    private var remoteConfig = RemoteConfigMock()
+    
     var cancellables: Set<AnyCancellable> = []
     
     override func setUpWithError() throws {
+        sut = SignInViewModel(
+            authService: authService,
+            remoteConfigService: remoteConfig
+        )
     }
     
     override func tearDownWithError() throws {
         sut = nil
+        authService.reset()
     }
     
     func test_SignInViewModel_login_fail() {
         // Given
-        let authService = AuthServiceMock()
-        authService.shouldFail = true
-                
-        sut = SignInViewModel(
-            authService: authService,
-            remoteConfigService: RemoteConfigMock()
-        )
+        authService.error = .networkError
         
         // When
         sut.selected = .login
@@ -42,28 +44,18 @@ final class SignInViewModel_Tests: XCTestCase {
         
         sut.$alertItem
             .dropFirst()
-            .sink { item in
+            .sink { [weak self] item in
                 expectation.fulfill()
                 
-                XCTAssertTrue(authService.loginWasCalled)
+                XCTAssertTrue(self?.authService.loginWasCalled == true)
                 XCTAssertNotNil(item)
-                XCTAssertEqual(item, AlertContext.unableToComplete)
             }
             .store(in: &cancellables)
-
+        
         wait(for: [expectation], timeout: 5)
     }
     
     func test_SignInViewModel_login_success() {
-        // Given
-        let authService = AuthServiceMock()
-        authService.shouldFail = false
-        
-        sut = SignInViewModel(
-            authService: authService,
-            remoteConfigService: RemoteConfigMock()
-        )
-        
         // When
         sut.selected = .login
         sut.actionButtonTapped()
@@ -73,85 +65,200 @@ final class SignInViewModel_Tests: XCTestCase {
         
         sut.$path
             .dropFirst()
-            .sink { path in
+            .sink { [weak self] path in
                 expectation.fulfill()
-                XCTAssertTrue(authService.loginWasCalled)
+                XCTAssertTrue(self?.authService.loginWasCalled == true)
                 XCTAssertEqual(SignInRoute.chooseGroup, path.last)
             }
             .store(in: &cancellables)
-
+        
         wait(for: [expectation], timeout: 5)
     }
     
     func test_SignInViewModel_register_fail() {
-        // Given
-        let authService = AuthServiceMock()
-        authService.shouldFail = true
-        
-        sut = SignInViewModel(
-            authService: authService,
-            remoteConfigService: RemoteConfigMock()
-        )
-        
         // When
+        authService.error = .alreadyInUse
         sut.selected = .register
         sut.actionButtonTapped()
         
         // Then
         let expectation = XCTestExpectation(description: "Register does fail")
-
+        
+        sut.$alertItem
+            .dropFirst()
+            .sink { [weak self] item in
+                expectation.fulfill()
+                
+                XCTAssertTrue(self?.authService.registerWasCalled == true)
+                XCTAssertNotNil(item)
+            }
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 5)
+    }
+    
+    func test_SignInViewModel_login_mapError_invalidEmail() {
+        // When
+        authService.error = .invalidEmail
+        sut.actionButtonTapped()
+        
+        // Then
+        let expectation = XCTestExpectation(description: "Alert is invalidEmail")
+        
         sut.$alertItem
             .dropFirst()
             .sink { item in
-                expectation.fulfill()
-                
-                XCTAssertTrue(authService.registerWasCalled)
-                XCTAssertNotNil(item)
-                XCTAssertEqual(item, AlertContext.alreadyInUse)
+                if item == AlertContext.invalidEmail {
+                    expectation.fulfill()
+                }
             }
             .store(in: &cancellables)
-
+        
+        wait(for: [expectation], timeout: 5)
+    }
+    
+    func test_SignInViewModel_login_mapError_userDisabled() {
+        // When
+        authService.error = .userDisabled
+        sut.actionButtonTapped()
+        
+        // Then
+        let expectation = XCTestExpectation(description: "Alert is userDisabled")
+        
+        sut.$alertItem
+            .dropFirst()
+            .sink { item in
+                if item == AlertContext.userDisabled {
+                    expectation.fulfill()
+                }
+            }
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 5)
+    }
+    
+    func test_SignInViewModel_login_mapError_unableToComplete() {
+        // When
+        authService.error = .networkError
+        sut.actionButtonTapped()
+        
+        // Then
+        let expectation = XCTestExpectation(description: "Alert is unableToComplete")
+        
+        sut.$alertItem
+            .dropFirst()
+            .sink { item in
+                if item == AlertContext.unableToComplete {
+                    expectation.fulfill()
+                }
+            }
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 5)
+    }
+    
+    func test_SignInViewModel_login_mapError_alreadyInUse() {
+        // When
+        authService.error = .alreadyInUse
+        sut.actionButtonTapped()
+        
+        // Then
+        let expectation = XCTestExpectation(description: "Alert is alreadyInUse")
+        
+        sut.$alertItem
+            .dropFirst()
+            .sink { item in
+                if item == AlertContext.alreadyInUse {
+                    expectation.fulfill()
+                }
+            }
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 5)
+    }
+    
+    func test_SignInViewModel_login_mapError_userNotFound() {
+        // When
+        authService.error = .userNotFound
+        sut.actionButtonTapped()
+        
+        // Then
+        let expectation = XCTestExpectation(description: "Alert is userNotFound")
+        
+        sut.$alertItem
+            .dropFirst()
+            .sink { item in
+                if item == AlertContext.userNotFound {
+                    expectation.fulfill()
+                }
+            }
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 5)
+    }
+    
+    func test_SignInViewModel_login_mapError_innerError() {
+        // When
+        authService.error = .inner("error")
+        sut.actionButtonTapped()
+        
+        // Then
+        let expectation = XCTestExpectation(description: "Alert is innerError")
+        
+        sut.$alertItem
+            .dropFirst()
+            .sink { item in
+                if item == AlertContext.innerError {
+                    expectation.fulfill()
+                }
+            }
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 5)
+    }
+    
+    func test_SignInViewModel_login_mapError_wrondPassword() {
+        // When
+        authService.error = .wrongPassword
+        sut.actionButtonTapped()
+        
+        // Then
+        let expectation = XCTestExpectation(description: "Alert is wrondPassword")
+        
+        sut.$alertItem
+            .dropFirst()
+            .sink { item in
+                if item == AlertContext.wrondPassword {
+                    expectation.fulfill()
+                }
+            }
+            .store(in: &cancellables)
+        
         wait(for: [expectation], timeout: 5)
     }
     
     func test_SignInViewModel_register_success() {
-        // Given
-        let authService = AuthServiceMock()
-        authService.shouldFail = false
-        
-        sut = SignInViewModel(
-            authService: authService,
-            remoteConfigService: RemoteConfigMock()
-        )
-        
         // When
         sut.selected = .register
         sut.actionButtonTapped()
         
         // Then
         let expectation = XCTestExpectation(description: "Register does succeed")
-
+        
         sut.$path
             .dropFirst()
-            .sink { path in
+            .sink { [weak self] path in
                 expectation.fulfill()
                 
-                XCTAssertTrue(authService.registerWasCalled)
+                XCTAssertTrue(self?.authService.registerWasCalled == true)
                 XCTAssertEqual(SignInRoute.chooseGroup, path.last)
             }
             .store(in: &cancellables)
-
+        
         wait(for: [expectation], timeout: 5)
     }
     
     func test_SignInViewModel_accentColor() {
-        // Given
-        let remoteConfig = RemoteConfigMock()
-        sut = SignInViewModel(
-            authService: AuthServiceMock(),
-            remoteConfigService: remoteConfig
-        )
-        
         // When
         remoteConfig.appConfig = AppConfig(
             loginConfig: LoginConfig(
@@ -161,20 +268,13 @@ final class SignInViewModel_Tests: XCTestCase {
             ),
             accentColor: "#d3419d"
         )
-    
+        
         // Then
         let expectedColor = remoteConfig.appConfig?.accentColor
         XCTAssertEqual(expectedColor, sut.accentColor)
     }
     
     func test_SignInViewModel_loginConfig() {
-        // Given
-        let remoteConfig = RemoteConfigMock()
-        sut = SignInViewModel(
-            authService: AuthServiceMock(),
-            remoteConfigService: remoteConfig
-        )
-        
         // When
         remoteConfig.appConfig = AppConfig(
             loginConfig: LoginConfig(

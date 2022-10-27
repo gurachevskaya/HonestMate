@@ -11,13 +11,13 @@ import Firebase
 
 class AuthServiceMock: AuthServiceProtocol {
     
-    var shouldFail = false
+    var error: AuthError?
     var loginWasCalled = false
     var registerWasCalled = false
     var logoutWasCalled = false
     
     func reset() {
-        shouldFail = false
+        error = nil
         loginWasCalled = false
         registerWasCalled = false
         logoutWasCalled = false
@@ -33,8 +33,8 @@ class AuthServiceMock: AuthServiceProtocol {
     func signin(email: String, password: String) -> AnyPublisher<Void, AuthError> {
         loginWasCalled = true
         
-        if shouldFail {
-            return Fail(error: AuthError.networkError)
+        if let error = error {
+            return Fail(error: error)
                 .delay(for: 2, scheduler: RunLoop.main)
                 .eraseToAnyPublisher()
         } else {
@@ -47,8 +47,8 @@ class AuthServiceMock: AuthServiceProtocol {
     func createUser(name: String, email: String, password: String) -> AnyPublisher<Void, AuthError> {
         registerWasCalled = true
         
-        if shouldFail {
-            return Fail(error: AuthError.alreadyInUse)
+        if let error = error {
+            return Fail(error: error)
                 .delay(for: 2, scheduler: RunLoop.main)
                 .eraseToAnyPublisher()
         } else {
@@ -61,8 +61,8 @@ class AuthServiceMock: AuthServiceProtocol {
     func logout() -> AnyPublisher<Void, AuthError> {
         logoutWasCalled = true
         
-        if shouldFail {
-            return Fail(error: AuthError.networkError)
+        if let error = error {
+            return Fail(error: error)
                 .delay(for: 2, scheduler: RunLoop.main)
                 .eraseToAnyPublisher()
         } else {
