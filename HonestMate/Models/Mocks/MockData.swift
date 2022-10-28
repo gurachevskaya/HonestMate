@@ -8,6 +8,7 @@
 import Foundation
 
 struct MockData {
+    static let userInfo: UserInfoModel = UserInfoModel(groups: groups)
     static let expenseType: ExpenseCategory = ExpenseCategory(id: "2", isActive: true, name: "Food", hexColor: "#dd5bd4")
     
     static let members: [MemberModel] = [
@@ -23,7 +24,7 @@ struct MockData {
     static let member = Member(id: "2", name: "Dima")
     static let memberModel = MemberModel(id: "2", name: "Dima")
 
-    static let group = [
+    static let groups = [
         "2XbqvhHg94S1UAdgRFWXCQakXra2",
         "8vSUg7L0d2Xth6nGhmlwVRV9JVA2"
     ]
@@ -34,5 +35,6 @@ struct MockData {
     static let defaultCurrency = "USD"
     
     static let historyItem = ExpenseModel(expenseType: .newExpense, category: MockData.expenseType, amount: 20, date: Date(), payer: MockData.member, between: [Member(id: "1", name: "Karina"), Member(id: "1", name: "Arina")])
-
+    
+    static let balanceModel = BalanceModel(member: MockData.member, balance: 20)
 }
