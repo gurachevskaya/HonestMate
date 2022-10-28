@@ -26,10 +26,10 @@ struct HonestMateTabView: View {
                 }.tag(0)
             
             HomeRoute.home.view()
-            .tabItem {
-                Image(systemName: Constants.SFSymbols.house)
-                Text(R.string.localizable.tabHome())
-            }.tag(1)
+                .tabItem {
+                    Image(systemName: Constants.SFSymbols.house)
+                    Text(R.string.localizable.tabHome())
+                }.tag(1)
             
             ProfileRoute.profile.view()
                 .tabItem {

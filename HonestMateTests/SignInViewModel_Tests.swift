@@ -61,6 +61,7 @@ final class SignInViewModel_Tests: XCTestCase {
         sut.actionButtonTapped()
         
         // Then
+                
         let expectation = XCTestExpectation(description: "Login does succeed")
         
         sut.$path
@@ -95,6 +96,20 @@ final class SignInViewModel_Tests: XCTestCase {
             .store(in: &cancellables)
         
         wait(for: [expectation], timeout: 5)
+    }
+    
+    func test_SignInViewModel_login_isLoading() {
+        sut.selected = .login
+        XCTAssertFalse(sut.isLoading)
+        sut.actionButtonTapped()
+        XCTAssertTrue(sut.isLoading)
+    }
+    
+    func test_SignInViewModel_register_isLoading() {
+        sut.selected = .register
+        XCTAssertFalse(sut.isLoading)
+        sut.actionButtonTapped()
+        XCTAssertTrue(sut.isLoading)
     }
     
     func test_SignInViewModel_login_mapError_invalidEmail() {
@@ -256,6 +271,99 @@ final class SignInViewModel_Tests: XCTestCase {
             .store(in: &cancellables)
         
         wait(for: [expectation], timeout: 5)
+    }
+    
+    func test_SignInViewModel_login_buttonShouldBeDisabledWhenInvalidPassword() {
+        sut.selected = .login
+        sut.email = "test@gmail.com"
+
+        sut.password = ""
+        XCTAssertFalse(sut.actionButtonEnabled)
+        
+        sut.password = "11111111"
+        XCTAssertFalse(sut.actionButtonEnabled)
+        
+        sut.password = "111111a"
+        XCTAssertFalse(sut.actionButtonEnabled)
+    }
+    
+    func test_SignInViewModel_login_buttonShouldBeDisabledWhenInvalidEmail() {
+        sut.selected = .login
+        sut.password = "123456aa"
+        
+        sut.email = ""
+        XCTAssertFalse(sut.actionButtonEnabled)
+        
+        sut.email = "fsksufjksf"
+        XCTAssertFalse(sut.actionButtonEnabled)
+    }
+    
+    func test_SignInViewModel_login_buttonShouldBeEnabled() {
+        sut.selected = .login
+        sut.email = "test@gmail.com"
+        sut.password = "123456aa"
+        XCTAssertTrue(sut.actionButtonEnabled)
+    }
+    
+    func test_SignInViewModel_register_buttonShouldBeEnabled() {
+        sut.selected = .register
+        sut.name = "name"
+        sut.email = "test@gmail.com"
+        sut.password = "123456aa"
+        sut.confirmPassword = "123456aa"
+        XCTAssertTrue(sut.actionButtonEnabled)
+    }
+    
+    func test_SignInViewModel_register_buttonShouldBeDisabledWithoutConfirmedPassword() {
+        sut.selected = .register
+        sut.name = "name"
+        sut.email = "test@gmail.com"
+        sut.password = "123456aa"
+        XCTAssertFalse(sut.actionButtonEnabled)
+    }
+    
+    func test_SignInViewModel_register_buttonShouldBeDisabledWithoutName() {
+        sut.selected = .register
+        sut.name = ""
+        sut.email = "test@gmail.com"
+        sut.password = "123456aa"
+        XCTAssertFalse(sut.actionButtonEnabled)
+    }
+    
+    func test_SignInViewModel_register_buttonShouldBeDisabledWhenInvalidPassword() {
+        sut.selected = .register
+        sut.email = "test@gmail.com"
+        sut.name = "name"
+
+        sut.password = ""
+        XCTAssertFalse(sut.actionButtonEnabled)
+        
+        sut.password = "11111111"
+        XCTAssertFalse(sut.actionButtonEnabled)
+        
+        sut.password = "111111a"
+        XCTAssertFalse(sut.actionButtonEnabled)
+    }
+    
+    func test_SignInViewModel_register_buttonShouldBeDisabledWhenInvalidEmail() {
+        sut.selected = .register
+        sut.password = "123456aa"
+        sut.name = "name"
+        
+        sut.email = ""
+        XCTAssertFalse(sut.actionButtonEnabled)
+        
+        sut.email = "fsksufjksf"
+        XCTAssertFalse(sut.actionButtonEnabled)
+    }
+    
+    func test_SignInViewModel_buttonShouldBeDisabledWhenAgreeTermsFalse() {
+        sut.agreeTerms = false
+        
+        sut.selected = .register
+        XCTAssertFalse(sut.actionButtonEnabled)
+        sut.selected = .login
+        XCTAssertFalse(sut.actionButtonEnabled)
     }
     
     func test_SignInViewModel_accentColor() {
