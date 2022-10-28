@@ -12,7 +12,7 @@ struct AppConfig: Codable {
     let accentColor: String
 }
 
-struct LoginConfig: Codable {
+struct LoginConfig: Codable, Equatable {
     let facebookEnabled: Bool
     let googleEnabled: Bool
     let appleEnabled: Bool
