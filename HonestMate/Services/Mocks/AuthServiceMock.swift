@@ -39,12 +39,13 @@ class AuthServiceMock: AuthServiceProtocol {
                 .eraseToAnyPublisher()
         } else {
             return Just(())
+                .delay(for: 2, scheduler: RunLoop.main)
                 .setFailureType(to: AuthError.self)
                 .eraseToAnyPublisher()
         }
     }
     
-    func createUser(name: String, email: String, password: String) -> AnyPublisher<Void, AuthError> {
+    func createUser(email: String, password: String) -> AnyPublisher<Void, AuthError> {
         registerWasCalled = true
         
         if let error = error {
@@ -53,6 +54,7 @@ class AuthServiceMock: AuthServiceProtocol {
                 .eraseToAnyPublisher()
         } else {
             return Just(())
+                .delay(for: 2, scheduler: RunLoop.main)
                 .setFailureType(to: AuthError.self)
                 .eraseToAnyPublisher()
         }
@@ -67,6 +69,7 @@ class AuthServiceMock: AuthServiceProtocol {
                 .eraseToAnyPublisher()
         } else {
             return Just(())
+                .delay(for: 2, scheduler: RunLoop.main)
                 .setFailureType(to: AuthError.self)
                 .eraseToAnyPublisher()
         }

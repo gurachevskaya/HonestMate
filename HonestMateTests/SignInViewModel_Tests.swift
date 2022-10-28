@@ -307,7 +307,6 @@ final class SignInViewModel_Tests: XCTestCase {
     
     func test_SignInViewModel_register_buttonShouldBeEnabled() {
         sut.selected = .register
-        sut.name = "name"
         sut.email = "test@gmail.com"
         sut.password = "123456aa"
         sut.confirmPassword = "123456aa"
@@ -316,15 +315,6 @@ final class SignInViewModel_Tests: XCTestCase {
     
     func test_SignInViewModel_register_buttonShouldBeDisabledWithoutConfirmedPassword() {
         sut.selected = .register
-        sut.name = "name"
-        sut.email = "test@gmail.com"
-        sut.password = "123456aa"
-        XCTAssertFalse(sut.actionButtonEnabled)
-    }
-    
-    func test_SignInViewModel_register_buttonShouldBeDisabledWithoutName() {
-        sut.selected = .register
-        sut.name = ""
         sut.email = "test@gmail.com"
         sut.password = "123456aa"
         XCTAssertFalse(sut.actionButtonEnabled)
@@ -333,7 +323,6 @@ final class SignInViewModel_Tests: XCTestCase {
     func test_SignInViewModel_register_buttonShouldBeDisabledWhenInvalidPassword() {
         sut.selected = .register
         sut.email = "test@gmail.com"
-        sut.name = "name"
 
         sut.password = ""
         XCTAssertFalse(sut.actionButtonEnabled)
@@ -348,7 +337,6 @@ final class SignInViewModel_Tests: XCTestCase {
     func test_SignInViewModel_register_buttonShouldBeDisabledWhenInvalidEmail() {
         sut.selected = .register
         sut.password = "123456aa"
-        sut.name = "name"
         
         sut.email = ""
         XCTAssertFalse(sut.actionButtonEnabled)

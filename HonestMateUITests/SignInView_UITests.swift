@@ -72,7 +72,9 @@ final class SignInView_UITests: XCTestCase {
         emailTextField.tap()
         pasteText("email", in: emailTextField)
         passwordTextField.tap()
-        pasteText("password", in: passwordTextField)
+        if passwordTextField.exists {
+            pasteText("password", in: passwordTextField)
+        }
         app.buttons["Return"].tap()
         
         XCTAssertFalse(signInButton.isEnabled)
@@ -146,9 +148,13 @@ extension SignInView_UITests {
         let passwordTextField = app.secureTextFields[Constants.AccessebilityIDs.passwordTextField]
         
         emailTextField.tap()
-        pasteText("email@gmail.com", in: emailTextField)
+        if passwordTextField.exists {
+            pasteText("email@gmail.com", in: emailTextField)
+        }
         passwordTextField.tap()
-        pasteText("password1A", in: passwordTextField)
+        if passwordTextField.exists {
+            pasteText("password1A", in: passwordTextField)
+        }
         app.buttons["Return"].tap()
     }
 }

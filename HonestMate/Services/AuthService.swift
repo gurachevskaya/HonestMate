@@ -25,7 +25,7 @@ protocol AuthServiceProtocol {
     
     func observeAuthChanges() -> AnyPublisher<Bool, Never>
     func signin(email: String, password: String) -> AnyPublisher<Void, AuthError>
-    func createUser(name: String, email: String, password: String) -> AnyPublisher<Void, AuthError>
+    func createUser(email: String, password: String) -> AnyPublisher<Void, AuthError>
     func logout() -> AnyPublisher<Void, AuthError>
 }
 
@@ -56,25 +56,18 @@ final class AuthService: AuthServiceProtocol {
         .eraseToAnyPublisher()
     }
     
-    func createUser(name: String, email: String, password: String) -> AnyPublisher<Void, AuthError> {
+    func createUser(email: String, password: String) -> AnyPublisher<Void, AuthError> {
         return Future<Void, AuthError> { [unowned self] promise in
             Auth.auth().createUser(withEmail: email, password: password) { [unowned self] result, error in
                 if let error = error {
                     promise(.failure(mapError(error)))
-                } else if let user = result?.user {
-                    saveName(user: user, name: name)
+                } else {
                     appState.isLoggedIn = true
                     promise(.success(()))
                 }
             }
         }
         .eraseToAnyPublisher()
-    }
-    
-    private func saveName(user: User, name: String) {
-        let request = Auth.auth().currentUser?.createProfileChangeRequest()
-        request?.displayName = name
-        request?.commitChanges()
     }
 
     func logout() -> AnyPublisher<Void, AuthError> {
