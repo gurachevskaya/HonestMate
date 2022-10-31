@@ -12,5 +12,4 @@ struct GroupModel: Identifiable, Equatable, Codable {
     @DocumentID var id: String? = UUID().uuidString
     let name: String
     let created: Date
-    let members: [MemberModel]
 }

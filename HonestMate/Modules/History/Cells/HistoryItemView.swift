@@ -30,6 +30,7 @@ struct HistoryItemView: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Text(expenseTitle)
+                    .lineLimit(2)
                 if historyItem.expenseType == .newExpense {
                     Circle()
                         .frame(width: 20, height: 20)

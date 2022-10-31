@@ -29,7 +29,7 @@ struct MockData {
     ]
     
     static let currentGroupID = "5Pcoq4Yq4zwabAGmaafj"
-    static let currentGroup = GroupModel(id: "5Pcoq4Yq4zwabAGmaafj", name: "Georgia", created: Date(), members: MockData.members)
+    static let currentGroup = GroupModel(id: "5Pcoq4Yq4zwabAGmaafj", name: "Georgia", created: Date())
 
     static let defaultCurrency = "USD"
     

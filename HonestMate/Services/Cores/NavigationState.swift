@@ -9,9 +9,11 @@
 import SwiftUI
 
 protocol NavigationStateProtocol: AnyObservableObject {
-    var homePath: [HomeRoute] { get set }
+    var homePath: NavigationPath { get set }
+    var historyPath: NavigationPath { get set }
 }
 
 class NavigationState: NavigationStateProtocol, ObservableObject {
-    @Published var homePath: [HomeRoute] = []
+    @Published var homePath = NavigationPath()
+    @Published var historyPath = NavigationPath()
 }

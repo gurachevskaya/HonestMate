@@ -12,6 +12,7 @@ import Resolver
 
 class NewExpenseViewModel: ObservableObject {
     
+    private var expense: Binding<ExpenseModel>?
     @Published var expenseCategory: ExpenseCategory?
     private var expenseType: ExpenseType
     private var authService: AuthServiceProtocol
@@ -20,6 +21,7 @@ class NewExpenseViewModel: ObservableObject {
     var navigationState: NavigationStateProtocol
     
     init(
+        expense: Binding<ExpenseModel>?,
         expenseCategory: ExpenseCategory?,
         expenseType: ExpenseType,
         authService: AuthServiceProtocol,
@@ -27,16 +29,18 @@ class NewExpenseViewModel: ObservableObject {
         appState: AppStateProtocol,
         navigationState: NavigationStateProtocol
     ) {
+        self.expense = expense
         self.expenseCategory = expenseCategory
         self.expenseType = expenseType
         self.authService = authService
         self.expensesService = expensesService
         self.appState = appState
         self.navigationState = navigationState
-        
+                        
         setupPipeline()
+        setupInitialStateIfNeeded()
     }
-    
+            
     @Published var description: String = ""
     @Published var amountText: String = ""
     @Published var selectedDate = Date()
@@ -50,14 +54,28 @@ class NewExpenseViewModel: ObservableObject {
     @Published var alertItem: AlertItem?
 
     private var currentUserID: String? { authService.currentUser?.uid }
+    private var isEditMode: Bool { expense != nil }
     
     var screenTitle: String {
-        expenseType == .newExpense ? R.string.localizable.newExpenseTitle() : R.string.localizable.directPaymentTitle()
+        switch expenseType {
+        case .newExpense:
+            if isEditMode {
+                return R.string.localizable.newExpenseAddExpenseEditExpenseTitle()
+            } else {
+                return R.string.localizable.newExpenseTitle()
+            }
+        case .directPayment:
+            if isEditMode {
+                return R.string.localizable.newExpenseAddExpenseEditPaymentTitle()
+            } else {
+                return R.string.localizable.directPaymentTitle()
+            }
+        }
     }
     var splitBetweenTitle: String {
         expenseType == .newExpense ? R.string.localizable.newExpenseSplitBetweenTitle() : R.string.localizable.directPaymentReceivedBy()
     }
-    var shouldShowExpenseType: Bool {
+    var shouldShowExpenseCategory: Bool {
         expenseType == .newExpense
     }
     
@@ -66,6 +84,17 @@ class NewExpenseViewModel: ObservableObject {
     private func setupPipeline() {
         configureAmountTextFieldBehavior()
         configureOkButtonBehavior()
+    }
+    
+    private func setupInitialStateIfNeeded() {
+        guard let expense = expense else { return }
+        
+        description = expense.wrappedValue.description ?? ""
+        amountText = "\(expense.wrappedValue.amount)"
+        selectedDate = expense.wrappedValue.date
+        payer = MemberModel(id: expense.wrappedValue.payer.id, name: expense.wrappedValue.payer.name)
+        recievers = expense.wrappedValue.between.map { MemberModel(id: $0.id, name: $0.name) }
+        expenseCategory = expense.wrappedValue.category
     }
     
     private func configureAmountTextFieldBehavior() {
@@ -104,7 +133,15 @@ class NewExpenseViewModel: ObservableObject {
     
     private func popToRootView() {
         UIApplication.shared.addBackAnimation()
-        navigationState.homePath = []
+        navigationState.homePath = NavigationPath()
+    }
+    
+    func okButtonTapped() {
+        if isEditMode {
+            editExpense()
+        } else {
+            addExpense()
+        }
     }
     
     func toggleSelection(selectable: MemberModel) {
@@ -152,23 +189,28 @@ class NewExpenseViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func addExpense() {
-        guard
-            let amount = Double(amountText),
-            let payer = self.payer
-        else {
-            return
-        }
+    func editExpense() {
+        guard let expenseModel = currentExpenseModel(id: expense?.id) else { return }
         
-        let expenseModel = ExpenseModel(
-            expenseType: expenseType,
-            description: description.isEmpty ? nil : description,
-            category: expenseCategory == nil ? nil : expenseCategory,
-            amount: amount,
-            date: selectedDate,
-            payer: Member(id: payer.id ?? "", name: payer.name),
-            between: recievers.map { Member(id: $0.id ?? "", name: $0.name) }
-        )
+        expensesService.editExpense(groupID: appState.groupID, expense: expenseModel)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] subscription in
+                switch subscription {
+                case .finished:
+                    self?.expense?.wrappedValue = expenseModel
+                    // TODO: pop view controller
+                    UIApplication.shared.addBackAnimation()
+                    self?.navigationState.historyPath.removeLast()
+                    
+                case .failure:
+                    self?.alertItem = AlertContext.innerError
+                }
+            } receiveValue: { _ in }
+            .store(in: &cancellables)
+    }
+    
+    func addExpense() {
+        guard let expenseModel = currentExpenseModel(id: nil) else { return }
             
         expensesService.createExpense(groupID: appState.groupID, expense: expenseModel)
             .receive(on: DispatchQueue.main)
@@ -182,5 +224,27 @@ class NewExpenseViewModel: ObservableObject {
                 }
             } receiveValue: { _ in }
             .store(in: &cancellables)
+    }
+    
+    private func currentExpenseModel(id: String?) -> ExpenseModel? {
+        guard
+            let amount = Double(amountText),
+            let payer = self.payer
+        else {
+            return nil
+        }
+        
+        let expenseModel = ExpenseModel(
+            id: id,
+            expenseType: expenseType,
+            description: description.isEmpty ? nil : description,
+            category: expenseCategory == nil ? nil : expenseCategory,
+            amount: amount,
+            date: selectedDate,
+            payer: Member(id: payer.id ?? "", name: payer.name),
+            between: recievers.map { Member(id: $0.id ?? "", name: $0.name) }
+        )
+        
+        return expenseModel
     }
 }
