@@ -29,7 +29,7 @@ class HistoryViewModel: ObservableObject {
         setupPipeline()
     }
     
-    enum State {
+    enum State: Equatable {
         case idle
         case loading
         case loaded([ExpenseModel])

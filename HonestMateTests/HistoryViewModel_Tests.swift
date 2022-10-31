@@ -23,10 +23,183 @@ final class HistoryViewModel_Tests: XCTestCase {
         sut = HistoryViewModel(
             expensesService: expensesService,
             appState: appState,
-            groupsService: groupsService
+            groupsService: groupsService,
+            navigationState: NavigationStateMock()
         )
     }
 
     override func tearDownWithError() throws {
+        sut = nil
+        expensesService.reset()
+        groupsService.reset()
+    }
+    
+    func test_HistoryViewModel_getData_loadingState() {
+        // Given
+        expensesService.shouldFail = true
+        
+        XCTAssertEqual(HistoryViewModel.State.idle, sut.state)
+        
+        // When
+        sut.loadData()
+        
+        // Then
+        XCTAssertEqual(HistoryViewModel.State.loading, sut.state)
+    }
+ 
+    func test_HistoryViewModel_getHistory_success() {
+        // Given
+        let historyMock = [MockData.historyItem]
+        expensesService.history = historyMock
+        expensesService.shouldFail = false
+        
+        // When
+        sut.loadData()
+        
+        // Then
+        let expectation = XCTestExpectation(description: "State is loaded")
+
+        sut.$state
+            .dropFirst()
+            .sink { [weak self] state in
+                expectation.fulfill()
+                XCTAssertEqual(HistoryViewModel.State.loaded(historyMock), state)
+                XCTAssertNil(self?.sut.alertItem)
+                XCTAssertTrue(self?.expensesService.getHistoryWasCalled == true)
+            }
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 15)
+    }
+    
+    func test_HistoryViewModel_getHistory_failed() {
+        // Given
+        let historyMock = [MockData.historyItem]
+        expensesService.history = historyMock
+        expensesService.shouldFail = true
+        
+        // When
+        sut.loadData()
+        
+        // Then
+        let expectation = XCTestExpectation(description: "Load history does fail")
+        let expectation2 = XCTestExpectation(description: "State is loaded")
+
+        sut.$alertItem
+            .dropFirst()
+            .sink { [weak self] alert in
+                expectation.fulfill()
+                XCTAssertTrue(self?.expensesService.getHistoryWasCalled == true)
+                XCTAssertEqual(AlertContext.innerError, alert)
+            }
+            .store(in: &cancellables)
+        
+        sut.$state
+            .dropFirst()
+            .sink { state in
+                expectation2.fulfill()
+                XCTAssertEqual(HistoryViewModel.State.loaded([]), state)
+            }
+            .store(in: &cancellables)
+        
+        wait(for: [expectation, expectation2], timeout: 10)
+    }
+    
+    func test_HistoryViewModel_getGroupName_success() {
+        // Given
+        let groupMock = MockData.currentGroup
+        groupsService.group = groupMock
+        groupsService.getGroupShouldFail = false
+        
+        // When
+        sut.loadData()
+        
+        // Then
+        let expectation = XCTestExpectation(description: "Get group name does succeed")
+
+        sut.$groupName
+            .dropFirst()
+            .sink { [weak self] groupName in
+                expectation.fulfill()
+                XCTAssertEqual(groupMock.name, groupName)
+                XCTAssertNil(self?.sut.alertItem)
+                XCTAssertTrue(self?.groupsService.getGroupWasCalled == true)
+            }
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 10)
+    }
+    
+    func test_HistoryViewModel_getGroupName_failure() {
+        // Given
+        let groupMock = MockData.currentGroup
+        groupsService.group = groupMock
+        groupsService.getGroupShouldFail = true
+        
+        // When
+        sut.loadData()
+        
+        // Then
+        let expectation = XCTestExpectation(description: "Get group name does fail")
+
+        sut.$groupName
+            .dropFirst()
+            .sink { [weak self] groupName in
+                expectation.fulfill()
+                XCTAssertEqual("", groupName)
+                XCTAssertNil(self?.sut.alertItem)
+                XCTAssertTrue(self?.groupsService.getGroupWasCalled == true)
+            }
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 10)
+    }
+    
+    func test_HistoryViewModel_deleteAll_success_whenOneItem() {
+        // Given
+        let historyMock = [MockData.historyItem]
+        sut.state = .loaded(historyMock)
+        
+        // When
+        sut.delete(at: IndexSet(integersIn: 0..<historyMock.count))
+        
+        // Then
+        XCTAssertTrue(expensesService.deleteItemWasCalled)
+        XCTAssertEqual(sut.state, HistoryViewModel.State.loaded([]))
+    }
+    
+    func test_HistoryViewModel_deleteAll_success_whenSeveralItems() {
+        // Given
+        let historyMock2 = MockData.historyMock
+        sut.state = .loaded(historyMock2)
+        
+        // When
+        sut.delete(at: IndexSet(integersIn: 0..<historyMock2.count))
+        
+        // Then
+        XCTAssertTrue(expensesService.deleteItemWasCalled)
+        XCTAssertEqual(sut.state, HistoryViewModel.State.loaded([]))
+    }
+    
+    func test_HistoryViewModel_deleteFirstItem_success() {
+        // Given
+        var historyMock = MockData.historyMock
+        sut.state = .loaded(historyMock)
+        
+        // When
+        sut.delete(at: IndexSet(integersIn: 0..<1))
+                
+        // Then
+        XCTAssertTrue(expensesService.deleteItemWasCalled)
+
+        let removedElement = historyMock.removeFirst()
+
+        switch sut.state {
+        case .loaded(let model):
+            XCTAssertEqual(model.count, MockData.historyMock.count)
+            XCTAssertFalse(model.contains(removedElement))
+        default:
+            XCTFail()
+        }
     }
 }

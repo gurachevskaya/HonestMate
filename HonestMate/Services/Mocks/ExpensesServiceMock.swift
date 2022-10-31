@@ -9,6 +9,24 @@ import Foundation
 import Combine
 
 class ExpensesServiceMock: ExpensesServiceProtocol {
+    var history: [ExpenseModel] = []
+    var shouldFail = false
+    
+    var getHistoryWasCalled = false
+    var deleteItemWasCalled = false
+    
+    enum ExpenseServiceMockError: Error {
+        case getHistoryFailed
+        case deleteFailed
+    }
+    
+    func reset() {
+        history = []
+        shouldFail = false
+        getHistoryWasCalled = false
+        deleteItemWasCalled = false
+    }
+
     func createExpense(groupID: String, expense: ExpenseModel) -> AnyPublisher<Void, ExpenseServiceError> {
         return Just(())
             .delay(for: 2, scheduler: RunLoop.main)
@@ -31,17 +49,31 @@ class ExpensesServiceMock: ExpensesServiceProtocol {
     }
     
     func addListenerToExpenses(groupID: String) -> AnyPublisher<[ExpenseModel], ExpenseServiceError> {
-        return Just([MockData.historyItem])
-            .delay(for: 2, scheduler: RunLoop.main)
-            .setFailureType(to: ExpenseServiceError.self)
-            .eraseToAnyPublisher()
+        getHistoryWasCalled = true
+        if !shouldFail {
+            return Just(history)
+                .delay(for: 2, scheduler: RunLoop.main)
+                .setFailureType(to: ExpenseServiceError.self)
+                .eraseToAnyPublisher()
+        } else {
+            return Fail(error: ExpenseServiceError.inner(ExpenseServiceMockError.getHistoryFailed))
+                .delay(for: 2, scheduler: RunLoop.main)
+                .eraseToAnyPublisher()
+        }
     }
     
     func deleteExpense(id: String, groupID: String) -> AnyPublisher<Void, ExpenseServiceError> {
-        return Just(())
-            .delay(for: 2, scheduler: RunLoop.main)
-            .setFailureType(to: ExpenseServiceError.self)
-            .eraseToAnyPublisher()
+        deleteItemWasCalled = true
+        if !shouldFail {
+            return Just(())
+                .delay(for: 2, scheduler: RunLoop.main)
+                .setFailureType(to: ExpenseServiceError.self)
+                .eraseToAnyPublisher()
+        } else {
+            return Fail(error: ExpenseServiceError.inner(ExpenseServiceMockError.deleteFailed))
+                .delay(for: 2, scheduler: RunLoop.main)
+                .eraseToAnyPublisher()
+        }
     }
     
     func getBalances(groupID: String) -> AnyPublisher<[BalanceModel], ExpenseServiceError> {

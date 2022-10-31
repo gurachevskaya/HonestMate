@@ -69,6 +69,7 @@
 		1888B697290BF0CC004C90A5 /* HistoryViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888B696290BF0CC004C90A5 /* HistoryViewModel_Tests.swift */; };
 		1888B699290BF1F3004C90A5 /* GroupsServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888B698290BF1F3004C90A5 /* GroupsServiceMock.swift */; };
 		1888B69B290BF40B004C90A5 /* ExpensesServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888B69A290BF40B004C90A5 /* ExpensesServiceMock.swift */; };
+		1888B69D290FE1DD004C90A5 /* NavigationStateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888B69C290FE1DD004C90A5 /* NavigationStateMock.swift */; };
 		18A4D4D128D3830000BA2793 /* SelectExpenseTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A4D4D028D3830000BA2793 /* SelectExpenseTypeView.swift */; };
 		18A4D4D328D3830F00BA2793 /* SelectExpenseTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A4D4D228D3830F00BA2793 /* SelectExpenseTypeViewModel.swift */; };
 		18A4D4D628D383DD00BA2793 /* ExpenseTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A4D4D528D383DD00BA2793 /* ExpenseTypeView.swift */; };
@@ -184,6 +185,7 @@
 		1888B696290BF0CC004C90A5 /* HistoryViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel_Tests.swift; sourceTree = "<group>"; };
 		1888B698290BF1F3004C90A5 /* GroupsServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsServiceMock.swift; sourceTree = "<group>"; };
 		1888B69A290BF40B004C90A5 /* ExpensesServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesServiceMock.swift; sourceTree = "<group>"; };
+		1888B69C290FE1DD004C90A5 /* NavigationStateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStateMock.swift; sourceTree = "<group>"; };
 		18A4D4D028D3830000BA2793 /* SelectExpenseTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExpenseTypeView.swift; sourceTree = "<group>"; };
 		18A4D4D228D3830F00BA2793 /* SelectExpenseTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExpenseTypeViewModel.swift; sourceTree = "<group>"; };
 		18A4D4D528D383DD00BA2793 /* ExpenseTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTypeView.swift; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 				185F423328D323BE00628DDC /* AppStateMock.swift */,
 				1888B698290BF1F3004C90A5 /* GroupsServiceMock.swift */,
 				1888B69A290BF40B004C90A5 /* ExpensesServiceMock.swift */,
+				1888B69C290FE1DD004C90A5 /* NavigationStateMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -993,6 +996,7 @@
 				184791E428C0F16C00BF9717 /* SignInViewModel.swift in Sources */,
 				1816E42A28FEB4DB00BA9EE1 /* HomeRoute.swift in Sources */,
 				185F423F28D34E9000628DDC /* HistoryView.swift in Sources */,
+				1888B69D290FE1DD004C90A5 /* NavigationStateMock.swift in Sources */,
 				1879862828F5CC9600E5AC34 /* HistoryItemView.swift in Sources */,
 				1816E43028FF007600BA9EE1 /* ProfileRoute.swift in Sources */,
 				182466B528F6F8CC00572A11 /* UserName.swift in Sources */,
