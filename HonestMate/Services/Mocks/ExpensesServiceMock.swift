@@ -50,4 +50,12 @@ class ExpensesServiceMock: ExpensesServiceProtocol {
             .setFailureType(to: ExpenseServiceError.self)
             .eraseToAnyPublisher()
     }
+    
+    func editExpense(groupID: String, expense: ExpenseModel) -> AnyPublisher<Void, ExpenseServiceError> {
+        return Just(())
+            .delay(for: 2, scheduler: RunLoop.main)
+            .setFailureType(to: ExpenseServiceError.self)
+            .eraseToAnyPublisher()
+    }
+    
 }
