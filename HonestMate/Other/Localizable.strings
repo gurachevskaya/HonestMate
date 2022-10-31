@@ -62,7 +62,7 @@
 
 "select.expense.type.title" = "Select Type";
 
-// MARK: New expense
+// MARK: Expense
 
 "new.expense.title" = "New expense";
 "new.expense.description.title" = "Description";
@@ -74,6 +74,8 @@
 "new.expense.currency" = "Currency: ";
 "new.expense.split.between.title" = "Split between";
 "new.expense.add.expense.button.title" = "OK";
+"new.expense.add.expense.edit.expense.title" = "Edit Expense";
+"new.expense.add.expense.edit.payment.title" = "Edit Payment";
 
 // MARK: Direct Payment
 
@@ -90,6 +92,18 @@
 "history.see.all" = "See All";
 "history.hide.all" = "Hide All";
 "history.expense.title.direct.payment" = "Direct payment";
+
+// MARK: Details
+
+"expense.details.description" = "Description";
+"expense.details.category" = "Category";
+"expense.details.date" = "Date";
+"expense.details.amount" = "Amount";
+"expense.details.paid.by" = "Paid by";
+"expense.details.between" = "Between";
+"expense.details.received.by" = "Received by";
+"expense.details.direct.payment.title" = "Direct Payment";
+"expense.details.edit.button.title" = "Edit";
 
 // MARK: Choose group
 

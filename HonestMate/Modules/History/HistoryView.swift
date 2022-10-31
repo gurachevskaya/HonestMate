@@ -13,10 +13,13 @@ struct HistoryView: View {
     @StateObject var viewModel: HistoryViewModel
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $viewModel.navigationState.historyPath) {
             content
                 .navigationBarTitle(viewModel.groupName, displayMode: .large)
                 .navigationDestination(for: HistoryRoute.self) { route in
+                    route.view()
+                }
+                .navigationDestination(for: HomeRoute.self) { route in
                     route.view()
                 }
         }
@@ -61,7 +64,7 @@ struct HistoryView: View {
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            HistoryView(viewModel: HistoryViewModel(expensesService: Resolver.resolve(), appState: Resolver.resolve(), groupsService: Resolver.resolve()))
+            HistoryView(viewModel: HistoryViewModel(expensesService: Resolver.resolve(), appState: Resolver.resolve(), groupsService: Resolver.resolve(), navigationState: Resolver.resolve()))
         }
     }
 }

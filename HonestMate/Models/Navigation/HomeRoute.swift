@@ -57,6 +57,7 @@ enum HomeRoute: NavigationRoute, Hashable {
         case .newExpense(let expenseCategory):
             NewExpenseView(
                 viewModel: NewExpenseViewModel(
+                    expense: nil,
                     expenseCategory: expenseCategory,
                     expenseType: .newExpense,
                     authService: Resolver.resolve(),
@@ -68,6 +69,7 @@ enum HomeRoute: NavigationRoute, Hashable {
         case .directPayment:
             NewExpenseView(
                 viewModel: NewExpenseViewModel(
+                    expense: nil,
                     expenseCategory: nil,
                     expenseType: .directPayment,
                     authService: Resolver.resolve(),

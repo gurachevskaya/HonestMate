@@ -58,16 +58,11 @@ class ChooseGroupViewModel: ObservableObject {
                 return filteredGroups
             }
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { [weak self] subscription in
-                switch subscription {
-                case .finished: break
-                case .failure(let error):
-                    // TODO: map error
-                    self?.alertItem = AlertContext.innerError
-                }
-            }, receiveValue: { [weak self] model in
-                self?.groups = model
-            })
+            .catch { [weak self] _ in
+                self?.alertItem = AlertContext.innerError
+                return Just([GroupModel]())
+            }
+            .weakAssign(to: \.groups, on: self)
             .store(in: &cancellables)
     }
 }

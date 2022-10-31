@@ -13,15 +13,18 @@ class HistoryViewModel: ObservableObject {
     private var expensesService: ExpensesServiceProtocol
     private var appState: AppStateProtocol
     private var groupsService: GroupsServiceProtocol
+    var navigationState: NavigationStateProtocol
     
     init(
         expensesService: ExpensesServiceProtocol,
         appState: AppStateProtocol,
-        groupsService: GroupsServiceProtocol
+        groupsService: GroupsServiceProtocol,
+        navigationState: NavigationStateProtocol
     ) {
         self.expensesService = expensesService
         self.appState = appState
         self.groupsService = groupsService
+        self.navigationState = navigationState
         
         setupPipeline()
     }
