@@ -32,13 +32,11 @@ class HistoryViewModel: ObservableObject {
     enum State {
         case idle
         case loading
-        case loaded
-        case error
+        case loaded([ExpenseModel])
     }
         
     @Published private(set) var state = State.idle
 
-    @Published var history: [ExpenseModel] = []
     @Published var alertItem: AlertItem?
     @Published var groupName: String = ""
 
@@ -70,24 +68,27 @@ class HistoryViewModel: ObservableObject {
         state = .loading
         expensesService.addListenerToExpenses(groupID: appState.groupID)
             .receive(on: DispatchQueue.main)
-            .map { [weak self] in self?.history = $0 }
-            .map { _ in State.loaded }
+            .map { history in State.loaded(history) }
             .catch { [weak self] error in
                 self?.alertItem = AlertContext.innerError
-                return Just(State.error)
+                return Just(State.loaded([]))
             }
             .weakAssign(to: \.state, on: self)
             .store(in: &cancellables)
     }
     
     func delete(at offsets: IndexSet) {
+        var history = getHistoryModel()
         offsets.map { $0 }.forEach { index in
             deleteItem(index: index)
         }
         history.remove(atOffsets: offsets)
+        state = .loaded(history)
     }
     
     private func deleteItem(index: Int) {
+        var history = getHistoryModel()
+
         let item = history[index]
         expensesService.deleteExpense(id: item.id ?? "", groupID: appState.groupID)
             .receive(on: DispatchQueue.main)
@@ -95,11 +96,19 @@ class HistoryViewModel: ObservableObject {
                 switch subscription {
                 case .finished: break
                 case .failure:
-                    self?.history.insert(item, at: index)
+                    history.insert(item, at: index)
+                    self?.state = .loaded(history)
                     self?.alertItem = AlertContext.deletingError
-                    self?.state = .error
                 }
             } receiveValue: { _ in }
             .store(in: &cancellables)
+    }
+    
+    private func getHistoryModel() -> [ExpenseModel] {
+        switch state {
+        case .loaded(let model):
+            return model
+        default: return []
+        }
     }
 }
