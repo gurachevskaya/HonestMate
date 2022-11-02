@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-protocol NavigationStateProtocol: AnyObservableObject {
+protocol NavigationStateProtocol: AnyObservableObject, Clearable {
     var homePath: NavigationPath { get set }
     var historyPath: NavigationPath { get set }
 }
@@ -16,4 +16,9 @@ protocol NavigationStateProtocol: AnyObservableObject {
 class NavigationState: NavigationStateProtocol, ObservableObject {
     @Published var homePath = NavigationPath()
     @Published var historyPath = NavigationPath()
+    
+    func clear() {
+        homePath = NavigationPath()
+        historyPath = NavigationPath()
+    }
 }
