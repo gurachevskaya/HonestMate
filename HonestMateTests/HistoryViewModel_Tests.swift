@@ -155,30 +155,38 @@ final class HistoryViewModel_Tests: XCTestCase {
         wait(for: [expectation], timeout: 10)
     }
     
-    func test_HistoryViewModel_deleteAll_success_whenOneItem() {
+    func test_HistoryViewModel_deleteItem_whenOneItem_success() {
         // Given
         let historyMock = [MockData.historyItem]
         sut.state = .loaded(historyMock)
         
         // When
-        sut.delete(at: IndexSet(integersIn: 0..<historyMock.count))
+        sut.delete(at: IndexSet(integersIn: 0..<1))
         
         // Then
         XCTAssertTrue(expensesService.deleteItemWasCalled)
+        sleep(3)
         XCTAssertEqual(sut.state, HistoryViewModel.State.loaded([]))
     }
     
-    func test_HistoryViewModel_deleteAll_success_whenSeveralItems() {
+    func test_HistoryViewModel_deleteRandomItem_success() {
         // Given
-        let historyMock2 = MockData.historyMock
-        sut.state = .loaded(historyMock2)
+        let historyMock = MockData.historyMock
+        sut.state = .loaded(historyMock)
         
         // When
-        sut.delete(at: IndexSet(integersIn: 0..<historyMock2.count))
+        let randomIndex = Int.random(in: 0..<historyMock.count)
+        sut.delete(at: IndexSet(integersIn: randomIndex...randomIndex))
         
         // Then
         XCTAssertTrue(expensesService.deleteItemWasCalled)
-        XCTAssertEqual(sut.state, HistoryViewModel.State.loaded([]))
+        sleep(3)
+        switch sut.state {
+        case .loaded(let model):
+            XCTAssertEqual(model.count, historyMock.count - 1)
+        default:
+            XCTFail()
+        }
     }
     
     func test_HistoryViewModel_deleteFirstItem_success() {
@@ -193,10 +201,12 @@ final class HistoryViewModel_Tests: XCTestCase {
         XCTAssertTrue(expensesService.deleteItemWasCalled)
 
         let removedElement = historyMock.removeFirst()
+        
+        sleep(3)
 
         switch sut.state {
         case .loaded(let model):
-            XCTAssertEqual(model.count, MockData.historyMock.count)
+            XCTAssertEqual(model.count, historyMock.count)
             XCTAssertFalse(model.contains(removedElement))
         default:
             XCTFail()
