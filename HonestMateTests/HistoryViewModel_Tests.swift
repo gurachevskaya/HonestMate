@@ -180,13 +180,23 @@ final class HistoryViewModel_Tests: XCTestCase {
         
         // Then
         XCTAssertTrue(expensesService.deleteItemWasCalled)
-        sleep(3)
-        switch sut.state {
-        case .loaded(let model):
-            XCTAssertEqual(model.count, historyMock.count - 1)
-        default:
-            XCTFail()
-        }
+        
+        let expectation = XCTestExpectation(description: "Delete random item does succeed")
+
+        sut.$state
+            .sink { state in
+                expectation.fulfill()
+
+                switch state {
+                case .loaded(let model):
+                    XCTAssertEqual(model.count, historyMock.count - 1)
+                default:
+                    XCTFail()
+                }
+            }
+            .store(in: &cancellables)
+
+        wait(for: [expectation], timeout: 5)
     }
     
     func test_HistoryViewModel_deleteFirstItem_success() {
@@ -201,15 +211,80 @@ final class HistoryViewModel_Tests: XCTestCase {
         XCTAssertTrue(expensesService.deleteItemWasCalled)
 
         let removedElement = historyMock.removeFirst()
-        
-        sleep(3)
+                
+        let expectation = XCTestExpectation(description: "Delete first item does succeed")
 
-        switch sut.state {
-        case .loaded(let model):
-            XCTAssertEqual(model.count, historyMock.count)
-            XCTAssertFalse(model.contains(removedElement))
-        default:
-            XCTFail()
-        }
+        sut.$state
+            .sink { state in
+                expectation.fulfill()
+
+                switch state {
+                case .loaded(let model):
+                    XCTAssertEqual(model.count, historyMock.count)
+                    XCTAssertFalse(model.contains(removedElement))
+                default:
+                    XCTFail()
+                }
+            }
+            .store(in: &cancellables)
+
+        wait(for: [expectation], timeout: 5)
+    }
+    
+    func test_HistoryViewModel_deleteFirstItem_failure_shouldShowAlert() {
+        // Given
+        let historyMock = [MockData.historyItem]
+        sut.state = .loaded(historyMock)
+        expensesService.shouldFail = true
+        
+        // When
+        sut.delete(at: IndexSet(integersIn: 0..<1))
+        
+        // Then
+        XCTAssertTrue(expensesService.deleteItemWasCalled)
+        
+        let expectation = XCTestExpectation(description: "Delete item does fail")
+
+        sut.$alertItem
+            .dropFirst()
+            .sink { alert in
+                expectation.fulfill()
+                XCTAssertEqual(AlertContext.deletingError, alert)
+            }
+            .store(in: &cancellables)
+
+        wait(for: [expectation], timeout: 5)
+    }
+    
+    func test_HistoryViewModel_deleteFirstItem_failure_state() {
+        // Given
+        let historyMock = [MockData.historyItem]
+        sut.state = .loaded(historyMock)
+        expensesService.shouldFail = true
+        
+        // When
+        sut.delete(at: IndexSet(integersIn: 0...0))
+        
+        // Then
+        XCTAssertTrue(expensesService.deleteItemWasCalled)
+
+        let expectation = XCTestExpectation(description: "Same history count")
+
+        sut.$state
+            .dropFirst()
+            .sink { state in
+                expectation.fulfill()
+
+                switch state {
+                case .loaded(let model):
+                    XCTAssertEqual(model.count, historyMock.count)
+
+                default:
+                    XCTFail()
+                }
+            }
+            .store(in: &cancellables)
+
+        wait(for: [expectation], timeout: 5)
     }
 }

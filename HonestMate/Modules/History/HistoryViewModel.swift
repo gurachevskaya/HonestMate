@@ -78,26 +78,26 @@ class HistoryViewModel: ObservableObject {
     }
     
     func delete(at offsets: IndexSet) {
-        var history = getHistoryModel()
-        offsets.map { $0 }.forEach { index in
-            deleteItem(index: index)
+        let history = getHistoryModel()
+        var newHistory = history
+        newHistory.remove(atOffsets: offsets)
+        state = .loaded(newHistory)
+        offsets.map { history[$0] }.forEach { item in
+            deleteItem(item)
         }
-        history.remove(atOffsets: offsets)
-        state = .loaded(history)
     }
     
-    private func deleteItem(index: Int) {
+    private func deleteItem(_ item: ExpenseModel) {
         var history = getHistoryModel()
-
-        let item = history[index]
         expensesService.deleteExpense(id: item.id ?? "", groupID: appState.groupID)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] subscription in
                 switch subscription {
                 case .finished: break
                 case .failure:
-                    history.insert(item, at: index)
-                    self?.state = .loaded(history)
+                    history.append(item)
+                    let sortedHistory = history.sorted { $0.date > $1.date }
+                    self?.state = .loaded(sortedHistory)
                     self?.alertItem = AlertContext.deletingError
                 }
             } receiveValue: { _ in }
