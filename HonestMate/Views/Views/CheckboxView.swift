@@ -15,7 +15,7 @@ struct CheckBox: View {
     var body: some View {
         ZStack {
             Circle()
-                .stroke(isSelected ? .white : .gray)
+                .stroke(isSelected ? Color.primary : .gray)
                 .frame(width: 22, height: 22)
             Circle()
                 .fill(isSelected ? .pink : .clear)

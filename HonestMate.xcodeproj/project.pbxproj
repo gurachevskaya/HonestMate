@@ -59,13 +59,17 @@
 		185F423028D21F7800628DDC /* RemoteConfigMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F422F28D21F7800628DDC /* RemoteConfigMock.swift */; };
 		185F423228D31C1000628DDC /* AuthServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F423128D31C1000628DDC /* AuthServiceMock.swift */; };
 		185F423428D323BE00628DDC /* AppStateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F423328D323BE00628DDC /* AppStateMock.swift */; };
+		185F423728D3374700628DDC /* SignInViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F423628D3374700628DDC /* SignInViewModel_Tests.swift */; };
 		185F423928D34DD700628DDC /* HonestMateTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F423828D34DD700628DDC /* HonestMateTabView.swift */; };
 		185F423C28D34E6F00628DDC /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F423B28D34E6F00628DDC /* MyProfileView.swift */; };
 		185F423F28D34E9000628DDC /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F423E28D34E9000628DDC /* HistoryView.swift */; };
 		185F424128D35C2500628DDC /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F424028D35C2500628DDC /* MyProfileViewModel.swift */; };
-		185F423728D3374700628DDC /* SignInViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F423628D3374700628DDC /* SignInViewModel_Tests.swift */; };
 		186FD74528C79D39004B5156 /* AuthPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186FD74428C79D39004B5156 /* AuthPublisher.swift */; };
 		1879862828F5CC9600E5AC34 /* HistoryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879862728F5CC9600E5AC34 /* HistoryItemView.swift */; };
+		1888B697290BF0CC004C90A5 /* HistoryViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888B696290BF0CC004C90A5 /* HistoryViewModel_Tests.swift */; };
+		1888B699290BF1F3004C90A5 /* GroupsServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888B698290BF1F3004C90A5 /* GroupsServiceMock.swift */; };
+		1888B69B290BF40B004C90A5 /* ExpensesServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888B69A290BF40B004C90A5 /* ExpensesServiceMock.swift */; };
+		1888B69D290FE1DD004C90A5 /* NavigationStateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888B69C290FE1DD004C90A5 /* NavigationStateMock.swift */; };
 		18A4D4D128D3830000BA2793 /* SelectExpenseTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A4D4D028D3830000BA2793 /* SelectExpenseTypeView.swift */; };
 		18A4D4D328D3830F00BA2793 /* SelectExpenseTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A4D4D228D3830F00BA2793 /* SelectExpenseTypeViewModel.swift */; };
 		18A4D4D628D383DD00BA2793 /* ExpenseTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A4D4D528D383DD00BA2793 /* ExpenseTypeView.swift */; };
@@ -171,13 +175,17 @@
 		185F422F28D21F7800628DDC /* RemoteConfigMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigMock.swift; sourceTree = "<group>"; };
 		185F423128D31C1000628DDC /* AuthServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceMock.swift; sourceTree = "<group>"; };
 		185F423328D323BE00628DDC /* AppStateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateMock.swift; sourceTree = "<group>"; };
+		185F423628D3374700628DDC /* SignInViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel_Tests.swift; sourceTree = "<group>"; };
 		185F423828D34DD700628DDC /* HonestMateTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonestMateTabView.swift; sourceTree = "<group>"; };
 		185F423B28D34E6F00628DDC /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		185F423E28D34E9000628DDC /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		185F424028D35C2500628DDC /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
-		185F423628D3374700628DDC /* SignInViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel_Tests.swift; sourceTree = "<group>"; };
 		186FD74428C79D39004B5156 /* AuthPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPublisher.swift; sourceTree = "<group>"; };
 		1879862728F5CC9600E5AC34 /* HistoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItemView.swift; sourceTree = "<group>"; };
+		1888B696290BF0CC004C90A5 /* HistoryViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel_Tests.swift; sourceTree = "<group>"; };
+		1888B698290BF1F3004C90A5 /* GroupsServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsServiceMock.swift; sourceTree = "<group>"; };
+		1888B69A290BF40B004C90A5 /* ExpensesServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesServiceMock.swift; sourceTree = "<group>"; };
+		1888B69C290FE1DD004C90A5 /* NavigationStateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStateMock.swift; sourceTree = "<group>"; };
 		18A4D4D028D3830000BA2793 /* SelectExpenseTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExpenseTypeView.swift; sourceTree = "<group>"; };
 		18A4D4D228D3830F00BA2793 /* SelectExpenseTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExpenseTypeViewModel.swift; sourceTree = "<group>"; };
 		18A4D4D528D383DD00BA2793 /* ExpenseTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTypeView.swift; sourceTree = "<group>"; };
@@ -447,6 +455,9 @@
 				185F423128D31C1000628DDC /* AuthServiceMock.swift */,
 				185F422F28D21F7800628DDC /* RemoteConfigMock.swift */,
 				185F423328D323BE00628DDC /* AppStateMock.swift */,
+				1888B698290BF1F3004C90A5 /* GroupsServiceMock.swift */,
+				1888B69A290BF40B004C90A5 /* ExpensesServiceMock.swift */,
+				1888B69C290FE1DD004C90A5 /* NavigationStateMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -614,6 +625,7 @@
 			children = (
 				18F728E728B91059002D071F /* HonestMateTests.swift */,
 				185F423628D3374700628DDC /* SignInViewModel_Tests.swift */,
+				1888B696290BF0CC004C90A5 /* HistoryViewModel_Tests.swift */,
 			);
 			path = HonestMateTests;
 			sourceTree = "<group>";
@@ -944,6 +956,7 @@
 				18BA855528CA3E3300F8DC2A /* Constants.swift in Sources */,
 				184C4EA72907DF3300F68E02 /* BalanceModel.swift in Sources */,
 				18F728D928B91057002D071F /* ContentView.swift in Sources */,
+				1888B69B290BF40B004C90A5 /* ExpensesServiceMock.swift in Sources */,
 				18D49A3228F08CB60022087D /* ExpensesService.swift in Sources */,
 				181AB52E2909492300645AC8 /* DetailView.swift in Sources */,
 				1816E43428FF0ED000BA9EE1 /* AnyCancellable.swift in Sources */,
@@ -983,6 +996,7 @@
 				184791E428C0F16C00BF9717 /* SignInViewModel.swift in Sources */,
 				1816E42A28FEB4DB00BA9EE1 /* HomeRoute.swift in Sources */,
 				185F423F28D34E9000628DDC /* HistoryView.swift in Sources */,
+				1888B69D290FE1DD004C90A5 /* NavigationStateMock.swift in Sources */,
 				1879862828F5CC9600E5AC34 /* HistoryItemView.swift in Sources */,
 				1816E43028FF007600BA9EE1 /* ProfileRoute.swift in Sources */,
 				182466B528F6F8CC00572A11 /* UserName.swift in Sources */,
@@ -1008,6 +1022,7 @@
 				18E6EF8428F85DC60061DE8D /* GroupsService.swift in Sources */,
 				184791EB28C109E400BF9717 /* RoundedTextButton.swift in Sources */,
 				184791E228C0F14C00BF9717 /* SignInView.swift in Sources */,
+				1888B699290BF1F3004C90A5 /* GroupsServiceMock.swift in Sources */,
 				183543CB28D4C0E400FDEEA2 /* ReceiverView.swift in Sources */,
 				18F7290828BCB432002D071F /* Fastfile in Sources */,
 				184791F028C1F88000BF9717 /* R.generated.swift in Sources */,
@@ -1025,6 +1040,7 @@
 			files = (
 				185F423728D3374700628DDC /* SignInViewModel_Tests.swift in Sources */,
 				18F728E828B91059002D071F /* HonestMateTests.swift in Sources */,
+				1888B697290BF0CC004C90A5 /* HistoryViewModel_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

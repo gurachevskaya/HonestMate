@@ -34,8 +34,8 @@ struct HistoryView: View {
             return Color.clear.eraseToAnyView()
         case .loading:
             return ProgressView().scaleEffect(2).eraseToAnyView()
-        case .error, .loaded:
-            return history
+        case .loaded(let model):
+            return history(model)
                 .alert(item: $viewModel.alertItem) { alertItem in
                     Alert(
                         title: alertItem.title,
@@ -46,10 +46,10 @@ struct HistoryView: View {
         }
     }
     
-    private var history: some View {
+    private func history(_ model: [ExpenseModel]) -> some View {
         VStack {
             List {
-                ForEach(viewModel.history) { item in
+                ForEach(model) { item in
                     NavigationLink(value: HistoryRoute.expenseDetails(item)) {
                         HistoryItemView(historyItem: item)
                             .animation(Animation.spring())
