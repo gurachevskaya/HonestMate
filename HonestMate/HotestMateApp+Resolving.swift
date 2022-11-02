@@ -34,7 +34,7 @@ extension Resolver: ResolverRegistering {
             register { ExpensesService(db: Resolver.resolve(Firestore.self)) as ExpensesServiceProtocol }.scope(.application)
             register { GroupsService(db: Resolver.resolve(Firestore.self)) as GroupsServiceProtocol }.scope(.application)
         } else {
-            register { AuthService(appState: Resolver.resolve()) as AuthServiceProtocol }.scope(.application)
+            register { AuthService(appState: Resolver.resolve(), navigationState: Resolver.resolve()) as AuthServiceProtocol }.scope(.application)
             register { RemoteConfigService() as RemoteConfigServiceProtocol }.scope(.application)
             register { ExpensesService(db: Resolver.resolve(Firestore.self)) as ExpensesServiceProtocol }.scope(.application)
             register { GroupsService(db: Resolver.resolve(Firestore.self)) as GroupsServiceProtocol }.scope(.application)

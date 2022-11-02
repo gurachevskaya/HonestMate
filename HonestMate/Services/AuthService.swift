@@ -31,9 +31,14 @@ protocol AuthServiceProtocol {
 
 final class AuthService: AuthServiceProtocol {
     private var appState: AppStateProtocol
+    private var navigationState: NavigationStateProtocol
     
-    init(appState: AppStateProtocol) {
+    init(
+        appState: AppStateProtocol,
+        navigationState: NavigationStateProtocol
+    ) {
         self.appState = appState
+        self.navigationState = navigationState
     }
     
     var currentUser: User? { Auth.auth().currentUser }
@@ -74,7 +79,9 @@ final class AuthService: AuthServiceProtocol {
         return Future<Void, AuthError> { [unowned self] promise in
             do {
                 try Auth.auth().signOut()
+                
                 appState.clear()
+                navigationState.clear()
                 promise(.success(()))
             } catch let error {
                 print(error)
