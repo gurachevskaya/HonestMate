@@ -35,7 +35,7 @@ class HistoryViewModel: ObservableObject {
         case loaded([ExpenseModel])
     }
         
-    @Published private(set) var state = State.idle
+    @Published var state = State.idle
 
     @Published var alertItem: AlertItem?
     @Published var groupName: String = ""
