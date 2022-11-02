@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HistoryItemView: View {
     var historyItem: ExpenseModel
+    var colourful: Bool
     
     @State var showMembers: Bool = false
     
@@ -34,7 +35,7 @@ struct HistoryItemView: View {
                 if historyItem.expenseType == .newExpense {
                     Circle()
                         .frame(width: 20, height: 20)
-                        .foregroundColor(Color(hex: historyItem.category?.hexColor ?? "#FC6DAB"))
+                        .foregroundColor(colourful == true ? Color(hex: historyItem.category?.hexColor ?? "#FC6DAB") : Color(uiColor: .systemGray))
                 }
                 Spacer()
                 Text(String(format: "%.2f", historyItem.amount))
@@ -87,6 +88,6 @@ struct HistoryItemView: View {
 
 struct HistoryItemView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryItemView(historyItem: MockData.historyItem)
+        HistoryItemView(historyItem: MockData.historyItem, colourful: true)
     }
 }

@@ -51,8 +51,11 @@ struct HistoryView: View {
             List {
                 ForEach(model) { item in
                     NavigationLink(value: HistoryRoute.expenseDetails(item)) {
-                        HistoryItemView(historyItem: item)
-                            .animation(Animation.spring())
+                        HistoryItemView(
+                            historyItem: item,
+                            colourful: viewModel.colourful
+                        )
+                        .animation(Animation.spring())
                     }
                 }
                 .onDelete(perform: viewModel.delete)
@@ -64,7 +67,7 @@ struct HistoryView: View {
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            HistoryView(viewModel: HistoryViewModel(expensesService: Resolver.resolve(), appState: Resolver.resolve(), groupsService: Resolver.resolve(), navigationState: Resolver.resolve()))
+            HistoryView(viewModel: HistoryViewModel(expensesService: Resolver.resolve(), appState: Resolver.resolve(), groupsService: Resolver.resolve(), remoteConfig: Resolver.resolve(), navigationState: Resolver.resolve()))
         }
     }
 }

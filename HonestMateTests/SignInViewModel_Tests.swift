@@ -362,11 +362,12 @@ final class SignInViewModel_Tests: XCTestCase {
                 googleEnabled: true,
                 appleEnabled: true
             ),
-            accentColor: "#d3419d"
+            accentColor: "#d3419d",
+            colourful: true
         )
         
         // Then
-        let expectedColor = remoteConfig.appConfig?.accentColor
+        let expectedColor = Color(hex: remoteConfig.appConfig?.accentColor ?? "")
         XCTAssertEqual(expectedColor, sut.accentColor)
     }
     
@@ -378,7 +379,8 @@ final class SignInViewModel_Tests: XCTestCase {
                 googleEnabled: true,
                 appleEnabled: true
             ),
-            accentColor: "#d3419d"
+            accentColor: "#d3419d",
+            colourful: true
         )
         
         // Then

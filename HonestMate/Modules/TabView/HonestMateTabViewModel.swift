@@ -16,5 +16,7 @@ class HonestMateTabViewModel: ObservableObject {
         self.remoteConfig = remoteConfig
     }
     
-    var accentColor: Color { Color(hex: remoteConfig.appConfig?.accentColor ?? "") }
+    var accentColor: Color {
+        remoteConfig.appConfig?.colourful == true ?
+        Color(hex: remoteConfig.appConfig?.accentColor ?? "") : Color(uiColor: .systemBlue) }
 }

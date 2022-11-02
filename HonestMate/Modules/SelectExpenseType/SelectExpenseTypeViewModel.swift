@@ -14,15 +14,18 @@ class SelectExpenseTypeViewModel: ObservableObject {
     var type: ScreenType
     var expenseCategory: Binding<ExpenseCategory?>?
     private var expensesService: ExpensesServiceProtocol
+    private var remoteConfig: RemoteConfigServiceProtocol
 
     init(
         type: ScreenType,
         expenseCategory: Binding<ExpenseCategory?>?,
-        expensesService: ExpensesServiceProtocol
+        expensesService: ExpensesServiceProtocol,
+        remoteConfig: RemoteConfigServiceProtocol
     ) {
         self.type = type
         self.expenseCategory = expenseCategory
         self.expensesService = expensesService
+        self.remoteConfig = remoteConfig
     }
     
     enum ScreenType {
@@ -38,6 +41,8 @@ class SelectExpenseTypeViewModel: ObservableObject {
     }
         
     @Published private(set) var state = State.idle
+    
+    var colourful: Bool { remoteConfig.appConfig?.colourful ?? true }
 
     let columns: [GridItem] = [
         GridItem(.flexible()),

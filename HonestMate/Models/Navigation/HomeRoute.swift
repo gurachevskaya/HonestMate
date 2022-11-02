@@ -43,7 +43,8 @@ enum HomeRoute: NavigationRoute, Hashable {
                 viewModel: SelectExpenseTypeViewModel(
                     type: .select,
                     expenseCategory: nil,
-                    expensesService: Resolver.resolve()
+                    expensesService: Resolver.resolve(),
+                    remoteConfig: Resolver.resolve()
                 )
             )
         case .reselectType(let expenseCategory):
@@ -51,7 +52,8 @@ enum HomeRoute: NavigationRoute, Hashable {
                 viewModel: SelectExpenseTypeViewModel(
                     type: .reselect,
                     expenseCategory: expenseCategory,
-                    expensesService: Resolver.resolve()
+                    expensesService: Resolver.resolve(),
+                    remoteConfig: Resolver.resolve()
                 )
             )
         case .newExpense(let expenseCategory):

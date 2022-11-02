@@ -41,14 +41,20 @@ struct SelectExpenseTypeView: View {
                     switch viewModel.type {
                     case .select:
                         NavigationLink(value: HomeRoute.newExpense(type)) {
-                            ExpenseTypeView(type: type)
+                            ExpenseTypeView(
+                                type: type,
+                                colourful: viewModel.colourful
+                            )
                         }
                     case .reselect:
-                        ExpenseTypeView(type: type)
-                            .onTapGesture {
-                                viewModel.expenseCategory?.wrappedValue = type
-                                presentationMode.wrappedValue.dismiss()
-                            }
+                        ExpenseTypeView(
+                            type: type,
+                            colourful: viewModel.colourful
+                        )
+                        .onTapGesture {
+                            viewModel.expenseCategory?.wrappedValue = type
+                            presentationMode.wrappedValue.dismiss()
+                        }
                     }
                 }
             }
@@ -68,7 +74,8 @@ struct SelectExpenseTypeView_Previews: PreviewProvider {
             SelectExpenseTypeView(viewModel: SelectExpenseTypeViewModel(
                 type: .select,
                 expenseCategory: .constant(MockData.expenseType),
-                expensesService: Resolver.resolve())
+                expensesService: Resolver.resolve(),
+                remoteConfig: Resolver.resolve())
             )
         }
     }

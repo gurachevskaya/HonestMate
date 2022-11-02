@@ -16,6 +16,7 @@ final class HistoryViewModel_Tests: XCTestCase {
     private var expensesService = ExpensesServiceMock()
     private var appState = AppStateMock()
     private var groupsService = GroupsServiceMock()
+    private var remoteConfig = RemoteConfigMock()
 
     var cancellables: Set<AnyCancellable> = []
     
@@ -24,6 +25,7 @@ final class HistoryViewModel_Tests: XCTestCase {
             expensesService: expensesService,
             appState: appState,
             groupsService: groupsService,
+            remoteConfig: remoteConfig,
             navigationState: NavigationStateMock()
         )
     }

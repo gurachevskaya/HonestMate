@@ -32,6 +32,7 @@ enum HistoryRoute: NavigationRoute, Hashable {
                     expensesService: Resolver.resolve(),
                     appState: Resolver.resolve(),
                     groupsService: Resolver.resolve(),
+                    remoteConfig: Resolver.resolve(),
                     navigationState: Resolver.resolve()
                 )
             )
