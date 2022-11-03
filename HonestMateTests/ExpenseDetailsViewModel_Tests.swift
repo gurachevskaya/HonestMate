@@ -30,13 +30,13 @@ final class ExpenseDetailsViewModel_Tests: XCTestCase {
     func test_ExpenseDetailsViewModel_headerColor_whenDirectPayment() {
         sut.expense.expenseType = .directPayment
         let accentColor = "#d3419d"
-        remoteConfig.appConfig = AppConfig(loginConfig: nil, accentColor: accentColor)
+        remoteConfig.appConfig = AppConfig(loginConfig: nil, accentColor: accentColor, colourful: true)
         
         let expectedColor = Color(hex: accentColor).opacity(0.5)
         XCTAssertEqual(sut.headerColor, expectedColor)
         
         let accentColor2 = "#fcba03"
-        remoteConfig.appConfig = AppConfig(loginConfig: nil, accentColor: accentColor2)
+        remoteConfig.appConfig = AppConfig(loginConfig: nil, accentColor: accentColor2, colourful: true)
         
         let expectedColor2 = Color(hex: accentColor2).opacity(0.5)
         XCTAssertEqual(sut.headerColor, expectedColor2)
