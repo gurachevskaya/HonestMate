@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Resolver
 
 final class SignInView_UITests: XCTestCase {
     
@@ -15,6 +16,7 @@ final class SignInView_UITests: XCTestCase {
         continueAfterFailure = false
         app = XCUIApplication()
         app.launchArguments = ["testing"]
+        app.launchEnvironment["isLoggedIn"] = "false"
         app.launch()
     }
 

@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class ExpensesServiceMock: ExpensesServiceProtocol {
-    var history: [ExpenseModel] = []
+    var history: [ExpenseModel] = MockData.historyMock
     var shouldFail = false
     
     var getHistoryWasCalled = false
