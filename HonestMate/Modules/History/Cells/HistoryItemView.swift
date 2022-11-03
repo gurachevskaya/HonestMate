@@ -36,6 +36,7 @@ struct HistoryItemView: View {
                     Circle()
                         .frame(width: 20, height: 20)
                         .foregroundColor(colourful == true ? Color(hex: historyItem.category?.hexColor ?? "#FC6DAB") : Color(uiColor: .systemGray))
+                        .accessibilityIdentifier(Constants.AccessebilityIDs.circle)
                 }
                 Spacer()
                 Text(String(format: "%.2f", historyItem.amount))
@@ -58,6 +59,7 @@ struct HistoryItemView: View {
 
                 if showMembers {
                     Text(membersString)
+                        .accessibilityIdentifier(Constants.AccessebilityIDs.betweenMatesLabel)
                 }
             }
             .foregroundColor(.gray)
@@ -77,6 +79,7 @@ struct HistoryItemView: View {
                 .onTapGesture {
                     showMembers.toggle()
                 }
+                .accessibilityIdentifier(Constants.AccessebilityIDs.seeAllButton)
                 .animation(.none)
         }
     }

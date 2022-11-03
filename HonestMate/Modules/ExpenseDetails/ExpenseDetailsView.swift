@@ -46,6 +46,7 @@ struct ExpenseDetailsView: View {
                 .font(.title2)
                 .padding()
             }
+            .accessibilityIdentifier(Constants.AccessebilityIDs.detailsView)
             .scrollIndicators(.hidden)
             .padding(.vertical)
         }
@@ -61,6 +62,7 @@ struct ExpenseDetailsView: View {
         ZStack {
             Rectangle()
                 .fill(viewModel.headerColor)
+                .accessibilityIdentifier(Constants.AccessebilityIDs.headerView)
             
             VStack {
                 Spacer()

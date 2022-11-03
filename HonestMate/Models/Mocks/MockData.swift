@@ -39,7 +39,7 @@ struct MockData {
     static let historyMock = [
         ExpenseModel(expenseType: .newExpense, category: MockData.expenseType, amount: 20, date: Date(), payer: MockData.member, between: [Member(id: "1", name: "Karina"), Member(id: "1", name: "Arina")]),
         ExpenseModel(expenseType: .directPayment, category: nil, amount: 20, date: Date(), payer: MockData.member, between: [Member(id: "1", name: "Karina"), Member(id: "1", name: "Arina")]),
-        ExpenseModel(expenseType: .newExpense, category: MockData.expenseType, amount: 30, date: Date(), payer: MockData.member, between: [Member(id: "1", name: "Karina"), Member(id: "1", name: "Arina")])
+        ExpenseModel(expenseType: .newExpense, description: "description", category: MockData.expenseType, amount: 30, date: Date(), payer: MockData.member, between: [Member(id: "1", name: "Karina"), Member(id: "1", name: "Arina")])
     ]
     
     static let balanceModel = BalanceModel(member: MockData.member, balance: 20)

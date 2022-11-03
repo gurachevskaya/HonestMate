@@ -11,7 +11,7 @@ import Combine
 class AppStateMock: AppStateProtocol, ObservableObject {
     var homePath: [HomeRoute] = []
     
-    var isLoggedIn: Bool = false
+    var isLoggedIn: Bool = ProcessInfo.processInfo.environment["isLoggedIn"] == "false" ? false : true
     var groupID: String = "5Pcoq4Yq4zwabAGmaafj"
     
     func clear() {

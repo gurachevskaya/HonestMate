@@ -31,6 +31,13 @@ enum Constants {
         static let confirmPasswordTextField = "confirmPassword"
         static let signInButton = "signIn"
         static let titleLabel = "titleLabel"
+        // MARK: history
+        static let seeAllButton = "seeAllButton"
+        static let betweenMatesLabel = "betweenMatesLabel"
+        static let circle = "circle"
+        // MARK: details
+        static let headerView = "headerView"
+        static let detailsView = "detailsView"
     }
     
     enum DatabaseReferenceNames {
