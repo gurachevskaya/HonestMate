@@ -16,6 +16,7 @@ struct ExpenseDetailsView: View {
         VStack {
             headerView
                 .frame(height: 200)
+                .accessibilityIdentifier(Constants.AccessebilityIDs.headerView)
             
             ScrollView {
                 VStack(spacing: 20) {
@@ -46,6 +47,7 @@ struct ExpenseDetailsView: View {
                 .font(.title2)
                 .padding()
             }
+            .accessibilityIdentifier(Constants.AccessebilityIDs.detailsView)
             .scrollIndicators(.hidden)
             .padding(.vertical)
         }

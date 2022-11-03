@@ -35,6 +35,9 @@ enum Constants {
         static let seeAllButton = "seeAllButton"
         static let betweenMatesLabel = "betweenMatesLabel"
         static let circle = "circle"
+        // MARK: details
+        static let headerView = "headerView"
+        static let detailsView = "detailsView"
     }
     
     enum DatabaseReferenceNames {

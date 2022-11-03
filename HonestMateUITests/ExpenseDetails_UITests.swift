@@ -25,11 +25,48 @@ final class ExpenseDetails_UITests: XCTestCase {
     }
 
     func test_elementsOnScreen() {
+        openFirstCellDetails()
+        
+        let labelsCount = app.staticTexts.count
+        XCTAssertEqual(labelsCount, 13)
+        
+        let header = app.otherElements[Constants.AccessebilityIDs.headerView]
+        XCTAssertTrue(header.exists)
     }
     
     func test_backButtonTapped() {
+        openFirstCellDetails()
+        
+        let detailsView = app.scrollViews[Constants.AccessebilityIDs.detailsView]
+        XCTAssertTrue(detailsView.exists)
+        XCTAssertTrue(detailsView.isHittable)
+        
+        let backButton = app.navigationBars.buttons.element(boundBy: 0)
+        backButton.tap()
+
+        XCTAssertFalse(detailsView.exists)
+        XCTAssertFalse(detailsView.isHittable)
     }
     
     func test_editButtonTapped() {
+        openFirstCellDetails()
+        
+        let detailsView = app.scrollViews[Constants.AccessebilityIDs.detailsView]
+        XCTAssertTrue(detailsView.exists)
+        XCTAssertTrue(detailsView.isHittable)
+        
+        let editButton = app.navigationBars.buttons.element(boundBy: 1)
+        editButton.tap()
+        
+        XCTAssertFalse(detailsView.exists)
+        XCTAssertFalse(detailsView.isHittable)
+    }
+    
+    private func openFirstCellDetails() {
+        app.tabBars["Tab Bar"].buttons.element(boundBy: 0).tap()
+        sleep(3)
+        let historyList = app.collectionViews.firstMatch
+        let firstCell = historyList.cells.firstMatch
+        firstCell.tap()
     }
 }

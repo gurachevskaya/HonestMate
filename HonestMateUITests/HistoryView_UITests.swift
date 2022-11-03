@@ -86,9 +86,11 @@ final class HistoryView_UITests: XCTestCase {
         sleep(3)
 
         let historyView = app.collectionViews.firstMatch
-        XCTAssertTrue(historyView.isVisible())
+        XCTAssertTrue(historyView.exists)
+        XCTAssertTrue(historyView.isHittable)
 
         historyView.cells.firstMatch.tap()
-        XCTAssertFalse(historyView.isVisible())
+        XCTAssertFalse(historyView.exists)
+        XCTAssertFalse(historyView.isHittable)
     }
 }
