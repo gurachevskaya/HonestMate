@@ -30,6 +30,9 @@ class ExpenseDetailsViewModel: ObservableObject {
     }
     
     var headerColor: Color {
+        if remoteConfig.appConfig?.colourful != true {
+            return Color(uiColor: .systemGray)
+        }
         switch expense.expenseType {
         case .directPayment:
             return Color(hex: remoteConfig.appConfig?.accentColor ?? "").opacity(0.5)

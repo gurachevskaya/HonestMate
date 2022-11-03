@@ -22,6 +22,7 @@ enum Constants {
     enum FeatureFlagKeys {
         static let loginConfig = "loginConfig"
         static let accentColor = "accentColor"
+        static let colourful = "colourful"
     }
     
     enum AccessebilityIDs {
@@ -38,5 +39,9 @@ enum Constants {
         static let categories = "categories"
         static let expensesHistory = "expensesHistory"
         static let members = "members"
+    }
+    
+    enum ColorHex {
+        static let systemBlue = "#007bff"
     }
 }

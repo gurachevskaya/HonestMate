@@ -13,17 +13,20 @@ class HistoryViewModel: ObservableObject {
     private var expensesService: ExpensesServiceProtocol
     private var appState: AppStateProtocol
     private var groupsService: GroupsServiceProtocol
+    private var remoteConfig: RemoteConfigServiceProtocol
     var navigationState: NavigationStateProtocol
     
     init(
         expensesService: ExpensesServiceProtocol,
         appState: AppStateProtocol,
         groupsService: GroupsServiceProtocol,
+        remoteConfig: RemoteConfigServiceProtocol,
         navigationState: NavigationStateProtocol
     ) {
         self.expensesService = expensesService
         self.appState = appState
         self.groupsService = groupsService
+        self.remoteConfig = remoteConfig
         self.navigationState = navigationState
         
         setupPipeline()
@@ -39,6 +42,8 @@ class HistoryViewModel: ObservableObject {
 
     @Published var alertItem: AlertItem?
     @Published var groupName: String = ""
+    
+    var colourful: Bool { remoteConfig.appConfig?.colourful ?? true }
 
     private var cancellables: Set<AnyCancellable> = []
     

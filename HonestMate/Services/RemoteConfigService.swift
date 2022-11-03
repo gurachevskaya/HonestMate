@@ -93,9 +93,12 @@ class RemoteConfigService: RemoteConfigServiceProtocol, ObservableObject {
         let loginConfigData = remoteConfig.defaultValue(forKey: Constants.FeatureFlagKeys.loginConfig)?.dataValue ?? Data()
         let loginConfig = try? JSONDecoder().decode(LoginConfig.self, from: loginConfigData)
         
+        let colourful = remoteConfig.defaultValue(forKey: Constants.FeatureFlagKeys.colourful)?.boolValue ?? true
+        
         let appConfig = AppConfig(
             loginConfig: loginConfig,
-            accentColor: accentColor
+            accentColor: accentColor,
+            colourful: colourful
         )
         
         return appConfig
@@ -107,9 +110,12 @@ class RemoteConfigService: RemoteConfigServiceProtocol, ObservableObject {
         let loginConfigData = remoteConfig.configValue(forKey: Constants.FeatureFlagKeys.loginConfig).dataValue
         let loginConfig = try? JSONDecoder().decode(LoginConfig.self, from: loginConfigData)
         
+        let colourful = remoteConfig.configValue(forKey: Constants.FeatureFlagKeys.colourful).boolValue
+        
         let appConfig = AppConfig(
             loginConfig: loginConfig,
-            accentColor: accentColor
+            accentColor: accentColor,
+            colourful: colourful
         )
         
         return appConfig

@@ -10,6 +10,7 @@ import Foundation
 struct AppConfig: Codable {
     let loginConfig: LoginConfig?
     let accentColor: String
+    let colourful: Bool
 }
 
 struct LoginConfig: Codable, Equatable {

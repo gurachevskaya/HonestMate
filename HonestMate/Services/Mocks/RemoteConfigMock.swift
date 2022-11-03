@@ -15,7 +15,8 @@ class RemoteConfigMock: RemoteConfigServiceProtocol {
             googleEnabled: true,
             appleEnabled: true
         ),
-        accentColor: "#d3419d"
+        accentColor: "#d3419d",
+        colourful: true
     )
     
     var appConfigPublisher: AnyPublisher<Void, Never> {

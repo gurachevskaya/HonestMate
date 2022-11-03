@@ -42,7 +42,10 @@ class MyEventsViewModel: ObservableObject {
     @Published var balances: [BalanceModel] = []
     @Published var myBalanceViewColor: Color = .primary
     
-    var accentColor: Color { Color(hex: remoteConfig.appConfig?.accentColor ?? "") }
+    var accentColor: Color {
+        remoteConfig.appConfig?.colourful == true ?
+        Color(hex: remoteConfig.appConfig?.accentColor ?? "") : Color(uiColor: .systemBlue)
+    }
 
     private func setupPipeline() {
         navigationState.objectWillChange.sink { [weak self] _ in
