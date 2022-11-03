@@ -16,7 +16,6 @@ struct ExpenseDetailsView: View {
         VStack {
             headerView
                 .frame(height: 200)
-                .accessibilityIdentifier(Constants.AccessebilityIDs.headerView)
             
             ScrollView {
                 VStack(spacing: 20) {
@@ -63,6 +62,7 @@ struct ExpenseDetailsView: View {
         ZStack {
             Rectangle()
                 .fill(viewModel.headerColor)
+                .accessibilityIdentifier(Constants.AccessebilityIDs.headerView)
             
             VStack {
                 Spacer()
