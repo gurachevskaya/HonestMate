@@ -62,7 +62,6 @@ class ChooseGroupViewModel: ObservableObject {
                 self?.alertItem = AlertContext.innerError
                 return Just([GroupModel]())
             }
-            .weakAssign(to: \.groups, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$groups)
     }
 }

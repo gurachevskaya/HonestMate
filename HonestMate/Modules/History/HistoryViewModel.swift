@@ -65,8 +65,7 @@ class HistoryViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .map { $0.name }
             .replaceError(with: "")
-            .weakAssign(to: \.groupName, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$groupName)
     }
     
     private func loadHistory() {
@@ -78,8 +77,7 @@ class HistoryViewModel: ObservableObject {
                 self?.alertItem = AlertContext.innerError
                 return Just(State.loaded([]))
             }
-            .weakAssign(to: \.state, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$state)
     }
     
     func delete(at offsets: IndexSet) {
