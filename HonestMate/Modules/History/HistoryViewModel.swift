@@ -85,9 +85,13 @@ class HistoryViewModel: ObservableObject {
         var newHistory = history
         newHistory.remove(atOffsets: offsets)
         state = .loaded(newHistory)
-        offsets.map { history[$0] }.forEach { item in
-            deleteItem(item)
-        }
+        
+        offsets.publisher
+            .map { history[$0] }
+            .sink { [weak self] in
+                self?.deleteItem($0)
+            }
+            .store(in: &cancellables)
     }
     
     private func deleteItem(_ item: ExpenseModel) {
