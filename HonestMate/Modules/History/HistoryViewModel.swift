@@ -99,9 +99,7 @@ class HistoryViewModel: ObservableObject {
         expensesService.deleteExpense(id: item.id ?? "", groupID: appState.groupID)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] subscription in
-                switch subscription {
-                case .finished: break
-                case .failure:
+                if case .failure = subscription {
                     history.append(item)
                     let sortedHistory = history.sorted { $0.date > $1.date }
                     self?.state = .loaded(sortedHistory)
