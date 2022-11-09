@@ -12,6 +12,13 @@ import FirebaseAuth
 
 enum ExpenseServiceError: LocalizedError {
     case inner(Error)
+    
+    var errorDescription: String? {
+        switch self {
+        case .inner:
+            return R.string.localizable.alertInnerErrorMessage()
+        }
+    }
 }
 
 protocol ExpensesServiceProtocol {

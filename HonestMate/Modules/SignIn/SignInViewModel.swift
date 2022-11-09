@@ -28,7 +28,7 @@ class SignInViewModel: ObservableObject {
     }
     
     @Published var path: [SignInRoute] = []
-
+    
     enum SignInOption {
         case facebook, apple, google, mail
     }
@@ -147,7 +147,7 @@ extension SignInViewModel {
         ).map { email, validAndConfirmedPassword, terms, selected in
             email && validAndConfirmedPassword && terms && selected == .register
         }
-        .eraseToAnyPublisher()
+            .eraseToAnyPublisher()
         
         return publisher
     }
@@ -176,7 +176,7 @@ extension SignInViewModel {
             }
             .eraseToAnyPublisher()
     }
-
+    
     private var validAndConfirmedPassword: AnyPublisher<Bool, Never> {
         validPassword.combineLatest(passwordMatchesConfirmation)
             .map { $0.0 && $0.1}

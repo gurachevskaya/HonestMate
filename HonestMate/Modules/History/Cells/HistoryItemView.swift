@@ -26,7 +26,7 @@ struct HistoryItemView: View {
             return R.string.localizable.historyExpenseTitleDirectPayment()
         }
     }
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
@@ -46,7 +46,7 @@ struct HistoryItemView: View {
             
             VStack(alignment: .leading) {
                 Text(R.string.localizable.historyDateTitle() + " ") +
-                     Text(historyItem.date, format: Date.FormatStyle().year().month().day().weekday())
+                Text(historyItem.date, format: Date.FormatStyle().year().month().day().weekday())
                 
                 Text(R.string.localizable.historyPaidByTitle() + " \(historyItem.payer.name)")
                 
@@ -56,7 +56,7 @@ struct HistoryItemView: View {
                 if historyItem.expenseType == .directPayment {
                     directPayment
                 }
-
+                
                 if showMembers {
                     Text(membersString)
                         .accessibilityIdentifier(Constants.AccessebilityIDs.betweenMatesLabel)

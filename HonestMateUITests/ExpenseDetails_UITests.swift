@@ -15,7 +15,6 @@ final class ExpenseDetails_UITests: XCTestCase {
         continueAfterFailure = false
         app = XCUIApplication()
         app.launchArguments = ["testing"]
-        app.launchEnvironment["isLoggedIn"] = "true"
         app.launch()
     }
 
@@ -24,7 +23,7 @@ final class ExpenseDetails_UITests: XCTestCase {
         app = nil
     }
 
-    func test_elementsOnScreen() {
+    func test_elementsOnScreen() {   
         openFirstCellDetails()
         
         let labelsCount = app.staticTexts.count
@@ -63,10 +62,21 @@ final class ExpenseDetails_UITests: XCTestCase {
     }
     
     private func openFirstCellDetails() {
-        app.tabBars["Tab Bar"].buttons.element(boundBy: 0).tap()
+        openHistory()
         sleep(3)
         let historyList = app.collectionViews.firstMatch
         let firstCell = historyList.cells.firstMatch
         firstCell.tap()
     }
 }
+
+extension ExpenseDetails_UITests {
+    private func openHistory() {
+        TestsSigninHelper.shared.signIn(app: app)
+        sleep(3)
+        TestsSigninHelper.shared.selectGroup(app: app)
+        
+        app.tabBars["Tab Bar"].buttons.element(boundBy: 0).tap()
+    }
+}
+
