@@ -39,7 +39,6 @@ class ChooseGroupViewModel: ObservableObject {
     
     func getUserGroups() {
         guard let currentUserID = currentUserID else {
-            // TODO: map error
             authService.logout()
                 .sink { _ in } receiveValue: { _ in }
                 .store(in: &cancellables)

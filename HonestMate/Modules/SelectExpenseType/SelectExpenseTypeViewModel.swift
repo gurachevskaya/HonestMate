@@ -63,8 +63,7 @@ class SelectExpenseTypeViewModel: ObservableObject {
                 State.loaded(model)
             }
             .catch { error in
-                // TODO: map error
-                Just(State.error(error.localizedDescription))
+                Just(State.error(error.errorDescription))
             }
             .weakAssign(to: \.state, on: self)
             .store(in: &cancellables)

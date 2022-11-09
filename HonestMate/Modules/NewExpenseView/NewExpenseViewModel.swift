@@ -136,6 +136,11 @@ class NewExpenseViewModel: ObservableObject {
         navigationState.homePath = NavigationPath()
     }
     
+    private func popLastView() {
+        UIApplication.shared.addBackAnimation()
+        navigationState.historyPath.removeLast()
+    }
+    
     func okButtonTapped() {
         if isEditMode {
             editExpense()
@@ -198,9 +203,7 @@ class NewExpenseViewModel: ObservableObject {
                 switch subscription {
                 case .finished:
                     self?.expense?.wrappedValue = expenseModel
-                    // TODO: pop view controller
-                    UIApplication.shared.addBackAnimation()
-                    self?.navigationState.historyPath.removeLast()
+                    self?.popLastView()
                     
                 case .failure:
                     self?.alertItem = AlertContext.innerError
