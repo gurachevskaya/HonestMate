@@ -14,7 +14,7 @@ final class SignInViewModel_Tests: XCTestCase {
     
     var sut: SignInViewModel!
     
-    private var authService = AuthServiceMock()
+    private var authService = AuthServiceMock(appState: AppStateMock())
     private var remoteConfig = RemoteConfigMock()
     
     var cancellables: Set<AnyCancellable> = []

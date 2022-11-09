@@ -30,7 +30,7 @@ extension Resolver: ResolverRegistering {
     
     private static func registerServices() {
         if ProcessInfo.processInfo.arguments.contains("testing") {
-            register { AuthServiceMock() as AuthServiceProtocol }.scope(.application)
+            register { AuthServiceMock(appState: Resolver.resolve()) as AuthServiceProtocol }.scope(.application)
             register { RemoteConfigMock() as RemoteConfigServiceProtocol }.scope(.application)
             register { ExpensesServiceMock() as ExpensesServiceProtocol }.scope(.application)
             register { GroupsServiceMock() as GroupsServiceProtocol }.scope(.application)

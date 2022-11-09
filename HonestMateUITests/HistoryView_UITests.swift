@@ -15,7 +15,6 @@ final class HistoryView_UITests: XCTestCase {
         continueAfterFailure = false
         app = XCUIApplication()
         app.launchArguments = ["testing"]
-        app.launchEnvironment["isLoggedIn"] = "true"
         app.launch()
     }
 
@@ -25,7 +24,7 @@ final class HistoryView_UITests: XCTestCase {
     }
 
     func test_elementsOnScreen() {
-        app.tabBars["Tab Bar"].buttons.element(boundBy: 0).tap()
+        openHistory()
 
         let loader = app.activityIndicators.element
         let loaderExists = loader.waitForExistence(timeout: 0.5)
@@ -43,8 +42,9 @@ final class HistoryView_UITests: XCTestCase {
     }
     
     func test_firstCellInitialElements() {
-        app.tabBars["Tab Bar"].buttons.element(boundBy: 0).tap()
+        openHistory()
         sleep(3)
+
         let historyList = app.collectionViews.firstMatch
         
         let firstCell = historyList.cells.firstMatch
@@ -64,8 +64,9 @@ final class HistoryView_UITests: XCTestCase {
     }
     
     func test_BetweenLabelAppearsAfterTapSeeAll() {
-        app.tabBars["Tab Bar"].buttons.element(boundBy: 0).tap()
+        openHistory()
         sleep(3)
+
         let historyList = app.collectionViews.firstMatch
         let firstCell = historyList.cells.firstMatch
         
@@ -82,7 +83,7 @@ final class HistoryView_UITests: XCTestCase {
     }
     
     func test_tapRow() {
-        app.tabBars["Tab Bar"].buttons.element(boundBy: 0).tap()
+        openHistory()
         sleep(3)
 
         let historyView = app.collectionViews.firstMatch
@@ -92,5 +93,15 @@ final class HistoryView_UITests: XCTestCase {
         historyView.cells.firstMatch.tap()
         XCTAssertFalse(historyView.exists)
         XCTAssertFalse(historyView.isHittable)
+    }
+}
+
+extension HistoryView_UITests {
+    private func openHistory() {
+        TestsSigninHelper.shared.signIn(app: app)
+        sleep(3)
+        TestsSigninHelper.shared.selectGroup(app: app)
+        
+        app.tabBars["Tab Bar"].buttons.element(boundBy: 0).tap()
     }
 }

@@ -25,7 +25,7 @@ class ChooseGroupViewModel: ObservableObject {
         self.appState = appState
     }
     
-    private var currentUserID: String? { authService.currentUser?.uid }
+    private var currentUserID: String? { authService.currentUserID }
     
     @Published var groups: [GroupModel] = []
     @Published var alertItem: AlertItem?

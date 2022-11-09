@@ -21,7 +21,8 @@ enum AuthError: Error {
 }
 
 protocol AuthServiceProtocol {
-    var currentUser: User? { get }
+    var currentUserID: UserIdentifier? { get }
+    var appState: AppStateProtocol { get set }
     
     func observeAuthChanges() -> AnyPublisher<Bool, Never>
     func signin(email: String, password: String) -> AnyPublisher<Void, AuthError>
@@ -30,7 +31,7 @@ protocol AuthServiceProtocol {
 }
 
 final class AuthService: AuthServiceProtocol {
-    private var appState: AppStateProtocol
+    var appState: AppStateProtocol
     private var navigationState: NavigationStateProtocol
     
     init(
@@ -41,7 +42,7 @@ final class AuthService: AuthServiceProtocol {
         self.navigationState = navigationState
     }
     
-    var currentUser: User? { Auth.auth().currentUser }
+    var currentUserID: UserIdentifier? { Auth.auth().currentUser?.uid }
     
     func observeAuthChanges() -> AnyPublisher<Bool, Never> {
         Publishers.AuthPublisher().eraseToAnyPublisher()
