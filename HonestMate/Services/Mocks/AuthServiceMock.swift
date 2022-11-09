@@ -11,6 +11,12 @@ import Firebase
 
 class AuthServiceMock: AuthServiceProtocol {
     
+    var appState: AppStateProtocol
+    
+    init(appState: AppStateProtocol) {
+        self.appState = appState
+    }
+    
     var error: AuthError?
     var loginWasCalled = false
     var registerWasCalled = false
@@ -23,7 +29,7 @@ class AuthServiceMock: AuthServiceProtocol {
         logoutWasCalled = false
     }
     
-    var currentUser: User?
+    var currentUserID: UserIdentifier?
     
     func observeAuthChanges() -> AnyPublisher<Bool, Never> {
         Just(false)
@@ -38,6 +44,8 @@ class AuthServiceMock: AuthServiceProtocol {
                 .delay(for: 2, scheduler: RunLoop.main)
                 .eraseToAnyPublisher()
         } else {
+            appState.isLoggedIn = true
+            currentUserID = "1"
             return Just(())
                 .delay(for: 2, scheduler: RunLoop.main)
                 .setFailureType(to: AuthError.self)
@@ -53,6 +61,8 @@ class AuthServiceMock: AuthServiceProtocol {
                 .delay(for: 2, scheduler: RunLoop.main)
                 .eraseToAnyPublisher()
         } else {
+            appState.isLoggedIn = true
+            currentUserID = "1"
             return Just(())
                 .delay(for: 2, scheduler: RunLoop.main)
                 .setFailureType(to: AuthError.self)
@@ -68,6 +78,8 @@ class AuthServiceMock: AuthServiceProtocol {
                 .delay(for: 2, scheduler: RunLoop.main)
                 .eraseToAnyPublisher()
         } else {
+            appState.isLoggedIn = false
+            currentUserID = nil
             return Just(())
                 .delay(for: 2, scheduler: RunLoop.main)
                 .setFailureType(to: AuthError.self)

@@ -16,7 +16,6 @@ final class SignInView_UITests: XCTestCase {
         continueAfterFailure = false
         app = XCUIApplication()
         app.launchArguments = ["testing"]
-        app.launchEnvironment["isLoggedIn"] = "false"
         app.launch()
     }
 
@@ -72,19 +71,19 @@ final class SignInView_UITests: XCTestCase {
         let confirmPasswordTextField = app.secureTextFields[Constants.AccessebilityIDs.confirmPasswordTextField]
 
         emailTextField.tap()
-        pasteText("email", in: emailTextField)
+        TestsSigninHelper.shared.pasteText(app: app, "email", in: emailTextField)
         passwordTextField.tap()
         if passwordTextField.exists {
-            pasteText("password", in: passwordTextField)
+            TestsSigninHelper.shared.pasteText(app: app, "password", in: passwordTextField)
         }
         app.buttons["Return"].tap()
         
         XCTAssertFalse(signInButton.isEnabled)
         
         emailTextField.tap()
-        pasteText("email@gmail.com", in: emailTextField)
+        TestsSigninHelper.shared.pasteText(app: app, "email@gmail.com", in: emailTextField)
         passwordTextField.tap()
-        pasteText("password1A", in: passwordTextField)
+        TestsSigninHelper.shared.pasteText(app: app, "password1A", in: passwordTextField)
         app.buttons["Return"].tap()
       
         XCTAssertTrue(signInButton.isEnabled)
@@ -94,7 +93,7 @@ final class SignInView_UITests: XCTestCase {
         XCTAssertFalse(signInButton.isEnabled)
 
         confirmPasswordTextField.tap()
-        pasteText("password1A", in: confirmPasswordTextField)
+        TestsSigninHelper.shared.pasteText(app: app, "password1A", in: confirmPasswordTextField)
         app.buttons["Return"].tap()
 
         XCTAssertTrue(signInButton.isEnabled)
@@ -106,10 +105,8 @@ final class SignInView_UITests: XCTestCase {
         let loaderWhenOpenExists = loader.exists
         XCTAssertFalse(loaderWhenOpenExists)
         
-        pasteValidCredentials()
-        
-        let signInButton = app.buttons[Constants.AccessebilityIDs.signInButton]
-        signInButton.tap()
+        TestsSigninHelper.shared.signIn(app: app)
+
         let loaderWhenTappedSignInExists = loader.exists
         XCTAssertTrue(loaderWhenTappedSignInExists)
         
@@ -119,14 +116,10 @@ final class SignInView_UITests: XCTestCase {
     }
     
     func test_signInButton_showAlert() {
-        let signInButton = app.buttons[Constants.AccessebilityIDs.signInButton]
-
+        TestsSigninHelper.shared.signIn(app: app)
+                        
         let alert = app.alerts.firstMatch
         let okButton = alert.buttons["OK"]
-        
-        pasteValidCredentials()
-                
-        signInButton.tap()
         
         let exists = okButton.waitForExistence(timeout: 4)
         XCTAssertTrue(exists)
@@ -135,28 +128,5 @@ final class SignInView_UITests: XCTestCase {
         
         let existsAfterTap = okButton.waitForExistence(timeout: 1)
         XCTAssertFalse(existsAfterTap)
-    }
-}
-
-extension SignInView_UITests {
-    private func pasteText(_ text: String, in element: XCUIElement) {
-        UIPasteboard.general.string = text
-        element.doubleTap()
-        app.menuItems["Paste"].tap()
-    }
-    
-    private func pasteValidCredentials() {
-        let emailTextField = app.textFields[Constants.AccessebilityIDs.emailTextField]
-        let passwordTextField = app.secureTextFields[Constants.AccessebilityIDs.passwordTextField]
-        
-        emailTextField.tap()
-        if passwordTextField.exists {
-            pasteText("email@gmail.com", in: emailTextField)
-        }
-        passwordTextField.tap()
-        if passwordTextField.exists {
-            pasteText("password1A", in: passwordTextField)
-        }
-        app.buttons["Return"].tap()
     }
 }

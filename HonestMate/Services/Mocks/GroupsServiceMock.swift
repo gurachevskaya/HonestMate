@@ -36,7 +36,7 @@ class GroupsServiceMock: GroupsServiceProtocol {
     func getGroups() -> AnyPublisher<[GroupModel], GroupsServiceError> {
         getGroupsWasCalled = true
         if !getGroupsShouldFail {
-            return Just(([MockData.currentGroup]))
+            return Just((MockData.groupModels))
                 .delay(for: 2, scheduler: RunLoop.main)
                 .setFailureType(to: GroupsServiceError.self)
                 .eraseToAnyPublisher()

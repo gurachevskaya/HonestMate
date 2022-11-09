@@ -30,7 +30,7 @@ final class GroupsService: GroupsServiceProtocol {
     func getGroup(groupID: String) -> AnyPublisher<GroupModel, GroupsServiceError> {
         let groupsCollection = db.collection(Constants.DatabaseReferenceNames.groups)
         let groupDocument = groupsCollection.document(groupID)
-                
+        
         return Publishers.FirestoreDocumentPublisher(ref: groupDocument)
             .tryMap { snapshot in
                 try snapshot.data(as: GroupModel.self)
@@ -41,24 +41,24 @@ final class GroupsService: GroupsServiceProtocol {
     
     func getGroups() -> AnyPublisher<[GroupModel], GroupsServiceError> {
         let groupsCollection = db.collection(Constants.DatabaseReferenceNames.groups)
-
+        
         return Future<[GroupModel], GroupsServiceError> { promise in
-                groupsCollection.getDocuments { groupsSnapshot, error in
-                    if let error = error {
-                        promise(.failure(.inner(error)))
-                        return
-                    }
-                                        
-                    guard let data = groupsSnapshot?.documents else {
-                        promise(.success([]))
-                        return
-                    }
-                    
-                    let groups = data.compactMap {
-                        try? $0.data(as: GroupModel.self)
-                    }
-                    
-                    promise(.success(groups))
+            groupsCollection.getDocuments { groupsSnapshot, error in
+                if let error = error {
+                    promise(.failure(.inner(error)))
+                    return
+                }
+                
+                guard let data = groupsSnapshot?.documents else {
+                    promise(.success([]))
+                    return
+                }
+                
+                let groups = data.compactMap {
+                    try? $0.data(as: GroupModel.self)
+                }
+                
+                promise(.success(groups))
             }
         }
         .eraseToAnyPublisher()
@@ -79,7 +79,7 @@ final class GroupsService: GroupsServiceProtocol {
                     promise(.failure(.noData))
                     return
                 }
-
+                
                 do {
                     let user = try snapshot.data(as: UserInfoModel.self)
                     promise(.success(user))

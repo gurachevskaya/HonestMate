@@ -25,12 +25,12 @@ class ChooseGroupViewModel: ObservableObject {
         self.appState = appState
     }
     
-    private var currentUserID: String? { authService.currentUser?.uid }
+    private var currentUserID: String? { authService.currentUserID }
     
     @Published var groups: [GroupModel] = []
     @Published var alertItem: AlertItem?
     @AppStorage(Constants.StorageKeys.groupID) private var groupID = ""
-
+    
     private var cancellables: Set<AnyCancellable> = []
     
     func chooseGroup(group: GroupModel) {
@@ -39,11 +39,10 @@ class ChooseGroupViewModel: ObservableObject {
     
     func getUserGroups() {
         guard let currentUserID = currentUserID else {
-            // TODO: map error
             authService.logout()
                 .sink { _ in } receiveValue: { _ in }
                 .store(in: &cancellables)
-
+            
             alertItem = AlertContext.innerError
             return
         }
@@ -52,16 +51,16 @@ class ChooseGroupViewModel: ObservableObject {
         let groupsPublisher = groupsService.getGroups()
         
         userInfoPublisher.zip(groupsPublisher) { userInfo, groups in
-                let filteredGroups = groups.filter { group in
-                    userInfo.groups.contains(group.id ?? "")
-                }
-                return filteredGroups
+            let filteredGroups = groups.filter { group in
+                userInfo.groups.contains(group.id ?? "")
             }
-            .receive(on: DispatchQueue.main)
-            .catch { [weak self] _ in
-                self?.alertItem = AlertContext.innerError
-                return Just([GroupModel]())
-            }
-            .assign(to: &$groups)
+            return filteredGroups
+        }
+        .receive(on: DispatchQueue.main)
+        .catch { [weak self] _ in
+            self?.alertItem = AlertContext.innerError
+            return Just([GroupModel]())
+        }
+        .assign(to: &$groups)
     }
 }

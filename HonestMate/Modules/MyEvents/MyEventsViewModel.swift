@@ -75,7 +75,7 @@ class MyEventsViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .replaceError(with: [])
             .map { balances in
-                let myBalance = balances.first(where: { $0.member.id == self.authService.currentUser?.uid })
+                let myBalance = balances.first(where: { $0.member.id == self.authService.currentUserID })
                 return myBalance?.balance ?? 0
             }
             .assign(to: &$myBalance)
