@@ -33,13 +33,16 @@ protocol AuthServiceProtocol {
 final class AuthService: AuthServiceProtocol {
     var appState: AppStateProtocol
     private var navigationState: NavigationStateProtocol
+    private var auth: Auth
     
     init(
         appState: AppStateProtocol,
-        navigationState: NavigationStateProtocol
+        navigationState: NavigationStateProtocol,
+        auth: Auth = Auth.auth()
     ) {
         self.appState = appState
         self.navigationState = navigationState
+        self.auth = auth
     }
     
     var currentUserID: UserIdentifier? { Auth.auth().currentUser?.uid }
@@ -49,8 +52,8 @@ final class AuthService: AuthServiceProtocol {
     }
     
     func signin(email: String, password: String) -> AnyPublisher<Void, AuthError> {
-        return Future<Void, AuthError> { promise in
-            Auth.auth().signIn(withEmail: email, password: password) { [unowned self] result, error in
+        return Future<Void, AuthError> { [unowned self] promise in
+            auth.signIn(withEmail: email, password: password) { [unowned self] result, error in
                 if let error = error {
                     promise(.failure(mapError(error)))
                 } else if let _ = result?.user {
@@ -64,7 +67,7 @@ final class AuthService: AuthServiceProtocol {
     
     func createUser(email: String, password: String) -> AnyPublisher<Void, AuthError> {
         return Future<Void, AuthError> { [unowned self] promise in
-            Auth.auth().createUser(withEmail: email, password: password) { [unowned self] result, error in
+            auth.createUser(withEmail: email, password: password) { [unowned self] result, error in
                 if let error = error {
                     promise(.failure(mapError(error)))
                 } else {
@@ -79,7 +82,7 @@ final class AuthService: AuthServiceProtocol {
     func logout() -> AnyPublisher<Void, AuthError> {
         return Future<Void, AuthError> { [unowned self] promise in
             do {
-                try Auth.auth().signOut()
+                try auth.signOut()
                 
                 appState.clear()
                 navigationState.clear()
