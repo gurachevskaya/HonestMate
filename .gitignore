@@ -1,5 +1,4 @@
 xcuserdata
-*.xcworkspace
 Pods
 GoogleService-Info.plist
 R.generated.swift
