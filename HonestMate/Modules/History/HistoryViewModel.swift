@@ -65,8 +65,7 @@ class HistoryViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .map { $0.name }
             .replaceError(with: "")
-            .weakAssign(to: \.groupName, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$groupName)
     }
     
     private func loadHistory() {
@@ -78,8 +77,7 @@ class HistoryViewModel: ObservableObject {
                 self?.alertItem = AlertContext.innerError
                 return Just(State.loaded([]))
             }
-            .weakAssign(to: \.state, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$state)
     }
     
     func delete(at offsets: IndexSet) {
@@ -87,9 +85,13 @@ class HistoryViewModel: ObservableObject {
         var newHistory = history
         newHistory.remove(atOffsets: offsets)
         state = .loaded(newHistory)
-        offsets.map { history[$0] }.forEach { item in
-            deleteItem(item)
-        }
+        
+        offsets.publisher
+            .map { history[$0] }
+            .sink { [weak self] in
+                self?.deleteItem($0)
+            }
+            .store(in: &cancellables)
     }
     
     private func deleteItem(_ item: ExpenseModel) {
@@ -97,9 +99,7 @@ class HistoryViewModel: ObservableObject {
         expensesService.deleteExpense(id: item.id ?? "", groupID: appState.groupID)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] subscription in
-                switch subscription {
-                case .finished: break
-                case .failure:
+                if case .failure = subscription {
                     history.append(item)
                     let sortedHistory = history.sorted { $0.date > $1.date }
                     self?.state = .loaded(sortedHistory)

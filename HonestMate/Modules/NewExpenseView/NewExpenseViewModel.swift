@@ -174,11 +174,10 @@ class NewExpenseViewModel: ObservableObject {
         expensesService.getGroupMembers(groupID: appState.groupID)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] subscription in
-                switch subscription {
-                case .finished: break
-                case .failure:
+                if case .failure = subscription {
                     self?.alertItem = AlertContext.innerError
                 }
+                
             } receiveValue: { [weak self] members in
                 guard let self else { return }
                 if self.payer == nil {

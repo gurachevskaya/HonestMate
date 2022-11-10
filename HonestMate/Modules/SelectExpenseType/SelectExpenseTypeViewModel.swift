@@ -65,7 +65,6 @@ class SelectExpenseTypeViewModel: ObservableObject {
             .catch { error in
                 Just(State.error(error.errorDescription))
             }
-            .weakAssign(to: \.state, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$state)
     }
 }

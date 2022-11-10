@@ -69,8 +69,7 @@ class MyEventsViewModel: ObservableObject {
         expensesService.getBalances(groupID: appState.groupID)
             .receive(on: DispatchQueue.main)
             .replaceError(with: [])
-            .weakAssign(to: \.balances, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$balances)
         
         expensesService.getBalances(groupID: appState.groupID)
             .receive(on: DispatchQueue.main)
@@ -79,7 +78,6 @@ class MyEventsViewModel: ObservableObject {
                 let myBalance = balances.first(where: { $0.member.id == self.authService.currentUserID })
                 return myBalance?.balance ?? 0
             }
-            .weakAssign(to: \.myBalance, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$myBalance)
     }
 }
